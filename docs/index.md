@@ -1,14 +1,14 @@
 --- 
 title: "An Introduction to Machine Learning"
 author: "Sudhakaran Prabakaran, Matt Wayland and Chris Penfold"
-date: "2019-03-12"
+date: "2019-10-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: bioinformatics-training/intro-machine-learning-2018
+github-repo: bioinformatics-training/intro-machine-learning-2019
 description: "Course materials for An Introduction to Machine Learning"
 cover-image: figures/cover_image.png
 ---
@@ -40,7 +40,7 @@ After this course you should be able to:
 * For an introduction to R see [An Introduction to Solving Biological Problems with R course](http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro/). 
 
 ## Github
-[bioinformatics-training/intro-machine-learning-2018](https://github.com/bioinformatics-training/intro-machine-learning-2018)
+[bioinformatics-training/intro-machine-learning-2019](https://github.com/bioinformatics-training/intro-machine-learning-2019)
 
 ## License
 [GPL-3](https://www.gnu.org/licenses/gpl-3.0.en.html)

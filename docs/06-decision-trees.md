@@ -15,7 +15,7 @@ It is one of the most widely used tool in ML for predictive analytics. Examples 
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree.png" alt="Decision Tree" width="55%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Decision Tree</p>
+<p class="caption">Decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com*
 
@@ -25,7 +25,7 @@ A model is first created with training data and then a set of validation data is
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree_2.png" alt="Example of a decision Tree" width="90%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Example of a decision Tree</p>
+<p class="caption">Example of a decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com* 
 
@@ -290,7 +290,7 @@ dtree_fit
 ## CART 
 ## 
 ## 1212 samples
-##    6 predictors
+##    6 predictor
 ##    4 classes: 'acc', 'good', 'unacc', 'vgood' 
 ## 
 ## No pre-processing
@@ -318,6 +318,13 @@ dtree_fit
 
 ```r
 prp(dtree_fit$finalModel, box.palette = "Reds", tweak = 1.2)
+```
+
+```
+## Warning: Bad 'data' field in model 'call'.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.
 ```
 
 <img src="06-decision-trees_files/figure-html/unnamed-chunk-12-1.png" width="672" />
@@ -371,6 +378,7 @@ confusionMatrix(test_pred, testing$V7 )  #check accuracy
 ##     P-Value [Acc > NIR] : 3.262e-15      
 ##                                          
 ##                   Kappa : 0.6703         
+##                                          
 ##  Mcnemar's Test P-Value : NA             
 ## 
 ## Statistics by Class:
@@ -406,7 +414,7 @@ dtree_fit_gini
 ## CART 
 ## 
 ## 1212 samples
-##    6 predictors
+##    6 predictor
 ##    4 classes: 'acc', 'good', 'unacc', 'vgood' 
 ## 
 ## No pre-processing
@@ -439,6 +447,13 @@ It is showing us the accuracy metrics for different values of cp.
 prp(dtree_fit_gini$finalModel, box.palette = "Blues", tweak = 1.2)
 ```
 
+```
+## Warning: Bad 'data' field in model 'call'.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.
+```
+
 <img src="06-decision-trees_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 *Prediction*
@@ -469,6 +484,7 @@ confusionMatrix(test_pred_gini, testing$V7 )  #check accuracy
 ##     P-Value [Acc > NIR] : < 2.2e-16       
 ##                                           
 ##                   Kappa : 0.7133          
+##                                           
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
@@ -745,6 +761,7 @@ confusionMatrix(data=Example.dev$predicted.response,
 ##     P-Value [Acc > NIR] : < 2.2e-16  
 ##                                      
 ##                   Kappa : 1          
+##                                      
 ##  Mcnemar's Test P-Value : NA         
 ##                                      
 ##             Sensitivity : 1.0000     
@@ -787,6 +804,7 @@ confusionMatrix(data=Example.val$predicted.response,
 ##     P-Value [Acc > NIR] : 0.052603        
 ##                                           
 ##                   Kappa : 0.4606          
+##                                           
 ##  Mcnemar's Test P-Value : 0.009522        
 ##                                           
 ##             Sensitivity : 0.46448         

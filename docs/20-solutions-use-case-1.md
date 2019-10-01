@@ -428,7 +428,7 @@ knnFit
 ## k-Nearest Neighbors 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: 'infected', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -485,7 +485,7 @@ svmFit
 ## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: 'infected', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -542,7 +542,7 @@ dtFit
 ## CART 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: 'infected', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -576,6 +576,13 @@ plot(dtFit)
 prp(dtFit$finalModel)
 ```
 
+```
+## Warning: Bad 'data' field in model 'call'.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.
+```
+
 <img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-16-2.png" width="672" />
 
 
@@ -605,7 +612,7 @@ rfFit
 ## Random Forest 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: 'infected', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -677,30 +684,25 @@ summary(resamps)
 ## Number of resamples: 25 
 ## 
 ## ROC 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.9925684 0.9952774 0.9980510 0.9970731 0.9985880 0.9998501
-## svm          0.9933115 0.9965815 0.9995541 0.9983314 1.0000000 1.0000000
-## decisionTree 0.9357907 0.9716855 0.9778537 0.9752903 0.9826087 0.9976962
-## randomForest 0.9939061 0.9971514 0.9994003 0.9981532 0.9997027 1.0000000
-##              NA's
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
+## knn          0.9926  0.9953 0.9981 0.9971  0.9986 0.9999    0
+## svm          0.9933  0.9966 0.9996 0.9983  1.0000 1.0000    0
+## decisionTree 0.9358  0.9717 0.9779 0.9753  0.9826 0.9977    0
+## randomForest 0.9939  0.9972 0.9994 0.9982  0.9997 1.0000    0
 ## 
 ## Sens 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu. Max. NA's
-## knn          0.9224138 0.9565217 0.9655172 0.9650675 0.9826087    1    0
-## svm          0.9482759 0.9741379 0.9827586 0.9813343 0.9913043    1    0
-## decisionTree 0.9217391 0.9655172 0.9741379 0.9754423 0.9827586    1    0
-## randomForest 0.9568966 0.9826087 0.9913043 0.9868666 1.0000000    1    0
+##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA's
+## knn          0.9224  0.9565 0.9655 0.9651  0.9826    1    0
+## svm          0.9483  0.9741 0.9828 0.9813  0.9913    1    0
+## decisionTree 0.9217  0.9655 0.9741 0.9754  0.9828    1    0
+## randomForest 0.9569  0.9826 0.9913 0.9869  1.0000    1    0
 ## 
 ## Spec 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu. Max. NA's
-## knn          0.9482759 0.9827586 0.9827586 0.9868966 1.0000000    1    0
-## svm          0.9827586 0.9827586 1.0000000 0.9931034 1.0000000    1    0
-## decisionTree 0.8793103 0.9482759 0.9827586 0.9634483 0.9827586    1    0
-## randomForest 0.9310345 0.9827586 0.9827586 0.9813793 1.0000000    1    0
+##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA's
+## knn          0.9483  0.9828 0.9828 0.9869  1.0000    1    0
+## svm          0.9828  0.9828 1.0000 0.9931  1.0000    1    0
+## decisionTree 0.8793  0.9483 0.9828 0.9634  0.9828    1    0
+## randomForest 0.9310  0.9828 0.9828 0.9814  1.0000    1    0
 ```
 
 ```r
@@ -731,6 +733,7 @@ confusionMatrix(test_pred, infectionStatusTest)
 ##     P-Value [Acc > NIR] : <2e-16          
 ##                                           
 ##                   Kappa : 0.9574          
+##                                           
 ##  Mcnemar's Test P-Value : 1               
 ##                                           
 ##             Sensitivity : 0.9837          
@@ -766,6 +769,17 @@ head(svmProbs)
 
 ```r
 svmROC <- roc(infectionStatusTest, svmProbs[,"infected"])
+```
+
+```
+## Setting levels: control = infected, case = uninfected
+```
+
+```
+## Setting direction: controls > cases
+```
+
+```r
 auc(svmROC)
 ```
 
@@ -811,7 +825,7 @@ knnFit
 ## k-Nearest Neighbors 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: 'early trophozoite', 'late trophozoite', 'schizont', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -860,7 +874,7 @@ svmFit
 ## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: 'early trophozoite', 'late trophozoite', 'schizont', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -909,7 +923,7 @@ dtFit
 ## CART 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: 'early trophozoite', 'late trophozoite', 'schizont', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -943,6 +957,13 @@ plot(dtFit)
 prp(dtFit$finalModel)
 ```
 
+```
+## Warning: Bad 'data' field in model 'call'.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.
+```
+
 <img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-28-2.png" width="672" />
 
 
@@ -964,7 +985,7 @@ rfFit
 ## Random Forest 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: 'early trophozoite', 'late trophozoite', 'schizont', 'uninfected' 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -1035,28 +1056,18 @@ summary(resamps)
 ## Number of resamples: 25 
 ## 
 ## Accuracy 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.6494253 0.6763006 0.6896552 0.6958385 0.7142857 0.7643678
-## svm          0.6666667 0.6994220 0.7241379 0.7207491 0.7341040 0.7873563
-## decisionTree 0.6494253 0.6647399 0.6820809 0.6871071 0.7011494 0.7514451
-## randomForest 0.6820809 0.7109827 0.7225434 0.7248884 0.7413793 0.7745665
-##              NA's
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
+## knn          0.6494  0.6763 0.6897 0.6958  0.7143 0.7644    0
+## svm          0.6667  0.6994 0.7241 0.7207  0.7341 0.7874    0
+## decisionTree 0.6494  0.6647 0.6821 0.6871  0.7011 0.7514    0
+## randomForest 0.6821  0.7110 0.7225 0.7249  0.7414 0.7746    0
 ## 
 ## Kappa 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.5132532 0.5494582 0.5659846 0.5759926 0.6029405 0.6719246
-## svm          0.5396405 0.5873584 0.6199144 0.6154010 0.6334746 0.7079477
-## decisionTree 0.5204446 0.5381140 0.5650286 0.5706621 0.5876401 0.6588554
-## randomForest 0.5631113 0.6014192 0.6164257 0.6221363 0.6424494 0.6931089
-##              NA's
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
+## knn          0.5133  0.5495 0.5660 0.5760  0.6029 0.6719    0
+## svm          0.5396  0.5874 0.6199 0.6154  0.6335 0.7079    0
+## decisionTree 0.5204  0.5381 0.5650 0.5707  0.5876 0.6589    0
+## randomForest 0.5631  0.6014 0.6164 0.6221  0.6424 0.6931    0
 ```
 
 ```r
@@ -1091,6 +1102,7 @@ confusionMatrix(test_pred, stageTest)
 ##     P-Value [Acc > NIR] : < 2.2e-16       
 ##                                           
 ##                   Kappa : 0.6305          
+##                                           
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:

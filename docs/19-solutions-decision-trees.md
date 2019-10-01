@@ -166,7 +166,7 @@ rpart.plot(rtree_fit)
 ```
 
 ```
-## Warning: Bad 'data' field in model 'call' (expected a data.frame or a matrix).
+## Warning: Bad 'data' field in model 'call'.
 ## To silence this warning:
 ##     Call rpart.plot with roundint=FALSE,
 ##     or rebuild the rpart model with model=TRUE.

@@ -21,7 +21,7 @@ Methods of clustering can be broadly divided into two types:
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/clusterTypes-1.png" alt="Example clusters. **A**, *blobs*; **B**, *aggregation* [@Gionis2007]; **C**, *noisy moons*; **D**, *different density*; **E**, *anisotropic distributions*; **F**, *no structure*." width="80%" />
-<p class="caption">(\#fig:clusterTypes)Example clusters. **A**, *blobs*; **B**, *aggregation* [@Gionis2007]; **C**, *noisy moons*; **D**, *different density*; **E**, *anisotropic distributions*; **F**, *no structure*.</p>
+<p class="caption">Example clusters. **A**, *blobs*; **B**, *aggregation* [@Gionis2007]; **C**, *noisy moons*; **D**, *different density*; **E**, *anisotropic distributions*; **F**, *no structure*.</p>
 </div>
 
 ## Distance metrics
@@ -35,7 +35,7 @@ Various distance metrics can be used with clustering algorithms. We will use Euc
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/euclideanDistanceDiagram-1.png" alt="Euclidean distance." width="75%" />
-<p class="caption">(\#fig:euclideanDistanceDiagram)Euclidean distance.</p>
+<p class="caption">Euclidean distance.</p>
 </div>
 
 
@@ -44,7 +44,7 @@ Various distance metrics can be used with clustering algorithms. We will use Euc
 
 <div class="figure" style="text-align: center">
 <img src="images/hclust_demo_0.png" alt="Building a dendrogram using hierarchic agglomerative clustering." width="55%" /><img src="images/hclust_demo_1.png" alt="Building a dendrogram using hierarchic agglomerative clustering." width="55%" /><img src="images/hclust_demo_2.png" alt="Building a dendrogram using hierarchic agglomerative clustering." width="55%" /><img src="images/hclust_demo_3.png" alt="Building a dendrogram using hierarchic agglomerative clustering." width="55%" /><img src="images/hclust_demo_4.png" alt="Building a dendrogram using hierarchic agglomerative clustering." width="55%" />
-<p class="caption">(\#fig:hierarchicClusteringDemo)Building a dendrogram using hierarchic agglomerative clustering.</p>
+<p class="caption">Building a dendrogram using hierarchic agglomerative clustering.</p>
 </div>
 
 
@@ -53,7 +53,7 @@ Various distance metrics can be used with clustering algorithms. We will use Euc
 
 
 
-Table: (\#tab:distance-matrix)Example distance matrix
+Table: Example distance matrix
 
      A    B    C    D  
 ---  ---  ---  ---  ---
@@ -76,7 +76,7 @@ Explain anatomy of the dendrogram - branches, nodes and leaves.
 -->
 
 
-Table: (\#tab:distance-merge)Merge distances for objects in the example distance matrix using three different linkage methods.
+Table: Merge distances for objects in the example distance matrix using three different linkage methods.
 
 Groups           Single   Complete   Average
 --------------  -------  ---------  --------
@@ -88,7 +88,7 @@ A,B,C,D,E             0          0       0.0
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/linkageComparison-1.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" /><img src="03-clustering_files/figure-html/linkageComparison-2.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" /><img src="03-clustering_files/figure-html/linkageComparison-3.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" />
-<p class="caption">(\#fig:linkageComparison)Dendrograms for the example distance matrix using three different linkage methods. </p>
+<p class="caption">Dendrograms for the example distance matrix using three different linkage methods. </p>
 </div>
 
 
@@ -111,7 +111,7 @@ while true:
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansIterations-1.png" alt="Iterations of the k-means algorithm" width="90%" />
-<p class="caption">(\#fig:kmeansIterations)Iterations of the k-means algorithm</p>
+<p class="caption">Iterations of the k-means algorithm</p>
 </div>
 
 The default setting of the **kmeans** function is to perform a maximum of 10 iterations and if the algorithm fails to converge a warning is issued. The maximum number of iterations is set with the argument **iter.max**.
@@ -156,7 +156,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansCentreChoice-1.png" alt="Initial centres determine clusters. The starting centres are shown as crosses. **A**, real clusters found; **B**, convergence to a local minimum." width="100%" />
-<p class="caption">(\#fig:kmeansCentreChoice)Initial centres determine clusters. The starting centres are shown as crosses. **A**, real clusters found; **B**, convergence to a local minimum.</p>
+<p class="caption">Initial centres determine clusters. The starting centres are shown as crosses. **A**, real clusters found; **B**, convergence to a local minimum.</p>
 </div>
 Convergence to a local minimum can be avoided by starting the algorithm multiple times, with different random centres. The **nstart** argument to the **k-means** function can be used to specify the number of random sets and optimal solution will be selected automatically.
 
@@ -187,7 +187,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansRangeK-1.png" alt="K-means clustering of the blobs data set using a range of values of k from 1-9. Cluster centres indicated with a cross." width="100%" />
-<p class="caption">(\#fig:kmeansRangeK)K-means clustering of the blobs data set using a range of values of k from 1-9. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the blobs data set using a range of values of k from 1-9. Cluster centres indicated with a cross.</p>
 </div>
 
 
@@ -199,7 +199,7 @@ qplot(k, tot_withinss, geom=c("point", "line"),
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/choosingKplot-1.png" alt="Variance within the clusters. Total within-cluster sum of squares plotted against k." width="50%" />
-<p class="caption">(\#fig:choosingKplot)Variance within the clusters. Total within-cluster sum of squares plotted against k.</p>
+<p class="caption">Variance within the clusters. Total within-cluster sum of squares plotted against k.</p>
 </div>
 
 *N.B.* we have set ```nstart=50``` to run the algorithm 50 times, starting from different, random sets of centroids.
@@ -227,7 +227,7 @@ Abstract DBSCAN algorithm in pseudocode [@Schubert2017]
 
 <div class="figure" style="text-align: center">
 <img src="images/DBSCAN_Illustration.svg" alt="Illustration of the DBSCAN algorithm. By Chire (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons." width="75%" />
-<p class="caption">(\#fig:dbscanIllustration)Illustration of the DBSCAN algorithm. By Chire (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons.</p>
+<p class="caption">Illustration of the DBSCAN algorithm. By Chire (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons.</p>
 </div>
 
 The method requires two parameters; MinPts that is the minimum number of samples in any cluster; Eps that is the maximum distance of the sample to at least one other sample within the same cluster.
@@ -265,7 +265,7 @@ abline(h=0.6)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/blobsKNNdist-1.png" alt="10-nearest neighbour distances for the blobs data set" width="75%" />
-<p class="caption">(\#fig:blobsKNNdist)10-nearest neighbour distances for the blobs data set</p>
+<p class="caption">10-nearest neighbour distances for the blobs data set</p>
 </div>
 <!-- dist2knn <- kNNdist(blobs, 10) -->
 
@@ -293,7 +293,7 @@ ggplot(blobs, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/blobsDBSCANscatter-1.png" alt="DBSCAN clustering (eps=0.6, minPts=10) of the blobs data set. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:blobsDBSCANscatter)DBSCAN clustering (eps=0.6, minPts=10) of the blobs data set. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering (eps=0.6, minPts=10) of the blobs data set. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -313,7 +313,7 @@ library(dendextend)
 ```
 ## 
 ## ---------------------
-## Welcome to dendextend version 1.9.0
+## Welcome to dendextend version 1.12.0
 ## Type citation('dendextend') for how to cite the package.
 ## 
 ## Type browseVignettes(package = 'dendextend') for the package vignette.
@@ -427,7 +427,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/hclustBlobs-1.png" alt="Hierarchical clustering of the blobs data set." width="80%" />
-<p class="caption">(\#fig:hclustBlobs)Hierarchical clustering of the blobs data set.</p>
+<p class="caption">Hierarchical clustering of the blobs data set.</p>
 </div>
 
 #### Clustering of other synthetic data sets
@@ -474,7 +474,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/hclustToyData-1.png" alt="Hierarchical clustering of synthetic data-sets. " width="75%" />
-<p class="caption">(\#fig:hclustToyData)Hierarchical clustering of synthetic data-sets. </p>
+<p class="caption">Hierarchical clustering of synthetic data-sets. </p>
 </div>
 
 
@@ -515,7 +515,7 @@ plot_tot_withinss(res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansAggregationElbow-1.png" alt="K-means clustering of the aggregation data set: variance within clusters." width="50%" />
-<p class="caption">(\#fig:kmeansAggregationElbow)K-means clustering of the aggregation data set: variance within clusters.</p>
+<p class="caption">K-means clustering of the aggregation data set: variance within clusters.</p>
 </div>
 
 
@@ -533,7 +533,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansAggregationScatter-1.png" alt="K-means clustering of the aggregation data set: scatterplots of clusters for k=3 and k=7. Cluster centres indicated with a cross." width="100%" />
-<p class="caption">(\#fig:kmeansAggregationScatter)K-means clustering of the aggregation data set: scatterplots of clusters for k=3 and k=7. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the aggregation data set: scatterplots of clusters for k=3 and k=7. Cluster centres indicated with a cross.</p>
 </div>
 
 #### Noisy moons
@@ -546,7 +546,7 @@ plot_tot_withinss(res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansNoisyMoonsElbow-1.png" alt="K-means clustering of the noisy moons data set: variance within clusters." width="50%" />
-<p class="caption">(\#fig:kmeansNoisyMoonsElbow)K-means clustering of the noisy moons data set: variance within clusters.</p>
+<p class="caption">K-means clustering of the noisy moons data set: variance within clusters.</p>
 </div>
 
 
@@ -556,7 +556,7 @@ plot_clusters(noisy_moons, res, 2)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansNoisyMoonsScatter-1.png" alt="K-means clustering of the noisy moons data set: scatterplot of clusters for k=2. Cluster centres indicated with a cross." width="50%" />
-<p class="caption">(\#fig:kmeansNoisyMoonsScatter)K-means clustering of the noisy moons data set: scatterplot of clusters for k=2. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the noisy moons data set: scatterplot of clusters for k=2. Cluster centres indicated with a cross.</p>
 </div>
 
 #### Different density
@@ -573,8 +573,6 @@ res <- lapply(k, function(i){kmeans(diff_density[,1:2], i, nstart=50)})
 ## Warning: did not converge in 10 iterations
 
 ## Warning: did not converge in 10 iterations
-
-## Warning: did not converge in 10 iterations
 ```
 Failure to converge, so increase number of iterations.
 
@@ -585,7 +583,7 @@ plot_tot_withinss(res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansDiffDensityElbow-1.png" alt="K-means clustering of the different density distributions data set: variance within clusters." width="50%" />
-<p class="caption">(\#fig:kmeansDiffDensityElbow)K-means clustering of the different density distributions data set: variance within clusters.</p>
+<p class="caption">K-means clustering of the different density distributions data set: variance within clusters.</p>
 </div>
 
 
@@ -595,7 +593,7 @@ plot_clusters(diff_density, res, 2)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansDiffDensityScatter-1.png" alt="K-means clustering of the different density distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross." width="50%" />
-<p class="caption">(\#fig:kmeansDiffDensityScatter)K-means clustering of the different density distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the different density distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross.</p>
 </div>
 
 #### Anisotropic distributions
@@ -608,7 +606,7 @@ plot_tot_withinss(res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansAnisoElbow-1.png" alt="K-means clustering  of the anisotropic distributions data set: variance within clusters." width="50%" />
-<p class="caption">(\#fig:kmeansAnisoElbow)K-means clustering  of the anisotropic distributions data set: variance within clusters.</p>
+<p class="caption">K-means clustering  of the anisotropic distributions data set: variance within clusters.</p>
 </div>
 
 
@@ -626,7 +624,7 @@ pm
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/kmeansAnisoScatter-1.png" alt="K-means clustering of the anisotropic distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross." width="100%" />
-<p class="caption">(\#fig:kmeansAnisoScatter)K-means clustering of the anisotropic distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the anisotropic distributions data set: scatterplots of clusters for k=2 and k=3. Cluster centres indicated with a cross.</p>
 </div>
 
 #### No structure
@@ -639,7 +637,7 @@ plot_tot_withinss(res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/noStructureElbow-1.png" alt="K-means clustering of the data set with no structure: variance within clusters." width="50%" />
-<p class="caption">(\#fig:noStructureElbow)K-means clustering of the data set with no structure: variance within clusters.</p>
+<p class="caption">K-means clustering of the data set with no structure: variance within clusters.</p>
 </div>
 
 
@@ -649,7 +647,7 @@ plot_clusters(no_structure, res, 4)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/noStructureScatter-1.png" alt="K-means clustering of the data set with no structure: scatterplot of clusters for k=4. Cluster centres indicated with a cross." width="50%" />
-<p class="caption">(\#fig:noStructureScatter)K-means clustering of the data set with no structure: scatterplot of clusters for k=4. Cluster centres indicated with a cross.</p>
+<p class="caption">K-means clustering of the data set with no structure: scatterplot of clusters for k=4. Cluster centres indicated with a cross.</p>
 </div>
 
 
@@ -683,7 +681,7 @@ abline(h=1.8)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/aggregationKNNdist-1.png" alt="10-nearest neighbour distances for the aggregation data set" width="75%" />
-<p class="caption">(\#fig:aggregationKNNdist)10-nearest neighbour distances for the aggregation data set</p>
+<p class="caption">10-nearest neighbour distances for the aggregation data set</p>
 </div>
 
 
@@ -705,7 +703,7 @@ plot_dbscan_clusters(aggregation, res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/aggregationDBSCANscatter-1.png" alt="DBSCAN clustering (eps=1.8, minPts=10) of the aggregation data set. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:aggregationDBSCANscatter)DBSCAN clustering (eps=1.8, minPts=10) of the aggregation data set. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering (eps=1.8, minPts=10) of the aggregation data set. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -719,7 +717,7 @@ abline(h=0.075)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/noisyMoonsKNNdist-1.png" alt="10-nearest neighbour distances for the noisy moons data set" width="75%" />
-<p class="caption">(\#fig:noisyMoonsKNNdist)10-nearest neighbour distances for the noisy moons data set</p>
+<p class="caption">10-nearest neighbour distances for the noisy moons data set</p>
 </div>
 
 
@@ -741,7 +739,7 @@ plot_dbscan_clusters(noisy_moons, res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/noisyMoonsDBSCANscatter-1.png" alt="DBSCAN clustering (eps=0.075, minPts=10) of the noisy moons data set. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:noisyMoonsDBSCANscatter)DBSCAN clustering (eps=0.075, minPts=10) of the noisy moons data set. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering (eps=0.075, minPts=10) of the noisy moons data set. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -757,7 +755,7 @@ abline(h=0.6, lty=2)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/diffDensityKNNdist-1.png" alt="10-nearest neighbour distances for the different density distributions data set" width="75%" />
-<p class="caption">(\#fig:diffDensityKNNdist)10-nearest neighbour distances for the different density distributions data set</p>
+<p class="caption">10-nearest neighbour distances for the different density distributions data set</p>
 </div>
 
 
@@ -779,7 +777,7 @@ plot_dbscan_clusters(diff_density, res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/diffDensityDBSCANscatter1-1.png" alt="DBSCAN clustering of the different density distribution data set with eps=0.9 and minPts=10. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:diffDensityDBSCANscatter1)DBSCAN clustering of the different density distribution data set with eps=0.9 and minPts=10. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering of the different density distribution data set with eps=0.9 and minPts=10. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -801,7 +799,7 @@ plot_dbscan_clusters(diff_density, res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/diffDensityDBSCANscatter2-1.png" alt="DBSCAN clustering of the different density distribution data set with eps=0.6 and minPts=10. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:diffDensityDBSCANscatter2)DBSCAN clustering of the different density distribution data set with eps=0.6 and minPts=10. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering of the different density distribution data set with eps=0.6 and minPts=10. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -816,7 +814,7 @@ abline(h=0.35)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/anisoKNNdist-1.png" alt="10-nearest neighbour distances for the anisotropic distributions data set" width="75%" />
-<p class="caption">(\#fig:anisoKNNdist)10-nearest neighbour distances for the anisotropic distributions data set</p>
+<p class="caption">10-nearest neighbour distances for the anisotropic distributions data set</p>
 </div>
 
 
@@ -838,7 +836,7 @@ plot_dbscan_clusters(aniso, res)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/anisoDBSCANscatter-1.png" alt="DBSCAN clustering (eps=0.3, minPts=10) of the anisotropic distributions data set. Outlier observations are shown as grey crosses." width="60%" />
-<p class="caption">(\#fig:anisoDBSCANscatter)DBSCAN clustering (eps=0.3, minPts=10) of the anisotropic distributions data set. Outlier observations are shown as grey crosses.</p>
+<p class="caption">DBSCAN clustering (eps=0.3, minPts=10) of the anisotropic distributions data set. Outlier observations are shown as grey crosses.</p>
 </div>
 
 
@@ -853,7 +851,7 @@ abline(h=0.057)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/noStructureKNNdist-1.png" alt="10-nearest neighbour distances for the data set with no structure." width="75%" />
-<p class="caption">(\#fig:noStructureKNNdist)10-nearest neighbour distances for the data set with no structure.</p>
+<p class="caption">10-nearest neighbour distances for the data set with no structure.</p>
 </div>
 
 
@@ -932,7 +930,7 @@ plot(s2, border=NA, col=kColours[sort(res[[2-1]]$cluster)], main="")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/silhouetteK2-1.png" alt="Silhouette plot for k-means clustering of the blobs data set with k=2." width="60%" />
-<p class="caption">(\#fig:silhouetteK2)Silhouette plot for k-means clustering of the blobs data set with k=2.</p>
+<p class="caption">Silhouette plot for k-means clustering of the blobs data set with k=2.</p>
 </div>
 
 Silhouette plot for k=9
@@ -944,7 +942,7 @@ plot(s9, border=NA, col=kColours[sort(res[[9-1]]$cluster)], main="")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/silhouetteK9-1.png" alt="Silhouette plot for k-means clustering of the blobs data set with k=9." width="60%" />
-<p class="caption">(\#fig:silhouetteK9)Silhouette plot for k-means clustering of the blobs data set with k=9.</p>
+<p class="caption">Silhouette plot for k-means clustering of the blobs data set with k=9.</p>
 </div>
 
 Let's take a look at the silhouette plot for k=3.
@@ -956,7 +954,7 @@ plot(s3, border=NA, col=kColours[sort(res[[3-1]]$cluster)], main="")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/silhouetteK3-1.png" alt="Silhouette plot for k-means clustering of the blobs data set with k=3." width="60%" />
-<p class="caption">(\#fig:silhouetteK3)Silhouette plot for k-means clustering of the blobs data set with k=3.</p>
+<p class="caption">Silhouette plot for k-means clustering of the blobs data set with k=3.</p>
 </div>
 
 So far the silhouette plots have shown that k=3 appears to be the optimum number of clusters, but we should investigate the silhouette coefficients at other values of k. Rather than produce a silhouette plot for each value of k, we can get a useful summary by making a barplot of average silhouette coefficients.
@@ -985,7 +983,7 @@ ggplot(data=dat, aes(x=k, y=avgS)) +
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/silhouetteAllK-1.png" alt="Barplot of the average silhouette coefficients resulting from k-means clustering of the blobs data-set using values of k from 1-9." width="75%" />
-<p class="caption">(\#fig:silhouetteAllK)Barplot of the average silhouette coefficients resulting from k-means clustering of the blobs data-set using values of k from 1-9.</p>
+<p class="caption">Barplot of the average silhouette coefficients resulting from k-means clustering of the blobs data-set using values of k from 1-9.</p>
 </div>
 
 The bar plot (figure \@ref(fig:silhouetteAllK)) confirms that the optimum number of clusters is three.
@@ -1035,7 +1033,7 @@ plot(sil, border=NA, col=clusterColours[sort(clusters)], main="")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/silhouetteNoisyMoonsDBSCAN-1.png" alt="Silhouette plot for DBSCAN clustering of the noisy moons data set." width="60%" />
-<p class="caption">(\#fig:silhouetteNoisyMoonsDBSCAN)Silhouette plot for DBSCAN clustering of the noisy moons data set.</p>
+<p class="caption">Silhouette plot for DBSCAN clustering of the noisy moons data set.</p>
 </div>
 
 The silhouette analysis suggests that DBSCAN has found clusters of poor quality in the noisy moons data set. However, we saw by eye that it it did a good job of deliminiting the two clusters. The result demonstrates that the silhouette method is less useful when dealing with clusters that are defined by density, rather than inertia.
@@ -1097,7 +1095,7 @@ plot(hc, labels=tissue, cex=0.5, hang=-1, xlab="", sub="")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueDendrogram-1.png" alt="Clustering of tissue samples based on gene expression profiles. " width="100%" />
-<p class="caption">(\#fig:tissueDendrogram)Clustering of tissue samples based on gene expression profiles. </p>
+<p class="caption">Clustering of tissue samples based on gene expression profiles. </p>
 </div>
 
 
@@ -1118,7 +1116,7 @@ plot(dend, horiz=T)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueDendrogramColour-1.png" alt="Clustering of tissue samples based on gene expression profiles with labels coloured by tissue type. " width="100%" />
-<p class="caption">(\#fig:tissueDendrogramColour)Clustering of tissue samples based on gene expression profiles with labels coloured by tissue type. </p>
+<p class="caption">Clustering of tissue samples based on gene expression profiles with labels coloured by tissue type. </p>
 </div>
 
 #### Defining clusters by cutting tree
@@ -1132,7 +1130,7 @@ abline(v=125, lwd=2, lty=2, col="blue")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueDendrogramCutHeight-1.png" alt="Clusters found by cutting tree at a height of 125" width="100%" />
-<p class="caption">(\#fig:tissueDendrogramCutHeight)Clusters found by cutting tree at a height of 125</p>
+<p class="caption">Clusters found by cutting tree at a height of 125</p>
 </div>
 
 ```r
@@ -1161,7 +1159,7 @@ abline(v = heights_per_k.dendrogram(dend)["8"], lwd = 2, lty = 2, col = "blue")
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueDendrogramEightClusters-1.png" alt="Selection of eight clusters from the dendogram" width="100%" />
-<p class="caption">(\#fig:tissueDendrogramEightClusters)Selection of eight clusters from the dendogram</p>
+<p class="caption">Selection of eight clusters from the dendogram</p>
 </div>
 
 ```r
@@ -1232,7 +1230,7 @@ heatmap.2(e[idxTop40,], labCol=tissue, trace="none",
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/heatmapTissueExpression-1.png" alt="Heatmap of the expression of the 40 genes with the highest variance." width="100%" />
-<p class="caption">(\#fig:heatmapTissueExpression)Heatmap of the expression of the 40 genes with the highest variance.</p>
+<p class="caption">Heatmap of the expression of the 40 genes with the highest variance.</p>
 </div>
 
 ### K-means
@@ -1308,7 +1306,7 @@ plot_tot_withinss(res_k_15)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueExpressionElbow-1.png" alt="K-means clustering of human tissue gene expression: variance within clusters." width="100%" />
-<p class="caption">(\#fig:tissueExpressionElbow)K-means clustering of human tissue gene expression: variance within clusters.</p>
+<p class="caption">K-means clustering of human tissue gene expression: variance within clusters.</p>
 </div>
 <!--
 set.seed(42)
@@ -1366,7 +1364,7 @@ ggplot(data=as.data.frame(pca$x), aes(PC1,PC2)) +
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueExpressionPCA-1.png" alt="K-means clustering of human gene expression (k=7): scatterplot of first two principal components." width="50%" />
-<p class="caption">(\#fig:tissueExpressionPCA)K-means clustering of human gene expression (k=7): scatterplot of first two principal components.</p>
+<p class="caption">K-means clustering of human gene expression (k=7): scatterplot of first two principal components.</p>
 </div>
 
 ### DBSCAN
@@ -1400,7 +1398,7 @@ abline(h=85)
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueExpressionKNNdist-1.png" alt="Five-nearest neighbour distances for the gene expression profiling of human tissues data set." width="75%" />
-<p class="caption">(\#fig:tissueExpressionKNNdist)Five-nearest neighbour distances for the gene expression profiling of human tissues data set.</p>
+<p class="caption">Five-nearest neighbour distances for the gene expression profiling of human tissues data set.</p>
 </div>
 
 
@@ -1443,7 +1441,7 @@ ggplot(data=as.data.frame(pca$x), aes(PC1,PC2)) +
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/tissueExpressionDBSCANscatter-1.png" alt="Clustering of human tissue gene expression: scatterplot of first two principal components." width="60%" />
-<p class="caption">(\#fig:tissueExpressionDBSCANscatter)Clustering of human tissue gene expression: scatterplot of first two principal components.</p>
+<p class="caption">Clustering of human tissue gene expression: scatterplot of first two principal components.</p>
 </div>
 
 
@@ -1456,7 +1454,7 @@ Image segmentation is used to partition digital images into distinct regions con
 
 <div class="figure" style="text-align: center">
 <img src="data/histology/Emphysema_H_and_E.jpg" alt="Image of haematoxylin and eosin (H&amp;E) stained section of lung tissue from a patient with end-stage emphysema. CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=437645." width="80%" />
-<p class="caption">(\#fig:lungHistology)Image of haematoxylin and eosin (H&E) stained section of lung tissue from a patient with end-stage emphysema. CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=437645.</p>
+<p class="caption">Image of haematoxylin and eosin (H&E) stained section of lung tissue from a patient with end-stage emphysema. CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=437645.</p>
 </div>
 
 The haematoxylin and eosin (H & E) staining reveals four types of biological objects, identified by the following colours:
@@ -1538,7 +1536,7 @@ ggplot(data = imgDF, aes(x = x, y = y)) +
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/recreatedLungHistology-1.png" alt="Image of lung tissue recreated from reshaped data." width="80%" />
-<p class="caption">(\#fig:recreatedLungHistology)Image of lung tissue recreated from reshaped data.</p>
+<p class="caption">Image of lung tissue recreated from reshaped data.</p>
 </div>
 
 This should be all the information you need to perform this exercise.

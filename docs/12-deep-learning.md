@@ -72,6 +72,8 @@ Next we can construct a vector of length $5257$ containing the classification fo
 
 
 ```r
+library(reticulate)
+reticulate::use_python('/usr/local/bin/python3.5')
 library(kerasR)
 ```
 
@@ -206,7 +208,7 @@ plot_model(mod,'images/DNN1.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN1.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 We can also print a summary of the network, for example to see how many parameters it has, using the {summary} function:
@@ -217,7 +219,7 @@ summary(mod)
 ```
 
 ```
-## <keras.engine.sequential.Sequential>
+## <keras.models.Sequential>
 ```
 
 In this case we see a total of $4,320,302$ parameters. That's a lot of parameters to tune, and not much data! 
@@ -280,7 +282,7 @@ plot_model(mod,'images/DNN2.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN2.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet2)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 We get now get a validation accuracy of $0.57$ with corresponding training accuracy of $0.58$. We could try adding in extra layers, but it seems like we're getting nowhere fast, and will need to change tactic. 
@@ -293,7 +295,7 @@ Convolutional neural networks essentially scan through an image and extract out 
 
 <div class="figure" style="text-align: center">
 <img src="images/Screen-Shot-2015-11-07-at-7.26.20-AM.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:covnet)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 In kerasR we can add a convolutional layer using {Conv2D}. A multilayer convolutional neural network might look something like:
@@ -333,7 +335,7 @@ plot_model(mod,'images/DNN3.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN3.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet3)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 Okay, so now we have achieved a better accuracy: we have an accuracy of $0.9196$ on the validation dataset at epoch $24$, with a training accuracy of $0.9838$. Whilst this is still not great, it's accurate enough to begin useuflly making predictions and visualising the results. We have a trained model for classification of Rick, we can use it to make predictions for images not present in either the training or validation datasets. First load in the new set of images, which can be found in the {predictions} subfolder:

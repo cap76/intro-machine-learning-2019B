@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>G Solutions chapter 8 - use case 1 | An Introduction to Machine Learning</title>
-  <meta name="description" content="Course materials for An Introduction to Machine Learning">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Course materials for An Introduction to Machine Learning" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="G Solutions chapter 8 - use case 1 | An Introduction to Machine Learning" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/cover_image.png" />
   <meta property="og:description" content="Course materials for An Introduction to Machine Learning" />
-  <meta name="github-repo" content="bioinformatics-training/intro-machine-learning-2018" />
+  <meta name="github-repo" content="bioinformatics-training/intro-machine-learning-2019" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="G Solutions chapter 8 - use case 1 | An Introduction to Machine Learning" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="Course materials for An Introduction to Machine Learning" />
   <meta name="twitter:image" content="figures/cover_image.png" />
 
-<meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold">
+<meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-10-01" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="solutions-decision-trees.html">
-<link rel="next" href="solutions-linear-models.html">
+<link rel="prev" href="solutions-decision-trees.html"/>
+<link rel="next" href="solutions-linear-models.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -120,11 +119,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#horseshoe-effect"><i class="fa fa-check"></i><b>3.1.2</b> Horseshoe effect</a></li>
 <li class="chapter" data-level="3.1.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#pca-analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.1.3</b> PCA analysis of mammalian development</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#nonlinear-dimensionality-reduction"><i class="fa fa-check"></i><b>3.2</b> Nonlinear Dimensionality Reduction</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#stochasticity"><i class="fa fa-check"></i><b>3.2.1</b> Stochasticity</a></li>
-<li class="chapter" data-level="3.2.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.2.2</b> Analysis of mammalian development</a></li>
+<li class="chapter" data-level="3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#exercise-2.3."><i class="fa fa-check"></i><b>3.2</b> Exercise 2.3.</a></li>
+<li class="chapter" data-level="3.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#nonlinear-dimensionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Nonlinear Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#stochasticity"><i class="fa fa-check"></i><b>3.3.1</b> Stochasticity</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.3.2</b> Analysis of mammalian development</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#other-dimensionality-reduction-techniques"><i class="fa fa-check"></i><b>3.3</b> Other dimensionality reduction techniques</a></li>
+<li class="chapter" data-level="3.4" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#other-dimensionality-reduction-techniques"><i class="fa fa-check"></i><b>3.4</b> Other dimensionality reduction techniques</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>4</b> Clustering</a><ul>
 <li class="chapter" data-level="4.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
@@ -266,12 +266,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
-<li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.1"><i class="fa fa-check"></i><b>B.1</b> Exercise 2.1</a></li>
-<li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.2."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.2.</a></li>
-<li class="chapter" data-level="B.3" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.3."><i class="fa fa-check"></i><b>B.3</b> Exercise 2.3.</a></li>
-<li class="chapter" data-level="B.4" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.4"><i class="fa fa-check"></i><b>B.4</b> Exercise 2.4</a></li>
-<li class="chapter" data-level="B.5" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.5</b> Exercise 2.5.</a></li>
-<li class="chapter" data-level="B.6" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.6</b> Exercise 2.6.</a></li>
+<li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
+<li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="solutions-clustering.html"><a href="solutions-clustering.html#exercise-1-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
@@ -380,54 +376,54 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="dt">parameters =</span> <span class="kw">data.frame</span>(<span class="dt">parameter=</span><span class="st">&quot;cost&quot;</span>,
                           <span class="dt">class=</span><span class="st">&quot;numeric&quot;</span>,
                           <span class="dt">label=</span><span class="st">&quot;Cost&quot;</span>),
-  <span class="dt">grid =</span> <span class="cf">function</span> (x, y, <span class="dt">len =</span> <span class="ot">NULL</span>, <span class="dt">search =</span> <span class="st">&quot;grid&quot;</span>) 
+  <span class="dt">grid =</span> function (x, y, <span class="dt">len =</span> <span class="ot">NULL</span>, <span class="dt">search =</span> <span class="st">&quot;grid&quot;</span>) 
     {
-      <span class="cf">if</span> (search <span class="op">==</span><span class="st"> &quot;grid&quot;</span>) {
-        out &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">cost =</span> <span class="dv">2</span><span class="op">^</span>((<span class="dv">1</span><span class="op">:</span>len) <span class="op">-</span><span class="st"> </span><span class="dv">3</span>))
+      if (search ==<span class="st"> &quot;grid&quot;</span>) {
+        out &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">cost =</span> <span class="dv">2</span>^((<span class="dv">1</span>:len) -<span class="st"> </span><span class="dv">3</span>))
       }
-      <span class="cf">else</span> {
-        out &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">cost =</span> <span class="dv">2</span><span class="op">^</span><span class="kw">runif</span>(len, <span class="dt">min =</span> <span class="op">-</span><span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">10</span>))
+      else {
+        out &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">cost =</span> <span class="dv">2</span>^<span class="kw">runif</span>(len, <span class="dt">min =</span> -<span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">10</span>))
       }
       out
     },
   <span class="dt">loop=</span><span class="ot">NULL</span>,
-  <span class="dt">fit=</span><span class="cf">function</span> (x, y, wts, param, lev, last, classProbs, ...) 
+  <span class="dt">fit=</span>function (x, y, wts, param, lev, last, classProbs, ...) 
     {
-      <span class="cf">if</span> (<span class="kw">any</span>(<span class="kw">names</span>(<span class="kw">list</span>(...)) <span class="op">==</span><span class="st"> &quot;probability&quot;</span>) <span class="op">|</span><span class="st"> </span><span class="kw">is.numeric</span>(y)) {
-        out &lt;-<span class="st"> </span>e1071<span class="op">::</span><span class="kw">svm</span>(<span class="dt">x =</span> <span class="kw">as.matrix</span>(x), <span class="dt">y =</span> y, <span class="dt">kernel =</span> <span class="st">&quot;radial&quot;</span>, 
-                          <span class="dt">cost =</span> param<span class="op">$</span>cost, ...)
+      if (<span class="kw">any</span>(<span class="kw">names</span>(<span class="kw">list</span>(...)) ==<span class="st"> &quot;probability&quot;</span>) |<span class="st"> </span><span class="kw">is.numeric</span>(y)) {
+        out &lt;-<span class="st"> </span>e1071::<span class="kw">svm</span>(<span class="dt">x =</span> <span class="kw">as.matrix</span>(x), <span class="dt">y =</span> y, <span class="dt">kernel =</span> <span class="st">&quot;radial&quot;</span>, 
+                          <span class="dt">cost =</span> param$cost, ...)
       }
-      <span class="cf">else</span> {
-        out &lt;-<span class="st"> </span>e1071<span class="op">::</span><span class="kw">svm</span>(<span class="dt">x =</span> <span class="kw">as.matrix</span>(x), <span class="dt">y =</span> y, <span class="dt">kernel =</span> <span class="st">&quot;radial&quot;</span>, 
-                          <span class="dt">cost =</span> param<span class="op">$</span>cost, <span class="dt">probability =</span> classProbs, ...)
+      else {
+        out &lt;-<span class="st"> </span>e1071::<span class="kw">svm</span>(<span class="dt">x =</span> <span class="kw">as.matrix</span>(x), <span class="dt">y =</span> y, <span class="dt">kernel =</span> <span class="st">&quot;radial&quot;</span>, 
+                          <span class="dt">cost =</span> param$cost, <span class="dt">probability =</span> classProbs, ...)
       }
       out
     },
-  <span class="dt">predict =</span> <span class="cf">function</span> (modelFit, newdata, <span class="dt">submodels =</span> <span class="ot">NULL</span>) 
+  <span class="dt">predict =</span> function (modelFit, newdata, <span class="dt">submodels =</span> <span class="ot">NULL</span>) 
     {
       <span class="kw">predict</span>(modelFit, newdata)
     },
-  <span class="dt">prob =</span> <span class="cf">function</span> (modelFit, newdata, <span class="dt">submodels =</span> <span class="ot">NULL</span>) 
+  <span class="dt">prob =</span> function (modelFit, newdata, <span class="dt">submodels =</span> <span class="ot">NULL</span>) 
     {
       out &lt;-<span class="st"> </span><span class="kw">predict</span>(modelFit, newdata, <span class="dt">probability =</span> <span class="ot">TRUE</span>)
       <span class="kw">attr</span>(out, <span class="st">&quot;probabilities&quot;</span>)
     },
-  <span class="dt">predictors =</span> <span class="cf">function</span> (x, ...) 
+  <span class="dt">predictors =</span> function (x, ...) 
     {
-      out &lt;-<span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(x<span class="op">$</span>terms)) 
-        <span class="kw">predictors.terms</span>(x<span class="op">$</span>terms)
-      <span class="cf">else</span> x<span class="op">$</span>xNames
-      <span class="cf">if</span> (<span class="kw">is.null</span>(out)) 
-        out &lt;-<span class="st"> </span><span class="kw">names</span>(<span class="kw">attr</span>(x, <span class="st">&quot;scaling&quot;</span>)<span class="op">$</span>x.scale<span class="op">$</span><span class="st">`</span><span class="dt">scaled:center</span><span class="st">`</span>)
-      <span class="cf">if</span> (<span class="kw">is.null</span>(out)) 
+      out &lt;-<span class="st"> </span>if (!<span class="kw">is.null</span>(x$terms)) 
+        <span class="kw">predictors.terms</span>(x$terms)
+      else x$xNames
+      if (<span class="kw">is.null</span>(out)) 
+        out &lt;-<span class="st"> </span><span class="kw">names</span>(<span class="kw">attr</span>(x, <span class="st">&quot;scaling&quot;</span>)$x.scale$<span class="st">`</span><span class="dt">scaled:center</span><span class="st">`</span>)
+      if (<span class="kw">is.null</span>(out)) 
         out &lt;-<span class="st"> </span><span class="ot">NA</span>
       out
     },
   <span class="dt">tags =</span> <span class="kw">c</span>(<span class="st">&quot;Kernel Methods&quot;</span>, <span class="st">&quot;Support Vector Machines&quot;</span>, <span class="st">&quot;Regression&quot;</span>, <span class="st">&quot;Classifier&quot;</span>, <span class="st">&quot;Robust Methods&quot;</span>),
-  <span class="dt">levels =</span> <span class="cf">function</span>(x) x<span class="op">$</span>levels,
-  <span class="dt">sort =</span> <span class="cf">function</span>(x)
+  <span class="dt">levels =</span> function(x) x$levels,
+  <span class="dt">sort =</span> function(x)
   {
-    x[<span class="kw">order</span>(x<span class="op">$</span>cost), ]
+    x[<span class="kw">order</span>(x$cost), ]
   }
 )</code></pre></div>
 </div>
@@ -479,9 +475,9 @@ trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</s
 infectionStatusTrain &lt;-<span class="st"> </span>infectionStatus[trainIndex]
 stageTrain &lt;-<span class="st"> </span>stage[trainIndex]
 morphologyTrain &lt;-<span class="st"> </span>morphology[trainIndex,]
-infectionStatusTest &lt;-<span class="st"> </span>infectionStatus[<span class="op">-</span>trainIndex]
-stageTest &lt;-<span class="st"> </span>stage[<span class="op">-</span>trainIndex]
-morphologyTest &lt;-<span class="st"> </span>morphology[<span class="op">-</span>trainIndex,]</code></pre></div>
+infectionStatusTest &lt;-<span class="st"> </span>infectionStatus[-trainIndex]
+stageTest &lt;-<span class="st"> </span>stage[-trainIndex]
+morphologyTest &lt;-<span class="st"> </span>morphology[-trainIndex,]</code></pre></div>
 </div>
 </div>
 <div id="assess-data-quality" class="section level2">
@@ -590,7 +586,7 @@ morphologyTest &lt;-<span class="st"> </span>morphology[<span class="op">-</span
 <p>For each model let’s do five-fold cross-validation a total of five times. To make the analysis reproducible we need to specify the seed for each resampling iteration.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
 seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">26</span>)
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">10</span>)
+for(i in <span class="dv">1</span>:<span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">10</span>)
 seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)
 
 train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,
@@ -616,7 +612,7 @@ train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainCon
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: &#39;infected&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -657,7 +653,7 @@ train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainCon
 <pre><code>## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: &#39;infected&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -698,7 +694,7 @@ train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainCon
 <pre><code>## CART 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: &#39;infected&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -722,7 +718,11 @@ train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainCon
 ## The final value used for the model was cp = 0.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dtFit)</code></pre></div>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtFit<span class="op">$</span>finalModel)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtFit$finalModel)</code></pre></div>
+<pre><code>## Warning: Bad &#39;data&#39; field in model &#39;call&#39;.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.</code></pre>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 </div>
 <div id="random-forest-1" class="section level3">
@@ -740,7 +740,7 @@ train_ctrl_infect_status &lt;-<span class="st"> </span><span class="kw">trainCon
 <pre><code>## Random Forest 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   2 classes: &#39;infected&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -792,30 +792,25 @@ resamps</code></pre></div>
 ## Number of resamples: 25 
 ## 
 ## ROC 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.9925684 0.9952774 0.9980510 0.9970731 0.9985880 0.9998501
-## svm          0.9933115 0.9965815 0.9995541 0.9983314 1.0000000 1.0000000
-## decisionTree 0.9357907 0.9716855 0.9778537 0.9752903 0.9826087 0.9976962
-## randomForest 0.9939061 0.9971514 0.9994003 0.9981532 0.9997027 1.0000000
-##              NA&#39;s
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## knn          0.9926  0.9953 0.9981 0.9971  0.9986 0.9999    0
+## svm          0.9933  0.9966 0.9996 0.9983  1.0000 1.0000    0
+## decisionTree 0.9358  0.9717 0.9779 0.9753  0.9826 0.9977    0
+## randomForest 0.9939  0.9972 0.9994 0.9982  0.9997 1.0000    0
 ## 
 ## Sens 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu. Max. NA&#39;s
-## knn          0.9224138 0.9565217 0.9655172 0.9650675 0.9826087    1    0
-## svm          0.9482759 0.9741379 0.9827586 0.9813343 0.9913043    1    0
-## decisionTree 0.9217391 0.9655172 0.9741379 0.9754423 0.9827586    1    0
-## randomForest 0.9568966 0.9826087 0.9913043 0.9868666 1.0000000    1    0
+##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA&#39;s
+## knn          0.9224  0.9565 0.9655 0.9651  0.9826    1    0
+## svm          0.9483  0.9741 0.9828 0.9813  0.9913    1    0
+## decisionTree 0.9217  0.9655 0.9741 0.9754  0.9828    1    0
+## randomForest 0.9569  0.9826 0.9913 0.9869  1.0000    1    0
 ## 
 ## Spec 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu. Max. NA&#39;s
-## knn          0.9482759 0.9827586 0.9827586 0.9868966 1.0000000    1    0
-## svm          0.9827586 0.9827586 1.0000000 0.9931034 1.0000000    1    0
-## decisionTree 0.8793103 0.9482759 0.9827586 0.9634483 0.9827586    1    0
-## randomForest 0.9310345 0.9827586 0.9827586 0.9813793 1.0000000    1    0</code></pre>
+##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA&#39;s
+## knn          0.9483  0.9828 0.9828 0.9869  1.0000    1    0
+## svm          0.9828  0.9828 1.0000 0.9931  1.0000    1    0
+## decisionTree 0.8793  0.9483 0.9828 0.9634  0.9828    1    0
+## randomForest 0.9310  0.9828 0.9828 0.9814  1.0000    1    0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bwplot</span>(resamps)</code></pre></div>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
@@ -836,6 +831,7 @@ resamps</code></pre></div>
 ##     P-Value [Acc &gt; NIR] : &lt;2e-16          
 ##                                           
 ##                   Kappa : 0.9574          
+##                                           
 ##  Mcnemar&#39;s Test P-Value : 1               
 ##                                           
 ##             Sensitivity : 0.9837          
@@ -861,8 +857,10 @@ resamps</code></pre></div>
 ## normal_.17 0.002097783 0.99790222
 ## normal_.18 0.003581587 0.99641841
 ## normal_.19 0.024682569 0.97531743</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">svmROC &lt;-<span class="st"> </span><span class="kw">roc</span>(infectionStatusTest, svmProbs[,<span class="st">&quot;infected&quot;</span>])
-<span class="kw">auc</span>(svmROC)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">svmROC &lt;-<span class="st"> </span><span class="kw">roc</span>(infectionStatusTest, svmProbs[,<span class="st">&quot;infected&quot;</span>])</code></pre></div>
+<pre><code>## Setting levels: control = infected, case = uninfected</code></pre>
+<pre><code>## Setting direction: controls &gt; cases</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">auc</span>(svmROC)</code></pre></div>
 <pre><code>## Area under the curve: 0.9977</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(svmROC)</code></pre></div>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
@@ -891,7 +889,7 @@ knnFit</code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: &#39;early trophozoite&#39;, &#39;late trophozoite&#39;, &#39;schizont&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -930,7 +928,7 @@ svmFit</code></pre></div>
 <pre><code>## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: &#39;early trophozoite&#39;, &#39;late trophozoite&#39;, &#39;schizont&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -969,7 +967,7 @@ dtFit</code></pre></div>
 <pre><code>## CART 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: &#39;early trophozoite&#39;, &#39;late trophozoite&#39;, &#39;schizont&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -993,7 +991,11 @@ dtFit</code></pre></div>
 ## The final value used for the model was cp = 0.007785467.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dtFit)</code></pre></div>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtFit<span class="op">$</span>finalModel)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtFit$finalModel)</code></pre></div>
+<pre><code>## Warning: Bad &#39;data&#39; field in model &#39;call&#39;.
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.</code></pre>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-28-2.png" width="672" /></p>
 </div>
 <div id="random-forest-2" class="section level3">
@@ -1010,7 +1012,7 @@ rfFit</code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 868 samples
-##  23 predictors
+##  23 predictor
 ##   4 classes: &#39;early trophozoite&#39;, &#39;late trophozoite&#39;, &#39;schizont&#39;, &#39;uninfected&#39; 
 ## 
 ## Pre-processing: centered (23), scaled (23) 
@@ -1062,28 +1064,18 @@ resamps</code></pre></div>
 ## Number of resamples: 25 
 ## 
 ## Accuracy 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.6494253 0.6763006 0.6896552 0.6958385 0.7142857 0.7643678
-## svm          0.6666667 0.6994220 0.7241379 0.7207491 0.7341040 0.7873563
-## decisionTree 0.6494253 0.6647399 0.6820809 0.6871071 0.7011494 0.7514451
-## randomForest 0.6820809 0.7109827 0.7225434 0.7248884 0.7413793 0.7745665
-##              NA&#39;s
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## knn          0.6494  0.6763 0.6897 0.6958  0.7143 0.7644    0
+## svm          0.6667  0.6994 0.7241 0.7207  0.7341 0.7874    0
+## decisionTree 0.6494  0.6647 0.6821 0.6871  0.7011 0.7514    0
+## randomForest 0.6821  0.7110 0.7225 0.7249  0.7414 0.7746    0
 ## 
 ## Kappa 
-##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## knn          0.5132532 0.5494582 0.5659846 0.5759926 0.6029405 0.6719246
-## svm          0.5396405 0.5873584 0.6199144 0.6154010 0.6334746 0.7079477
-## decisionTree 0.5204446 0.5381140 0.5650286 0.5706621 0.5876401 0.6588554
-## randomForest 0.5631113 0.6014192 0.6164257 0.6221363 0.6424494 0.6931089
-##              NA&#39;s
-## knn             0
-## svm             0
-## decisionTree    0
-## randomForest    0</code></pre>
+##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA&#39;s
+## knn          0.5133  0.5495 0.5660 0.5760  0.6029 0.6719    0
+## svm          0.5396  0.5874 0.6199 0.6154  0.6335 0.7079    0
+## decisionTree 0.5204  0.5381 0.5650 0.5707  0.5876 0.6589    0
+## randomForest 0.5631  0.6014 0.6164 0.6221  0.6424 0.6931    0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bwplot</span>(resamps)</code></pre></div>
 <p><img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 </div>
@@ -1108,6 +1100,7 @@ resamps</code></pre></div>
 ##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
 ##                                           
 ##                   Kappa : 0.6305          
+##                                           
 ##  Mcnemar&#39;s Test P-Value : NA              
 ## 
 ## Statistics by Class:
@@ -1192,8 +1185,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

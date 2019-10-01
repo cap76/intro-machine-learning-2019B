@@ -196,7 +196,7 @@ svmTune
 ## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 1010 samples
-##   56 predictors
+##   56 predictor
 ##    2 classes: 'PS', 'WS' 
 ## 
 ## Pre-processing: centered (56), scaled (56) 
@@ -235,7 +235,6 @@ svmTune$finalModel
 ##    SVM-Type:  C-classification 
 ##  SVM-Kernel:  radial 
 ##        cost:  1 
-##       gamma:  0.01785714 
 ## 
 ## Number of Support Vectors:  531
 ```
@@ -248,7 +247,7 @@ plot(svmTune, metric = "ROC", scales = list(x = list(log =2)))
 
 <div class="figure" style="text-align: center">
 <img src="18-solutions-support-vector-machines_files/figure-html/svmAccuracyProfileCellSegment-1.png" alt="SVM accuracy profile." width="80%" />
-<p class="caption">(\#fig:svmAccuracyProfileCellSegment)SVM accuracy profile.</p>
+<p class="caption">SVM accuracy profile.</p>
 </div>
 
 Test set results
@@ -273,6 +272,7 @@ confusionMatrix(svmPred, segClassTest)
 ##     P-Value [Acc > NIR] : < 2e-16         
 ##                                           
 ##                   Kappa : 0.6005          
+##                                           
 ##  Mcnemar's Test P-Value : 0.08822         
 ##                                           
 ##             Sensitivity : 0.8785          
@@ -309,6 +309,17 @@ Build a ROC curve
 
 ```r
 svmROC <- roc(segClassTest, svmProbs[,"PS"])
+```
+
+```
+## Setting levels: control = PS, case = WS
+```
+
+```
+## Setting direction: controls > cases
+```
+
+```r
 auc(svmROC)
 ```
 
@@ -324,7 +335,7 @@ plot(svmROC, type = "S")
 
 <div class="figure" style="text-align: center">
 <img src="18-solutions-support-vector-machines_files/figure-html/svmROCcurveCellSegment-1.png" alt="SVM ROC curve for cell segmentation data set." width="80%" />
-<p class="caption">(\#fig:svmROCcurveCellSegment)SVM ROC curve for cell segmentation data set.</p>
+<p class="caption">SVM ROC curve for cell segmentation data set.</p>
 </div>
 
 Calculate area under ROC curve

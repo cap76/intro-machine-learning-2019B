@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>F Solutions ch. 9 - Decision trees and random forests | An Introduction to Machine Learning</title>
-  <meta name="description" content="Course materials for An Introduction to Machine Learning">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Course materials for An Introduction to Machine Learning" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="F Solutions ch. 9 - Decision trees and random forests | An Introduction to Machine Learning" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/cover_image.png" />
   <meta property="og:description" content="Course materials for An Introduction to Machine Learning" />
-  <meta name="github-repo" content="bioinformatics-training/intro-machine-learning-2018" />
+  <meta name="github-repo" content="bioinformatics-training/intro-machine-learning-2019" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="F Solutions ch. 9 - Decision trees and random forests | An Introduction to Machine Learning" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="Course materials for An Introduction to Machine Learning" />
   <meta name="twitter:image" content="figures/cover_image.png" />
 
-<meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold">
+<meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-10-01" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="solutions-svm.html">
-<link rel="next" href="use-case-1-solutions.html">
+<link rel="prev" href="solutions-svm.html"/>
+<link rel="next" href="use-case-1-solutions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -120,11 +119,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#horseshoe-effect"><i class="fa fa-check"></i><b>3.1.2</b> Horseshoe effect</a></li>
 <li class="chapter" data-level="3.1.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#pca-analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.1.3</b> PCA analysis of mammalian development</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#nonlinear-dimensionality-reduction"><i class="fa fa-check"></i><b>3.2</b> Nonlinear Dimensionality Reduction</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#stochasticity"><i class="fa fa-check"></i><b>3.2.1</b> Stochasticity</a></li>
-<li class="chapter" data-level="3.2.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.2.2</b> Analysis of mammalian development</a></li>
+<li class="chapter" data-level="3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#exercise-2.3."><i class="fa fa-check"></i><b>3.2</b> Exercise 2.3.</a></li>
+<li class="chapter" data-level="3.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#nonlinear-dimensionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Nonlinear Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#stochasticity"><i class="fa fa-check"></i><b>3.3.1</b> Stochasticity</a></li>
+<li class="chapter" data-level="3.3.2" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#analysis-of-mammalian-development"><i class="fa fa-check"></i><b>3.3.2</b> Analysis of mammalian development</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#other-dimensionality-reduction-techniques"><i class="fa fa-check"></i><b>3.3</b> Other dimensionality reduction techniques</a></li>
+<li class="chapter" data-level="3.4" data-path="dimensionality-reduction.html"><a href="dimensionality-reduction.html#other-dimensionality-reduction-techniques"><i class="fa fa-check"></i><b>3.4</b> Other dimensionality reduction techniques</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>4</b> Clustering</a><ul>
 <li class="chapter" data-level="4.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
@@ -266,12 +266,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
-<li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.1"><i class="fa fa-check"></i><b>B.1</b> Exercise 2.1</a></li>
-<li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.2."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.2.</a></li>
-<li class="chapter" data-level="B.3" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.3."><i class="fa fa-check"></i><b>B.3</b> Exercise 2.3.</a></li>
-<li class="chapter" data-level="B.4" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.4"><i class="fa fa-check"></i><b>B.4</b> Exercise 2.4</a></li>
-<li class="chapter" data-level="B.5" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.5</b> Exercise 2.5.</a></li>
-<li class="chapter" data-level="B.6" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.6</b> Exercise 2.6.</a></li>
+<li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
+<li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="solutions-clustering.html"><a href="solutions-clustering.html#exercise-1-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
@@ -396,10 +392,10 @@ sibsp: Number of Siblings/Spouses Aboard<br />
 parch: Number of Parents/Children Aboard<br />
 fare: Fare Payed</p>
 <p><strong>Make categorical features should be made into factors</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">titanic3 &lt;-<span class="st"> &quot;https://goo.gl/At238b&quot;</span> <span class="op">%&gt;%</span>
-<span class="st">  </span>read_csv <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># read in the data</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">titanic3 &lt;-<span class="st"> &quot;https://goo.gl/At238b&quot;</span> %&gt;%
+<span class="st">  </span>read_csv %&gt;%<span class="st"> </span><span class="co"># read in the data</span>
 <span class="st">  </span><span class="kw">select</span>(survived, embarked, sex, 
-         sibsp, parch, fare) <span class="op">%&gt;%</span>
+         sibsp, parch, fare) %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">embarked =</span> <span class="kw">factor</span>(embarked),
          <span class="dt">sex =</span> <span class="kw">factor</span>(sex))</code></pre></div>
 <pre><code>## Parsed with column specification:
@@ -421,27 +417,27 @@ fare: Fare Payed</p>
 ## )</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load(&quot;/Users/robertness/Downloads/titanic.Rdata&quot;)</span></code></pre></div>
 <p><strong>Split data into training and test sets</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;training&quot;</span>, <span class="st">&quot;test&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">sample</span>(<span class="kw">nrow</span>(titanic3), <span class="dt">replace =</span> T) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;training&quot;</span>, <span class="st">&quot;test&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">sample</span>(<span class="kw">nrow</span>(titanic3), <span class="dt">replace =</span> T) %&gt;%
 <span class="st">  </span><span class="kw">split</span>(titanic3, .)</code></pre></div>
 <p><strong>Recursive partitioning is implemented in “rpart” package</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rtree_fit &lt;-<span class="st"> </span><span class="kw">rpart</span>(survived <span class="op">~</span><span class="st"> </span>., 
-          .data<span class="op">$</span>training) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rtree_fit &lt;-<span class="st"> </span><span class="kw">rpart</span>(survived ~<span class="st"> </span>., 
+          .data$training) 
 <span class="kw">rpart.plot</span>(rtree_fit)</code></pre></div>
-<pre><code>## Warning: Bad &#39;data&#39; field in model &#39;call&#39; (expected a data.frame or a matrix).
+<pre><code>## Warning: Bad &#39;data&#39; field in model &#39;call&#39;.
 ## To silence this warning:
 ##     Call rpart.plot with roundint=FALSE,
 ##     or rebuild the rpart model with model=TRUE.</code></pre>
 <p><img src="19-solutions-decision-trees_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p><strong>Conditional partitioning is implemented in the “ctree” method</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree_fit &lt;-<span class="st"> </span><span class="kw">ctree</span>(survived <span class="op">~</span><span class="st"> </span>., 
-                  <span class="dt">data =</span> .data<span class="op">$</span>training)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree_fit &lt;-<span class="st"> </span><span class="kw">ctree</span>(survived ~<span class="st"> </span>., 
+                  <span class="dt">data =</span> .data$training)
 <span class="kw">plot</span>(tree_fit)</code></pre></div>
 <p><img src="19-solutions-decision-trees_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p><strong>Use ROCR package to visualize ROC Curve and compare methods</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree_roc &lt;-<span class="st"> </span>tree_fit <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(<span class="dt">newdata =</span> .data<span class="op">$</span>test) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">prediction</span>(.data<span class="op">$</span>test<span class="op">$</span>survived) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tree_roc &lt;-<span class="st"> </span>tree_fit %&gt;%
+<span class="st">  </span><span class="kw">predict</span>(<span class="dt">newdata =</span> .data$test) %&gt;%
+<span class="st">  </span><span class="kw">prediction</span>(.data$test$survived) %&gt;%
 <span class="st">  </span><span class="kw">performance</span>(<span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>)
 <span class="kw">plot</span>(tree_roc)</code></pre></div>
 <p><img src="19-solutions-decision-trees_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
@@ -507,8 +503,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

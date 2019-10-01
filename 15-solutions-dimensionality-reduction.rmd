@@ -7,10 +7,21 @@ Solutions to exercises of chapter \@ref(dimensionality-reduction).
 We can run tSNE using the following command:
 
 ```{r echo=T}
+set.seed(12345)
+D <- read.csv(file = "data/PGC_transcriptomics/PGC_transcriptomics.csv", header = TRUE, sep = ",", row.names=1)
+genenames <- rownames(D)
+genenames <- genenames[4:nrow(D)]
+```
+
+This reads in the corresponding spreadsheet into the R environment as a data frame variable. 
+
+
+```{r echo=T}
 library(Rtsne)
 set.seed(1)
 tsne_model_1 = Rtsne(as.matrix(t(D)), check_duplicates=FALSE, pca=TRUE, perplexity=100, theta=0.5, dims=2)
 ```
+
 
 As we did previously, we can plot the results using:
 
