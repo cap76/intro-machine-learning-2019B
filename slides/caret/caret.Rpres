@@ -1,0 +1,425 @@
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+```
+
+An introduction to caret
+========================================================
+author:
+date:
+autosize: true
+transition: rotate
+css: custom.css
+
+Classification And Regression Trees
+========================================================
+The caret package was developed by Max Kuhn to:
+- create a unified interface for modeling and prediction (interfaces to over 200 models)
+- streamline model tuning using resampling
+- provide a variety of “helper” functions and classes for day–to–day model building tasks
+increase computational efficiency using parallel processing
+
+<https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf>
+
+Why we need caret
+========================================================
+```{r tidy=FALSE, echo=F}
+column1 <- c("lda", "glm", "gbm", "mda", "rpart", "Weka", "LogitBoost")
+column2 <- c("MASS","stats", "gbm", "mda", "rpart", "RWeka", "caTools")
+column3 <- c('predict(obj) (no options needed)',
+             'predict(obj, type = "response")',
+             'predict(obj, type = "response", n.trees)',
+             'predict(obj, type = "posterior")',
+             'predict(obj, type = "prob")',
+             'predict(obj, type = "probability")',
+             'predict(obj, type = "raw", nIter)')
+syntax <- data.frame(column1, column2, column3)
+names(syntax) <- c("obj Class", "Package", "predict Function Syntax")
+knitr::kable(syntax)
+```
+
+```{r echo=F}
+rm(list=ls())
+```
+https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf
+
+
+
+
+Available Models
+========================================================
+
+<https://topepo.github.io/caret/available-models.html>
+
+
+CARET Workflow
+========================================================
+type:section
+
+CARET Workflow
+========================================================
+
+- required packages
+- example data set
+- partition data
+- assess data quality
+- model training and parameter tuning
+- model comparison
+- predict test set
+
+Packages
+=======================================================
+Load **CARET** package
+```{r echo=T}
+library(caret)
+```
+
+Other required packages are **doMC** (parallel processing) and **corrplot** (correlation matrix plots):
+```{r echo=T}
+library(doMC)
+library(corrplot)
+```
+
+Example data set
+=======================================================
+type:section
+
+Wheat seeds data set
+=======================================================
+The seeds data set https://archive.ics.uci.edu/ml/datasets/seeds contains morphological measurements on the kernels of three varieties of wheat: Kama, Rosa and Canadian.
+
+Load the data into your R session using:
+```{r echo=F}
+load("../../data/wheat_seeds/wheat_seeds.Rda")
+```
+```{r eval=F}
+load("data/wheat_seeds/wheat_seeds.Rda")
+```
+What objects have been loaded into our R session?
+```{r eval=T}
+ls()
+```
+
+Wheat seeds data set: predictors
+======================================================
+The **morphometrics** data.frame contains seven variables describing the morphology of the seeds.
+```{r eval=T}
+str(morphometrics)
+```
+
+Wheat seeds data set: class labels
+======================================================
+The class labels of the seeds are in the factor **variety**.
+```{r eval=T}
+summary(variety)
+```
+
+Partition data
+======================================================
+type:section
+
+Training and test set
+======================================================
+![](img/cross-validation.png)
+
+Partition data into training and test set
+======================================================
+```{r eval=T}
+set.seed(42)
+trainIndex <- createDataPartition(y=variety, times=1, p=0.7, list=F)
+
+varietyTrain <- variety[trainIndex]
+morphTrain <- morphometrics[trainIndex,]
+
+varietyTest <- variety[-trainIndex]
+morphTest <- morphometrics[-trainIndex,]
+```
+
+Class distributions are balanced across the splits
+====================================================
+Training set
+```{r eval=T}
+summary(varietyTrain)
+```
+
+Test set
+```{r eval=T}
+summary(varietyTest)
+```
+
+
+Assess data quality
+======================================================
+type:section
+
+Identification of near zero variance predictors
+======================================================
+The function **nearZeroVar** identifies predictors that have one unique value. It also diagnoses predictors having both of the following characteristics:
+
+* very few unique values relative to the number of samples
+* the ratio of the frequency of the most common value to the frequency of the 2nd most common value is large.
+
+Such zero and near zero-variance predictors have a deleterious impact on modelling and may lead to unstable fits.
+
+Identification of near zero variance predictors cont.
+======================================================
+```{r}
+nearZeroVar(morphTrain, saveMetrics = T)
+```
+
+Are all predictors on the same scale?
+======================================================
+```{r eval=F}
+featurePlot(x = morphTrain,
+            y = varietyTrain,
+            plot = "box",
+            ## Pass in options to bwplot()
+            scales = list(y = list(relation="free"),
+                          x = list(rot = 90)),
+            layout = c(4,2))
+```
+
+Feature plots
+======================================================
+```{r eval=T, echo=F, out.width='100%', fig.asp=1, fig.align='center', fig.show='hold'}
+featurePlot(x = morphTrain,
+            y = varietyTrain,
+            plot = "box",
+            ## Pass in options to bwplot()
+            scales = list(y = list(relation="free"),
+                          x = list(rot = 90)),
+            layout = c(4,2))
+```
+
+Predictors on different scales
+=====================================================
+The variables in this data set are on different scales. In this situation it is important to **centre** and **scale** each predictor.
+
+- A predictor variable is **centered** by subtracting the mean of the predictor from each value.
+- To **scale** a predictor variable, each value is divided by its standard deviation.
+
+After centring and scaling the predictor variable has a mean of 0 and a standard deviation of 1.
+
+Pairwise correlation between predictors
+=====================================================
+Examine pairwise correlations of predictors to identify redundancy in data set
+```{r eval=F}
+corMat <- cor(morphTrain)
+corrplot(corMat, order="hclust", tl.cex=1)
+```
+
+Pairwise correlation between predictors cont.
+=====================================================
+```{r eval=T, echo=F, out.width='100%', fig.asp=1, fig.align='center', fig.show='hold'}
+corMat <- cor(morphTrain)
+corrplot(corMat, order="hclust", tl.cex=1)
+```
+
+Find highly correlated predictors
+=====================================================
+```{r}
+highCorr <- findCorrelation(corMat, cutoff=0.75)
+length(highCorr)
+names(morphTrain)[highCorr]
+```
+
+Model training and parameter tuning
+====================================================
+type: section
+
+
+Models to evaluate
+======================================================
+- **svmRadialCost** with one tuning parameter **C**
+- **svmRadialSigma** with two tuning parameters: **sigma** and **C**
+
+To find out more information about a particular model use:
+```{r eval=F}
+getModelInfo("svmRadialSigma")
+```
+
+Parameter tuning using cross-validation
+======================================================
+![](img/cross-validation.png)
+
+Parallel processing
+======================================================
+We will use repeated cross-validation to find the best value of our tuning parameters and we will try 10 values of each.
+
+Repeated cross-validation can readily be parallelized to increase speed of execution. All we need to do is create a local cluster.  **CARET** will then use this cluster to parallelize the cross-validation.
+
+```{r}
+registerDoMC(detectCores())
+getDoParWorkers()
+```
+
+Resampling
+======================================================
+The resampling method is specified using the **trainControl** function. To repeat five-fold cross validation a total of five times we would use:
+```{r eval=F}
+train_ctrl <- trainControl(method="repeatedcv",
+                           number = 5,
+                           repeats = 5)
+```
+
+Resampling cont.
+======================================================
+To make the analysis reproducible we need to specify the seed for each resampling iteration.
+```{r}
+set.seed(42)
+seeds <- vector(mode = "list", length = 26)
+for(i in 1:25) seeds[[i]] <- sample.int(1000, 10)
+seeds[[26]] <- sample.int(1000,1)
+
+train_ctrl <- trainControl(method="repeatedcv",
+                           number = 5,
+                           repeats = 5,
+                           seeds = seeds)
+```
+
+Train svmRadialCost model
+========================================================
+The **train** function is used to tune a model
+```{r}
+rcFit <- train(morphTrain, varietyTrain,
+                method="svmRadialCost",
+                preProcess = c("center", "scale"),
+                #tuneGrid=tuneParam,
+                tuneLength=10,
+                trControl=train_ctrl)
+```
+```{r eval=F}
+rcFit
+```
+
+Train svmRadialCost model cont.
+========================================================
+```{r eval=T, echo=F}
+rcFit
+```
+
+Train svmRadialCost model cont.
+=========================================================
+```{r eval=T, echo=F, out.width='100%', fig.asp=1, fig.align='center', fig.show='hold'}
+plot(rcFit)
+```
+
+Train svmRadialSigma model
+======================================================
+If we set **tuneLength** to 10 the svmRadialSigma model will be evaluated with 10 different values of **C**. The svmRadialSigma model is setup to evaluate a maximum of six values of sigma. Therefore in each resampling iteration we need a total of 60 seeds (10x6).
+```{r}
+set.seed(42)
+seeds <- vector(mode = "list", length = 26)
+for(i in 1:25) seeds[[i]] <- sample.int(1000, 60)
+seeds[[26]] <- sample.int(1000,1)
+
+train_ctrl <- trainControl(method="repeatedcv",
+                           number = 5,
+                           repeats = 5,
+                           seeds = seeds)
+```
+
+
+Train svmRadialSigma model cont.
+========================================================
+The **train** function is used to tune a model
+```{r}
+rsFit <- train(morphTrain, varietyTrain,
+                method="svmRadialSigma",
+                preProcess = c("center", "scale"),
+                #tuneGrid=tuneParam,
+                tuneLength=10,
+                trControl=train_ctrl)
+```
+```{r eval=F}
+rsFit
+```
+
+Train svmRadialSigma model cont.
+========================================================
+```{r eval=T, echo=F}
+rsFit
+```
+
+Train svmRadialSigma model cont.
+=========================================================
+```{r eval=T, echo=F, out.width='100%', fig.asp=1, fig.align='center', fig.show='hold'}
+plot(rsFit)
+```
+
+Model comparison
+=========================================================
+type:section
+
+Make a list of our models
+========================================================
+```{r}
+model_list <- list(radialCost=rcFit,
+                   radialSigma=rsFit)
+```
+
+Collect resampling results for each model
+========================================================
+```{r}
+resamps <- resamples(model_list)
+resamps
+```
+
+Summarize resampling results
+========================================================
+```{r}
+summary(resamps)
+```
+
+Plot resampling results
+=========================================================
+```{r eval=F}
+bwplot(resamps)
+```
+
+Boxplots of resampling results
+=========================================================
+```{r eval=T, echo=F, out.width='100%', fig.asp=1, fig.align='center', fig.show='hold'}
+bwplot(resamps)
+```
+
+Predict test set
+========================================================
+type:section
+
+Predict test set
+========================================================
+Predict varieties of the test set using best model.
+```{r eval=F}
+test_pred <- predict(rsFit, morphTest)
+confusionMatrix(test_pred, varietyTest)
+```
+
+Confusion matrix
+========================================================
+```{r eval=T, echo=F}
+test_pred <- predict(rsFit, morphTest)
+confusionMatrix(test_pred, varietyTest)
+```
+
+Performance measures
+=========================================================
+**sensitivity** = TPR = TP/P = TP/(TP+FN)
+
+**specificity** = TNR = TN/N = TN/(TN+FP)
+
+**precision** = PPV = TP/(TP+FP)
+
+**negative predictive value** = TN/(TN+FN)
+
+Resources
+========================================================
+
+- Manual: http://topepo.github.io/caret/index.html
+
+- JSS Paper: http://www.jstatsoft.org/v28/i05/paper
+
+- Book: http://appliedpredictivemodeling.com
+
+
+
+
