@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 
 
 An introduction to caret
@@ -8,15 +13,59 @@ autosize: true
 transition: rotate
 css: custom.css
 
-Classification And Regression Trees
+
+Machine Learning libraries
+========================================================
+- No need to implement your own machine learning models
+- High-level abstractions available: SciKitLearn, Theano, TensorFlow, Spark
+- Different languages and platforms supported, e.g. CPU, GPU, TPU, Hadoop
+- Adoption of R for data science has outpaced others in recent years
+
+
+Caret package for R
 ========================================================
 The caret package was developed by Max Kuhn to:
+
 - create a unified interface for modeling and prediction (interfaces to over 200 models)
-- streamline model tuning using resampling
+- streamline model tuning using cross-validation and resampling
+- simplify preprocessing and transformation of the data
 - provide a variety of “helper” functions and classes for day–to–day model building tasks
-increase computational efficiency using parallel processing
+- increase computational efficiency using parallel processing
 
 <https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf>
+
+
+Book: Applied Predictive Modelling
+========================================================
+- Statistics deals with 'inference', ML deals with 'prediction'
+- Statistics involves confidence intervals, p-values etc 
+- The best inferential model is not necessarily the most predictive
+- Examples of ML are spam detection, sentiment analysis, etc
+- Prediction 'accuracy' rules; model 'interpretability' is secondary
+
+Biology is a good setting for ML, as mechanics of model shouldn't matter if mechanism of disease is unknown
+
+
+Cross validation:
+========================================================
+- CV is central to tuning the model parameters
+- Data is divided into training and test sets
+- Use the Training set to 'build' the model
+- Use the Test set to 'validate' the model
+
+5-fold CV:
+
+- Divide the Training set into 5 equally sized partitions
+- Use one of the partitions for validation and the rest for training
+- 'Repeated' CV uses resampling to take different looks at the data
+
+Cross validation (II):
+========================================================
+- Best estimates for model parameters are obtained by optimisation of an objective (cost) function
+- Examples of objective functions: classification accuracy, regression RMSE 
+- Optimisation is usually by gradient decent, or information-theoretic optimisation for tree-based models, or back-propagation for deep neural networks, etc
+- Cross-validation accuracy is calculated by averaging across all the resamplings
+- 'Prediction accuracy' is obtained by applying the fitted model to held-out Test data
 
 Why we need caret
 ========================================================
@@ -33,7 +82,6 @@ Why we need caret
 
 
 https://www.r-project.org/conferences/useR-2013/Tutorials/kuhn/user_caret_2up.pdf
-
 
 
 
@@ -624,6 +672,17 @@ Performance measures
 **precision** = PPV = TP/(TP+FP)
 
 **negative predictive value** = TN/(TN+FN)
+
+
+Bias-variance tradeoff
+=========================================================
+![](img/overfitting.png)
+
+- Bias is residual error from fitting the Training data
+- Variance is generalization error when applying the model fit to  Test data
+![](img/bias-variance.png)
+
+An underfit simple model misses out important features of the data, wheras an overfit complex model fits the noise and outliers.  
 
 Resources
 ========================================================
