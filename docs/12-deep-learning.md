@@ -18,11 +18,12 @@ The image data can be found in the directory {data/RickandMorty/data/}. We begin
 
 
 ```r
+library(keras)
 library(jpeg)
 library(grid)
-set.seed(12345) #Set random number generator for the session
 im <- readJPEG("data/RickandMorty/data/AllRickImages/Rick_1.jpg")
-grid.raster(im, interpolate=FALSE)
+grid::grid.newpage()
+grid.raster(im, interpolate=FALSE, width = 0.5)
 ```
 
 <img src="12-deep-learning_files/figure-html/unnamed-chunk-1-1.png" width="672" />
@@ -72,13 +73,25 @@ Next we can construct a vector of length $5257$ containing the classification fo
 
 
 ```r
-library(reticulate)
-reticulate::use_python('/usr/local/bin/python3.5')
+#library(reticulate)
+#reticulate::use_python('/usr/local/bin/python3.5')
 library(kerasR)
 ```
 
 ```
 ## successfully loaded keras
+```
+
+```
+## 
+## Attaching package: 'kerasR'
+```
+
+```
+## The following objects are masked from 'package:keras':
+## 
+##     normalize, pad_sequences, text_to_word_sequence,
+##     to_categorical
 ```
 
 ```r
@@ -94,6 +107,8 @@ Although there are more elegant ways to shuffle data using {caret}, here we are 
 
 
 ```r
+set.seed(12345) #Set random number generator for the session
+
 vecInd <- seq(0,length(files1)+length(files2)) #A vector of indexes
 trainInd <- sample(vecInd)[1:4001] #Permute and take first 4000 training
 valInd <- setdiff(vecInd,trainInd) #The remainder are for val/testing
@@ -182,7 +197,7 @@ Finally we connect this layer over the final output layer (two neurons) with sig
 
 ```r
 mod$add(Activation("relu"))
-mod$add(Dense(2))
+mod$add(Dense(1))
 mod$add(Activation("sigmoid"))
 ```
 
@@ -215,14 +230,10 @@ We can also print a summary of the network, for example to see how many paramete
 
 
 ```r
-summary(mod)
+#summary(mod)
 ```
 
-```
-## <keras.models.Sequential>
-```
-
-In this case we see a total of $4,320,302$ parameters. That's a lot of parameters to tune, and not much data! 
+In this case we see a total of $4,320,201$ parameters. That's a lot of parameters to tune, and not much data! 
 
 Next we need to compile and run the model. In this case we need to specify three things:
 
@@ -244,10 +255,10 @@ Finally the model can be fitted to the data. When doing so we additionally need 
 
 ```r
 set.seed(12345)
-keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 32, epochs = 25, verbose = 1)
+keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 100, epochs = 25, verbose = 1)
 ```
 
-For this model we achieved an accuracy of $0.5725$ on the validation dataset at epoch $2$ (which had a corresponding accuracy of $0.5816$ on the training set). Not great is an understatement. In fact, if we consider the inbalance in the number of classes, a niave algorithm that always asigns the data to *not Rick* would achieve an accuracy of $0.57$ and $0.60$ in the training and validation sets respectively. Another striking observation is that the accuracy itself doesn't appear to be changing during training: a possible sign that something is amiss.
+For this model we achieved an accuracy of above $0.63$ on the validation dataset at epoch (which had a corresponding accuracy $>0.63$ on the training set). Not great is an understatement. In fact, if we consider the slight inbalance in the number of classes, a niave algorithm that always asigns the data to *not Rick* would achieve an accuracy of $0.57$ and $0.60$ in the training and validation sets respectively. Another striking observation is that the accuracy itself doesn't appear to be changing during training: a possible sign that something is amiss.
 
 Let's try adding in another layer to the network. Before we do so, another important point to note is that the model we have at the end of training is the one one we generated during the latest epoch, and not the model that gives the best validation accuracy. Since our aim is to have the best predictive model we will also have to introduce a *callback*.
 
@@ -270,7 +281,7 @@ callbacks <- list(ModelCheckpoint('data/RickandMorty/data/models/model.h5', moni
 keras_compile(mod,  loss = 'binary_crossentropy', metrics = c('binary_accuracy'), optimizer = RMSprop())
 
 set.seed(12345)
-keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 32, epochs = 25, callbacks = callbacks, verbose = 1)
+keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 100, epochs = 25, callbacks = callbacks, verbose = 1)
 ```
 
 We can again visualise the model:
@@ -315,7 +326,7 @@ mod$add(MaxPooling2D(pool_size=c(3, 3)))
 mod$add(Flatten())
 mod$add(Dense(100))
 mod$add(Activation("relu"))
-mod$add(Dropout(0.6))
+mod$add(Dropout(0.3))
 mod$add(Dense(1))
 mod$add(Activation("sigmoid"))
 
@@ -323,7 +334,7 @@ callbacks <- list(ModelCheckpoint('data/RickandMorty/data/models/convmodel.h5', 
 
 keras_compile(mod,  loss = 'binary_crossentropy', metrics = c('binary_accuracy'), optimizer = RMSprop())
 set.seed(12345)
-keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 32, epochs = 25, callbacks = callbacks, verbose = 1)
+keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 100, epochs = 25, callbacks = callbacks, verbose = 1)
 ```
 
 Again we can visualise this network:
@@ -338,7 +349,7 @@ plot_model(mod,'images/DNN3.png')
 <p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
-Okay, so now we have achieved a better accuracy: we have an accuracy of $0.9196$ on the validation dataset at epoch $24$, with a training accuracy of $0.9838$. Whilst this is still not great, it's accurate enough to begin useuflly making predictions and visualising the results. We have a trained model for classification of Rick, we can use it to make predictions for images not present in either the training or validation datasets. First load in the new set of images, which can be found in the {predictions} subfolder:
+Okay, so now we have achieved a better accuracy: we have an accuracy of $0.89$ on the validation dataset at epoch $24$, with a training accuracy of $0.96$. Whilst this is still not great, it's accurate enough to begin useuflly making predictions and visualising the results. We have a trained model for classification of Rick, we can use it to make predictions for images not present in either the training or validation datasets. First load in the new set of images, which can be found in the {predictions} subfolder:
 
 
 ```r
@@ -363,15 +374,7 @@ We can plot an example:
 
 ```r
 choice = 13
-dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-```r
+grid::grid.newpage()
 if (predictY[choice]==1) {
   grid.raster(predictX[choice,1:90,1:160,1:3], interpolate=FALSE)
   grid.text(label='Rick',x = 0.4, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
@@ -381,18 +384,12 @@ if (predictY[choice]==1) {
 }
 ```
 
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+
 
 ```r
 choice = 1
-dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-```r
+grid::grid.newpage()
 if (predictY[choice]==1) {
   grid.raster(predictX[choice,1:90,1:160,1:3], interpolate=FALSE)
   grid.text(label='Rick',x = 0.4, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
@@ -401,20 +398,14 @@ if (predictY[choice]==1) {
   grid.text(label='Not Rick',x = 0.4, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
 }
 ```
+
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 
 
 ```r
 choice = 6
-dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-```r
+grid::grid.newpage()
 if (predictY[choice]==1) {
   grid.raster(predictX[choice,1:90,1:160,1:3], interpolate=FALSE)
   grid.text(label='Rick',x = 0.4, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
@@ -424,26 +415,22 @@ if (predictY[choice]==1) {
 }
 ```
 
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+
 
 ```r
-dev.off()
-```
-
-```
-## null device 
-##           1
-```
-
-```r
+grid::grid.newpage()
 choice = 16
 if (predictY[choice]==1) {
   grid.raster(predictX[choice,1:90,1:160,1:3], interpolate=FALSE)
   grid.text(label='Rick',x = 0.4, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
 } else {
   grid.raster(predictX[choice,1:90,1:160,1:3], interpolate=FALSE)
-  grid.text(label='Not Rick: must be a Jerry',x = 0.2, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="black"))
+  grid.text(label='Not Rick: must be a Jerry',x = 0.2, y = 0.77,just = c("left", "top"), gp=gpar(fontsize=15, col="yellow"))
 }
 ```
+
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 ### Checking the models
 
@@ -464,55 +451,37 @@ Let's see where we go it right:
 
 
 ```r
-dev.off()
+grid::grid.newpage()
+grid.raster(valX[TP[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(valX[TP[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+grid.raster(valX[TP[3],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.8)
 ```
 
-```
-## null device 
-##           1
-```
-
-```r
-grid.raster(valX[TP[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.2)
-grid.raster(valX[TP[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.5)
-grid.raster(valX[TP[3],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.8)
-```
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 And wrong (false negative):
 
 
 ```r
-dev.off()
+grid::grid.newpage()
+grid.raster(valX[FN[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(valX[FN[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+grid.raster(valX[FN[3],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.8)
 ```
 
-```
-## null device 
-##           1
-```
-
-```r
-grid.raster(valX[FN[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.2)
-grid.raster(valX[FN[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.5)
-grid.raster(valX[FN[3],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.8)
-```
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 Or false positives:
 
 
 ```r
-dev.off()
+grid::grid.newpage()
+grid.raster(valX[FP[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(valX[FP[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+grid.raster(valX[FP[4],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.8)
 ```
 
-```
-## null device 
-##           1
-```
-
-```r
-grid.raster(valX[FP[1],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.2)
-grid.raster(valX[FP[2],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.5)
-grid.raster(valX[FP[4],1:90,1:160,1:3], interpolate=FALSE, width = 0.7, x = 0.5, y=0.8)
-```
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
 It's not entirely clear why exactly the network is failing in some of these cases. An alternative what exactly is going on is to take a look at which pixels are contributing the most to the classifier, as we have done during the lecture. 
 

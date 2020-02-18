@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -863,8 +863,6 @@ K-means clustering of the noisy moons data set: scatterplot of clusters for k=2.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diff_density &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">read.csv</span>(<span class="st">&quot;data/example_clusters/different_density.csv&quot;</span>, <span class="dt">header=</span>F))
 res &lt;-<span class="st"> </span><span class="kw">lapply</span>(k, function(i){<span class="kw">kmeans</span>(diff_density[,<span class="dv">1</span>:<span class="dv">2</span>], i, <span class="dt">nstart=</span><span class="dv">50</span>)})</code></pre></div>
 <pre><code>## Warning: did not converge in 10 iterations
-
-## Warning: did not converge in 10 iterations
 
 ## Warning: did not converge in 10 iterations</code></pre>
 <p>Failure to converge, so increase number of iterations.</p>
