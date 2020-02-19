@@ -54,7 +54,7 @@ titanic3 <- "https://goo.gl/At238b" %>%
 
 ```{r}
 rtree_fit <- rpart(survived ~ ., 
-          .data$training) 
+          .data$training, model=TRUE) 
 rpart.plot(rtree_fit)
 ```
 
