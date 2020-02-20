@@ -444,7 +444,7 @@ knitr::include_graphics(c("images/AE.png"))
 knitr::include_graphics(c("images/AE2.png"))
 ```
 
-In the example below we implement a simple Autoencoder.
+In the example below we implement a simple Autoencoder:
 
 ```{r}
 mod <- Sequential()
@@ -470,8 +470,7 @@ set.seed(12345)
 keras_fit(mod, trainX, trainX, validation_data = list(valX, valX), batch_size = 100, epochs = 25, callbacks = callbacks, verbose = 1)
 ```
 
-
-This condenses the images from $90 \times 160$ pixel images down to $78 \times 148$. Let's plot a few of the examples to see how well we have done at condensing then reconstructing images on some of the test data:
+For simplicity we have discarded the maxpool layers. This condenses the images from $90 \times 160$ pixel images down to $78 \times 148$ (not a huge compression but enough to make our point). Let's plot a few of the examples to see how well we have done at condensing then reconstructing images on some of the test data:
 
 ```{r}
 predictAEX <- keras_predict(mod, predictX)
