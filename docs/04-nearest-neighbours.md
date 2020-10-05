@@ -95,6 +95,15 @@ summary(as.factor(ytest))
 ```r
 library(ggplot2)
 library(GGally)
+```
+
+```
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+```
+
+```r
 library(RColorBrewer)
 point_shapes <- c(15,17)
 point_colours <- brewer.pal(3,"Dark2")
@@ -447,26 +456,26 @@ knnFit
 ## Summary of sample sizes: 360, 360, 360, 360, 360, 360, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   k    Accuracy  Kappa 
-##     1  0.63300   0.2660
-##     2  0.63875   0.2775
-##     3  0.67375   0.3475
-##     4  0.67900   0.3580
-##     5  0.69575   0.3915
-##     7  0.71100   0.4220
-##     9  0.71775   0.4355
-##    12  0.71500   0.4300
-##    17  0.72675   0.4535
-##    23  0.73800   0.4760
-##    32  0.73725   0.4745
-##    44  0.73875   0.4775
-##    60  0.74850   0.4970
-##    83  0.75500   0.5100
-##   113  0.73500   0.4700
-##   155  0.72575   0.4515
-##   213  0.70750   0.4150
-##   292  0.68825   0.3765
-##   400  0.51300   0.0260
+##   k    Accuracy  Kappa  
+##     1  0.63575    0.2715
+##     2  0.63700    0.2740
+##     3  0.67250    0.3450
+##     4  0.67700    0.3540
+##     5  0.69425    0.3885
+##     7  0.71250    0.4250
+##     9  0.71525    0.4305
+##    12  0.71275    0.4255
+##    17  0.72500    0.4500
+##    23  0.73175    0.4635
+##    32  0.73675    0.4735
+##    44  0.73900    0.4780
+##    60  0.74925    0.4985
+##    83  0.75325    0.5065
+##   113  0.73275    0.4655
+##   155  0.72700    0.4540
+##   213  0.70950    0.4190
+##   292  0.69275    0.3855
+##   400  0.49900   -0.0020
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 83.
@@ -739,57 +748,57 @@ nzv
 ```
 ##                         freqRatio percentUnique zeroVar   nzv
 ## AngleCh1                 1.000000    100.000000   FALSE FALSE
-## AreaCh1                  1.083333     37.326733   FALSE FALSE
+## AreaCh1                  1.083333     38.217822   FALSE FALSE
 ## AvgIntenCh1              1.000000    100.000000   FALSE FALSE
 ## AvgIntenCh2              3.000000     99.801980   FALSE FALSE
 ## AvgIntenCh3              1.000000    100.000000   FALSE FALSE
-## AvgIntenCh4              2.000000     99.900990   FALSE FALSE
-## ConvexHullAreaRatioCh1   1.000000     98.910891   FALSE FALSE
+## AvgIntenCh4              1.000000    100.000000   FALSE FALSE
+## ConvexHullAreaRatioCh1   1.000000     98.415842   FALSE FALSE
 ## ConvexHullPerimRatioCh1  1.000000    100.000000   FALSE FALSE
 ## DiffIntenDensityCh1      1.000000    100.000000   FALSE FALSE
-## DiffIntenDensityCh3      1.000000    100.000000   FALSE FALSE
+## DiffIntenDensityCh3      2.000000     99.900990   FALSE FALSE
 ## DiffIntenDensityCh4      1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh1          1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh3          1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh4          1.000000    100.000000   FALSE FALSE
-## EqCircDiamCh1            1.083333     37.326733   FALSE FALSE
+## EqCircDiamCh1            1.083333     38.217822   FALSE FALSE
 ## EqEllipseLWRCh1          1.000000    100.000000   FALSE FALSE
 ## EqEllipseOblateVolCh1    1.000000    100.000000   FALSE FALSE
 ## EqEllipseProlateVolCh1   1.000000    100.000000   FALSE FALSE
-## EqSphereAreaCh1          1.083333     37.326733   FALSE FALSE
-## EqSphereVolCh1           1.083333     37.326733   FALSE FALSE
-## FiberAlign2Ch3           1.304348     94.950495   FALSE FALSE
-## FiberAlign2Ch4           7.285714     94.455446   FALSE FALSE
-## FiberLengthCh1           1.000000     95.841584   FALSE FALSE
-## FiberWidthCh1            1.000000     95.841584   FALSE FALSE
+## EqSphereAreaCh1          1.083333     38.217822   FALSE FALSE
+## EqSphereVolCh1           1.083333     38.217822   FALSE FALSE
+## FiberAlign2Ch3           1.173913     95.247525   FALSE FALSE
+## FiberAlign2Ch4           7.000000     93.861386   FALSE FALSE
+## FiberLengthCh1           1.000000     93.267327   FALSE FALSE
+## FiberWidthCh1            1.000000     93.267327   FALSE FALSE
 ## IntenCoocASMCh3          1.000000    100.000000   FALSE FALSE
 ## IntenCoocASMCh4          1.000000    100.000000   FALSE FALSE
 ## IntenCoocContrastCh3     1.000000    100.000000   FALSE FALSE
 ## IntenCoocContrastCh4     1.000000    100.000000   FALSE FALSE
 ## IntenCoocEntropyCh3      1.000000    100.000000   FALSE FALSE
 ## IntenCoocEntropyCh4      1.000000    100.000000   FALSE FALSE
-## IntenCoocMaxCh3          1.250000     94.158416   FALSE FALSE
-## IntenCoocMaxCh4          1.250000     94.356436   FALSE FALSE
+## IntenCoocMaxCh3          1.333333     93.069307   FALSE FALSE
+## IntenCoocMaxCh4          1.250000     94.851485   FALSE FALSE
 ## KurtIntenCh1             1.000000    100.000000   FALSE FALSE
 ## KurtIntenCh3             1.000000    100.000000   FALSE FALSE
 ## KurtIntenCh4             1.000000    100.000000   FALSE FALSE
 ## LengthCh1                1.000000    100.000000   FALSE FALSE
 ## NeighborAvgDistCh1       1.000000    100.000000   FALSE FALSE
-## NeighborMinDistCh1       1.166667     41.089109   FALSE FALSE
+## NeighborMinDistCh1       1.583333     41.881188   FALSE FALSE
 ## NeighborVarDistCh1       1.000000    100.000000   FALSE FALSE
-## PerimCh1                 1.000000     63.762376   FALSE FALSE
+## PerimCh1                 1.000000     62.970297   FALSE FALSE
 ## ShapeBFRCh1              1.000000    100.000000   FALSE FALSE
 ## ShapeLWRCh1              1.000000    100.000000   FALSE FALSE
-## ShapeP2ACh1              1.000000     99.801980   FALSE FALSE
+## ShapeP2ACh1              1.000000     99.702970   FALSE FALSE
 ## SkewIntenCh1             1.000000    100.000000   FALSE FALSE
 ## SkewIntenCh3             1.000000    100.000000   FALSE FALSE
 ## SkewIntenCh4             1.000000    100.000000   FALSE FALSE
-## SpotFiberCountCh3        1.212000      1.287129   FALSE FALSE
-## SpotFiberCountCh4        1.152778      3.267327   FALSE FALSE
-## TotalIntenCh1            1.000000     98.712871   FALSE FALSE
-## TotalIntenCh2            1.500000     99.009901   FALSE FALSE
-## TotalIntenCh3            1.000000     99.108911   FALSE FALSE
-## TotalIntenCh4            1.000000     99.603960   FALSE FALSE
+## SpotFiberCountCh3        1.260870      1.089109   FALSE FALSE
+## SpotFiberCountCh4        1.092199      2.871287   FALSE FALSE
+## TotalIntenCh1            1.000000     98.613861   FALSE FALSE
+## TotalIntenCh2            1.000000     99.009901   FALSE FALSE
+## TotalIntenCh3            1.000000     99.306931   FALSE FALSE
+## TotalIntenCh4            1.000000     99.207921   FALSE FALSE
 ## VarIntenCh1              1.000000    100.000000   FALSE FALSE
 ## VarIntenCh3              1.000000    100.000000   FALSE FALSE
 ## VarIntenCh4              1.000000    100.000000   FALSE FALSE
@@ -805,7 +814,7 @@ summary(segDataTrain$IntenCoocASMCh4)
 
 ```
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.004874 0.017250 0.049460 0.101600 0.121200 0.867800
+## 0.004514 0.017687 0.049861 0.097286 0.111304 0.867845
 ```
 
 ```r
@@ -814,7 +823,7 @@ summary(segDataTrain$TotalIntenCh2)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       1   15850   49650   53140   72300  362500
+##       1   12639   50160   53165   73527  363311
 ```
 
 In this situation it is important to centre and scale each predictor. A predictor variable is centered by subtracting the mean of the predictor from each value. To scale a predictor variable, each value is divided by its standard deviation. After centring and scaling the predictor variable has a mean of 0 and a standard deviation of 1. 
@@ -873,7 +882,7 @@ length(highCorr)
 ```
 
 ```
-## [1] 31
+## [1] 33
 ```
 
 ```r
@@ -941,32 +950,30 @@ str(segDataTrain)
 ```
 
 ```
-## 'data.frame':	1010 obs. of  25 variables:
-##  $ AngleCh1               : num  1.045 0.873 -0.376 -0.994 1.586 ...
-##  $ ConvexHullPerimRatioCh1: num  0.31 -1.221 -0.363 1.22 1.113 ...
-##  $ EntropyIntenCh1        : num  -2.443 -0.671 -1.688 0.554 0.425 ...
-##  $ EqEllipseOblateVolCh1  : num  -0.414 1.693 0.711 -1.817 -1.667 ...
-##  $ FiberAlign2Ch3         : num  -1.8124 0.0933 -0.9679 -0.6188 -0.8721 ...
-##  $ FiberAlign2Ch4         : num  -1.729 -0.331 1.255 -0.291 0.463 ...
-##  $ FiberWidthCh1          : num  -0.776 0.878 -0.779 0.712 0.758 ...
-##  $ IntenCoocASMCh4        : num  -0.368 -0.64 -0.652 -0.665 -0.671 ...
-##  $ IntenCoocContrastCh3   : num  2.4777 0.0604 -0.0816 0.0634 0.6386 ...
-##  $ IntenCoocContrastCh4   : num  1.101 0.127 1.046 0.602 1.445 ...
-##  $ IntenCoocMaxCh3        : num  -0.815 -0.232 -0.168 -1.366 -1.37 ...
-##  $ KurtIntenCh1           : num  -0.97 -0.26 0.562 -0.187 0.296 ...
-##  $ KurtIntenCh3           : num  -1.506 -1.133 -0.672 -1.908 -1.491 ...
-##  $ KurtIntenCh4           : num  0.68398 -0.00329 -0.09737 -0.1679 -0.79044 ...
-##  $ NeighborAvgDistCh1     : num  2.5376 -1.4791 -0.5357 0.1062 0.0663 ...
-##  $ NeighborMinDistCh1     : num  3.286 0.289 0.557 -1.679 -1.679 ...
-##  $ ShapeBFRCh1            : num  0.6733 -0.5448 -0.0649 0.8849 1.4669 ...
-##  $ ShapeLWRCh1            : num  1.23 -0.351 1.525 -1.832 -1.717 ...
-##  $ SkewIntenCh1           : num  -0.213 -0.297 0.384 -2.41 -2.678 ...
-##  $ SpotFiberCountCh3      : num  -0.366 1.275 1.275 -0.366 -1.573 ...
-##  $ TotalIntenCh2          : num  -1.701 1.682 -0.233 1.107 1.019 ...
-##  $ VarIntenCh1            : num  -2.118 -1.346 -1.917 1.062 0.856 ...
-##  $ VarIntenCh3            : num  -1.9155 -0.1836 -0.8001 0.0478 -0.3658 ...
-##  $ VarIntenCh4            : num  -2.304 0.332 -1.092 0.843 0.387 ...
-##  $ WidthCh1               : num  -1.626 1.845 -0.718 -0.188 -0.333 ...
+## 'data.frame':	1010 obs. of  23 variables:
+##  $ AngleCh1               : num  0.854 0.352 -0.383 -0.99 1.565 ...
+##  $ ConvexHullPerimRatioCh1: num  -1.314 0.494 -0.416 1.241 1.129 ...
+##  $ DiffIntenDensityCh3    : num  -0.3311 -0.5341 -1.0142 0.0933 -0.2125 ...
+##  $ EntropyIntenCh1        : num  -0.65 -0.958 -1.694 0.615 0.481 ...
+##  $ EqSphereVolCh1         : num  1.84 1.07 0.38 -1.18 -1.09 ...
+##  $ FiberAlign2Ch3         : num  0.122 -0.602 -0.907 -0.567 -0.814 ...
+##  $ FiberAlign2Ch4         : num  -0.321 0.389 1.297 -0.281 0.486 ...
+##  $ FiberWidthCh1          : num  0.859 2.033 -0.767 0.696 0.741 ...
+##  $ IntenCoocASMCh3        : num  -0.492 -0.645 -0.471 -0.631 -0.636 ...
+##  $ IntenCoocASMCh4        : num  -0.633 -0.681 -0.644 -0.658 -0.665 ...
+##  $ IntenCoocContrastCh3   : num  0.00893 0.7834 -0.13895 0.01205 0.61482 ...
+##  $ IntenCoocContrastCh4   : num  0.106 1.403 1.057 0.597 1.469 ...
+##  $ KurtIntenCh1           : num  -0.316 -0.383 0.51 -0.243 0.242 ...
+##  $ KurtIntenCh3           : num  -1.0756 -0.0959 -0.6256 -1.8307 -1.4251 ...
+##  $ KurtIntenCh4           : num  0.0297 0.4049 -0.0657 -0.1372 -0.7716 ...
+##  $ NeighborMinDistCh1     : num  0.271 0.685 0.535 -1.732 -1.732 ...
+##  $ NeighborVarDistCh1     : num  -1.169 -0.745 0.538 -0.482 -0.537 ...
+##  $ ShapeBFRCh1            : num  -0.591 1.231 -0.104 0.862 1.453 ...
+##  $ ShapeLWRCh1            : num  -0.328 -0.72 1.488 -1.792 -1.678 ...
+##  $ SpotFiberCountCh3      : num  1.311 0.304 1.311 -0.453 -1.664 ...
+##  $ TotalIntenCh1          : num  0.315 -0.507 -1.423 1.011 0.839 ...
+##  $ TotalIntenCh2          : num  1.63 0.21 -0.2 1.09 1 ...
+##  $ VarIntenCh4            : num  0.295 -0.554 -1.103 0.807 0.35 ...
 ```
 
 Perform cross validation to find best value of _k_.
@@ -983,7 +990,7 @@ knnFit
 ## k-Nearest Neighbors 
 ## 
 ## 1010 samples
-##   25 predictor
+##   23 predictor
 ##    2 classes: 'PS', 'WS' 
 ## 
 ## No pre-processing
@@ -992,59 +999,59 @@ knnFit
 ## Resampling results across tuning parameters:
 ## 
 ##   k    Accuracy   Kappa    
-##     5  0.7938614  0.5540746
-##    15  0.8053465  0.5829961
-##    25  0.8047525  0.5814369
-##    35  0.8065347  0.5843286
-##    45  0.8037624  0.5786056
-##    55  0.8035644  0.5781528
-##    65  0.8043564  0.5787198
-##    75  0.8037624  0.5777703
-##    85  0.8037624  0.5768178
-##    95  0.8063366  0.5823443
-##   105  0.8057426  0.5797978
-##   115  0.8019802  0.5709231
-##   125  0.7990099  0.5635596
-##   135  0.8001980  0.5653667
-##   145  0.8000000  0.5643285
-##   155  0.8003960  0.5650775
-##   165  0.8007921  0.5653539
-##   175  0.8013861  0.5667665
-##   185  0.8000000  0.5633628
-##   195  0.7996040  0.5623200
-##   205  0.8005941  0.5636922
-##   215  0.8003960  0.5631617
-##   225  0.8023762  0.5676501
-##   235  0.8019802  0.5661531
-##   245  0.8017822  0.5651162
-##   255  0.8011881  0.5631157
-##   265  0.7990099  0.5570764
-##   275  0.7978218  0.5536355
-##   285  0.7992079  0.5554954
-##   295  0.7990099  0.5540500
-##   305  0.7964356  0.5471107
-##   315  0.7940594  0.5401644
-##   325  0.7926733  0.5358168
-##   335  0.7928713  0.5344022
-##   345  0.7900990  0.5260618
-##   355  0.7912871  0.5268895
-##   365  0.7897030  0.5217485
-##   375  0.7877228  0.5153088
-##   385  0.7849505  0.5062599
-##   395  0.7796040  0.4911638
-##   405  0.7716832  0.4675901
-##   415  0.7689109  0.4564594
-##   425  0.7594059  0.4280275
-##   435  0.7504950  0.3989447
-##   445  0.7398020  0.3652969
-##   455  0.7316832  0.3376567
-##   465  0.7247525  0.3112618
-##   475  0.7186139  0.2871843
-##   485  0.7144554  0.2662335
-##   495  0.7059406  0.2341570
+##     5  0.7986139  0.5612788
+##    15  0.8071287  0.5834268
+##    25  0.8063366  0.5809096
+##    35  0.8057426  0.5804170
+##    45  0.8011881  0.5707377
+##    55  0.8025743  0.5740795
+##    65  0.8029703  0.5736852
+##    75  0.8021782  0.5708545
+##    85  0.7994059  0.5653635
+##    95  0.8001980  0.5672397
+##   105  0.7992079  0.5650183
+##   115  0.8000000  0.5662863
+##   125  0.8013861  0.5695369
+##   135  0.8011881  0.5680439
+##   145  0.8015842  0.5681434
+##   155  0.8035644  0.5714389
+##   165  0.8025743  0.5688528
+##   175  0.8019802  0.5675416
+##   185  0.8021782  0.5666971
+##   195  0.7982178  0.5572158
+##   205  0.7976238  0.5553098
+##   215  0.7998020  0.5585649
+##   225  0.7978218  0.5534856
+##   235  0.7956436  0.5474332
+##   245  0.7944554  0.5438308
+##   255  0.7946535  0.5432198
+##   265  0.7954455  0.5450816
+##   275  0.7948515  0.5430274
+##   285  0.7944554  0.5414309
+##   295  0.7944554  0.5404298
+##   305  0.7914851  0.5320417
+##   315  0.7885149  0.5241017
+##   325  0.7891089  0.5249205
+##   335  0.7859406  0.5160910
+##   345  0.7839604  0.5095485
+##   355  0.7831683  0.5061947
+##   365  0.7809901  0.4993268
+##   375  0.7762376  0.4846859
+##   385  0.7716832  0.4701399
+##   395  0.7685149  0.4587635
+##   405  0.7613861  0.4371686
+##   415  0.7564356  0.4216456
+##   425  0.7502970  0.3999603
+##   435  0.7433663  0.3768513
+##   445  0.7340594  0.3465947
+##   455  0.7255446  0.3157445
+##   465  0.7156436  0.2808044
+##   475  0.7061386  0.2477092
+##   485  0.6964356  0.2106821
+##   495  0.6857426  0.1679627
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was k = 35.
+## The final value used for the model was k = 15.
 ```
 
 
@@ -1064,7 +1071,7 @@ knnFit$finalModel$k
 ```
 
 ```
-## [1] 35
+## [1] 15
 ```
 
 ```r
@@ -1073,7 +1080,7 @@ knnFit$finalModel$tuneValue
 
 ```
 ##    k
-## 4 35
+## 2 15
 ```
 
 To find out which variables have been used in the final model, run:
@@ -1084,18 +1091,17 @@ knnFit$finalModel$xNames
 
 ```
 ##  [1] "AngleCh1"                "ConvexHullPerimRatioCh1"
-##  [3] "EntropyIntenCh1"         "EqEllipseOblateVolCh1"  
-##  [5] "FiberAlign2Ch3"          "FiberAlign2Ch4"         
-##  [7] "FiberWidthCh1"           "IntenCoocASMCh4"        
-##  [9] "IntenCoocContrastCh3"    "IntenCoocContrastCh4"   
-## [11] "IntenCoocMaxCh3"         "KurtIntenCh1"           
-## [13] "KurtIntenCh3"            "KurtIntenCh4"           
-## [15] "NeighborAvgDistCh1"      "NeighborMinDistCh1"     
-## [17] "ShapeBFRCh1"             "ShapeLWRCh1"            
-## [19] "SkewIntenCh1"            "SpotFiberCountCh3"      
-## [21] "TotalIntenCh2"           "VarIntenCh1"            
-## [23] "VarIntenCh3"             "VarIntenCh4"            
-## [25] "WidthCh1"
+##  [3] "DiffIntenDensityCh3"     "EntropyIntenCh1"        
+##  [5] "EqSphereVolCh1"          "FiberAlign2Ch3"         
+##  [7] "FiberAlign2Ch4"          "FiberWidthCh1"          
+##  [9] "IntenCoocASMCh3"         "IntenCoocASMCh4"        
+## [11] "IntenCoocContrastCh3"    "IntenCoocContrastCh4"   
+## [13] "KurtIntenCh1"            "KurtIntenCh3"           
+## [15] "KurtIntenCh4"            "NeighborMinDistCh1"     
+## [17] "NeighborVarDistCh1"      "ShapeBFRCh1"            
+## [19] "ShapeLWRCh1"             "SpotFiberCountCh3"      
+## [21] "TotalIntenCh1"           "TotalIntenCh2"          
+## [23] "VarIntenCh4"
 ```
 
 Let's predict our test set using our final model.
@@ -1111,26 +1117,26 @@ confusionMatrix(test_pred, segClassTest)
 ## 
 ##           Reference
 ## Prediction  PS  WS
-##         PS 540 100
-##         WS 110 259
+##         PS 557  92
+##         WS  93 267
 ##                                           
-##                Accuracy : 0.7919          
-##                  95% CI : (0.7655, 0.8165)
+##                Accuracy : 0.8167          
+##                  95% CI : (0.7914, 0.8401)
 ##     No Information Rate : 0.6442          
 ##     P-Value [Acc > NIR] : <2e-16          
 ##                                           
-##                   Kappa : 0.5488          
+##                   Kappa : 0.6003          
 ##                                           
-##  Mcnemar's Test P-Value : 0.5346          
+##  Mcnemar's Test P-Value : 1               
 ##                                           
-##             Sensitivity : 0.8308          
-##             Specificity : 0.7214          
-##          Pos Pred Value : 0.8438          
-##          Neg Pred Value : 0.7019          
+##             Sensitivity : 0.8569          
+##             Specificity : 0.7437          
+##          Pos Pred Value : 0.8582          
+##          Neg Pred Value : 0.7417          
 ##              Prevalence : 0.6442          
-##          Detection Rate : 0.5352          
-##    Detection Prevalence : 0.6343          
-##       Balanced Accuracy : 0.7761          
+##          Detection Rate : 0.5520          
+##    Detection Prevalence : 0.6432          
+##       Balanced Accuracy : 0.8003          
 ##                                           
 ##        'Positive' Class : PS              
 ## 
@@ -1301,7 +1307,7 @@ length(highCorr)
 ```
 
 ```
-## [1] 68
+## [1] 65
 ```
 
 A check for the presence of missing values:
@@ -1321,7 +1327,7 @@ nearZeroVar(descrTrain)
 ```
 
 ```
-## [1]  3 16 22 25 50 60
+## [1]  3 16 17 22 25 50 60
 ```
 
 We know there are issues with scaling, and the presence of highly correlated predictors and near zero variance predictors. These problems are resolved by pre-processing. First we define the procesing steps.
@@ -1368,27 +1374,27 @@ knnTune
 ## k-Nearest Neighbors 
 ## 
 ## 168 samples
-##  61 predictor
+## 127 predictors
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 135, 134, 136, 134, 133, 135, ... 
+## Summary of sample sizes: 136, 133, 134, 134, 135, 135, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   RMSE       Rsquared   MAE      
-##    1  0.6520387  0.3985028  0.4632774
-##    2  0.6113262  0.4259039  0.4627144
-##    3  0.5862976  0.4444624  0.4402393
-##    4  0.5828015  0.4437783  0.4407852
-##    5  0.5933604  0.4209923  0.4516132
-##    6  0.5982192  0.4100908  0.4550370
-##    7  0.6032227  0.4002708  0.4531828
-##    8  0.6078117  0.3936972  0.4583254
-##    9  0.6106399  0.3858548  0.4596576
-##   10  0.6149638  0.3799661  0.4629568
+##    1  0.6549043  0.4108920  0.4766928
+##    2  0.6032405  0.4528603  0.4576061
+##    3  0.5971264  0.4502719  0.4540638
+##    4  0.5990394  0.4427879  0.4548592
+##    5  0.6133729  0.4188855  0.4696289
+##    6  0.6186412  0.4098024  0.4738693
+##    7  0.6159861  0.4130907  0.4738798
+##    8  0.6159065  0.4137798  0.4716903
+##    9  0.6173266  0.4091199  0.4724567
+##   10  0.6147349  0.4169201  0.4691612
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
-## The final value used for the model was k = 4.
+## The final value used for the model was k = 3.
 ```
 
 The Root Mean Squared Error (RMSE) measures the differences between the values predicted by the model and the values actually observed. More specifically, it represents the sample standard deviation of the difference between the predicted values and observed values. 
@@ -1437,7 +1443,7 @@ cor(concRatioTest, test_pred)
 ```
 
 ```
-## [1] 0.7278034
+## [1] 0.5719185
 ```
 
 

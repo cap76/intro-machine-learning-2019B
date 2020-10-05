@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>J Solutions ch. 10 - Artificial neural networks | An Introduction to Machine Learning</title>
   <meta name="description" content="Course materials for An Introduction to Machine Learning" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="J Solutions ch. 10 - Artificial neural networks | An Introduction to Machine Learning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -162,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html"><i class="fa fa-check"></i><b>5</b> Nearest neighbours</a><ul>
-<li class="chapter" data-level="5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#classification-simulated-data"><i class="fa fa-check"></i><b>5.2</b> Classification: simulated data</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-function"><i class="fa fa-check"></i><b>5.2.1</b> knn function</a></li>
 <li class="chapter" data-level="5.2.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#plotting-decision-boundaries"><i class="fa fa-check"></i><b>5.2.2</b> Plotting decision boundaries</a></li>
@@ -181,19 +209,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.4.3</b> Search for optimum <em>k</em></a></li>
 <li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.4.4</b> Use model to make predictions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#exercises-1"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
+<li class="chapter" data-level="5.5" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="svm.html"><a href="svm.html"><i class="fa fa-check"></i><b>6</b> Support vector machines</a><ul>
-<li class="chapter" data-level="6.1" data-path="svm.html"><a href="svm.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="svm.html"><a href="svm.html#maximum-margin-classifier"><i class="fa fa-check"></i><b>6.1.1</b> Maximum margin classifier</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="svm.html"><a href="svm.html#support-vector-classifier"><i class="fa fa-check"></i><b>6.2</b> Support vector classifier</a></li>
 <li class="chapter" data-level="6.3" data-path="svm.html"><a href="svm.html#support-vector-machine"><i class="fa fa-check"></i><b>6.3</b> Support Vector Machine</a></li>
 <li class="chapter" data-level="6.4" data-path="svm.html"><a href="svm.html#example---training-a-classifier"><i class="fa fa-check"></i><b>6.4</b> Example - training a classifier</a><ul>
 <li class="chapter" data-level="6.4.1" data-path="svm.html"><a href="svm.html#setup-environment"><i class="fa fa-check"></i><b>6.4.1</b> Setup environment</a></li>
-<li class="chapter" data-level="6.4.2" data-path="svm.html"><a href="svm.html#partition-data-1"><i class="fa fa-check"></i><b>6.4.2</b> Partition data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>6.4.2</b> Partition data</a></li>
 <li class="chapter" data-level="6.4.3" data-path="svm.html"><a href="svm.html#visualize-training-data"><i class="fa fa-check"></i><b>6.4.3</b> Visualize training data</a></li>
 <li class="chapter" data-level="6.4.4" data-path="svm.html"><a href="svm.html#define-a-custom-model"><i class="fa fa-check"></i><b>6.4.4</b> Define a custom model</a></li>
 <li class="chapter" data-level="6.4.5" data-path="svm.html"><a href="svm.html#model-cross-validation-and-tuning"><i class="fa fa-check"></i><b>6.4.5</b> Model cross-validation and tuning</a></li>
@@ -202,17 +230,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="svm.html"><a href="svm.html#example---regression"><i class="fa fa-check"></i><b>6.5</b> Example - regression</a></li>
 <li class="chapter" data-level="6.6" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>6.6</b> Further reading</a></li>
-<li class="chapter" data-level="6.7" data-path="svm.html"><a href="svm.html#exercises-2"><i class="fa fa-check"></i><b>6.7</b> Exercises</a><ul>
+<li class="chapter" data-level="6.7" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>6.7</b> Exercises</a><ul>
 <li class="chapter" data-level="6.7.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>6.7.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
-<li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
-<li class="chapter" data-level="7.3" data-path="decision-trees.html"><a href="decision-trees.html#exercises-3"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.1</b> Random Forest</a></li>
+<li class="chapter" data-level="7.2" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="use-case-1.html"><a href="use-case-1.html"><i class="fa fa-check"></i><b>8</b> Use case 1</a><ul>
-<li class="chapter" data-level="8.1" data-path="use-case-1.html"><a href="use-case-1.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="use-case-1.html"><a href="use-case-1.html#problem-automated-detection-of-malaria"><i class="fa fa-check"></i><b>8.2</b> Problem: automated detection of malaria</a></li>
 <li class="chapter" data-level="8.3" data-path="use-case-1.html"><a href="use-case-1.html#challenges"><i class="fa fa-check"></i><b>8.3</b> Challenges</a></li>
 <li class="chapter" data-level="8.4" data-path="use-case-1.html"><a href="use-case-1.html#getting-started"><i class="fa fa-check"></i><b>8.4</b> Getting started</a><ul>
@@ -222,7 +249,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
@@ -230,14 +257,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1.1" data-path="logistic-regression.html"><a href="logistic-regression.html#linear-regression"><i class="fa fa-check"></i><b>10.1.1</b> Linear regression</a></li>
 <li class="chapter" data-level="10.1.2" data-path="logistic-regression.html"><a href="logistic-regression.html#polynomial-regression"><i class="fa fa-check"></i><b>10.1.2</b> Polynomial regression</a></li>
 <li class="chapter" data-level="10.1.3" data-path="logistic-regression.html"><a href="logistic-regression.html#distributions-of-fits"><i class="fa fa-check"></i><b>10.1.3</b> Distributions of fits</a></li>
-<li class="chapter" data-level="10.1.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.1.4</b> Gaussian process regression</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="logistic-regression.html"><a href="logistic-regression.html#classification"><i class="fa fa-check"></i><b>10.2</b> Classification</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression"><i class="fa fa-check"></i><b>10.2.1</b> Logistic regression</a></li>
-<li class="chapter" data-level="10.2.2" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.2.2</b> GP classification</a></li>
-<li class="chapter" data-level="10.2.3" data-path="logistic-regression.html"><a href="logistic-regression.html#other-classification-approaches."><i class="fa fa-check"></i><b>10.2.3</b> Other classification approaches.</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.3</b> Resources</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.3</b> Gaussian process regression</a></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.4</b> GP classification</a></li>
+<li class="chapter" data-level="10.5" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.5</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="ann.html"><a href="ann.html"><i class="fa fa-check"></i><b>11</b> Artificial neural networks</a><ul>
 <li class="chapter" data-level="11.1" data-path="ann.html"><a href="ann.html#neural-networks"><i class="fa fa-check"></i><b>11.1</b> Neural Networks</a></li>
@@ -251,11 +277,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="mlnn.html"><a href="mlnn.html#convolutional-neural-networks"><i class="fa fa-check"></i><b>13.2</b> Convolutional neural networks</a><ul>
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
-<li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#data-augmentation"><i class="fa fa-check"></i><b>13.2.2</b> Data augmentation</a></li>
-<li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.3</b> Asking more precise questions</a></li>
-<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.4</b> More complex networks</a></li>
+<li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
+<li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="mlnn.html"><a href="mlnn.html#further-reading-1"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
+<li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>A</b> Resources</a><ul>
@@ -270,37 +295,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
-<li class="chapter" data-level="C.1" data-path="solutions-clustering.html"><a href="solutions-clustering.html#exercise-1-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
-<li class="chapter" data-level="D.1" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html#exercise-1-2"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
-<li class="chapter" data-level="E.1" data-path="solutions-svm.html"><a href="solutions-svm.html#exercise-1-3"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
-<li class="chapter" data-level="F.1" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html#exercise-1-4"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
 <li class="chapter" data-level="G.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#preparation"><i class="fa fa-check"></i><b>G.1</b> Preparation</a><ul>
 <li class="chapter" data-level="G.1.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#load-required-libraries"><i class="fa fa-check"></i><b>G.1.1</b> Load required libraries</a></li>
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
-<li class="chapter" data-level="G.1.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#load-data-1"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
-<li class="chapter" data-level="G.1.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#data-splitting-1"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
+<li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
-<li class="chapter" data-level="G.2.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#zero-and-near-zero-variance-predictors-1"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
+<li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
 <li class="chapter" data-level="G.2.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#are-all-predictors-on-the-same-scale"><i class="fa fa-check"></i><b>G.2.2</b> Are all predictors on the same scale?</a></li>
 <li class="chapter" data-level="G.2.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#redundancy-from-correlated-variables"><i class="fa fa-check"></i><b>G.2.3</b> Redundancy from correlated variables</a></li>
-<li class="chapter" data-level="G.2.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#skewness-1"><i class="fa fa-check"></i><b>G.2.4</b> Skewness</a></li>
+<li class="chapter" data-level="G.2.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#skewness"><i class="fa fa-check"></i><b>G.2.4</b> Skewness</a></li>
 </ul></li>
 <li class="chapter" data-level="G.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#infection-status-two-class-problem"><i class="fa fa-check"></i><b>G.3</b> Infection status (two-class problem)</a><ul>
 <li class="chapter" data-level="G.3.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#model-training-and-parameter-tuning"><i class="fa fa-check"></i><b>G.3.1</b> Model training and parameter tuning</a></li>
 <li class="chapter" data-level="G.3.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#knn"><i class="fa fa-check"></i><b>G.3.2</b> KNN</a></li>
 <li class="chapter" data-level="G.3.3" data-path="svm.html"><a href="svm.html#svm"><i class="fa fa-check"></i><b>G.3.3</b> SVM</a></li>
 <li class="chapter" data-level="G.3.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#decision-tree"><i class="fa fa-check"></i><b>G.3.4</b> Decision tree</a></li>
-<li class="chapter" data-level="G.3.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-1"><i class="fa fa-check"></i><b>G.3.5</b> Random forest</a></li>
+<li class="chapter" data-level="G.3.5" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>G.3.5</b> Random forest</a></li>
 <li class="chapter" data-level="G.3.6" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#compare-models"><i class="fa fa-check"></i><b>G.3.6</b> Compare models</a></li>
 <li class="chapter" data-level="G.3.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model"><i class="fa fa-check"></i><b>G.3.7</b> Predict test set using our best model</a></li>
 <li class="chapter" data-level="G.3.8" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#roc-curve"><i class="fa fa-check"></i><b>G.3.8</b> ROC curve</a></li>
@@ -310,7 +334,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.4.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#knn-1"><i class="fa fa-check"></i><b>G.4.2</b> KNN</a></li>
 <li class="chapter" data-level="G.4.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#svm-1"><i class="fa fa-check"></i><b>G.4.3</b> SVM</a></li>
 <li class="chapter" data-level="G.4.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#decision-tree-1"><i class="fa fa-check"></i><b>G.4.4</b> Decision tree</a></li>
-<li class="chapter" data-level="G.4.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-2"><i class="fa fa-check"></i><b>G.4.5</b> Random forest</a></li>
+<li class="chapter" data-level="G.4.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-1"><i class="fa fa-check"></i><b>G.4.5</b> Random forest</a></li>
 <li class="chapter" data-level="G.4.6" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#compare-models-1"><i class="fa fa-check"></i><b>G.4.6</b> Compare models</a></li>
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
@@ -321,7 +345,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
 <li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
-<li class="chapter" data-level="J.1" data-path="solutions-ann.html"><a href="solutions-ann.html#exercise-1-5"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
 </ul>
@@ -344,136 +368,136 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="solutions-ann" class="section level1">
 <h1><span class="header-section-number">J</span> Solutions ch. 10 - Artificial neural networks</h1>
 <p>Solutions to exercises of chapter <a href="ann.html#ann">11</a>.</p>
-<div id="exercise-1-5" class="section level2">
+<div id="exercise-1" class="section level2">
 <h2><span class="header-section-number">J.1</span> Exercise 1</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;neuralnet&quot;</span>)
- 
-<span class="co">#To create a neural network to perform square root</span>
-
-<span class="co">#Generate 50 random numbers uniformly distributed between 0 and 100</span>
-<span class="co">#And store them as a dataframe</span>
-traininginput &lt;-<span class="st">  </span><span class="kw">as.data.frame</span>(<span class="kw">runif</span>(<span class="dv">50</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">100</span>))
-trainingoutput &lt;-<span class="st"> </span><span class="kw">sqrt</span>(traininginput)
- 
-<span class="co">#Column bind the data into one variable</span>
-trainingdata &lt;-<span class="st"> </span><span class="kw">cbind</span>(traininginput,trainingoutput)
-<span class="kw">colnames</span>(trainingdata) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Input&quot;</span>,<span class="st">&quot;Output&quot;</span>)
- 
-<span class="co">#Train the neural network</span>
-<span class="co">#Will have 10 hidden layers</span>
-<span class="co">#Threshold is a numeric value specifying the threshold for the partial</span>
-<span class="co">#derivatives of the error function as stopping criteria.</span>
-net.sqrt &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Output~Input,trainingdata, <span class="dt">hidden=</span><span class="dv">10</span>, <span class="dt">threshold=</span><span class="fl">0.01</span>)
-<span class="kw">print</span>(net.sqrt)</code></pre></div>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb888-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;neuralnet&quot;</span>)</a>
+<a class="sourceLine" id="cb888-2" data-line-number="2"> </a>
+<a class="sourceLine" id="cb888-3" data-line-number="3"><span class="co">#To create a neural network to perform square root</span></a>
+<a class="sourceLine" id="cb888-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb888-5" data-line-number="5"><span class="co">#Generate 50 random numbers uniformly distributed between 0 and 100</span></a>
+<a class="sourceLine" id="cb888-6" data-line-number="6"><span class="co">#And store them as a dataframe</span></a>
+<a class="sourceLine" id="cb888-7" data-line-number="7">traininginput &lt;-<span class="st">  </span><span class="kw">as.data.frame</span>(<span class="kw">runif</span>(<span class="dv">50</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb888-8" data-line-number="8">trainingoutput &lt;-<span class="st"> </span><span class="kw">sqrt</span>(traininginput)</a>
+<a class="sourceLine" id="cb888-9" data-line-number="9"> </a>
+<a class="sourceLine" id="cb888-10" data-line-number="10"><span class="co">#Column bind the data into one variable</span></a>
+<a class="sourceLine" id="cb888-11" data-line-number="11">trainingdata &lt;-<span class="st"> </span><span class="kw">cbind</span>(traininginput,trainingoutput)</a>
+<a class="sourceLine" id="cb888-12" data-line-number="12"><span class="kw">colnames</span>(trainingdata) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Input&quot;</span>,<span class="st">&quot;Output&quot;</span>)</a>
+<a class="sourceLine" id="cb888-13" data-line-number="13"> </a>
+<a class="sourceLine" id="cb888-14" data-line-number="14"><span class="co">#Train the neural network</span></a>
+<a class="sourceLine" id="cb888-15" data-line-number="15"><span class="co">#Will have 10 hidden layers</span></a>
+<a class="sourceLine" id="cb888-16" data-line-number="16"><span class="co">#Threshold is a numeric value specifying the threshold for the partial</span></a>
+<a class="sourceLine" id="cb888-17" data-line-number="17"><span class="co">#derivatives of the error function as stopping criteria.</span></a>
+<a class="sourceLine" id="cb888-18" data-line-number="18">net.sqrt &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Output<span class="op">~</span>Input,trainingdata, <span class="dt">hidden=</span><span class="dv">10</span>, <span class="dt">threshold=</span><span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb888-19" data-line-number="19"><span class="kw">print</span>(net.sqrt)</a></code></pre></div>
 <pre><code>## $call
 ## neuralnet(formula = Output ~ Input, data = trainingdata, hidden = 10, 
 ##     threshold = 0.01)
 ## 
 ## $response
-##       Output
-## 1  9.5340609
-## 2  5.8396888
-## 3  6.9523507
-## 4  5.0866477
-## 5  4.6919764
-## 6  9.9754331
-## 7  1.3729024
-## 8  6.8833931
-## 9  5.2280722
-## 10 6.3547088
-## 11 8.0032599
-## 12 9.9600790
-## 13 7.4224728
-## 14 3.5487232
-## 15 7.5502702
-## 16 4.4415838
-## 17 8.4394389
-## 18 3.3531717
-## 19 9.4088058
-## 20 7.3255746
-## 21 7.2497071
-## 22 9.2618109
-## 23 9.0086797
-## 24 9.3170365
-## 25 9.8022396
-## 26 4.7347086
-## 27 6.5580180
-## 28 9.8727293
-## 29 8.1649343
-## 30 6.4349071
-## 31 5.8543206
-## 32 9.8936051
-## 33 7.8403184
-## 34 9.7780486
-## 35 6.6649969
-## 36 7.4976857
-## 37 9.7328255
-## 38 9.1191764
-## 39 7.5384569
-## 40 4.5616408
-## 41 8.3645001
-## 42 5.5977195
-## 43 5.6478698
-## 44 7.2861556
-## 45 8.8636499
-## 46 9.3294635
-## 47 3.9342054
-## 48 8.5040004
-## 49 0.7952237
-## 50 1.4093643
+##      Output
+## 1  7.999302
+## 2  7.679743
+## 3  5.712257
+## 4  8.450774
+## 5  2.704332
+## 6  7.469555
+## 7  9.382828
+## 8  4.640093
+## 9  6.514652
+## 10 4.756397
+## 11 5.387100
+## 12 7.773787
+## 13 4.007812
+## 14 5.616837
+## 15 7.431411
+## 16 5.102096
+## 17 9.942605
+## 18 8.135916
+## 19 1.615092
+## 20 7.752434
+## 21 8.463426
+## 22 5.457865
+## 23 5.027473
+## 24 9.574040
+## 25 4.703425
+## 26 9.330075
+## 27 4.111931
+## 28 9.397304
+## 29 6.278908
+## 30 2.992013
+## 31 4.155768
+## 32 1.039876
+## 33 9.962122
+## 34 1.091506
+## 35 7.157701
+## 36 6.349765
+## 37 9.028152
+## 38 9.695076
+## 39 9.413394
+## 40 3.302956
+## 41 9.172890
+## 42 6.557068
+## 43 3.183634
+## 44 6.250623
+## 45 9.740172
+## 46 4.743667
+## 47 6.008217
+## 48 6.674838
+## 49 7.617343
+## 50 9.571043
 ## 
 ## $covariate
-##                 
-##  [1,] 90.8983165
-##  [2,] 34.1019648
-##  [3,] 48.3351802
-##  [4,] 25.8739847
-##  [5,] 22.0146428
-##  [6,] 99.5092658
-##  [7,]  1.8848611
-##  [8,] 47.3811001
-##  [9,] 27.3327393
-## [10,] 40.3823233
-## [11,] 64.0521691
-## [12,] 99.2031735
-## [13,] 55.0931025
-## [14,] 12.5934365
-## [15,] 57.0065800
-## [16,] 19.7276665
-## [17,] 71.2241285
-## [18,] 11.2437606
-## [19,] 88.5256258
-## [20,] 53.6640426
-## [21,] 52.5582524
-## [22,] 85.7811411
-## [23,] 81.1563105
-## [24,] 86.8071683
-## [25,] 96.0839008
-## [26,] 22.4174657
-## [27,] 43.0076000
-## [28,] 97.4707840
-## [29,] 66.6661528
-## [30,] 41.4080288
-## [31,] 34.2730694
-## [32,] 97.8834222
-## [33,] 61.4705922
-## [34,] 95.6102347
-## [35,] 44.4221835
-## [36,] 56.2152911
-## [37,] 94.7278916
-## [38,] 83.1593788
-## [39,] 56.8283319
-## [40,] 20.8085671
-## [41,] 69.9648624
-## [42,] 31.3344634
-## [43,] 31.8984328
-## [44,] 53.0880637
-## [45,] 78.5642889
-## [46,] 87.0388886
-## [47,] 15.4779724
-## [48,] 72.3180223
-## [49,]  0.6323807
-## [50,]  1.9863079
+##                
+##  [1,] 63.988838
+##  [2,] 58.978448
+##  [3,] 32.629886
+##  [4,] 71.415581
+##  [5,]  7.313410
+##  [6,] 55.794259
+##  [7,] 88.037453
+##  [8,] 21.530465
+##  [9,] 42.440693
+## [10,] 22.623308
+## [11,] 29.020847
+## [12,] 60.431758
+## [13,] 16.062554
+## [14,] 31.548857
+## [15,] 55.225866
+## [16,] 26.031386
+## [17,] 98.855394
+## [18,] 66.193129
+## [19,]  2.608523
+## [20,] 60.100227
+## [21,] 71.629574
+## [22,] 29.788293
+## [23,] 25.275488
+## [24,] 91.662240
+## [25,] 22.122205
+## [26,] 87.050299
+## [27,] 16.907973
+## [28,] 88.309323
+## [29,] 39.424681
+## [30,]  8.952143
+## [31,] 17.270406
+## [32,]  1.081342
+## [33,] 99.243870
+## [34,]  1.191386
+## [35,] 51.232684
+## [36,] 40.319516
+## [37,] 81.507535
+## [38,] 93.994495
+## [39,] 88.611982
+## [40,] 10.909516
+## [41,] 84.141912
+## [42,] 42.995138
+## [43,] 10.135522
+## [44,] 39.070291
+## [45,] 94.870954
+## [46,] 22.502376
+## [47,] 36.098670
+## [48,] 44.553463
+## [49,] 58.023917
+## [50,] 91.604870
 ## 
 ## $model.list
 ## $model.list$response
@@ -488,7 +512,8 @@ net.sqrt &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Output~
 ## {
 ##     1/2 * (y - x)^2
 ## }
-## &lt;environment: 0x7fdd429f3d20&gt;
+## &lt;bytecode: 0x558e4ff511b8&gt;
+## &lt;environment: 0x558e4ff53928&gt;
 ## attr(,&quot;type&quot;)
 ## [1] &quot;sse&quot;
 ## 
@@ -497,7 +522,8 @@ net.sqrt &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Output~
 ## {
 ##     1/(1 + exp(-x))
 ## }
-## &lt;environment: 0x7fdd429f0f18&gt;
+## &lt;bytecode: 0x558e4ff4c888&gt;
+## &lt;environment: 0x558e4ff4fd88&gt;
 ## attr(,&quot;type&quot;)
 ## [1] &quot;logistic&quot;
 ## 
@@ -505,301 +531,301 @@ net.sqrt &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Output~
 ## [1] TRUE
 ## 
 ## $data
-##         Input    Output
-## 1  90.8983165 9.5340609
-## 2  34.1019648 5.8396888
-## 3  48.3351802 6.9523507
-## 4  25.8739847 5.0866477
-## 5  22.0146428 4.6919764
-## 6  99.5092658 9.9754331
-## 7   1.8848611 1.3729024
-## 8  47.3811001 6.8833931
-## 9  27.3327393 5.2280722
-## 10 40.3823233 6.3547088
-## 11 64.0521691 8.0032599
-## 12 99.2031735 9.9600790
-## 13 55.0931025 7.4224728
-## 14 12.5934365 3.5487232
-## 15 57.0065800 7.5502702
-## 16 19.7276665 4.4415838
-## 17 71.2241285 8.4394389
-## 18 11.2437606 3.3531717
-## 19 88.5256258 9.4088058
-## 20 53.6640426 7.3255746
-## 21 52.5582524 7.2497071
-## 22 85.7811411 9.2618109
-## 23 81.1563105 9.0086797
-## 24 86.8071683 9.3170365
-## 25 96.0839008 9.8022396
-## 26 22.4174657 4.7347086
-## 27 43.0076000 6.5580180
-## 28 97.4707840 9.8727293
-## 29 66.6661528 8.1649343
-## 30 41.4080288 6.4349071
-## 31 34.2730694 5.8543206
-## 32 97.8834222 9.8936051
-## 33 61.4705922 7.8403184
-## 34 95.6102347 9.7780486
-## 35 44.4221835 6.6649969
-## 36 56.2152911 7.4976857
-## 37 94.7278916 9.7328255
-## 38 83.1593788 9.1191764
-## 39 56.8283319 7.5384569
-## 40 20.8085671 4.5616408
-## 41 69.9648624 8.3645001
-## 42 31.3344634 5.5977195
-## 43 31.8984328 5.6478698
-## 44 53.0880637 7.2861556
-## 45 78.5642889 8.8636499
-## 46 87.0388886 9.3294635
-## 47 15.4779724 3.9342054
-## 48 72.3180223 8.5040004
-## 49  0.6323807 0.7952237
-## 50  1.9863079 1.4093643
+##        Input   Output
+## 1  63.988838 7.999302
+## 2  58.978448 7.679743
+## 3  32.629886 5.712257
+## 4  71.415581 8.450774
+## 5   7.313410 2.704332
+## 6  55.794259 7.469555
+## 7  88.037453 9.382828
+## 8  21.530465 4.640093
+## 9  42.440693 6.514652
+## 10 22.623308 4.756397
+## 11 29.020847 5.387100
+## 12 60.431758 7.773787
+## 13 16.062554 4.007812
+## 14 31.548857 5.616837
+## 15 55.225866 7.431411
+## 16 26.031386 5.102096
+## 17 98.855394 9.942605
+## 18 66.193129 8.135916
+## 19  2.608523 1.615092
+## 20 60.100227 7.752434
+## 21 71.629574 8.463426
+## 22 29.788293 5.457865
+## 23 25.275488 5.027473
+## 24 91.662240 9.574040
+## 25 22.122205 4.703425
+## 26 87.050299 9.330075
+## 27 16.907973 4.111931
+## 28 88.309323 9.397304
+## 29 39.424681 6.278908
+## 30  8.952143 2.992013
+## 31 17.270406 4.155768
+## 32  1.081342 1.039876
+## 33 99.243870 9.962122
+## 34  1.191386 1.091506
+## 35 51.232684 7.157701
+## 36 40.319516 6.349765
+## 37 81.507535 9.028152
+## 38 93.994495 9.695076
+## 39 88.611982 9.413394
+## 40 10.909516 3.302956
+## 41 84.141912 9.172890
+## 42 42.995138 6.557068
+## 43 10.135522 3.183634
+## 44 39.070291 6.250623
+## 45 94.870954 9.740172
+## 46 22.502376 4.743667
+## 47 36.098670 6.008217
+## 48 44.553463 6.674838
+## 49 58.023917 7.617343
+## 50 91.604870 9.571043
 ## 
 ## $exclude
 ## NULL
 ## 
 ## $net.result
 ## $net.result[[1]]
-##            [,1]
-##  [1,] 9.5414161
-##  [2,] 5.8504931
-##  [3,] 6.9464124
-##  [4,] 5.0925064
-##  [5,] 4.6866501
-##  [6,] 9.9571944
-##  [7,] 1.3679696
-##  [8,] 6.8782614
-##  [9,] 5.2367726
-## [10,] 6.3580504
-## [11,] 8.0001510
-## [12,] 9.9431561
-## [13,] 7.4141537
-## [14,] 3.5506549
-## [15,] 7.5423469
-## [16,] 4.4290361
-## [17,] 8.4442897
-## [18,] 3.3713784
-## [19,] 9.4194902
-## [20,] 7.3172605
-## [21,] 7.2415795
-## [22,] 9.2746823
-## [23,] 9.0218613
-## [24,] 9.3292852
-## [25,] 9.7969379
-## [26,] 4.7307063
-## [27,] 6.5577946
-## [28,] 9.8626559
-## [29,] 8.1645647
-## [30,] 6.4368305
-## [31,] 5.8649929
-## [32,] 9.8819912
-## [33,] 7.8349205
-## [34,] 9.7742362
-## [35,] 6.6629992
-## [36,] 7.4895444
-## [37,] 9.7316012
-## [38,] 9.1326854
-## [39,] 7.5304779
-## [40,] 4.5523683
-## [41,] 8.3678994
-## [42,] 5.6096045
-## [43,] 5.6597168
-## [44,] 7.2779186
-## [45,] 8.8755437
-## [46,] 9.3415402
-## [47,] 3.9186105
-## [48,] 8.5100883
-## [49,] 0.7971889
-## [50,] 1.4092032
+##           [,1]
+##  [1,] 7.995789
+##  [2,] 7.674736
+##  [3,] 5.717007
+##  [4,] 8.451986
+##  [5,] 2.696557
+##  [6,] 7.464572
+##  [7,] 9.389452
+##  [8,] 4.636127
+##  [9,] 6.516467
+## [10,] 4.753220
+## [11,] 5.389975
+## [12,] 7.769028
+## [13,] 4.005833
+## [14,] 5.621219
+## [15,] 7.426514
+## [16,] 5.102246
+## [17,] 9.929306
+## [18,] 8.133570
+## [19,] 1.613746
+## [20,] 7.747604
+## [21,] 8.464797
+## [22,] 5.461289
+## [23,] 5.026849
+## [24,] 9.577121
+## [25,] 4.699857
+## [26,] 9.337225
+## [27,] 4.108820
+## [28,] 9.403753
+## [29,] 6.282515
+## [30,] 2.994833
+## [31,] 4.152269
+## [32,] 1.042267
+## [33,] 9.947520
+## [34,] 1.090505
+## [35,] 7.154074
+## [36,] 6.352889
+## [37,] 9.035538
+## [38,] 9.694342
+## [39,] 9.419631
+## [40,] 3.309331
+## [41,] 9.180678
+## [42,] 6.558515
+## [43,] 3.189577
+## [44,] 6.254407
+## [45,] 9.737655
+## [46,] 4.740392
+## [47,] 6.013047
+## [48,] 6.675228
+## [49,] 7.612261
+## [50,] 9.574202
 ## 
 ## 
 ## $weights
 ## $weights[[1]]
 ## $weights[[1]][[1]]
-##            [,1]        [,2]        [,3]        [,4]       [,5]       [,6]
-## [1,] 0.19930475 -2.19500125 -1.86590007 -0.54712456 -1.5871765 -2.0337880
-## [2,] 0.02589632  0.02898012  0.02741513  0.04382423  0.1291626  0.0282881
-##            [,7]        [,8]       [,9]      [,10]
-## [1,] 0.01708966  0.12212612 -0.6720379 0.87501697
-## [2,] 0.02791741 -0.04927867 -0.4072311 0.04250757
+##          [,1]        [,2]         [,3]        [,4]        [,5]       [,6]
+## [1,] 17.45756 -0.03480288 -0.004262535 -0.61566375 -1.18516184  0.3813828
+## [2,] 17.90798 -0.04717407  0.078630008  0.08937024  0.03177438 -0.3019641
+##            [,7]      [,8]        [,9]      [,10]
+## [1,] -2.7477476 -14.70377  0.85875024 -0.5474320
+## [2,]  0.0316136  10.96269 -0.03551829  0.0432925
 ## 
 ## $weights[[1]][[2]]
-##              [,1]
-##  [1,] -0.06638895
-##  [2,]  0.49745970
-##  [3,]  2.48276626
-##  [4,]  1.99317299
-##  [5,]  0.60182096
-##  [6,]  1.23602156
-##  [7,]  2.02628386
-##  [8,]  2.27794236
-##  [9,] -2.42722491
-## [10,] -4.74553309
-## [11,]  1.16683035
+##             [,1]
+##  [1,]  1.7874065
+##  [2,] -0.4323430
+##  [3,] -1.6307006
+##  [4,]  0.8227102
+##  [5,]  1.9256264
+##  [6,]  2.2012290
+##  [7,] -1.9312278
+##  [8,]  4.5230676
+##  [9,]  0.1780150
+## [10,] -1.3651657
+## [11,]  1.1688972
 ## 
 ## 
 ## 
 ## $generalized.weights
 ## $generalized.weights[[1]]
 ##                [,1]
-##  [1,] -0.0006225524
-##  [2,] -0.0029906552
-##  [3,] -0.0017220146
-##  [4,] -0.0048248065
-##  [5,] -0.0063585388
-##  [6,] -0.0005132053
-##  [7,] -0.8148025471
-##  [8,] -0.0017742507
-##  [9,] -0.0043841021
-## [10,] -0.0022688931
-## [11,] -0.0011330354
-## [12,] -0.0005167866
-## [13,] -0.0014183653
-## [14,] -0.0144470247
-## [15,] -0.0013485895
-## [16,] -0.0075974778
-## [17,] -0.0009606727
-## [18,] -0.0168966159
-## [19,] -0.0006560831
-## [20,] -0.0014744810
-## [21,] -0.0015205398
-## [22,] -0.0006969315
-## [23,] -0.0007713192
-## [24,] -0.0006813906
-## [25,] -0.0005545197
-## [26,] -0.0061688858
-## [27,] -0.0020561448
-## [28,] -0.0005374608
-## [29,] -0.0010657777
-## [30,] -0.0021810572
-## [31,] -0.0029655600
-## [32,] -0.0005324732
-## [33,] -0.0012055390
-## [34,] -0.0005604519
-## [35,] -0.0019563513
-## [36,] -0.0013767473
-## [37,] -0.0005716492
-## [38,] -0.0007381922
-## [39,] -0.0013548504
-## [40,] -0.0069754765
-## [41,] -0.0009883343
-## [42,] -0.0034553399
-## [43,] -0.0033508231
-## [44,] -0.0014981693
-## [45,] -0.0008164429
-## [46,] -0.0006779261
-## [47,] -0.0108914077
-## [48,] -0.0009374116
-## [49,]  3.0931194454
-## [50,] -0.6984658826
+##  [1,] -0.0011257778
+##  [2,] -0.0012732022
+##  [3,] -0.0032555481
+##  [4,] -0.0009511381
+##  [5,] -0.0423228908
+##  [6,] -0.0013844653
+##  [7,] -0.0006686095
+##  [8,] -0.0064281615
+##  [9,] -0.0021167831
+## [10,] -0.0059387733
+## [11,] -0.0039548171
+## [12,] -0.0012273349
+## [13,] -0.0102350120
+## [14,] -0.0034429361
+## [15,] -0.0014060913
+## [16,] -0.0047305801
+## [17,] -0.0005300659
+## [18,] -0.0010693187
+## [19,] -0.2634314103
+## [20,] -0.0012375542
+## [21,] -0.0009466931
+## [22,] -0.0037873662
+## [23,] -0.0049639263
+## [24,] -0.0006192004
+## [25,] -0.0061557610
+## [26,] -0.0006826564
+## [27,] -0.0094291346
+## [28,] -0.0006647871
+## [29,] -0.0023840619
+## [30,] -0.0286649468
+## [31,] -0.0091164111
+## [32,] -8.2966308600
+## [33,] -0.0005255566
+## [34,] -5.3683211584
+## [35,] -0.0015763735
+## [36,] -0.0022988521
+## [37,] -0.0007669083
+## [38,] -0.0005890764
+## [39,] -0.0006605549
+## [40,] -0.0197956501
+## [41,] -0.0007256621
+## [42,] -0.0020733334
+## [43,] -0.0226714180
+## [44,] -0.0024193360
+## [45,] -0.0005780701
+## [46,] -0.0059900489
+## [47,] -0.0027541573
+## [48,] -0.0019593005
+## [49,] -0.0013049129
+## [50,] -0.0006199572
 ## 
 ## 
 ## $startweights
 ## $startweights[[1]]
 ## $startweights[[1]][[1]]
-##           [,1]       [,2]       [,3]       [,4]        [,5]       [,6]
-## [1,] 0.5741198 -0.6040810 -1.0901566 -0.6207338 -0.27270975 -0.8915016
-## [2,] 0.6669993  0.4015395  0.4736261 -0.6662956  0.01870243  0.7730233
-##            [,7]        [,8]       [,9]     [,10]
-## [1,]  0.1150770 -0.01169126  0.8449783 2.0676754
-## [2,] -0.2812852  0.33963734 -0.2473846 0.7071875
+##             [,1]       [,2]      [,3]      [,4]       [,5]       [,6]
+## [1,] -0.08895678 -0.6657007 0.7027419 0.6895249 0.06907491 -0.7379227
+## [2,]  0.92457554 -0.3754092 0.1740861 1.5494126 1.19983016 -1.6065634
+##            [,7]         [,8]        [,9]       [,10]
+## [1,] -0.8710877 -0.008041893 -0.04088576 -0.56192741
+## [2,]  1.4674249  0.761402442 -0.92774640  0.08642731
 ## 
 ## $startweights[[1]][[2]]
 ##              [,1]
-##  [1,] -1.12269362
-##  [2,] -0.51931226
-##  [3,]  0.42793375
-##  [4,]  0.26182797
-##  [5,]  0.12456886
-##  [6,] -0.08607944
-##  [7,] -0.10953767
-##  [8,]  0.94498234
-##  [9,] -1.24761141
-## [10,] -0.10420084
-## [11,]  0.02977348
+##  [1,]  0.98337360
+##  [2,] -1.23637593
+##  [3,] -0.70225856
+##  [4,] -0.15369182
+##  [5,]  1.12175441
+##  [6,]  0.24476055
+##  [7,] -0.16931536
+##  [8,]  1.41997294
+##  [9,] -0.77967743
+## [10,] -0.16934653
+## [11,]  0.02352787
 ## 
 ## 
 ## 
 ## $result.matrix
 ##                                 [,1]
-## error                   2.100157e-03
-## reached.threshold       5.554228e-03
-## steps                   2.389000e+03
-## Intercept.to.1layhid1   1.993048e-01
-## Input.to.1layhid1       2.589632e-02
-## Intercept.to.1layhid2  -2.195001e+00
-## Input.to.1layhid2       2.898012e-02
-## Intercept.to.1layhid3  -1.865900e+00
-## Input.to.1layhid3       2.741513e-02
-## Intercept.to.1layhid4  -5.471246e-01
-## Input.to.1layhid4       4.382423e-02
-## Intercept.to.1layhid5  -1.587176e+00
-## Input.to.1layhid5       1.291626e-01
-## Intercept.to.1layhid6  -2.033788e+00
-## Input.to.1layhid6       2.828810e-02
-## Intercept.to.1layhid7   1.708966e-02
-## Input.to.1layhid7       2.791741e-02
-## Intercept.to.1layhid8   1.221261e-01
-## Input.to.1layhid8      -4.927867e-02
-## Intercept.to.1layhid9  -6.720379e-01
-## Input.to.1layhid9      -4.072311e-01
-## Intercept.to.1layhid10  8.750170e-01
-## Input.to.1layhid10      4.250757e-02
-## Intercept.to.Output    -6.638895e-02
-## 1layhid1.to.Output      4.974597e-01
-## 1layhid2.to.Output      2.482766e+00
-## 1layhid3.to.Output      1.993173e+00
-## 1layhid4.to.Output      6.018210e-01
-## 1layhid5.to.Output      1.236022e+00
-## 1layhid6.to.Output      2.026284e+00
-## 1layhid7.to.Output      2.277942e+00
-## 1layhid8.to.Output     -2.427225e+00
-## 1layhid9.to.Output     -4.745533e+00
-## 1layhid10.to.Output     1.166830e+00
+## error                   6.216324e-04
+## reached.threshold       9.184971e-03
+## steps                   2.997000e+03
+## Intercept.to.1layhid1   1.745756e+01
+## Input.to.1layhid1       1.790798e+01
+## Intercept.to.1layhid2  -3.480288e-02
+## Input.to.1layhid2      -4.717407e-02
+## Intercept.to.1layhid3  -4.262535e-03
+## Input.to.1layhid3       7.863001e-02
+## Intercept.to.1layhid4  -6.156638e-01
+## Input.to.1layhid4       8.937024e-02
+## Intercept.to.1layhid5  -1.185162e+00
+## Input.to.1layhid5       3.177438e-02
+## Intercept.to.1layhid6   3.813828e-01
+## Input.to.1layhid6      -3.019641e-01
+## Intercept.to.1layhid7  -2.747748e+00
+## Input.to.1layhid7       3.161360e-02
+## Intercept.to.1layhid8  -1.470377e+01
+## Input.to.1layhid8       1.096269e+01
+## Intercept.to.1layhid9   8.587502e-01
+## Input.to.1layhid9      -3.551829e-02
+## Intercept.to.1layhid10 -5.474320e-01
+## Input.to.1layhid10      4.329250e-02
+## Intercept.to.Output     1.787406e+00
+## 1layhid1.to.Output     -4.323430e-01
+## 1layhid2.to.Output     -1.630701e+00
+## 1layhid3.to.Output      8.227102e-01
+## 1layhid4.to.Output      1.925626e+00
+## 1layhid5.to.Output      2.201229e+00
+## 1layhid6.to.Output     -1.931228e+00
+## 1layhid7.to.Output      4.523068e+00
+## 1layhid8.to.Output      1.780150e-01
+## 1layhid9.to.Output     -1.365166e+00
+## 1layhid10.to.Output     1.168897e+00
 ## 
 ## attr(,&quot;class&quot;)
 ## [1] &quot;nn&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Plot the neural network</span>
-<span class="kw">plot</span>(net.sqrt)
- 
-<span class="co">#Test the neural network on some training data</span>
-testdata &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>((<span class="dv">1</span>:<span class="dv">10</span>)^<span class="dv">2</span>) <span class="co">#Generate some squared numbers</span>
-net.results &lt;-<span class="st"> </span><span class="kw">compute</span>(net.sqrt, testdata) <span class="co">#Run them through the neural network</span>
- 
-<span class="co">#See what properties net.sqrt has</span>
-<span class="kw">ls</span>(net.results)</code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb890-1" data-line-number="1"><span class="co">#Plot the neural network</span></a>
+<a class="sourceLine" id="cb890-2" data-line-number="2"><span class="kw">plot</span>(net.sqrt)</a>
+<a class="sourceLine" id="cb890-3" data-line-number="3"> </a>
+<a class="sourceLine" id="cb890-4" data-line-number="4"><span class="co">#Test the neural network on some training data</span></a>
+<a class="sourceLine" id="cb890-5" data-line-number="5">testdata &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>((<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)<span class="op">^</span><span class="dv">2</span>) <span class="co">#Generate some squared numbers</span></a>
+<a class="sourceLine" id="cb890-6" data-line-number="6">net.results &lt;-<span class="st"> </span><span class="kw">compute</span>(net.sqrt, testdata) <span class="co">#Run them through the neural network</span></a>
+<a class="sourceLine" id="cb890-7" data-line-number="7"> </a>
+<a class="sourceLine" id="cb890-8" data-line-number="8"><span class="co">#See what properties net.sqrt has</span></a>
+<a class="sourceLine" id="cb890-9" data-line-number="9"><span class="kw">ls</span>(net.results)</a></code></pre></div>
 <pre><code>## [1] &quot;net.result&quot; &quot;neurons&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#see the results</span>
-<span class="kw">print</span>(net.results$net.result)</code></pre></div>
-<pre><code>##            [,1]
-##  [1,] 0.9763998
-##  [2,] 2.0845625
-##  [3,] 3.0555230
-##  [4,] 3.9833627
-##  [5,] 5.0037321
-##  [6,] 6.0090234
-##  [7,] 6.9935649
-##  [8,] 7.9968402
-##  [9,] 9.0131297
-## [10,] 9.9795845</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Display a better version of the results</span>
-cleanoutput &lt;-<span class="st"> </span><span class="kw">cbind</span>(testdata,<span class="kw">sqrt</span>(testdata),
-                         <span class="kw">as.data.frame</span>(net.results$net.result))
-<span class="kw">colnames</span>(cleanoutput) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Input&quot;</span>,<span class="st">&quot;Expected Output&quot;</span>,<span class="st">&quot;Neural Net Output&quot;</span>)
-<span class="kw">print</span>(cleanoutput)</code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb892-1" data-line-number="1"><span class="co">#see the results</span></a>
+<a class="sourceLine" id="cb892-2" data-line-number="2"><span class="kw">print</span>(net.results<span class="op">$</span>net.result)</a></code></pre></div>
+<pre><code>##           [,1]
+##  [1,] 1.015143
+##  [2,] 1.967392
+##  [3,] 3.003014
+##  [4,] 3.998117
+##  [5,] 4.999093
+##  [6,] 6.004849
+##  [7,] 6.997524
+##  [8,] 7.996492
+##  [9,] 9.007221
+## [10,] 9.982728</code></pre>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb894-1" data-line-number="1"><span class="co">#Display a better version of the results</span></a>
+<a class="sourceLine" id="cb894-2" data-line-number="2">cleanoutput &lt;-<span class="st"> </span><span class="kw">cbind</span>(testdata,<span class="kw">sqrt</span>(testdata),</a>
+<a class="sourceLine" id="cb894-3" data-line-number="3">                         <span class="kw">as.data.frame</span>(net.results<span class="op">$</span>net.result))</a>
+<a class="sourceLine" id="cb894-4" data-line-number="4"><span class="kw">colnames</span>(cleanoutput) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Input&quot;</span>,<span class="st">&quot;Expected Output&quot;</span>,<span class="st">&quot;Neural Net Output&quot;</span>)</a>
+<a class="sourceLine" id="cb894-5" data-line-number="5"><span class="kw">print</span>(cleanoutput)</a></code></pre></div>
 <pre><code>##    Input Expected Output Neural Net Output
-## 1      1               1         0.9763998
-## 2      4               2         2.0845625
-## 3      9               3         3.0555230
-## 4     16               4         3.9833627
-## 5     25               5         5.0037321
-## 6     36               6         6.0090234
-## 7     49               7         6.9935649
-## 8     64               8         7.9968402
-## 9     81               9         9.0131297
-## 10   100              10         9.9795845</code></pre>
+## 1      1               1          1.015143
+## 2      4               2          1.967392
+## 3      9               3          3.003014
+## 4     16               4          3.998117
+## 5     25               5          4.999093
+## 6     36               6          6.004849
+## 7     49               7          6.997524
+## 8     64               8          7.996492
+## 9     81               9          9.007221
+## 10   100              10          9.982728</code></pre>
 <p><em>Acknowledgement: this example excercise was from</em> <a href="http://gekkoquant.com/2012/05/26/neural-networks-with-r-simple-example/" class="uri">http://gekkoquant.com/2012/05/26/neural-networks-with-r-simple-example/</a></p>
 
 </div>
@@ -815,11 +841,13 @@ cleanoutput &lt;-<span class="st"> </span><span class="kw">cbind</span>(testdata
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -827,12 +855,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -844,6 +871,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -860,7 +891,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

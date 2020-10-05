@@ -264,29 +264,29 @@ nearZeroVar(morphologyTrain, saveMetrics = T)
 
 ```
 ##                             freqRatio percentUnique zeroVar   nzv
-## Area                         1.000000      92.51152   FALSE FALSE
-## Major Axis Length            1.000000     100.00000   FALSE FALSE
-## Minor Axis length            1.000000     100.00000   FALSE FALSE
-## Eccentricity                 1.000000     100.00000   FALSE FALSE
-## Mean OPL                     1.000000     100.00000   FALSE FALSE
-## Max OPL                      1.000000     100.00000   FALSE FALSE
-## Median OPL                   1.000000     100.00000   FALSE FALSE
-## Std OPL                      1.000000     100.00000   FALSE FALSE
-## Skewness                     1.000000     100.00000   FALSE FALSE
-## Kurtosis                     1.000000     100.00000   FALSE FALSE
-## Variance OPL                 1.000000     100.00000   FALSE FALSE
-## IQR OPL                      1.000000     100.00000   FALSE FALSE
-## Optical volume               1.000000     100.00000   FALSE FALSE
-## Centroid vs. center of mass  1.000000     100.00000   FALSE FALSE
-## Elongation                   1.000000     100.00000   FALSE FALSE
-## Upper quartile OPL           1.000000     100.00000   FALSE FALSE
-## Perimeter                    1.166667      69.12442   FALSE FALSE
-## Equivalent diameter          1.000000      92.51152   FALSE FALSE
-## Max gradient                 1.000000     100.00000   FALSE FALSE
-## Mean gradient                1.000000     100.00000   FALSE FALSE
-## Upper quartile gradient      1.000000     100.00000   FALSE FALSE
-## Min symmetry                 1.000000     100.00000   FALSE FALSE
-## Mean symmetry                1.000000     100.00000   FALSE FALSE
+## Area                                1      91.82028   FALSE FALSE
+## Major Axis Length                   1     100.00000   FALSE FALSE
+## Minor Axis length                   1     100.00000   FALSE FALSE
+## Eccentricity                        1     100.00000   FALSE FALSE
+## Mean OPL                            1     100.00000   FALSE FALSE
+## Max OPL                             1     100.00000   FALSE FALSE
+## Median OPL                          1     100.00000   FALSE FALSE
+## Std OPL                             1     100.00000   FALSE FALSE
+## Skewness                            1     100.00000   FALSE FALSE
+## Kurtosis                            1     100.00000   FALSE FALSE
+## Variance OPL                        1     100.00000   FALSE FALSE
+## IQR OPL                             1     100.00000   FALSE FALSE
+## Optical volume                      1     100.00000   FALSE FALSE
+## Centroid vs. center of mass         1     100.00000   FALSE FALSE
+## Elongation                          1     100.00000   FALSE FALSE
+## Upper quartile OPL                  1     100.00000   FALSE FALSE
+## Perimeter                           1      69.23963   FALSE FALSE
+## Equivalent diameter                 1      91.82028   FALSE FALSE
+## Max gradient                        1     100.00000   FALSE FALSE
+## Mean gradient                       1     100.00000   FALSE FALSE
+## Upper quartile gradient             1     100.00000   FALSE FALSE
+## Min symmetry                        1     100.00000   FALSE FALSE
+## Mean symmetry                       1     100.00000   FALSE FALSE
 ```
 
 There are no zero variance or near zero variance predictors in our data set.
@@ -324,7 +324,7 @@ length(highCorr)
 ```
 
 ```
-## [1] 16
+## [1] 15
 ```
 
 ```r
@@ -332,14 +332,14 @@ names(morphologyTrain)[highCorr]
 ```
 
 ```
-##  [1] "Max OPL"                 "Area"                   
-##  [3] "Minor Axis length"       "Std OPL"                
-##  [5] "Equivalent diameter"     "Variance OPL"           
-##  [7] "Mean gradient"           "Skewness"               
-##  [9] "IQR OPL"                 "Optical volume"         
-## [11] "Upper quartile gradient" "Median OPL"             
-## [13] "Mean symmetry"           "Min symmetry"           
-## [15] "Major Axis Length"       "Elongation"
+##  [1] "Max OPL"                 "Std OPL"                
+##  [3] "Area"                    "Minor Axis length"      
+##  [5] "Mean gradient"           "Equivalent diameter"    
+##  [7] "Variance OPL"            "Skewness"               
+##  [9] "IQR OPL"                 "Upper quartile gradient"
+## [11] "Median OPL"              "Mean symmetry"          
+## [13] "Min symmetry"            "Major Axis Length"      
+## [15] "Elongation"
 ```
 
 
@@ -433,23 +433,23 @@ knnFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 695, 694, 694, 694, 695, 694, ... 
+## Summary of sample sizes: 695, 694, 695, 694, 694, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   ROC        Sens       Spec     
-##    5  0.9956347  0.9726777  0.9937931
-##    7  0.9966555  0.9692174  0.9931034
-##    9  0.9967199  0.9692174  0.9931034
-##   11  0.9965857  0.9702519  0.9924138
-##   13  0.9963379  0.9692174  0.9910345
-##   15  0.9964685  0.9678351  0.9875862
-##   17  0.9966529  0.9664498  0.9882759
-##   19  0.9967286  0.9661109  0.9868966
-##   21  0.9970731  0.9650675  0.9868966
-##   23  0.9969775  0.9654153  0.9875862
+##    5  0.9962939  0.9716012  0.9979310
+##    7  0.9963053  0.9688396  0.9986207
+##    9  0.9959917  0.9653793  0.9965517
+##   11  0.9958366  0.9646897  0.9951724
+##   13  0.9958165  0.9646957  0.9965517
+##   15  0.9961136  0.9640030  0.9958621
+##   17  0.9963648  0.9640060  0.9944828
+##   19  0.9961856  0.9619280  0.9958621
+##   21  0.9960810  0.9615832  0.9944828
+##   23  0.9959707  0.9608966  0.9951724
 ## 
 ## ROC was used to select the optimal model using the largest value.
-## The final value used for the model was k = 21.
+## The final value used for the model was k = 17.
 ```
 
 ```r
@@ -473,8 +473,8 @@ svmFit <- train(morphologyTrain, infectionStatusTrain,
 
 ```
 ## Warning in train.default(morphologyTrain, infectionStatusTrain, method =
-## svmRadialE1071, : The metric "Accuracy" was not in the result set. ROC will
-## be used instead.
+## svmRadialE1071, : The metric "Accuracy" was not in the result set. ROC will be
+## used instead.
 ```
 
 ```r
@@ -490,23 +490,23 @@ svmFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 694, 694, 695, 694, 695, 694, ... 
+## Summary of sample sizes: 694, 694, 695, 694, 695, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cost    ROC        Sens       Spec     
-##     0.25  0.9977719  0.9764948  0.9848276
-##     0.50  0.9979155  0.9806417  0.9931034
-##     1.00  0.9980584  0.9813343  0.9917241
-##     2.00  0.9983201  0.9820270  0.9931034
-##     4.00  0.9983314  0.9813343  0.9931034
-##     8.00  0.9981986  0.9827226  0.9931034
-##    16.00  0.9982936  0.9847886  0.9931034
-##    32.00  0.9980604  0.9851334  0.9889655
-##    64.00  0.9974875  0.9837481  0.9882759
-##   128.00  0.9970936  0.9823688  0.9841379
+##     0.25  0.9973153  0.9733673  0.9917241
+##     0.50  0.9975655  0.9737121  0.9972414
+##     1.00  0.9977089  0.9754393  0.9993103
+##     2.00  0.9979474  0.9785607  0.9993103
+##     4.00  0.9978997  0.9813253  0.9972414
+##     8.00  0.9978157  0.9833943  0.9972414
+##    16.00  0.9975119  0.9858111  0.9965517
+##    32.00  0.9975000  0.9875412  0.9958621
+##    64.00  0.9973454  0.9892714  0.9944828
+##   128.00  0.9964930  0.9892684  0.9910345
 ## 
 ## ROC was used to select the optimal model using the largest value.
-## The final value used for the model was cost = 4.
+## The final value used for the model was cost = 2.
 ```
 
 ```r
@@ -530,8 +530,8 @@ dtFit <- train(morphologyTrain, infectionStatusTrain,
 
 ```
 ## Warning in train.default(morphologyTrain, infectionStatusTrain, method =
-## "rpart", : The metric "Accuracy" was not in the result set. ROC will be
-## used instead.
+## "rpart", : The metric "Accuracy" was not in the result set. ROC will be used
+## instead.
 ```
 
 ```r
@@ -547,20 +547,20 @@ dtFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 694, 695, 694, 695, 694, 694, ... 
+## Summary of sample sizes: 694, 694, 694, 695, 695, 694, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   cp          ROC        Sens       Spec     
-##   0.00000000  0.9752903  0.9754423  0.9634483
-##   0.09885057  0.9523538  0.9619490  0.9427586
-##   0.19770115  0.9523538  0.9619490  0.9427586
-##   0.29655172  0.9523538  0.9619490  0.9427586
-##   0.39540230  0.9523538  0.9619490  0.9427586
-##   0.49425287  0.9523538  0.9619490  0.9427586
-##   0.59310345  0.9523538  0.9619490  0.9427586
-##   0.69195402  0.9523538  0.9619490  0.9427586
-##   0.79080460  0.9523538  0.9619490  0.9427586
-##   0.88965517  0.8015262  0.9733973  0.6296552
+##   cp         ROC        Sens       Spec     
+##   0.0000000  0.9824943  0.9771634  0.9779310
+##   0.1003831  0.9652759  0.9574483  0.9731034
+##   0.2007663  0.9652759  0.9574483  0.9731034
+##   0.3011494  0.9652759  0.9574483  0.9731034
+##   0.4015326  0.9652759  0.9574483  0.9731034
+##   0.5019157  0.9652759  0.9574483  0.9731034
+##   0.6022989  0.9652759  0.9574483  0.9731034
+##   0.7026820  0.9652759  0.9574483  0.9731034
+##   0.8030651  0.9652759  0.9574483  0.9731034
+##   0.9034483  0.7758156  0.9723208  0.5793103
 ## 
 ## ROC was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.
@@ -574,13 +574,6 @@ plot(dtFit)
 
 ```r
 prp(dtFit$finalModel)
-```
-
-```
-## Warning: Bad 'data' field in model 'call'.
-## To silence this warning:
-##     Call prp with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.
 ```
 
 <img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-16-2.png" width="672" />
@@ -599,9 +592,8 @@ rfFit <- train(morphologyTrain, infectionStatusTrain,
 ```
 
 ```
-## Warning in train.default(morphologyTrain, infectionStatusTrain, method =
-## "rf", : The metric "Accuracy" was not in the result set. ROC will be used
-## instead.
+## Warning in train.default(morphologyTrain, infectionStatusTrain, method = "rf", :
+## The metric "Accuracy" was not in the result set. ROC will be used instead.
 ```
 
 ```r
@@ -617,20 +609,20 @@ rfFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 694, 694, 695, 694, 695, 694, ... 
+## Summary of sample sizes: 694, 694, 695, 694, 695, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  ROC        Sens       Spec     
-##    2    0.9981532  0.9868666  0.9813793
-##    4    0.9979057  0.9879010  0.9868966
-##    6    0.9977327  0.9885937  0.9855172
-##    9    0.9973191  0.9892834  0.9841379
-##   11    0.9973216  0.9892834  0.9820690
-##   13    0.9967486  0.9889355  0.9813793
-##   16    0.9968264  0.9882399  0.9793103
-##   18    0.9964275  0.9878921  0.9772414
-##   20    0.9959667  0.9875442  0.9772414
-##   23    0.9941175  0.9868516  0.9765517
+##    2    0.9979473  0.9871994  0.9834483
+##    4    0.9976783  0.9871994  0.9827586
+##    6    0.9973155  0.9865067  0.9882759
+##    9    0.9973173  0.9858141  0.9868966
+##   11    0.9967869  0.9851154  0.9862069
+##   13    0.9968942  0.9840780  0.9848276
+##   16    0.9965961  0.9840750  0.9820690
+##   18    0.9964142  0.9830435  0.9793103
+##   20    0.9960719  0.9820030  0.9806897
+##   23    0.9940873  0.9813133  0.9806897
 ## 
 ## ROC was used to select the optimal model using the largest value.
 ## The final value used for the model was mtry = 2.
@@ -684,25 +676,25 @@ summary(resamps)
 ## Number of resamples: 25 
 ## 
 ## ROC 
-##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
-## knn          0.9926  0.9953 0.9981 0.9971  0.9986 0.9999    0
-## svm          0.9933  0.9966 0.9996 0.9983  1.0000 1.0000    0
-## decisionTree 0.9358  0.9717 0.9779 0.9753  0.9826 0.9977    0
-## randomForest 0.9939  0.9972 0.9994 0.9982  0.9997 1.0000    0
+##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## knn          0.9865817 0.9940547 0.9979760 0.9963648 0.9991082 0.9999257    0
+## svm          0.9937031 0.9965815 0.9994055 0.9979474 0.9997027 1.0000000    0
+## decisionTree 0.9656659 0.9743609 0.9818668 0.9824943 0.9906297 0.9999257    0
+## randomForest 0.9940780 0.9966558 0.9991082 0.9979473 0.9997001 1.0000000    0
 ## 
 ## Sens 
-##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA's
-## knn          0.9224  0.9565 0.9655 0.9651  0.9826    1    0
-## svm          0.9483  0.9741 0.9828 0.9813  0.9913    1    0
-## decisionTree 0.9217  0.9655 0.9741 0.9754  0.9828    1    0
-## randomForest 0.9569  0.9826 0.9913 0.9869  1.0000    1    0
+##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## knn          0.9304348 0.9568966 0.9655172 0.9640060 0.9741379 0.9913043    0
+## svm          0.9396552 0.9739130 0.9827586 0.9785607 0.9913043 1.0000000    0
+## decisionTree 0.9391304 0.9655172 0.9741379 0.9771634 0.9827586 1.0000000    0
+## randomForest 0.9565217 0.9827586 0.9913043 0.9871994 0.9913793 1.0000000    0
 ## 
 ## Spec 
-##                Min. 1st Qu. Median   Mean 3rd Qu. Max. NA's
-## knn          0.9483  0.9828 0.9828 0.9869  1.0000    1    0
-## svm          0.9828  0.9828 1.0000 0.9931  1.0000    1    0
-## decisionTree 0.8793  0.9483 0.9828 0.9634  0.9828    1    0
-## randomForest 0.9310  0.9828 0.9828 0.9814  1.0000    1    0
+##                   Min.   1st Qu.    Median      Mean 3rd Qu. Max. NA's
+## knn          0.9655172 0.9827586 1.0000000 0.9944828       1    1    0
+## svm          0.9827586 1.0000000 1.0000000 0.9993103       1    1    0
+## decisionTree 0.9482759 0.9655172 0.9827586 0.9779310       1    1    0
+## randomForest 0.9310345 0.9655172 0.9827586 0.9834483       1    1    0
 ```
 
 ```r
@@ -724,26 +716,26 @@ confusionMatrix(test_pred, infectionStatusTest)
 ## 
 ##             Reference
 ## Prediction   infected uninfected
-##   infected        242          3
-##   uninfected        4        120
+##   infected        246          2
+##   uninfected        0        121
 ##                                           
-##                Accuracy : 0.981           
-##                  95% CI : (0.9613, 0.9923)
+##                Accuracy : 0.9946          
+##                  95% CI : (0.9806, 0.9993)
 ##     No Information Rate : 0.6667          
 ##     P-Value [Acc > NIR] : <2e-16          
 ##                                           
-##                   Kappa : 0.9574          
+##                   Kappa : 0.9878          
 ##                                           
-##  Mcnemar's Test P-Value : 1               
+##  Mcnemar's Test P-Value : 0.4795          
 ##                                           
-##             Sensitivity : 0.9837          
-##             Specificity : 0.9756          
-##          Pos Pred Value : 0.9878          
-##          Neg Pred Value : 0.9677          
+##             Sensitivity : 1.0000          
+##             Specificity : 0.9837          
+##          Pos Pred Value : 0.9919          
+##          Neg Pred Value : 1.0000          
 ##              Prevalence : 0.6667          
-##          Detection Rate : 0.6558          
-##    Detection Prevalence : 0.6640          
-##       Balanced Accuracy : 0.9797          
+##          Detection Rate : 0.6667          
+##    Detection Prevalence : 0.6721          
+##       Balanced Accuracy : 0.9919          
 ##                                           
 ##        'Positive' Class : infected        
 ## 
@@ -758,12 +750,12 @@ head(svmProbs)
 
 ```
 ##               infected uninfected
-## normal_..4 0.019842960 0.98015704
-## normal_..7 0.959900420 0.04009958
-## normal_.12 0.009452970 0.99054703
-## normal_.17 0.002097783 0.99790222
-## normal_.18 0.003581587 0.99641841
-## normal_.19 0.024682569 0.97531743
+## normal_..7 0.585266476  0.4147335
+## normal_.15 0.009865544  0.9901345
+## normal_.23 0.004011000  0.9959890
+## normal_.26 0.003558421  0.9964416
+## normal_.29 0.049331293  0.9506687
+## normal_.31 0.003040713  0.9969593
 ```
 
 
@@ -784,7 +776,7 @@ auc(svmROC)
 ```
 
 ```
-## Area under the curve: 0.9977
+## Area under the curve: 0.9998
 ```
 
 
@@ -830,23 +822,23 @@ knnFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 694, 695, 693, 695, 695, 695, ... 
+## Summary of sample sizes: 695, 695, 694, 694, 694, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   Accuracy   Kappa    
-##    5  0.6806513  0.5576508
-##    7  0.6940101  0.5754335
-##    9  0.6949123  0.5762065
-##   11  0.6931076  0.5731317
-##   13  0.6940246  0.5743092
-##   15  0.6917084  0.5706892
-##   17  0.6917110  0.5704146
-##   19  0.6958385  0.5759926
-##   21  0.6956085  0.5755366
-##   23  0.6958385  0.5755180
+##    5  0.6868604  0.5665951
+##    7  0.7009287  0.5851071
+##    9  0.6990776  0.5817008
+##   11  0.6990723  0.5810318
+##   13  0.6967668  0.5777231
+##   15  0.6956239  0.5757095
+##   17  0.6939883  0.5731538
+##   19  0.6951456  0.5746427
+##   21  0.6935272  0.5723110
+##   23  0.6863847  0.5621102
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was k = 19.
+## The final value used for the model was k = 7.
 ```
 
 ```r
@@ -879,20 +871,20 @@ svmFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 693, 695, 695, 694, 695, 694, ... 
+## Summary of sample sizes: 695, 694, 694, 694, 695, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cost    Accuracy   Kappa    
-##     0.25  0.7078501  0.5940116
-##     0.50  0.7156902  0.6063755
-##     1.00  0.7195864  0.6124250
-##     2.00  0.7198083  0.6134929
-##     4.00  0.7198030  0.6136120
-##     8.00  0.7207491  0.6154010
-##    16.00  0.7138537  0.6068131
-##    32.00  0.6991156  0.5874694
-##    64.00  0.6869050  0.5717486
-##   128.00  0.6763009  0.5579433
+##     0.25  0.6965183  0.5770470
+##     0.50  0.7131020  0.6018203
+##     1.00  0.7213926  0.6141816
+##     2.00  0.7220875  0.6157211
+##     4.00  0.7292154  0.6260607
+##     8.00  0.7333785  0.6326331
+##    16.00  0.7241711  0.6206293
+##    32.00  0.7094464  0.6008159
+##    64.00  0.6972345  0.5847166
+##   128.00  0.6903300  0.5758449
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cost = 8.
@@ -928,23 +920,23 @@ dtFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 693, 695, 695, 694, 695, 694, ... 
+## Summary of sample sizes: 695, 694, 694, 694, 695, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cp           Accuracy   Kappa    
-##   0.005190311  0.6850209  0.5667306
-##   0.006920415  0.6864227  0.5691875
-##   0.007785467  0.6871071  0.5706621
-##   0.010380623  0.6799831  0.5607537
-##   0.012110727  0.6825278  0.5637137
-##   0.013840830  0.6815977  0.5624175
-##   0.015570934  0.6811498  0.5609683
-##   0.034602076  0.6820522  0.5613656
-##   0.124567474  0.6184755  0.4610759
-##   0.399653979  0.3964157  0.1019836
+##   0.004498270  0.6882662  0.5716210
+##   0.005190311  0.6905585  0.5747141
+##   0.006920415  0.6988530  0.5860335
+##   0.012110727  0.6960917  0.5831319
+##   0.013840830  0.6972398  0.5845125
+##   0.015570934  0.6949355  0.5809362
+##   0.025951557  0.6898488  0.5724806
+##   0.031141869  0.6820128  0.5595580
+##   0.119377163  0.6145431  0.4549600
+##   0.399653979  0.4920449  0.2576226
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was cp = 0.007785467.
+## The final value used for the model was cp = 0.006920415.
 ```
 
 ```r
@@ -955,13 +947,6 @@ plot(dtFit)
 
 ```r
 prp(dtFit$finalModel)
-```
-
-```
-## Warning: Bad 'data' field in model 'call'.
-## To silence this warning:
-##     Call prp with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.
 ```
 
 <img src="20-solutions-use-case-1_files/figure-html/unnamed-chunk-28-2.png" width="672" />
@@ -990,23 +975,23 @@ rfFit
 ## 
 ## Pre-processing: centered (23), scaled (23) 
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 693, 695, 695, 694, 695, 694, ... 
+## Summary of sample sizes: 695, 694, 694, 694, 695, 695, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy   Kappa    
-##    2    0.7184462  0.6121623
-##    4    0.7179838  0.6120214
-##    6    0.7232845  0.6196398
-##    9    0.7248884  0.6221363
-##   11    0.7209591  0.6167334
-##   13    0.7230175  0.6196534
-##   16    0.7195890  0.6150192
-##   18    0.7181885  0.6132322
-##   20    0.7184422  0.6133707
-##   23    0.7149754  0.6086754
+##    2    0.7228208  0.6176325
+##    4    0.7221246  0.6173189
+##    6    0.7274200  0.6246213
+##    9    0.7219067  0.6171952
+##   11    0.7202750  0.6149614
+##   13    0.7170539  0.6105192
+##   16    0.7209752  0.6161230
+##   18    0.7235093  0.6196690
+##   20    0.7230323  0.6190254
+##   23    0.7232833  0.6195279
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was mtry = 9.
+## The final value used for the model was mtry = 6.
 ```
 
 ```r
@@ -1056,18 +1041,18 @@ summary(resamps)
 ## Number of resamples: 25 
 ## 
 ## Accuracy 
-##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
-## knn          0.6494  0.6763 0.6897 0.6958  0.7143 0.7644    0
-## svm          0.6667  0.6994 0.7241 0.7207  0.7341 0.7874    0
-## decisionTree 0.6494  0.6647 0.6821 0.6871  0.7011 0.7514    0
-## randomForest 0.6821  0.7110 0.7225 0.7249  0.7414 0.7746    0
+##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## knn          0.6494253 0.6896552 0.6994220 0.7009287 0.7109827 0.7456647    0
+## svm          0.6705202 0.7241379 0.7341040 0.7333785 0.7456647 0.7873563    0
+## decisionTree 0.6473988 0.6705202 0.7011494 0.6988530 0.7225434 0.7572254    0
+## randomForest 0.6763006 0.7011494 0.7298851 0.7274200 0.7514451 0.7919075    0
 ## 
 ## Kappa 
-##                Min. 1st Qu. Median   Mean 3rd Qu.   Max. NA's
-## knn          0.5133  0.5495 0.5660 0.5760  0.6029 0.6719    0
-## svm          0.5396  0.5874 0.6199 0.6154  0.6335 0.7079    0
-## decisionTree 0.5204  0.5381 0.5650 0.5707  0.5876 0.6589    0
-## randomForest 0.5631  0.6014 0.6164 0.6221  0.6424 0.6931    0
+##                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## knn          0.5123139 0.5676422 0.5827265 0.5851071 0.5998149 0.6473804    0
+## svm          0.5440211 0.6195682 0.6331301 0.6326331 0.6489416 0.7081066    0
+## decisionTree 0.5120226 0.5490818 0.5853726 0.5860335 0.6163371 0.6688995    0
+## randomForest 0.5542058 0.5873584 0.6284754 0.6246213 0.6584168 0.7119734    0
 ```
 
 ```r
@@ -1089,42 +1074,42 @@ confusionMatrix(test_pred, stageTest)
 ## 
 ##                    Reference
 ## Prediction          early trophozoite late trophozoite schizont uninfected
-##   early trophozoite                27                3        7          3
-##   late trophozoite                 16               57       28          0
-##   schizont                          5               33       66          0
-##   uninfected                        3                1        0        120
+##   early trophozoite                27                9        6          3
+##   late trophozoite                 10               54       29          1
+##   schizont                         13               31       66          0
+##   uninfected                        1                0        0        119
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.7317          
-##                  95% CI : (0.6834, 0.7763)
+##                Accuracy : 0.7209          
+##                  95% CI : (0.6721, 0.7661)
 ##     No Information Rate : 0.3333          
 ##     P-Value [Acc > NIR] : < 2.2e-16       
 ##                                           
-##                   Kappa : 0.6305          
+##                   Kappa : 0.6167          
 ##                                           
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: early trophozoite Class: late trophozoite
-## Sensitivity                           0.52941                  0.6064
-## Specificity                           0.95912                  0.8400
-## Pos Pred Value                        0.67500                  0.5644
-## Neg Pred Value                        0.92705                  0.8619
+## Sensitivity                           0.52941                  0.5745
+## Specificity                           0.94340                  0.8545
+## Pos Pred Value                        0.60000                  0.5745
+## Neg Pred Value                        0.92593                  0.8545
 ## Prevalence                            0.13821                  0.2547
-## Detection Rate                        0.07317                  0.1545
-## Detection Prevalence                  0.10840                  0.2737
-## Balanced Accuracy                     0.74427                  0.7232
+## Detection Rate                        0.07317                  0.1463
+## Detection Prevalence                  0.12195                  0.2547
+## Balanced Accuracy                     0.73640                  0.7145
 ##                      Class: schizont Class: uninfected
-## Sensitivity                   0.6535            0.9756
-## Specificity                   0.8582            0.9837
-## Pos Pred Value                0.6346            0.9677
-## Neg Pred Value                0.8679            0.9878
+## Sensitivity                   0.6535            0.9675
+## Specificity                   0.8358            0.9959
+## Pos Pred Value                0.6000            0.9917
+## Neg Pred Value                0.8649            0.9839
 ## Prevalence                    0.2737            0.3333
-## Detection Rate                0.1789            0.3252
-## Detection Prevalence          0.2818            0.3360
-## Balanced Accuracy             0.7558            0.9797
+## Detection Rate                0.1789            0.3225
+## Detection Prevalence          0.2981            0.3252
+## Balanced Accuracy             0.7446            0.9817
 ```
 
 

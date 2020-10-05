@@ -91,13 +91,13 @@ nzv
 
 ```
 ##              freqRatio percentUnique zeroVar   nzv
-## area               1.5      93.87755   FALSE FALSE
-## perimeter          1.0      85.03401   FALSE FALSE
-## compactness        1.0      93.19728   FALSE FALSE
-## kernLength         1.5      91.83673   FALSE FALSE
-## kernWidth          1.5      91.15646   FALSE FALSE
-## asymCoef           1.0      98.63946   FALSE FALSE
-## grooveLength       1.0      77.55102   FALSE FALSE
+## area          1.500000      95.91837   FALSE FALSE
+## perimeter     1.333333      86.39456   FALSE FALSE
+## compactness   1.000000      91.83673   FALSE FALSE
+## kernLength    1.000000      91.15646   FALSE FALSE
+## kernWidth     1.000000      91.83673   FALSE FALSE
+## asymCoef      2.000000      99.31973   FALSE FALSE
+## grooveLength  1.333333      76.19048   FALSE FALSE
 ```
 
 Data check: are all predictors on same scale?
@@ -108,19 +108,19 @@ summary(morphTrain)
 
 ```
 ##       area         perimeter      compactness       kernLength   
-##  Min.   :10.74   Min.   :12.57   Min.   :0.8081   Min.   :4.902  
-##  1st Qu.:12.28   1st Qu.:13.46   1st Qu.:0.8571   1st Qu.:5.253  
-##  Median :14.29   Median :14.28   Median :0.8735   Median :5.504  
-##  Mean   :14.86   Mean   :14.56   Mean   :0.8712   Mean   :5.632  
-##  3rd Qu.:17.45   3rd Qu.:15.74   3rd Qu.:0.8880   3rd Qu.:5.979  
-##  Max.   :21.18   Max.   :17.25   Max.   :0.9108   Max.   :6.675  
-##    kernWidth        asymCoef       grooveLength  
-##  Min.   :2.630   Min.   :0.7651   Min.   :4.605  
-##  1st Qu.:2.947   1st Qu.:2.5965   1st Qu.:5.028  
-##  Median :3.212   Median :3.5970   Median :5.222  
-##  Mean   :3.258   Mean   :3.6679   Mean   :5.406  
-##  3rd Qu.:3.563   3rd Qu.:4.6735   3rd Qu.:5.878  
-##  Max.   :4.033   Max.   :8.4560   Max.   :6.550
+##  Min.   :10.59   Min.   :12.41   Min.   :0.8081   Min.   :4.899  
+##  1st Qu.:12.34   1st Qu.:13.46   1st Qu.:0.8577   1st Qu.:5.264  
+##  Median :14.46   Median :14.40   Median :0.8734   Median :5.541  
+##  Mean   :14.87   Mean   :14.56   Mean   :0.8724   Mean   :5.624  
+##  3rd Qu.:17.10   3rd Qu.:15.65   3rd Qu.:0.8881   3rd Qu.:5.979  
+##  Max.   :20.97   Max.   :17.25   Max.   :0.9153   Max.   :6.675  
+##    kernWidth        asymCoef      grooveLength  
+##  Min.   :2.630   Min.   :0.903   Min.   :4.519  
+##  1st Qu.:2.958   1st Qu.:2.372   1st Qu.:5.046  
+##  Median :3.259   Median :3.597   Median :5.222  
+##  Mean   :3.267   Mean   :3.659   Mean   :5.406  
+##  3rd Qu.:3.557   3rd Qu.:4.799   3rd Qu.:5.862  
+##  Max.   :4.032   Max.   :8.456   Max.   :6.550
 ```
 
 
@@ -166,7 +166,7 @@ names(morphTrain)[highCorr]
 ```
 
 ```
-## [1] "area"       "kernWidth"  "perimeter"  "kernLength"
+## [1] "area"       "perimeter"  "kernWidth"  "kernLength"
 ```
 
 Data check: skewness
@@ -244,40 +244,40 @@ knnFit
 ##   7 predictor
 ##   3 classes: 'Canadian', 'Kama', 'Rosa' 
 ## 
-## Pre-processing: centered (3), scaled (3), remove (4) 
+## Pre-processing: centered (7), scaled (7) 
 ## Resampling: Cross-Validated (10 fold, repeated 10 times) 
-## Summary of sample sizes: 133, 132, 132, 132, 132, 132, ... 
+## Summary of sample sizes: 133, 132, 133, 132, 132, 133, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   Accuracy   Kappa    
-##    1  0.8429963  0.7644190
-##    3  0.9060916  0.8591664
-##    5  0.8809414  0.8214171
-##    7  0.8764249  0.8145913
-##    9  0.8840989  0.8260932
-##   11  0.8900989  0.8350932
-##   13  0.8974799  0.8461701
-##   15  0.8981465  0.8471701
-##   17  0.8981465  0.8471701
-##   19  0.8941465  0.8411868
-##   21  0.8955751  0.8433490
-##   23  0.8934322  0.8400932
-##   25  0.8920989  0.8381099
-##   27  0.8921465  0.8381868
-##   29  0.8928132  0.8391868
-##   31  0.8907656  0.8360598
-##   33  0.8893370  0.8339060
-##   35  0.8819560  0.8228372
-##   37  0.8813370  0.8219221
-##   39  0.8853370  0.8279221
-##   41  0.8880513  0.8319908
-##   43  0.8893846  0.8339908
-##   45  0.8921465  0.8381614
-##   47  0.8934799  0.8401614
-##   49  0.8920513  0.8379992
+##    1  0.9172381  0.8756147
+##    3  0.9030000  0.8542882
+##    5  0.8975238  0.8461304
+##    7  0.8995238  0.8491221
+##    9  0.8927143  0.8389243
+##   11  0.8974286  0.8459930
+##   13  0.8940000  0.8408394
+##   15  0.8906667  0.8358560
+##   17  0.8986667  0.8478807
+##   19  0.9055238  0.8581482
+##   21  0.8994286  0.8490026
+##   23  0.8954286  0.8430026
+##   25  0.8948095  0.8420544
+##   27  0.8968095  0.8450950
+##   29  0.8921429  0.8381116
+##   31  0.8873810  0.8309740
+##   33  0.8825714  0.8237096
+##   35  0.8893810  0.8339577
+##   37  0.8907143  0.8360068
+##   39  0.8906667  0.8358971
+##   41  0.8927619  0.8390021
+##   43  0.8941429  0.8410779
+##   45  0.8934286  0.8399857
+##   47  0.8975238  0.8461885
+##   49  0.8961429  0.8441033
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was k = 3.
+## The final value used for the model was k = 1.
 ```
 
 Plot cross validation accuracy as a function of _k_
@@ -303,32 +303,32 @@ confusionMatrix(test_pred, varietyTest)
 ## 
 ##           Reference
 ## Prediction Canadian Kama Rosa
-##   Canadian       18    4    0
-##   Kama            3   16    2
-##   Rosa            0    1   19
+##   Canadian       21    3    0
+##   Kama            0   17    0
+##   Rosa            0    1   21
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.8413          
-##                  95% CI : (0.7274, 0.9212)
+##                Accuracy : 0.9365          
+##                  95% CI : (0.8453, 0.9824)
 ##     No Information Rate : 0.3333          
 ##     P-Value [Acc > NIR] : < 2.2e-16       
 ##                                           
-##                   Kappa : 0.7619          
+##                   Kappa : 0.9048          
 ##                                           
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: Canadian Class: Kama Class: Rosa
-## Sensitivity                   0.8571      0.7619      0.9048
-## Specificity                   0.9048      0.8810      0.9762
-## Pos Pred Value                0.8182      0.7619      0.9500
-## Neg Pred Value                0.9268      0.8810      0.9535
+## Sensitivity                   1.0000      0.8095      1.0000
+## Specificity                   0.9286      1.0000      0.9762
+## Pos Pred Value                0.8750      1.0000      0.9545
+## Neg Pred Value                1.0000      0.9130      1.0000
 ## Prevalence                    0.3333      0.3333      0.3333
-## Detection Rate                0.2857      0.2540      0.3016
-## Detection Prevalence          0.3492      0.3333      0.3175
-## Balanced Accuracy             0.8810      0.8214      0.9405
+## Detection Rate                0.3333      0.2698      0.3333
+## Detection Prevalence          0.3810      0.2698      0.3492
+## Balanced Accuracy             0.9643      0.9048      0.9881
 ```
 
 

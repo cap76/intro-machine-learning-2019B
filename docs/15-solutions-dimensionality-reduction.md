@@ -24,12 +24,6 @@ set.seed(1)
 tsne_model_1 = Rtsne(as.matrix(t(D)), check_duplicates=FALSE, pca=TRUE, perplexity=100, theta=0.5, dims=2)
 ```
 
-```
-## Warning: In prcomp.default(X, retx = TRUE, center = pca_center, scale. = pca_scale, 
-##     rank. = initial_dims) :
-##  extra argument 'rank.' will be disregarded
-```
-
 
 As we did previously, we can plot the results using:
 
@@ -63,8 +57,8 @@ y2_4 <- tsne_model_1$Y[which(D[1,]==0 & D[3,]==4),1:2]
 y2_5 <- tsne_model_1$Y[which(D[1,]==0 & D[3,]==5),1:2]
 y2_6 <- tsne_model_1$Y[which(D[1,]==0 & D[3,]==6),1:2]
 
-plot(y2_0,type="p",col="tomato",xlim=c(-10, 10),ylim=c(0, 10))
-points(y2_2,type="p",col="tomato")
+plot(y2_0,type="p",col="tomato",xlim=c(-10, 10),ylim=c(-10, 10))
+points(y2_1,type="p",col="tomato")
 points(y2_2,type="p",col="tomato1")
 points(y2_3,type="p",col="tomato1")
 points(y2_4,type="p",col="tomato2")

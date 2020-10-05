@@ -170,7 +170,7 @@ str(moons)
 ## 'data.frame':	400 obs. of  3 variables:
 ##  $ V1: num  -0.496 1.827 1.322 -1.138 -0.21 ...
 ##  $ V2: num  0.985 -0.501 -0.397 0.192 -0.145 ...
-##  $ V3: Factor w/ 2 levels "A","B": 1 2 2 1 2 1 1 2 1 2 ...
+##  $ V3: chr  "A" "B" "B" "A" ...
 ```
 
 V1 and V2 are the predictors; V3 is the class. 
@@ -187,8 +187,8 @@ summary(moonsTrain$V3)
 ```
 
 ```
-##   A   B 
-## 140 140
+##    Length     Class      Mode 
+##       280 character character
 ```
 
 ```r
@@ -196,8 +196,8 @@ summary(moonsTest$V3)
 ```
 
 ```
-##  A  B 
-## 60 60
+##    Length     Class      Mode 
+##       120 character character
 ```
 
 ### Visualize training data
@@ -341,18 +341,18 @@ svmTune
 ## Resampling results across tuning parameters:
 ## 
 ##   cost   ROC        Sens       Spec     
-##    0.25  0.9337245  0.8485714  0.8900000
-##    0.50  0.9437755  0.8571429  0.8942857
-##    1.00  0.9517857  0.8542857  0.8971429
-##    2.00  0.9584184  0.8685714  0.9014286
-##    4.00  0.9611224  0.8785714  0.9014286
-##    8.00  0.9633673  0.8842857  0.8985714
-##   16.00  0.9633673  0.8900000  0.8957143
-##   32.00  0.9629592  0.8914286  0.8914286
-##   64.00  0.9609184  0.8771429  0.8871429
+##    0.25  0.9202041  0.8385714  0.9014286
+##    0.50  0.9272449  0.8571429  0.9071429
+##    1.00  0.9355612  0.8671429  0.9028571
+##    2.00  0.9404592  0.8785714  0.8985714
+##    4.00  0.9423469  0.8728571  0.8971429
+##    8.00  0.9466837  0.8671429  0.8885714
+##   16.00  0.9477041  0.8728571  0.8800000
+##   32.00  0.9475000  0.8757143  0.8742857
+##   64.00  0.9464796  0.8757143  0.8685714
 ## 
 ## ROC was used to select the optimal model using the largest value.
-## The final value used for the model was cost = 8.
+## The final value used for the model was cost = 16.
 ```
 
 
@@ -370,9 +370,9 @@ svmTune$finalModel
 ## Parameters:
 ##    SVM-Type:  C-classification 
 ##  SVM-Kernel:  radial 
-##        cost:  8 
+##        cost:  16 
 ## 
-## Number of Support Vectors:  81
+## Number of Support Vectors:  79
 ```
 
 
@@ -393,7 +393,7 @@ Predictions on test set.
 
 ```r
 svmPred <- predict(svmTune, moonsTest[,c(1:2)])
-confusionMatrix(svmPred, moonsTest[,3])
+confusionMatrix(svmPred, as.factor(moonsTest[,3]))
 ```
 
 ```
@@ -401,26 +401,26 @@ confusionMatrix(svmPred, moonsTest[,3])
 ## 
 ##           Reference
 ## Prediction  A  B
-##          A 56  6
-##          B  4 54
+##          A 59  6
+##          B  1 54
 ##                                           
-##                Accuracy : 0.9167          
-##                  95% CI : (0.8521, 0.9593)
+##                Accuracy : 0.9417          
+##                  95% CI : (0.8835, 0.9762)
 ##     No Information Rate : 0.5             
 ##     P-Value [Acc > NIR] : <2e-16          
 ##                                           
-##                   Kappa : 0.8333          
+##                   Kappa : 0.8833          
 ##                                           
-##  Mcnemar's Test P-Value : 0.7518          
+##  Mcnemar's Test P-Value : 0.1306          
 ##                                           
-##             Sensitivity : 0.9333          
+##             Sensitivity : 0.9833          
 ##             Specificity : 0.9000          
-##          Pos Pred Value : 0.9032          
-##          Neg Pred Value : 0.9310          
+##          Pos Pred Value : 0.9077          
+##          Neg Pred Value : 0.9818          
 ##              Prevalence : 0.5000          
-##          Detection Rate : 0.4667          
-##    Detection Prevalence : 0.5167          
-##       Balanced Accuracy : 0.9167          
+##          Detection Rate : 0.4917          
+##    Detection Prevalence : 0.5417          
+##       Balanced Accuracy : 0.9417          
 ##                                           
 ##        'Positive' Class : A               
 ## 
@@ -434,13 +434,13 @@ head(svmProbs)
 ```
 
 ```
-##            A           B
-## 2 0.01529839 0.984701610
-## 5 0.05702411 0.942975894
-## 6 0.97385690 0.026143097
-## 7 0.99341309 0.006586907
-## 8 0.03357317 0.966426827
-## 9 0.94400432 0.055995678
+##             A          B
+## 8  0.03696266 0.96303734
+## 12 0.89220448 0.10779552
+## 13 0.91413392 0.08586608
+## 14 0.03175599 0.96824401
+## 16 0.92280576 0.07719424
+## 18 0.94228425 0.05771575
 ```
 
 Build a ROC curve.
@@ -462,7 +462,7 @@ auc(svmROC)
 ```
 
 ```
-## Area under the curve: 0.9578
+## Area under the curve: 0.9817
 ```
 
 Plot ROC curve.
@@ -490,7 +490,7 @@ auc(svmROC)
 ```
 
 ```
-## Area under the curve: 0.9578
+## Area under the curve: 0.9817
 ```
 
 ### Plot decision boundary
@@ -598,26 +598,26 @@ svmTune2
 ## Support Vector Machines with Radial Kernel - e1071 
 ## 
 ## 168 samples
-##  61 predictor
+## 127 predictors
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 134, 136, 134, 133, 135, 134, ... 
+## Summary of sample sizes: 136, 134, 134, 134, 134, 134, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cost   RMSE       Rsquared   MAE      
-##    0.25  0.5975889  0.4731069  0.4431324
-##    0.50  0.5635694  0.4995130  0.4163780
-##    1.00  0.5474320  0.5010678  0.4108350
-##    2.00  0.5381658  0.5078395  0.4065265
-##    4.00  0.5328509  0.5168000  0.4014653
-##    8.00  0.5299465  0.5221113  0.4017165
-##   16.00  0.5297629  0.5224211  0.4016452
-##   32.00  0.5297629  0.5224211  0.4016452
-##   64.00  0.5297629  0.5224211  0.4016452
+##    0.25  0.5985893  0.5052429  0.4536373
+##    0.50  0.5624023  0.5369833  0.4282522
+##    1.00  0.5469292  0.5454531  0.4195863
+##    2.00  0.5343754  0.5632350  0.4066230
+##    4.00  0.5300758  0.5694109  0.3988008
+##    8.00  0.5299476  0.5695642  0.3967481
+##   16.00  0.5312291  0.5676824  0.3970615
+##   32.00  0.5312291  0.5676824  0.3970615
+##   64.00  0.5312291  0.5676824  0.3970615
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
-## The final value used for the model was cost = 16.
+## The final value used for the model was cost = 8.
 ```
 
 
@@ -658,7 +658,7 @@ cor(concRatioTest, test_pred)
 ```
 
 ```
-## [1] 0.8078836
+## [1] 0.7664559
 ```
 
 

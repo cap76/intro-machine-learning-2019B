@@ -182,13 +182,13 @@ download.file(url = data_url, destfile = "car.data")
 
 ```
 ## 'data.frame':	1728 obs. of  7 variables:
-##  $ V1: Factor w/ 4 levels "high","low","med",..: 4 4 4 4 4 4 4 4 4 4 ...
-##  $ V2: Factor w/ 4 levels "high","low","med",..: 4 4 4 4 4 4 4 4 4 4 ...
-##  $ V3: Factor w/ 4 levels "2","3","4","5more": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ V4: Factor w/ 3 levels "2","4","more": 1 1 1 1 1 1 1 1 1 2 ...
-##  $ V5: Factor w/ 3 levels "big","med","small": 3 3 3 2 2 2 1 1 1 3 ...
-##  $ V6: Factor w/ 3 levels "high","low","med": 2 3 1 2 3 1 2 3 1 2 ...
-##  $ V7: Factor w/ 4 levels "acc","good","unacc",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ V1: chr  "vhigh" "vhigh" "vhigh" "vhigh" ...
+##  $ V2: chr  "vhigh" "vhigh" "vhigh" "vhigh" ...
+##  $ V3: chr  "2" "2" "2" "2" ...
+##  $ V4: chr  "2" "2" "2" "2" ...
+##  $ V5: chr  "small" "small" "small" "med" ...
+##  $ V6: chr  "low" "med" "high" "low" ...
+##  $ V7: chr  "unacc" "unacc" "unacc" "unacc" ...
 ```
 
 The output of this will show us that our dataset consists of 1728 observations each with 7 attributes.
@@ -217,7 +217,7 @@ Data slicing is a step to split data into train and test set. Training data set 
 
 ```r
 set.seed(3033)
-intrain <- createDataPartition(y = car_df$V1, p= 0.7, list = FALSE)
+intrain <- createDataPartition(y = car_df$V7, p= 0.7, list = FALSE)
 training <- car_df[intrain,]
 testing <- car_df[-intrain,]
 ```
@@ -233,11 +233,11 @@ dim(training); dim(testing);
 ```
 
 ```
-## [1] 1212    7
+## [1] 1211    7
 ```
 
 ```
-## [1] 516   7
+## [1] 517   7
 ```
 
 
@@ -255,16 +255,14 @@ summary(car_df)
 ```
 
 ```
-##      V1          V2          V3         V4          V5         V6     
-##  high :432   high :432   2    :432   2   :576   big  :576   high:576  
-##  low  :432   low  :432   3    :432   4   :576   med  :576   low :576  
-##  med  :432   med  :432   4    :432   more:576   small:576   med :576  
-##  vhigh:432   vhigh:432   5more:432                                    
-##      V7      
-##  acc  : 384  
-##  good :  69  
-##  unacc:1210  
-##  vgood:  65
+##       V1                 V2                 V3                 V4           
+##  Length:1728        Length:1728        Length:1728        Length:1728       
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##       V5                 V6                 V7           
+##  Length:1728        Length:1728        Length:1728       
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character
 ```
 
 *Training the Decision Tree classifier with criterion as INFORMATION GAIN*
@@ -289,42 +287,35 @@ dtree_fit
 ```
 ## CART 
 ## 
-## 1212 samples
+## 1211 samples
 ##    6 predictor
 ##    4 classes: 'acc', 'good', 'unacc', 'vgood' 
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold, repeated 3 times) 
-## Summary of sample sizes: 1091, 1090, 1091, 1092, 1090, 1091, ... 
+## Summary of sample sizes: 1090, 1092, 1089, 1089, 1089, 1090, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   cp          Accuracy   Kappa    
-##   0.01123596  0.8655218  0.7104756
-##   0.01404494  0.8547504  0.6850294
-##   0.01896067  0.8380018  0.6444074
-##   0.01966292  0.8352468  0.6390441
-##   0.02247191  0.8168367  0.6035238
-##   0.02387640  0.8151860  0.6002291
-##   0.05337079  0.7802250  0.5541888
-##   0.06179775  0.7741710  0.5466629
-##   0.07584270  0.7524613  0.4213615
-##   0.08426966  0.7164441  0.1425639
+##   cp           Accuracy   Kappa    
+##   0.005494505  0.8717704  0.7290692
+##   0.007692308  0.8621260  0.7055343
+##   0.008241758  0.8610377  0.7015747
+##   0.010989011  0.8538908  0.6820370
+##   0.016483516  0.8219632  0.6100808
+##   0.018543956  0.8115194  0.5848871
+##   0.019230769  0.8115194  0.5848871
+##   0.024725275  0.8046066  0.5785861
+##   0.060439560  0.7863800  0.5568316
+##   0.070054945  0.7643436  0.4594143
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was cp = 0.01123596.
+## The final value used for the model was cp = 0.005494505.
 ```
 *Plotting the decision tress*
 
 
 ```r
 prp(dtree_fit$finalModel, box.palette = "Reds", tweak = 1.2)
-```
-
-```
-## Warning: Bad 'data' field in model 'call'.
-## To silence this warning:
-##     Call prp with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.
 ```
 
 <img src="06-decision-trees_files/figure-html/unnamed-chunk-12-1.png" width="672" />
@@ -339,8 +330,8 @@ testing[1,]
 ```
 
 ```
-##      V1    V2 V3 V4    V5  V6    V7
-## 2 vhigh vhigh  2  2 small med unacc
+##      V1    V2 V3 V4  V5   V6    V7
+## 6 vhigh vhigh  2  2 med high unacc
 ```
 
 ```r
@@ -357,7 +348,7 @@ For our 1st record of testing data classifier is predicting class variable as â€
 
 ```r
 test_pred <- predict(dtree_fit, newdata = testing)
-confusionMatrix(test_pred, testing$V7 )  #check accuracy
+confusionMatrix(test_pred, as.factor(testing$V7) )  #check accuracy
 ```
 
 ```
@@ -365,33 +356,33 @@ confusionMatrix(test_pred, testing$V7 )  #check accuracy
 ## 
 ##           Reference
 ## Prediction acc good unacc vgood
-##      acc   102   19    36     3
-##      good    6    4     0     3
-##      unacc   5    0   318     0
-##      vgood  11    1     0     8
+##      acc    94   14    28     3
+##      good    3    5     0     2
+##      unacc  17    0   335     0
+##      vgood   1    1     0    14
 ## 
 ## Overall Statistics
-##                                          
-##                Accuracy : 0.8372         
-##                  95% CI : (0.8025, 0.868)
-##     No Information Rate : 0.686          
-##     P-Value [Acc > NIR] : 3.262e-15      
-##                                          
-##                   Kappa : 0.6703         
-##                                          
-##  Mcnemar's Test P-Value : NA             
+##                                           
+##                Accuracy : 0.8665          
+##                  95% CI : (0.8342, 0.8947)
+##     No Information Rate : 0.7021          
+##     P-Value [Acc > NIR] : < 2.2e-16       
+##                                           
+##                   Kappa : 0.71            
+##                                           
+##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: acc Class: good Class: unacc Class: vgood
-## Sensitivity              0.8226    0.166667       0.8983      0.57143
-## Specificity              0.8520    0.981707       0.9691      0.97610
-## Pos Pred Value           0.6375    0.307692       0.9845      0.40000
-## Neg Pred Value           0.9382    0.960239       0.8135      0.98790
-## Prevalence               0.2403    0.046512       0.6860      0.02713
-## Detection Rate           0.1977    0.007752       0.6163      0.01550
-## Detection Prevalence     0.3101    0.025194       0.6260      0.03876
-## Balanced Accuracy        0.8373    0.574187       0.9337      0.77376
+## Sensitivity              0.8174    0.250000       0.9229      0.73684
+## Specificity              0.8881    0.989940       0.8896      0.99598
+## Pos Pred Value           0.6763    0.500000       0.9517      0.87500
+## Neg Pred Value           0.9444    0.970414       0.8303      0.99002
+## Prevalence               0.2224    0.038685       0.7021      0.03675
+## Detection Rate           0.1818    0.009671       0.6480      0.02708
+## Detection Prevalence     0.2689    0.019342       0.6809      0.03095
+## Balanced Accuracy        0.8527    0.619970       0.9062      0.86641
 ```
 
 The above results show that the classifier with the criterion as information gain is giving 83.72% of accuracy for the test set.
@@ -413,29 +404,29 @@ dtree_fit_gini
 ```
 ## CART 
 ## 
-## 1212 samples
+## 1211 samples
 ##    6 predictor
 ##    4 classes: 'acc', 'good', 'unacc', 'vgood' 
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold, repeated 3 times) 
-## Summary of sample sizes: 1091, 1090, 1091, 1092, 1090, 1091, ... 
+## Summary of sample sizes: 1090, 1092, 1089, 1089, 1089, 1090, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   cp          Accuracy   Kappa    
-##   0.01123596  0.8603075  0.6980952
-##   0.01404494  0.8528534  0.6797153
-##   0.01896067  0.8176967  0.5885188
-##   0.01966292  0.8143977  0.5818006
-##   0.02247191  0.7939998  0.5391064
-##   0.02387640  0.7923469  0.5378897
-##   0.05337079  0.7824472  0.5363813
-##   0.06179775  0.7744555  0.5368891
-##   0.07584270  0.7524613  0.4213615
-##   0.08426966  0.7164441  0.1425639
+##   cp           Accuracy   Kappa    
+##   0.005494505  0.8725855  0.7315324
+##   0.007692308  0.8654387  0.7134630
+##   0.008241758  0.8648853  0.7122492
+##   0.010989011  0.8637926  0.7082363
+##   0.016483516  0.8376939  0.6465974
+##   0.018543956  0.8189557  0.6043954
+##   0.019230769  0.8164783  0.6001911
+##   0.024725275  0.8082087  0.5862848
+##   0.060439560  0.7935934  0.5696770
+##   0.070054945  0.7442278  0.3266330
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was cp = 0.01123596.
+## The final value used for the model was cp = 0.005494505.
 ```
 
 It is showing us the accuracy metrics for different values of cp. 
@@ -447,13 +438,6 @@ It is showing us the accuracy metrics for different values of cp.
 prp(dtree_fit_gini$finalModel, box.palette = "Blues", tweak = 1.2)
 ```
 
-```
-## Warning: Bad 'data' field in model 'call'.
-## To silence this warning:
-##     Call prp with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.
-```
-
 <img src="06-decision-trees_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 *Prediction*
@@ -463,7 +447,7 @@ Our model is trained with cp = 0.01123596. Now, itâ€™s time to predict target va
 
 ```r
 test_pred_gini <- predict(dtree_fit_gini, newdata = testing)
-confusionMatrix(test_pred_gini, testing$V7 )  #check accuracy
+confusionMatrix(test_pred_gini, as.factor(testing$V7) )  #check accuracy
 ```
 
 ```
@@ -471,33 +455,33 @@ confusionMatrix(test_pred_gini, testing$V7 )  #check accuracy
 ## 
 ##           Reference
 ## Prediction acc good unacc vgood
-##      acc   109   16    34     6
-##      good    5    7     0     0
-##      unacc   7    0   320     0
-##      vgood   3    1     0     8
+##      acc    95   10    29     6
+##      good    6   10     1     7
+##      unacc  13    0   333     0
+##      vgood   1    0     0     6
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.8605          
-##                  95% CI : (0.8275, 0.8892)
-##     No Information Rate : 0.686           
+##                Accuracy : 0.8588          
+##                  95% CI : (0.8258, 0.8877)
+##     No Information Rate : 0.7021          
 ##     P-Value [Acc > NIR] : < 2.2e-16       
 ##                                           
-##                   Kappa : 0.7133          
+##                   Kappa : 0.698           
 ##                                           
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: acc Class: good Class: unacc Class: vgood
-## Sensitivity              0.8790     0.29167       0.9040      0.57143
-## Specificity              0.8571     0.98984       0.9568      0.99203
-## Pos Pred Value           0.6606     0.58333       0.9786      0.66667
-## Neg Pred Value           0.9573     0.96627       0.8201      0.98810
-## Prevalence               0.2403     0.04651       0.6860      0.02713
-## Detection Rate           0.2112     0.01357       0.6202      0.01550
-## Detection Prevalence     0.3198     0.02326       0.6337      0.02326
-## Balanced Accuracy        0.8681     0.64075       0.9304      0.78173
+## Sensitivity              0.8261     0.50000       0.9174      0.31579
+## Specificity              0.8881     0.97183       0.9156      0.99799
+## Pos Pred Value           0.6786     0.41667       0.9624      0.85714
+## Neg Pred Value           0.9469     0.97972       0.8246      0.97451
+## Prevalence               0.2224     0.03868       0.7021      0.03675
+## Detection Rate           0.1838     0.01934       0.6441      0.01161
+## Detection Prevalence     0.2708     0.04642       0.6692      0.01354
+## Balanced Accuracy        0.8571     0.73592       0.9165      0.65689
 ```
 
 The above results show that the classifier with the criterion as gini index is giving 86.05% of accuracy for the test set. In this case, our classifier with criterion gini index is giving better results.
@@ -569,6 +553,7 @@ library(randomForest)
 ```r
 ## Read data
 Example<-read.csv(file="data/Decision_tree_and_RF/bank.csv",header = T)
+Example$y = as.factor(Example$y)
 ```
 
 Input dataset has 20 independent variables and a target variable. The target variable y is binary.
@@ -617,7 +602,7 @@ table(Example.dev$y)/nrow(Example.dev)
 ```
 ## 
 ##        no       yes 
-## 0.8881469 0.1118531
+## 0.8929134 0.1070866
 ```
 Both development and validation samples have similar target variable distribution. This is just a sample validation.
 
@@ -695,26 +680,26 @@ var.imp[order(var.imp$MeanDecreaseGini,decreasing = T),]
 
 ```
 ##                MeanDecreaseGini      Variables
-## duration             131.064241       duration
-## euribor3m             51.767706      euribor3m
-## nr.employed           33.282654    nr.employed
-## job                   33.202606            job
-## age                   30.542239            age
-## education             21.817563      education
-## month                 21.481160          month
-## day_of_week           21.449264    day_of_week
-## pdays                 19.153022          pdays
-## cons.conf.idx         15.695240  cons.conf.idx
-## campaign              15.283873       campaign
-## poutcome              13.860486       poutcome
-## cons.price.idx        13.175296 cons.price.idx
-## emp.var.rate          10.957252   emp.var.rate
-## marital                8.270943        marital
-## previous               7.556246       previous
-## housing                7.012238        housing
-## loan                   5.045711           loan
-## contact                4.187090        contact
-## default                3.104346        default
+## duration             128.944248       duration
+## euribor3m             57.880937      euribor3m
+## nr.employed           38.475449    nr.employed
+## age                   36.300313            age
+## job                   22.087064            job
+## cons.conf.idx         18.214100  cons.conf.idx
+## education             18.042480      education
+## day_of_week           17.868838    day_of_week
+## campaign              17.053144       campaign
+## pdays                 16.965288          pdays
+## cons.price.idx        16.190895 cons.price.idx
+## poutcome              14.162950       poutcome
+## emp.var.rate          14.052605   emp.var.rate
+## month                 13.711592          month
+## marital               10.478339        marital
+## previous               8.415952       previous
+## housing                7.780663        housing
+## loan                   6.322726           loan
+## contact                4.903397        contact
+## default                4.207478        default
 ```
 
 Based on Random Forest variable importance, the variables could be selected for any other predictive modelling techniques or machine learning.
@@ -752,26 +737,26 @@ confusionMatrix(data=Example.dev$predicted.response,
 ## 
 ##           Reference
 ## Prediction   no  yes
-##        no  2128    0
-##        yes    0  268
+##        no  2268    1
+##        yes    0  271
 ##                                      
-##                Accuracy : 1          
-##                  95% CI : (0.9985, 1)
-##     No Information Rate : 0.8881     
-##     P-Value [Acc > NIR] : < 2.2e-16  
+##                Accuracy : 0.9996     
+##                  95% CI : (0.9978, 1)
+##     No Information Rate : 0.8929     
+##     P-Value [Acc > NIR] : <2e-16     
 ##                                      
-##                   Kappa : 1          
+##                   Kappa : 0.9979     
 ##                                      
-##  Mcnemar's Test P-Value : NA         
+##  Mcnemar's Test P-Value : 1          
 ##                                      
-##             Sensitivity : 1.0000     
+##             Sensitivity : 0.9963     
 ##             Specificity : 1.0000     
 ##          Pos Pred Value : 1.0000     
-##          Neg Pred Value : 1.0000     
-##              Prevalence : 0.1119     
-##          Detection Rate : 0.1119     
-##    Detection Prevalence : 0.1119     
-##       Balanced Accuracy : 1.0000     
+##          Neg Pred Value : 0.9996     
+##              Prevalence : 0.1071     
+##          Detection Rate : 0.1067     
+##    Detection Prevalence : 0.1067     
+##       Balanced Accuracy : 0.9982     
 ##                                      
 ##        'Positive' Class : yes        
 ## 
@@ -795,26 +780,26 @@ confusionMatrix(data=Example.val$predicted.response,
 ## 
 ##           Reference
 ## Prediction   no  yes
-##        no  1476   98
-##        yes   64   85
+##        no  1363   97
+##        yes   37   82
 ##                                           
-##                Accuracy : 0.906           
-##                  95% CI : (0.8912, 0.9193)
-##     No Information Rate : 0.8938          
-##     P-Value [Acc > NIR] : 0.052603        
+##                Accuracy : 0.9151          
+##                  95% CI : (0.9003, 0.9284)
+##     No Information Rate : 0.8866          
+##     P-Value [Acc > NIR] : 0.0001236       
 ##                                           
-##                   Kappa : 0.4606          
+##                   Kappa : 0.5056          
 ##                                           
-##  Mcnemar's Test P-Value : 0.009522        
+##  Mcnemar's Test P-Value : 3.454e-07       
 ##                                           
-##             Sensitivity : 0.46448         
-##             Specificity : 0.95844         
-##          Pos Pred Value : 0.57047         
-##          Neg Pred Value : 0.93774         
-##              Prevalence : 0.10621         
-##          Detection Rate : 0.04933         
-##    Detection Prevalence : 0.08648         
-##       Balanced Accuracy : 0.71146         
+##             Sensitivity : 0.45810         
+##             Specificity : 0.97357         
+##          Pos Pred Value : 0.68908         
+##          Neg Pred Value : 0.93356         
+##              Prevalence : 0.11336         
+##          Detection Rate : 0.05193         
+##    Detection Prevalence : 0.07536         
+##       Balanced Accuracy : 0.71584         
 ##                                           
 ##        'Positive' Class : yes             
 ## 

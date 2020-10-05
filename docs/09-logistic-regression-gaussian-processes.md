@@ -6,15 +6,17 @@ Within a regression setting, we aim to identify how the input variables map to t
 
 Classification algorithms, on the other hand, deal with discrete-valued outputs. Here each observation in $\mathbf{y} = (y_1,\ldots,y_n)$ can take on only a finite number of values. For example, we may have a measurment that indicates "infected" versus "uninfected", which can be represented in binary, $y_i \in [0,1]$. More generally we have data that falls into $K$ classes e.g., "group 1" through to "group K". As with regression, the aim is to identify how the (potentially continuous-valued) input variables map to the discrete set of class labels, and ultimately, assign labels to a new set of observations. Notable examples would be to identify how the expression levels of particular set of marker genes are predictive of a discrete phenotype.
 
-In section \@ref(regression) we briefly recap linear regression, and introduce nonlinear approaches to regression using Gaussian processes. We demonstrate the use of regression to predict gene expression values as a function of time, and how this can be used to inform us about the nature of the data, and as a way to make decisions about whether there are changed in gene expression over time. 
+In section \@ref(regression) we briefly recap linear regression. We demonstrate the use of regression to predict gene expression values as a function of time, and how this can be used to inform us about the nature of the data, and as a way to make decisions about whether there are changed in gene expression over time. 
 
-In section \@ref(classification) we introduce a variety of classification algorithms, starting with logistic regression (section \@ref(logistic-regression)), and demonstrate how such approaches can be used to predict pathogen infection status in *Arabidopsis thaliana*. By doing so we identify key marker genes indicative of pathogen growth. Finally, we note the limitations of linear classification algorithms, and introduce nonlinear approaches based on Gaussian processes (section \@ref(gp-classification)).
+In section \@ref(classification) we introduce logistic regression (section \@ref(logistic-regression)), and demonstrate how such approaches can be used to predict pathogen infection status in *Arabidopsis thaliana*. By doing so we identify key marker genes indicative of pathogen growth. 
+
+Finally, we note the limitations of linear classification algorithms, and introduce nonlinear approaches based on Gaussian processes in section \@ref(gp-classification).
 
 ## Regression {#regression}
 
-In this section, we will make use of an existing dataset which captures the gene expression levels in the model plant *Arabidopsis thaliana* following innoculation with *Botrytis cinerea* [@windram2012arabidopsis], a necrotrophic pathogen considered to be one of the most important fungal plant pathogens due to its ability to cause disease in a range of plants. The dataset is a time series measuring the gene expression in *Arabidopsis* leaves following inoculation with *Botrytis cinerea* over a $48$ hour time window at $2$ hourly intervals.
+In this section, we will make use of an existing dataset which captures the gene expression levels in the model plant *Arabidopsis thaliana* following innoculation with *Botrytis cinerea* [@windram2012arabidopsis], a necrotrophic pathogen considered to be one of the most important fungal plant pathogens due to its ability to cause disease in a range of plants. Specifically this dataset is a time series measuring the gene expression of 100 or so genes in *Arabidopsis* leaves following inoculation with *Botrytis cinerea* over a $48$ hour time window at $2$ hourly intervals. Whilst this example is distinctly biological in motivation the methods we discuss should be general and applicable to other collections of time series data.
 
-The dataset is available from GEO (GSE39597) but a pre-processed version has been deposited in the {data} folder. The pre-processed data contains the expression levels of a set of $163$ marker genes in tab delimited format. The fist row contains gene IDs for the marker genes. Column $2$ contains the time points of observations, with column $3$ containing a binary indication of infection status, evalutated according to the prescence of *Botrytis cinerea* Tubulin protein. All subsequent columns indicate ($\log_2$) normalised *Arabidopsis* gene expression values from microarrays (V4 TAIR V9 spotted cDNA array). The expression dataset itself contains two time series: the first $24$ observations represent measurements of *Arabidopsis* gene expression in a control time series (uninfected), from $2h$ through $48h$ at $2$-hourly intervals, and therefore capture dynamic aspects natural plant processes, including circadian rhythms; the second set of $24$ observations represents an infected dataset, again commencing $2h$ after inoculation with *Botyris cinerea* through to $48h$. 
+The dataset is available from GEO (GSE39597) but a pre-processed version has been deposited in the {data} folder. The pre-processed data contains the expression levels of a set of $163$ marker genes in tab delimited format. The fist row contains gene IDs for the marker genes (the individual input variables). Column $2$ contains the time points of observations, with column $3$ containing a binary indication of infection status, evalutated according to the prescence of *Botrytis cinerea* Tubulin protein. All subsequent columns indicate ($\log_2$) normalised *Arabidopsis* gene expression values from microarrays (V4 TAIR V9 spotted cDNA array). The expression dataset itself contains two time series: the first $24$ observations represent measurements of *Arabidopsis* gene expression in a control time series (uninfected), from $2h$ through $48h$ at $2$-hourly intervals, and therefore capture dynamic aspects natural plant processes, including circadian rhythms; the second set of $24$ observations represents an infected dataset, again commencing $2h$ after inoculation with *Botyris cinerea* through to $48h$. 
 
 Within this section our output variable will typically be the expression level of a particular gene of interest, denoted $\mathbf{y} =(y_1,\ldots,y_n)^\top$, with the explanatory variable being time, $\mathbf{X} =(t_1,\ldots,t_n)^\top$. We can read the dataset into {R} as follows:
 
@@ -31,9 +33,7 @@ genenames <- colnames(D)
 Xs <- D$Time[1:24]
 ```
 
-
-
-Exercise 9.1. Plot the gene expression profiles to familiarise yourself with the data.
+Exercise 9.1. Plot the gene expression profiles to familiarise yourself with the data. No, really, plot the data. This is always the first thing you should be doing with your datasets - look at them.
 
 ### Linear regression {#linear-regression}
 
@@ -41,7 +41,7 @@ Recall that one of the simplest forms of regression, linear regression, assumes 
 
 $y = m x + c.$
 
-For a typical set of data, we have a vector of observations, $\mathbf{y} = (y_1,y_2,\ldots,y_n)$ with a corresponding set of explanatory variables. For now we can assume that the explanatory variable is scalar, for example time (in hours), such that we have a set of observations, $\mathbf{X} = (t_1,t_2,\ldots,t_n)$. Using linear regression we aim to infer the parameters $m$ and $c$, which will tell us something about the relationship between the two variables, and allow us to make predictions at a new set of locations, $\mathbf{X}*$. 
+For a typical set of data, we have a vector of observations, $\mathbf{y} = (y_1,y_2,\ldots,y_n)$ with a corresponding set of explanatory variables. For now we can assume that the explanatory variable is scalar, for example time (in hours), such that we have a set of observations, $\mathbf{X} = (t_1,t_2,\ldots,t_n)$. Using linear regression we aim to infer the parameters $m$ and $c$, which will tell us something about the relationship between the two variables, and allow us to make predictions at a new set of locations, $\mathbf{X}*$.
 
 Within {R}, linear regression can be implemented via the {lm} function. In the example below, we perform linear regression for the gene expression of AT2G28890 as a function of time, using the infection time series only (hence we use only the first $24$ datapoints):
 
@@ -60,7 +60,7 @@ lm(AT2G28890~Time, data = D[25:nrow(D),])
 ##    10.14010     -0.04997
 ```
 
-Linear regression is also implemented within the {caret} package, allowing us to make use of its various other utilities. In fact, within {caret}, linear regression is performed by calling the function {lm}. In the example, below, we perform linear regression for AT2G28890, and predict the expression pattern for that gene using the {predict} function:
+Linear regression is also implemented within the {caret} package, allowing us to make use of its various other utilities. In fact, within {caret}, linear regression is performed by calling the function {lm}. In the example, below, we perform linear regression for gene AT2G28890, and predict the expression pattern for that gene using the {predict} function:
 
 
 ```r
@@ -220,11 +220,11 @@ library("arm")
 
 ```
 ## 
-## arm (Version 1.10-1, built: 2018-4-12)
+## arm (Version 1.11-1, built: 2020-4-27)
 ```
 
 ```
-## Working directory is /Users/christopher_penfold/Desktop/Code/intro-machine-learning-2019B
+## Working directory is /home/ubuntu/Course_Materials/intro-machine-learning
 ```
 
 ```r
@@ -268,9 +268,168 @@ lines(Xs,pred1[,3],type="l",col="red")
 
 <img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
-### Gaussian process regression {#gaussian-process-regression}
 
-In the previous section we briefly explored fitting multiple polynomials to our data. However, we still had to decide on the order of the polynomial beforehand. A far more powerful approach is Gaussian processes (GP) regression [@Williams2006]. Gaussian process regression represent a Bayesian nonparametric approach to regression capable of inferring nonlinear functions from a set of observations. Within a GP regression setting we assume the following model for the data:
+## Classification {#classification}
+
+Classification algorithms are a supervised learning techniques that assign data to categorical outputs. For example we may have a continuous input variable, $X$, and want to learn how that variable maps to a discrete valued output, $y\in [0,1]$, which might represent two distinct phenotypes "infected" versus "uninfected". 
+
+This section is split as follows: in section \@ref(logistic-regression) we introduce logistic regression, a simple classification algorithm based on linear models; and in section \@ref(#gp-classification) we demonstrate the use of nonlinear classifiers based on Gaussian process, highlighting when GP classifiers are more appropriate.
+
+### Logistic regression {#logistic-regression}
+
+The type of linear regression models we've been using up to this point deal with real-valued observation data, $\mathbf{y}$, and are therefore not appropriate for classification. To deal with cases where $\mathbf{y}$ is a binary outcome, we instead fit a linear model to the logit (natural log) of the log-odds ratio:
+
+$\ln \biggl{(}\frac{p(x)}{1-p(x)}\biggr{)} = c + m_1 x_1.$
+
+Although this model is not immediately intuitive, if we solve for $p(x)$ we get:
+
+$p(x) = \frac{1}{1+\exp(-c - m_1 x_1)}$.
+
+We have thus specified a function that indicates the probability of success for a given value of $x$ e.g., $P(y=1|x)$. Note that although our observation data $\mathbf{y}$ itself can only take on one of two values we are modelling the probability of success which itself is not discrete, hence *logistic regression*. In general can think of our data as a being a sample from a Bernoulli trial, andcan therefore write down the likelihood for a set of observations ${\mathbf{X},\mathbf{y}}$:
+
+$\mathcal{L}(c,m_1) = \prod_{i=1}^n p(x_i)^{y_i} (1-p(x_i)^{1-y_i})$.
+
+In general, these models do not admit a closed form solution, but can be solved iteratively via maximum likelihood, that is by finding the values $(c,m_1)$ that return the greatest value of $\mathcal{L}(c,m_1)$. Within {caret}, logistic regression can applied using the {glm} function. 
+
+To illustate this we will again make use of our plant dataset. Recall that the second column represents a binary variable indicative of infection status e.g., population growth of the *Botrytis cinerea* pathogen indicated by statistical enrichment of the *Botrytis* Tubulin versus the earliest time point. 
+
+In the excercises, below, we will aim to learn a set of markers capable of predicting infection status using logistic regression. To begin with, let's see if *time* is informative of infection status:
+
+
+```r
+library(pROC)
+```
+
+```
+## Type 'citation("pROC")' for a citation.
+```
+
+```
+## 
+## Attaching package: 'pROC'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     cov, smooth, var
+```
+
+```r
+library(ROCR)
+options(warn=-1)
+mod_fit <- train(y ~ ., data=data.frame(x = D$Time, y = as.factor(D$Class)), method="glm", family="binomial")
+```
+
+To evaluate the model, we will load in a second (related) dataset, containnig a new set of observations not seen by the model, and predict infection status. 
+
+
+```r
+Dpred <- read.csv(file = "data/Arabidopsis/Arabidopsis_Botrytis_pred_transpose_3.csv", header = TRUE, sep = ",", row.names=1)
+
+prob <- predict(mod_fit, newdata=data.frame(x = Dpred$Time, y = as.factor(Dpred$Class)), type="prob")
+pred <- prediction(prob$`1`, as.factor(Dpred$Class))
+```
+
+To evaluate how well the algorithm has done, we can calculate a variety of summary statistics. For example the number of true positives, true negatives, false positive and false negatives. A useful summary is to plot the ROC curve (false positive rate versus true positive rate) and calculate the area under the curve. For a perfect algorithm, the area under this curve (AUC) will be equal to $1$, whereas random assignment would give an area of $0.5$. In the example below, we will calculate the AUC for a logistic regression model:
+
+
+```r
+perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+plot(perf)
+```
+
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
+```r
+auc <- performance(pred, measure = "auc")
+auc <- auc@y.values[[1]]
+auc
+```
+
+```
+## [1] 0.6111111
+```
+
+Okay, so a score of $0.61$ is certainly better than random, but not particularly good. This is perhaps not surprising, as half the time series (the control) is uninfected over the entirety of the time series, whilst in the second times series *Botrytis* is able to infect from around time point 8 onwards. The slighty better than random performence therefore arises due the slight bias in the number of instances of each class.
+
+In the example, below, we instead try to regress infection status against individual gene expression levels. The idea is to identify genes that have expression values indicative of *Botrytis* infection: marker genes.
+
+
+```r
+aucscore <- matrix(rep(0, 164), 1, 164)
+for (i in seq(3,164)){
+mod_fit <- train(y ~ ., data=data.frame(x = D[,i], y = as.factor(D$Class)), method="glm", family="binomial")
+prob <- predict(mod_fit, newdata=data.frame(x = Dpred[,i], y = as.factor(Dpred$Class)), type="prob")
+pred <- prediction(prob$`1`, as.factor(Dpred$Class))
+perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+auc <- performance(pred, measure = "auc")
+aucscore[i] <- auc@y.values[[1]]
+}
+
+plot(aucscore[1,3:ncol(aucscore)],ylab="AUC",xlab="gene index")
+```
+
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+We note that, several genes in the list apear to have AUC scores much greater than $0.6$. We can take a look at some of the genes with high predictive power:
+
+
+```r
+genenames[which(aucscore>0.8)]
+```
+
+```
+##  [1] "AT1G29990" "AT1G67170" "AT2G21380" "AT2G28890" "AT2G35500" "AT2G45660"
+##  [7] "AT3G09980" "AT3G11590" "AT3G13720" "AT3G25710" "AT3G44720" "AT3G48150"
+## [13] "AT4G00710" "AT4G02150" "AT4G16380" "AT4G19700" "AT4G26450" "AT4G28640"
+## [19] "AT4G34710" "AT4G36970" "AT4G39050" "AT5G11980" "AT5G22630" "AT5G24660"
+## [25] "AT5G43700" "AT5G50010" "AT5G56250"
+```
+
+Unsurprisingly, amongst these genes we see a variety of genes whose proteins are known to be targeted by various pathogen effectors, and are therefore directly implicated in the immune response (Table 3.1). 
+
+Gene | Effector
+--- | ---
+AT3G25710	|	ATR1_ASWA1
+AT4G19700	|	ATR13_NOKS1
+AT4G34710	|	ATR13_NOKS1
+AT4G39050	|	ATR13_NOKS1
+AT5G24660	|	ATR13_NOKS1
+AT4G00710	|	AvrRpt2_Pto JL1065_CatalyticDead
+AT4G16380	|	HARXL44
+AT2G45660	|	HARXL45
+AT5G11980	|	HARXL73
+AT2G35500	|	HARXLL445
+AT1G67170	|	HARXLL470_WACO9
+AT4G36970	|	HARXLL470_WACO9
+AT5G56250	|	HARXLL470_WACO9
+AT3G09980	|	HARXLL516_WACO9
+AT5G50010	|	HARXLL60
+AT3G44720	|	HARXLL73_2_WACO9
+AT5G22630	|	HARXLL73_2_WACO9
+AT5G43700	|	HopH1_Psy B728A
+Table 3.1: Genes predictive of infection status of *Botrytis cinerea* whose proteins are targeted by effectors of a variety of pathogens
+
+Let's take a look at what the data looks like. In this case we plot the training data labels and the fit from the logistic regression i.e., $p(\mathbf{y}=1|\mathbf{x})$:
+
+
+```r
+bestpredictor <- which(aucscore==max(aucscore))
+
+best_mod_fit <- train(y ~., data=data.frame(x = D[,bestpredictor], y = as.factor(D$Class)), family="binomial", method="glm")
+
+plot(D[,bestpredictor],D$Class,xlab=genenames[bestpredictor],ylab="Class")
+lines(seq(min(D[,bestpredictor]),max(D[,bestpredictor]),length=200),predict(best_mod_fit,newdata=data.frame(x = seq(min(D[,bestpredictor]),max(D[,bestpredictor]),length=200)),type="prob")[,2])
+```
+
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+In general linear regression and logistic regression represent useful tools for dissecting relationships amongst variables that are frequently used as tools to intepret complex datasets. In the next section we will explore nonlinear approaches.
+
+## Gaussian process regression {#gaussian-process-regression}
+
+In the previous sections we briefly explored fitting multiple polynomials to our data. However, we still had to decide on the order of the polynomial beforehand. A far more powerful approach is Gaussian processes (GP) regression [@Williams2006]. Gaussian process regression represent a Bayesian nonparametric approach to regression capable of inferring nonlinear functions from a set of observations. Within a GP regression setting we assume the following model for the data:
 
 $y = f(\mathbf{X})$
 
@@ -373,7 +532,7 @@ lines(y2)
 lines(y3)
 ```
 
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 When we specify a GP, we are essentially encoding a distribution over a whole range of functions. Exactly how those functions behave depends upon the choice of covariance function and the hyperparameters. To get a feel for this, try changing the hyperparameters in the above code. What do the functions look like? A variety of other covariance functions exist, and can be found, with examples in the [Kernel Cookbook](http://www.cs.toronto.edu/~duvenaud/cookbook/).
 
@@ -425,7 +584,7 @@ lines(x.star,f.star.bar+2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="
 lines(x.star,f.star.bar-2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="black")
 ```
 
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 We can see that the GP has pinned down functions that pass close to the datapoint. Of course, at this stage, the fit is not particularly good, but that's not surprising as we only had one observation. Crucially, we can see that the GP encodes the idea of *uncertainty*. Although the model fit is not particularly good, we can see exactly *where* it is no good.
 
@@ -453,7 +612,7 @@ lines(x.star,f.star.bar+2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="
 lines(x.star,f.star.bar-2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="black")
 ```
 
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 And with $7$ observations:
 
@@ -477,7 +636,7 @@ lines(x.star,f.star.bar+2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="
 lines(x.star,f.star.bar-2*sqrt(diag(cov.f.star)),type = 'l',pch=22, lty=2, col="black")
 ```
 
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 We can see that with $7$ observations the posterior GP has begun to resemble the true (nonlinear) function very well: the mean of the GP lies very close to the true function and, perhaps more importantly, we continue to have an treatment for the uncertainty. 
 
@@ -517,7 +676,7 @@ for(i in 1:length(par)) {
 persp3D(z = ML,theta = 120)
 ```
 
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 ```r
 ind<-which(ML==max(ML), arr.ind=TRUE)
@@ -600,182 +759,8 @@ Exercise 9.8 (optional): Write a function for determining differential expressio
 
 Whilst GPs represent a powerful approach to nonlinear regression, they do have some limitations. GPs do not scale well with the number of observations, and standard GP approaches are not suitable when we have a very large datasets (thousands of observations). To overcome these limitations, approximate approaches to inference with GPs have been developed. 
 
-## Classification {#classification}
 
-Classification algorithms are a supervised learning techniques that assign data to categorical outputs. For example we may have a continuous input variable, $X$, and want to learn how that variable maps to a discrete valued output, $y\in [0,1]$, which might represent two distinct phenotypes "infected" versus "uninfected". 
-
-This section is split as follows: in section \@ref(logistic-regression) we introduce logistic regression, a simple classification algorithm based on linear models; and in section \@ref(#gp-classification) we demonstrate the use of nonlinear classifiers based on Gaussian process, highlighting when GP classifiers are more appropriate.
-
-### Logistic regression {#logistic-regression}
-
-The type of linear regression models we've been using up to this point deal with real-valued observation data, $\mathbf{y}$, and are therefore not appropriate for classification. To deal with cases where $\mathbf{y}$ is a binary outcome, we instead fit a linear model to the logit (natural log) of the log-odds ratio:
-
-$\ln \biggl{(}\frac{p(x)}{1-p(x)}\biggr{)} = c + m_1 x_1.$
-
-Although this model is not immediately intuitive, if we solve for $p(x)$ we get:
-
-$p(x) = \frac{1}{1+\exp(-c - m_1 x_1)}$.
-
-We have thus specified a function that indicates the probability of success for a given value of $x$ e.g., $P(y=1|x)$. Note that in our observation data $\mathbf{y}$ itself can only take on one of two values. We can think of our data as a being a sample from a Bernoulli trial, and we can therefore write down the likelihood for a set of observations ${\mathbf{X},\mathbf{y}}$:
-
-$\mathcal{L}(c,m_1) = \prod_{i=1}^n p(x_i)^{y_i} (1-p(x_i)^{1-y_i})$.
-
-In general, these models do not admit a closed form solution, but can be solved iteratively via maximum likelihood, that is by finding the values $(c,m_1)$ that return the greatest value of $\mathcal{L}(c,m_1)$. Within {caret}, logistic regression can applied using the {glm} function. 
-
-To illustate this we will again make use of our plant dataset. Recall that the second column represents a binary variable indicative of infection status e.g., population growth of the *Botrytis cinerea* pathogen indicated by statistical enrichment of the *Botrytis* Tubulin versus the earliest time point. 
-
-In the excercises, below, we will aim to learn a set of markers capable of predicting infection status using logistic regression. To begin with, let's see if *time* is informative of infection status:
-
-
-```r
-library(pROC)
-```
-
-```
-## Type 'citation("pROC")' for a citation.
-```
-
-```
-## 
-## Attaching package: 'pROC'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     cov, smooth, var
-```
-
-```r
-library(ROCR)
-```
-
-```
-## Loading required package: gplots
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
-options(warn=-1)
-mod_fit <- train(y ~ ., data=data.frame(x = D$Time, y = as.factor(D$Class)), method="glm", family="binomial")
-```
-
-To evaluate the model, we will load in a second (related) dataset, containnig a new set of observations not seen by the model, and predict infection status. 
-
-
-```r
-Dpred <- read.csv(file = "data/Arabidopsis/Arabidopsis_Botrytis_pred_transpose_3.csv", header = TRUE, sep = ",", row.names=1)
-
-prob <- predict(mod_fit, newdata=data.frame(x = Dpred$Time, y = as.factor(Dpred$Class)), type="prob")
-pred <- prediction(prob$`1`, as.factor(Dpred$Class))
-```
-
-To evaluate how well the algorithm has done, we can calculate a variety of summary statistics. For example the number of true positives, true negatives, false positive and false negatives. A useful summary is to plot the ROC curve (false positive rate versus true positive rate) and calculate the area under the curve. For a perfect algorithm, the area under this curve (AUC) will be equal to $1$, whereas random assignment would give an area of $0.5$. In the example below, we will calculate the AUC for a logistic regression model:
-
-
-```r
-perf <- performance(pred, measure = "tpr", x.measure = "fpr")
-plot(perf)
-```
-
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-27-1.png" width="672" />
-
-```r
-auc <- performance(pred, measure = "auc")
-auc <- auc@y.values[[1]]
-auc
-```
-
-```
-## [1] 0.6111111
-```
-
-Okay, so a score of $0.61$ is certainly better than random, but not particularly good. This is perhaps not surprising, as half the time series (the control) is uninfected over the entirety of the time series, whilst in the second times series *Botrytis* is able to infect from around time point 8 onwards. The slighty better than random performence therefore arises due the slight bias in the number of instances of each class.
-
-In the example, below, we instead try to regress infection status against individual gene expression levels. The idea is to identify genes that have expression values indicative of *Botrytis* infection: marker genes.
-
-
-```r
-aucscore <- matrix(rep(0, 164), 1, 164)
-for (i in seq(3,164)){
-mod_fit <- train(y ~ ., data=data.frame(x = D[,i], y = as.factor(D$Class)), method="glm", family="binomial")
-prob <- predict(mod_fit, newdata=data.frame(x = Dpred[,i], y = as.factor(Dpred$Class)), type="prob")
-pred <- prediction(prob$`1`, as.factor(Dpred$Class))
-perf <- performance(pred, measure = "tpr", x.measure = "fpr")
-auc <- performance(pred, measure = "auc")
-aucscore[i] <- auc@y.values[[1]]
-}
-
-plot(aucscore[1,3:ncol(aucscore)],ylab="AUC",xlab="gene index")
-```
-
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-28-1.png" width="672" />
-
-We note that, several genes in the list apear to have AUC scores much greater than $0.6$. We can take a look at some of the genes with high predictive power:
-
-
-```r
-genenames[which(aucscore>0.8)]
-```
-
-```
-##  [1] "AT1G29990" "AT1G67170" "AT2G21380" "AT2G28890" "AT2G35500"
-##  [6] "AT2G45660" "AT3G09980" "AT3G11590" "AT3G13720" "AT3G25710"
-## [11] "AT3G44720" "AT3G48150" "AT4G00710" "AT4G02150" "AT4G16380"
-## [16] "AT4G19700" "AT4G26450" "AT4G28640" "AT4G34710" "AT4G36970"
-## [21] "AT4G39050" "AT5G11980" "AT5G22630" "AT5G24660" "AT5G43700"
-## [26] "AT5G50010" "AT5G56250"
-```
-
-Unsurprisingly, amongst these genes we see a variety of genes whose proteins are known to be targeted by various pathogen effectors, and are therefore directly implicated in the immune response (Table 3.1). 
-
-Gene | Effector
---- | ---
-AT3G25710	|	ATR1_ASWA1
-AT4G19700	|	ATR13_NOKS1
-AT4G34710	|	ATR13_NOKS1
-AT4G39050	|	ATR13_NOKS1
-AT5G24660	|	ATR13_NOKS1
-AT4G00710	|	AvrRpt2_Pto JL1065_CatalyticDead
-AT4G16380	|	HARXL44
-AT2G45660	|	HARXL45
-AT5G11980	|	HARXL73
-AT2G35500	|	HARXLL445
-AT1G67170	|	HARXLL470_WACO9
-AT4G36970	|	HARXLL470_WACO9
-AT5G56250	|	HARXLL470_WACO9
-AT3G09980	|	HARXLL516_WACO9
-AT5G50010	|	HARXLL60
-AT3G44720	|	HARXLL73_2_WACO9
-AT5G22630	|	HARXLL73_2_WACO9
-AT5G43700	|	HopH1_Psy B728A
-Table 3.1: Genes predictive of infection status of *Botrytis cinerea* whose proteins are targeted by effectors of a variety of pathogens
-
-Let's take a look at what the data looks like. In this case we plot the training data labels and the fit from the logistic regression i.e., $p(\mathbf{y}=1|\mathbf{x})$:
-
-
-```r
-bestpredictor <- which(aucscore==max(aucscore))
-
-best_mod_fit <- train(y ~., data=data.frame(x = D[,bestpredictor], y = as.factor(D$Class)), family="binomial", method="glm")
-
-plot(D[,bestpredictor],D$Class,xlab=genenames[bestpredictor],ylab="Class")
-lines(seq(min(D[,bestpredictor]),max(D[,bestpredictor]),length=200),predict(best_mod_fit,newdata=data.frame(x = seq(min(D[,bestpredictor]),max(D[,bestpredictor]),length=200)),type="prob")[,2])
-```
-
-<img src="09-logistic-regression-gaussian-processes_files/figure-html/unnamed-chunk-30-1.png" width="672" />
-
-### GP classification {#gp-classification}
+## GP classification {#gp-classification}
 
 Classification approaches using Gaussian processes are also possible. Unlike Gaussian process regression, Gaussian process classification is not analytically tractable, and we must instead use approximations. A GP classifier has been implemented in {caret} using a polynomial kernel, and can be called using the following code:
 
@@ -1026,7 +1011,7 @@ mod_fit3$results$Accuracy
 ```
 
 ```
-## [1] 0.8660466
+## [1] 0.8453524
 ```
 
 We can see from the plot that the model fit is very poor. However, if we look at the accuracy (printed at the bottom) the result appears to be good. This is due to the skewed number of samples from each class: there are far more non infected samples than there are infected, which means that if the model predicts uninfected for every instance, it will be correct more than it's incorrect. We can similary check the result on our test dataset:
@@ -1076,93 +1061,10 @@ auc
 ```
 
 ```
-## [1] 0.8193042
+## [1] 0.8163861
 ```
 
 Boom! We can see that this is a much better model, both in terms of the model fit, which has found a nonlinear classifier, and in terms of the AUC score.
-
-### Other classification approaches.
-
-Quite often in ML we are interested in predicting class labels with maximum accuracy. That is, we are less concerned about intepreting what our function says about the system, and are only interested in our ability to predict $\mathbf{y}*$ at the new locations $\mathbf{X}*$. 
-
-A variety of classifiers are availble in {caret}, including those based on random forests and support vector machines, as well as those based on neural networks. In the examples, below, we use some of these approaches to predict infection status from expression data.
-
-
-```r
-library("stepPlr")
-library("party")
-```
-
-```
-## Loading required package: grid
-```
-
-```
-## Loading required package: mvtnorm
-```
-
-```
-## Loading required package: modeltools
-```
-
-```
-## Loading required package: stats4
-```
-
-```
-## 
-## Attaching package: 'modeltools'
-```
-
-```
-## The following object is masked from 'package:kernlab':
-## 
-##     prior
-```
-
-```
-## The following object is masked from 'package:plyr':
-## 
-##     empty
-```
-
-```
-## The following object is masked from 'package:lme4':
-## 
-##     refit
-```
-
-```
-## Loading required package: strucchange
-```
-
-```
-## Loading required package: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```
-## Loading required package: sandwich
-```
-
-```r
-library("kernlab")
-mod_fit1 <- train(y ~ x, data=data.frame(x = D$AT3G44720, y = as.factor(D$Class)), method="plr")
-#mod_fit2 <- train(y ~ x, data=data.frame(x = D$AT3G44720, y = as.factor(D$Class)), method="cforest")
-mod_fit3 <- train(y ~ x, data=data.frame(x = D$AT3G44720, y = as.factor(D$Class)), method="svmRadialWeights")
-```
-
-Although we can run a variety of algorithms and check the accuracy of their predictions seperately, another approach would be to combine predicitons to achieve increased accuracy. More information on ensemble learning is available from  [CRAN](https://cran.r-project.org/web/packages/caretEnsemble/vignettes/caretEnsemble-intro.html).
 
 ## Resources
 

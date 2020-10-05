@@ -79,24 +79,6 @@ library(party)
 library(rpart)
 library(rpart.plot)
 library(ROCR)
-```
-
-```
-## Loading required package: gplots
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 set.seed(100)
 ```
 
@@ -161,15 +143,8 @@ titanic3 <- "https://goo.gl/At238b" %>%
 
 ```r
 rtree_fit <- rpart(survived ~ ., 
-          .data$training) 
+          .data$training, model=TRUE) 
 rpart.plot(rtree_fit)
-```
-
-```
-## Warning: Bad 'data' field in model 'call'.
-## To silence this warning:
-##     Call rpart.plot with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.
 ```
 
 <img src="19-solutions-decision-trees_files/figure-html/unnamed-chunk-4-1.png" width="672" />

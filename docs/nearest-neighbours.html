@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Nearest neighbours | An Introduction to Machine Learning</title>
   <meta name="description" content="Course materials for An Introduction to Machine Learning" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Nearest neighbours | An Introduction to Machine Learning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -162,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html"><i class="fa fa-check"></i><b>5</b> Nearest neighbours</a><ul>
-<li class="chapter" data-level="5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#classification-simulated-data"><i class="fa fa-check"></i><b>5.2</b> Classification: simulated data</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-function"><i class="fa fa-check"></i><b>5.2.1</b> knn function</a></li>
 <li class="chapter" data-level="5.2.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#plotting-decision-boundaries"><i class="fa fa-check"></i><b>5.2.2</b> Plotting decision boundaries</a></li>
@@ -181,19 +209,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.4.3</b> Search for optimum <em>k</em></a></li>
 <li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.4.4</b> Use model to make predictions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#exercises-1"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
+<li class="chapter" data-level="5.5" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="svm.html"><a href="svm.html"><i class="fa fa-check"></i><b>6</b> Support vector machines</a><ul>
-<li class="chapter" data-level="6.1" data-path="svm.html"><a href="svm.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="svm.html"><a href="svm.html#maximum-margin-classifier"><i class="fa fa-check"></i><b>6.1.1</b> Maximum margin classifier</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="svm.html"><a href="svm.html#support-vector-classifier"><i class="fa fa-check"></i><b>6.2</b> Support vector classifier</a></li>
 <li class="chapter" data-level="6.3" data-path="svm.html"><a href="svm.html#support-vector-machine"><i class="fa fa-check"></i><b>6.3</b> Support Vector Machine</a></li>
 <li class="chapter" data-level="6.4" data-path="svm.html"><a href="svm.html#example---training-a-classifier"><i class="fa fa-check"></i><b>6.4</b> Example - training a classifier</a><ul>
 <li class="chapter" data-level="6.4.1" data-path="svm.html"><a href="svm.html#setup-environment"><i class="fa fa-check"></i><b>6.4.1</b> Setup environment</a></li>
-<li class="chapter" data-level="6.4.2" data-path="svm.html"><a href="svm.html#partition-data-1"><i class="fa fa-check"></i><b>6.4.2</b> Partition data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>6.4.2</b> Partition data</a></li>
 <li class="chapter" data-level="6.4.3" data-path="svm.html"><a href="svm.html#visualize-training-data"><i class="fa fa-check"></i><b>6.4.3</b> Visualize training data</a></li>
 <li class="chapter" data-level="6.4.4" data-path="svm.html"><a href="svm.html#define-a-custom-model"><i class="fa fa-check"></i><b>6.4.4</b> Define a custom model</a></li>
 <li class="chapter" data-level="6.4.5" data-path="svm.html"><a href="svm.html#model-cross-validation-and-tuning"><i class="fa fa-check"></i><b>6.4.5</b> Model cross-validation and tuning</a></li>
@@ -202,17 +230,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="svm.html"><a href="svm.html#example---regression"><i class="fa fa-check"></i><b>6.5</b> Example - regression</a></li>
 <li class="chapter" data-level="6.6" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>6.6</b> Further reading</a></li>
-<li class="chapter" data-level="6.7" data-path="svm.html"><a href="svm.html#exercises-2"><i class="fa fa-check"></i><b>6.7</b> Exercises</a><ul>
+<li class="chapter" data-level="6.7" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>6.7</b> Exercises</a><ul>
 <li class="chapter" data-level="6.7.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>6.7.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
-<li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
-<li class="chapter" data-level="7.3" data-path="decision-trees.html"><a href="decision-trees.html#exercises-3"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.1</b> Random Forest</a></li>
+<li class="chapter" data-level="7.2" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="use-case-1.html"><a href="use-case-1.html"><i class="fa fa-check"></i><b>8</b> Use case 1</a><ul>
-<li class="chapter" data-level="8.1" data-path="use-case-1.html"><a href="use-case-1.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="use-case-1.html"><a href="use-case-1.html#problem-automated-detection-of-malaria"><i class="fa fa-check"></i><b>8.2</b> Problem: automated detection of malaria</a></li>
 <li class="chapter" data-level="8.3" data-path="use-case-1.html"><a href="use-case-1.html#challenges"><i class="fa fa-check"></i><b>8.3</b> Challenges</a></li>
 <li class="chapter" data-level="8.4" data-path="use-case-1.html"><a href="use-case-1.html#getting-started"><i class="fa fa-check"></i><b>8.4</b> Getting started</a><ul>
@@ -222,7 +249,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
@@ -230,14 +257,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1.1" data-path="logistic-regression.html"><a href="logistic-regression.html#linear-regression"><i class="fa fa-check"></i><b>10.1.1</b> Linear regression</a></li>
 <li class="chapter" data-level="10.1.2" data-path="logistic-regression.html"><a href="logistic-regression.html#polynomial-regression"><i class="fa fa-check"></i><b>10.1.2</b> Polynomial regression</a></li>
 <li class="chapter" data-level="10.1.3" data-path="logistic-regression.html"><a href="logistic-regression.html#distributions-of-fits"><i class="fa fa-check"></i><b>10.1.3</b> Distributions of fits</a></li>
-<li class="chapter" data-level="10.1.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.1.4</b> Gaussian process regression</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="logistic-regression.html"><a href="logistic-regression.html#classification"><i class="fa fa-check"></i><b>10.2</b> Classification</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression"><i class="fa fa-check"></i><b>10.2.1</b> Logistic regression</a></li>
-<li class="chapter" data-level="10.2.2" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.2.2</b> GP classification</a></li>
-<li class="chapter" data-level="10.2.3" data-path="logistic-regression.html"><a href="logistic-regression.html#other-classification-approaches."><i class="fa fa-check"></i><b>10.2.3</b> Other classification approaches.</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.3</b> Resources</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.3</b> Gaussian process regression</a></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.4</b> GP classification</a></li>
+<li class="chapter" data-level="10.5" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.5</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="ann.html"><a href="ann.html"><i class="fa fa-check"></i><b>11</b> Artificial neural networks</a><ul>
 <li class="chapter" data-level="11.1" data-path="ann.html"><a href="ann.html#neural-networks"><i class="fa fa-check"></i><b>11.1</b> Neural Networks</a></li>
@@ -251,11 +277,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="mlnn.html"><a href="mlnn.html#convolutional-neural-networks"><i class="fa fa-check"></i><b>13.2</b> Convolutional neural networks</a><ul>
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
-<li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#data-augmentation"><i class="fa fa-check"></i><b>13.2.2</b> Data augmentation</a></li>
-<li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.3</b> Asking more precise questions</a></li>
-<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.4</b> More complex networks</a></li>
+<li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
+<li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="mlnn.html"><a href="mlnn.html#further-reading-1"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
+<li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>A</b> Resources</a><ul>
@@ -270,37 +295,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
-<li class="chapter" data-level="C.1" data-path="solutions-clustering.html"><a href="solutions-clustering.html#exercise-1-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
-<li class="chapter" data-level="D.1" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html#exercise-1-2"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
-<li class="chapter" data-level="E.1" data-path="solutions-svm.html"><a href="solutions-svm.html#exercise-1-3"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
-<li class="chapter" data-level="F.1" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html#exercise-1-4"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
 <li class="chapter" data-level="G.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#preparation"><i class="fa fa-check"></i><b>G.1</b> Preparation</a><ul>
 <li class="chapter" data-level="G.1.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#load-required-libraries"><i class="fa fa-check"></i><b>G.1.1</b> Load required libraries</a></li>
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
-<li class="chapter" data-level="G.1.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#load-data-1"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
-<li class="chapter" data-level="G.1.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#data-splitting-1"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
+<li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
-<li class="chapter" data-level="G.2.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#zero-and-near-zero-variance-predictors-1"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
+<li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
 <li class="chapter" data-level="G.2.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#are-all-predictors-on-the-same-scale"><i class="fa fa-check"></i><b>G.2.2</b> Are all predictors on the same scale?</a></li>
 <li class="chapter" data-level="G.2.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#redundancy-from-correlated-variables"><i class="fa fa-check"></i><b>G.2.3</b> Redundancy from correlated variables</a></li>
-<li class="chapter" data-level="G.2.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#skewness-1"><i class="fa fa-check"></i><b>G.2.4</b> Skewness</a></li>
+<li class="chapter" data-level="G.2.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#skewness"><i class="fa fa-check"></i><b>G.2.4</b> Skewness</a></li>
 </ul></li>
 <li class="chapter" data-level="G.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#infection-status-two-class-problem"><i class="fa fa-check"></i><b>G.3</b> Infection status (two-class problem)</a><ul>
 <li class="chapter" data-level="G.3.1" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#model-training-and-parameter-tuning"><i class="fa fa-check"></i><b>G.3.1</b> Model training and parameter tuning</a></li>
 <li class="chapter" data-level="G.3.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#knn"><i class="fa fa-check"></i><b>G.3.2</b> KNN</a></li>
 <li class="chapter" data-level="G.3.3" data-path="svm.html"><a href="svm.html#svm"><i class="fa fa-check"></i><b>G.3.3</b> SVM</a></li>
 <li class="chapter" data-level="G.3.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#decision-tree"><i class="fa fa-check"></i><b>G.3.4</b> Decision tree</a></li>
-<li class="chapter" data-level="G.3.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-1"><i class="fa fa-check"></i><b>G.3.5</b> Random forest</a></li>
+<li class="chapter" data-level="G.3.5" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>G.3.5</b> Random forest</a></li>
 <li class="chapter" data-level="G.3.6" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#compare-models"><i class="fa fa-check"></i><b>G.3.6</b> Compare models</a></li>
 <li class="chapter" data-level="G.3.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model"><i class="fa fa-check"></i><b>G.3.7</b> Predict test set using our best model</a></li>
 <li class="chapter" data-level="G.3.8" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#roc-curve"><i class="fa fa-check"></i><b>G.3.8</b> ROC curve</a></li>
@@ -310,7 +334,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.4.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#knn-1"><i class="fa fa-check"></i><b>G.4.2</b> KNN</a></li>
 <li class="chapter" data-level="G.4.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#svm-1"><i class="fa fa-check"></i><b>G.4.3</b> SVM</a></li>
 <li class="chapter" data-level="G.4.4" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#decision-tree-1"><i class="fa fa-check"></i><b>G.4.4</b> Decision tree</a></li>
-<li class="chapter" data-level="G.4.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-2"><i class="fa fa-check"></i><b>G.4.5</b> Random forest</a></li>
+<li class="chapter" data-level="G.4.5" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#random-forest-1"><i class="fa fa-check"></i><b>G.4.5</b> Random forest</a></li>
 <li class="chapter" data-level="G.4.6" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#compare-models-1"><i class="fa fa-check"></i><b>G.4.6</b> Compare models</a></li>
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
@@ -321,7 +345,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
 <li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
-<li class="chapter" data-level="J.1" data-path="solutions-ann.html"><a href="solutions-ann.html#exercise-1-5"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
 </ul>
@@ -344,7 +368,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="nearest-neighbours" class="section level1">
 <h1><span class="header-section-number">5</span> Nearest neighbours</h1>
 <!-- Matt -->
-<div id="introduction-1" class="section level2">
+<div id="introduction" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
 <p><em>k</em>-NN is by far the simplest method of supervised learning we will cover in this course. It is a non-parametric method that can be used for both classification (predicting class membership) and regression (estimating continuous variables). <em>k</em>-NN is categorized as instance based (memory based) learning, because all computation is deferred until classification. The most computationally demanding aspects of <em>k</em>-NN are finding neighbours and storing the entire learning set.</p>
 <p>A simple <em>k</em>-NN classification rule (figure <a href="#fig:knnClassification"><strong>??</strong></a>) would proceed as follows:</p>
@@ -361,11 +385,11 @@ Illustration of <em>k</em>-nn classification. In this example we have two classe
 <p>A basic implementation of <em>k</em>-NN regression would calculate the average of the numerical outcome of the <em>k</em> nearest neighbours.</p>
 <p>The number of neighbours <em>k</em> can have a considerable impact on the predictive performance of <em>k</em>-NN in both classification and regression. The optimal value of <em>k</em> should be chosen using cross-validation.</p>
 <p>Euclidean distance is the most widely used distance metric in <em>k</em>-nn, and will be used in the examples and exercises in this chapter. However, other distance metrics can be used.</p>
-<strong>Euclidean distance:</strong>
+<p><strong>Euclidean distance:</strong>
 <span class="math display" id="eq:euclidean">\[\begin{equation}
   distance\left(p,q\right)=\sqrt{\sum_{i=1}^{n} (p_i-q_i)^2}
   \tag{4.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/euclideanDistanceDiagram-1.png" alt="Euclidean distance." width="75%" />
 <p class="caption">
@@ -384,43 +408,46 @@ Euclidean distance.
 </ul>
 <p>The dataset has been partitioned into training and test sets.</p>
 <p>Load data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/example_binary_classification/bin_class_example.rda&quot;</span>)
-<span class="kw">str</span>(xtrain)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    400 obs. of  2 variables:
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;data/example_binary_classification/bin_class_example.rda&quot;</span>)</a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="kw">str</span>(xtrain)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	400 obs. of  2 variables:
 ##  $ V1: num  -0.223 0.944 2.36 1.846 1.732 ...
 ##  $ V2: num  -1.153 -0.827 -0.128 2.014 -0.574 ...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(xtest)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    400 obs. of  2 variables:
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">str</span>(xtest)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	400 obs. of  2 variables:
 ##  $ V1: num  2.09 2.3 2.07 1.65 1.18 ...
 ##  $ V2: num  -1.009 1.0947 0.1644 0.3243 -0.0277 ...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">as.factor</span>(ytrain))</code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">summary</span>(<span class="kw">as.factor</span>(ytrain))</a></code></pre></div>
 <pre><code>##   0   1 
 ## 200 200</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">as.factor</span>(ytest))</code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">summary</span>(<span class="kw">as.factor</span>(ytest))</a></code></pre></div>
 <pre><code>##   0   1 
 ## 200 200</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(GGally)
-<span class="kw">library</span>(RColorBrewer)
-point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)
-point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)
-point_size =<span class="st"> </span><span class="dv">2</span>
-
-<span class="kw">ggplot</span>(xtrain, <span class="kw">aes</span>(V1,V2)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[ytrain<span class="dv">+1</span>], <span class="dt">shape=</span>point_shapes[ytrain<span class="dv">+1</span>], 
-             <span class="dt">size=</span>point_size) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))
-
-<span class="kw">ggplot</span>(xtest, <span class="kw">aes</span>(V1,V2)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[ytest<span class="dv">+1</span>], <span class="dt">shape=</span>point_shapes[ytest<span class="dv">+1</span>], 
-             <span class="dt">size=</span>point_size) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="kw">library</span>(GGally)</a></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb184-2" data-line-number="2">point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb184-3" data-line-number="3">point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)</a>
+<a class="sourceLine" id="cb184-4" data-line-number="4">point_size =<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb184-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb184-6" data-line-number="6"><span class="kw">ggplot</span>(xtrain, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[ytrain<span class="op">+</span><span class="dv">1</span>], <span class="dt">shape=</span>point_shapes[ytrain<span class="op">+</span><span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb184-8" data-line-number="8">             <span class="dt">size=</span>point_size) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-9" data-line-number="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb184-10" data-line-number="10"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb184-11" data-line-number="11"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb184-12" data-line-number="12">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a>
+<a class="sourceLine" id="cb184-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb184-14" data-line-number="14"><span class="kw">ggplot</span>(xtest, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[ytest<span class="op">+</span><span class="dv">1</span>], <span class="dt">shape=</span>point_shapes[ytest<span class="op">+</span><span class="dv">1</span>], </a>
+<a class="sourceLine" id="cb184-16" data-line-number="16">             <span class="dt">size=</span>point_size) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-17" data-line-number="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb184-18" data-line-number="18"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb184-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb184-20" data-line-number="20">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassTrainTest-1.png" alt="Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn" width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassTrainTest-2.png" alt="Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn" width="50%" />
 <p class="caption">
@@ -430,7 +457,7 @@ Scatterplots of the simulated training and test data sets that will be used in t
 <div id="knn-function" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> knn function</h3>
 <p>For <em>k</em>-nn classification and regression we will use the <strong>knn</strong> function in the package <strong>class</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(class)</code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">library</span>(class)</a></code></pre></div>
 <p><strong>Arguments to knn</strong></p>
 <ul>
 <li><code>train</code> : matrix or data frame of training set cases.</li>
@@ -442,10 +469,10 @@ Scatterplots of the simulated training and test data sets that will be used in t
 <li><code>use.all</code> : controls handling of ties. If true, all distances equal to the kth largest are included. If false, a random selection of distances equal to the kth is chosen to use exactly k neighbours.</li>
 </ul>
 <p>Let us perform <em>k</em>-nn on the training set with <em>k</em>=1. We will use the <strong>confusionMatrix</strong> function from the <a href="http://cran.r-project.org/web/packages/caret/index.html">caret</a> package to summarize performance of the classifier.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret)</code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">library</span>(caret)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn1train &lt;-<span class="st"> </span>class::<span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xtrain, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)
-<span class="kw">confusionMatrix</span>(knn1train, <span class="kw">as.factor</span>(ytrain))</code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">knn1train &lt;-<span class="st"> </span>class<span class="op">::</span><span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xtrain, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="kw">confusionMatrix</span>(knn1train, <span class="kw">as.factor</span>(ytrain))</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -473,13 +500,14 @@ Scatterplots of the simulated training and test data sets that will be used in t
 ##                                      
 ##        &#39;Positive&#39; Class : 0          
 ## </code></pre>
-<p>The classifier performs perfectly on the training set, because with <em>k</em>=1, each observation is being predicted by itself! <!--
+<p>The classifier performs perfectly on the training set, because with <em>k</em>=1, each observation is being predicted by itself!
+<!--
 table(ytrain,knn1train)
 cat("KNN prediction error for training set: ", 1-mean(as.numeric(as.vector(knn1train))==ytrain), "\n")
 --></p>
 <p>Now let use the training set to predict on the test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn1test &lt;-<span class="st"> </span>class::<span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xtest, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)
-<span class="kw">confusionMatrix</span>(knn1test, <span class="kw">as.factor</span>(ytest))</code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">knn1test &lt;-<span class="st"> </span>class<span class="op">::</span><span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xtest, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="kw">confusionMatrix</span>(knn1test, <span class="kw">as.factor</span>(ytest))</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -507,7 +535,8 @@ cat("KNN prediction error for training set: ", 1-mean(as.numeric(as.vector(knn1t
 ##                                           
 ##        &#39;Positive&#39; Class : 0               
 ## </code></pre>
-<p>Performance on the test set is not so good. This is an example of a classifier being over-fitted to the training set. <!--
+<p>Performance on the test set is not so good. This is an example of a classifier being over-fitted to the training set.
+<!--
 table(ytest, knn1test)
 cat("KNN prediction error for test set: ", 1-mean(as.numeric(as.vector(knn1test))==ytest), "\n")
 --></p>
@@ -516,41 +545,41 @@ cat("KNN prediction error for test set: ", 1-mean(as.numeric(as.vector(knn1test)
 <h3><span class="header-section-number">5.2.2</span> Plotting decision boundaries</h3>
 <p>Since we have just two dimensions we can visualize the decision boundary generated by the <em>k</em>-nn classifier in a 2D scatterplot. Situations where your original data set contains only two variables will be rare, but it is not unusual to reduce a high-dimensional data set to just two dimensions using the methods that will be discussed in chapter <a href="dimensionality-reduction.html#dimensionality-reduction">3</a>. Therefore, knowing how to plot decision boundaries will potentially be helpful for many different datasets and classifiers.</p>
 <p>Create a grid so we can predict across the full range of our variables V1 and V2.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gridSize &lt;-<span class="st"> </span><span class="dv">150</span> 
-v1limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])))
-tmpV1 &lt;-<span class="st"> </span><span class="kw">seq</span>(v1limits[<span class="dv">1</span>],v1limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)
-v2limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])))
-tmpV2 &lt;-<span class="st"> </span><span class="kw">seq</span>(v2limits[<span class="dv">1</span>],v2limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)
-xgrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(tmpV1,tmpV2)
-<span class="kw">names</span>(xgrid) &lt;-<span class="st"> </span><span class="kw">names</span>(xtrain)</code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">gridSize &lt;-<span class="st"> </span><span class="dv">150</span> </a>
+<a class="sourceLine" id="cb192-2" data-line-number="2">v1limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])))</a>
+<a class="sourceLine" id="cb192-3" data-line-number="3">tmpV1 &lt;-<span class="st"> </span><span class="kw">seq</span>(v1limits[<span class="dv">1</span>],v1limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)</a>
+<a class="sourceLine" id="cb192-4" data-line-number="4">v2limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])))</a>
+<a class="sourceLine" id="cb192-5" data-line-number="5">tmpV2 &lt;-<span class="st"> </span><span class="kw">seq</span>(v2limits[<span class="dv">1</span>],v2limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)</a>
+<a class="sourceLine" id="cb192-6" data-line-number="6">xgrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(tmpV1,tmpV2)</a>
+<a class="sourceLine" id="cb192-7" data-line-number="7"><span class="kw">names</span>(xgrid) &lt;-<span class="st"> </span><span class="kw">names</span>(xtrain)</a></code></pre></div>
 <p>Predict values of all elements of grid.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn1grid &lt;-<span class="st"> </span>class::<span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xgrid, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)
-V3 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(knn1grid))
-xgrid &lt;-<span class="st"> </span><span class="kw">cbind</span>(xgrid, V3)</code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">knn1grid &lt;-<span class="st"> </span>class<span class="op">::</span><span class="kw">knn</span>(<span class="dt">train=</span>xtrain, <span class="dt">test=</span>xgrid, <span class="dt">cl=</span>ytrain, <span class="dt">k=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb193-2" data-line-number="2">V3 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(knn1grid))</a>
+<a class="sourceLine" id="cb193-3" data-line-number="3">xgrid &lt;-<span class="st"> </span><span class="kw">cbind</span>(xgrid, V3)</a></code></pre></div>
 <p>Plot</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)
-point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)
-point_size =<span class="st"> </span><span class="dv">2</span>
-
-<span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtrain, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytrain<span class="dv">+1</span>],
-             <span class="dt">shape=</span>point_shapes[ytrain<span class="dv">+1</span>], <span class="dt">size=</span>point_size) +
-<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))
-
-<span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtest, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytest<span class="dv">+1</span>],
-             <span class="dt">shape=</span>point_shapes[ytrain<span class="dv">+1</span>], <span class="dt">size=</span>point_size) +
-<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb194-2" data-line-number="2">point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)</a>
+<a class="sourceLine" id="cb194-3" data-line-number="3">point_size =<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb194-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb194-5" data-line-number="5"><span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtrain, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytrain<span class="op">+</span><span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb194-8" data-line-number="8">             <span class="dt">shape=</span>point_shapes[ytrain<span class="op">+</span><span class="dv">1</span>], <span class="dt">size=</span>point_size) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-10" data-line-number="10"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-11" data-line-number="11"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-12" data-line-number="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb194-13" data-line-number="13">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a>
+<a class="sourceLine" id="cb194-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb194-15" data-line-number="15"><span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtest, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytest<span class="op">+</span><span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb194-18" data-line-number="18">             <span class="dt">shape=</span>point_shapes[ytrain<span class="op">+</span><span class="dv">1</span>], <span class="dt">size=</span>point_size) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-19" data-line-number="19"><span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-20" data-line-number="20"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-21" data-line-number="21"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb194-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb194-23" data-line-number="23">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK1-1.png" alt="Binary classification of the simulated training and test sets with _k_=1." width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK1-2.png" alt="Binary classification of the simulated training and test sets with _k_=1." width="50%" />
 <p class="caption">
@@ -566,35 +595,35 @@ Binary classification of the simulated training and test sets with <em>k</em>=1.
 <li>The variance is error from sensitivity to small fluctuations in the training set. High variance can cause an algorithm to model the random noise in the training data, rather than the intended outputs (overfitting).</li>
 </ul>
 <p>To demonstrate this phenomenon, let us look at the performance of the <em>k</em>-nn classifier over a range of values of <em>k</em>. First we will define a function to create a sequence of log spaced values. This is the <strong>lseq</strong> function from the <a href="https://cran.r-project.org/package=emdbook">emdbook</a> package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lseq &lt;-<span class="st"> </span>function(from, to, length.out) {
-  <span class="kw">exp</span>(<span class="kw">seq</span>(<span class="kw">log</span>(from), <span class="kw">log</span>(to), <span class="dt">length.out =</span> length.out))
-}</code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">lseq &lt;-<span class="st"> </span><span class="cf">function</span>(from, to, length.out) {</a>
+<a class="sourceLine" id="cb195-2" data-line-number="2">  <span class="kw">exp</span>(<span class="kw">seq</span>(<span class="kw">log</span>(from), <span class="kw">log</span>(to), <span class="dt">length.out =</span> length.out))</a>
+<a class="sourceLine" id="cb195-3" data-line-number="3">}</a></code></pre></div>
 <p>Get log spaced sequence of length 20, round and then remove any duplicates resulting from rounding.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">round</span>(<span class="kw">lseq</span>(<span class="dv">1</span>,<span class="dv">400</span>,<span class="dv">20</span>)))
-<span class="kw">length</span>(s)</code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">s &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">round</span>(<span class="kw">lseq</span>(<span class="dv">1</span>,<span class="dv">400</span>,<span class="dv">20</span>)))</a>
+<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="kw">length</span>(s)</a></code></pre></div>
 <pre><code>## [1] 19</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">train_error &lt;-<span class="st"> </span><span class="kw">sapply</span>(s, function(i){
-  yhat &lt;-<span class="st"> </span><span class="kw">knn</span>(xtrain, xtrain, ytrain, i)
-  <span class="kw">return</span>(<span class="dv">1</span>-<span class="kw">mean</span>(<span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(yhat))==ytrain))
-})
-
-test_error &lt;-<span class="st"> </span><span class="kw">sapply</span>(s, function(i){
-  yhat &lt;-<span class="st"> </span><span class="kw">knn</span>(xtrain, xtest, ytrain, i)
-  <span class="kw">return</span>(<span class="dv">1</span>-<span class="kw">mean</span>(<span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(yhat))==ytest))
-})
-
-k &lt;-<span class="st"> </span><span class="kw">rep</span>(s, <span class="dv">2</span>)
-set &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;train&quot;</span>, <span class="kw">length</span>(s)), <span class="kw">rep</span>(<span class="st">&quot;test&quot;</span>, <span class="kw">length</span>(s)))
-error &lt;-<span class="st"> </span><span class="kw">c</span>(train_error, test_error)
-misclass_errors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(k, set, error)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(misclass_errors, <span class="kw">aes</span>(<span class="dt">x=</span>k, <span class="dt">y=</span>error, <span class="dt">group=</span>set)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">colour=</span>set, <span class="dt">linetype=</span>set), <span class="dt">size=</span><span class="fl">1.5</span>) +
-<span class="st">  </span><span class="kw">scale_x_log10</span>() +
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Misclassification Errors&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>), <span class="dt">legend.title=</span><span class="kw">element_blank</span>(),
-        <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), 
-        <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;italic&quot;</span>, <span class="dt">size=</span><span class="dv">12</span>))</code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">train_error &lt;-<span class="st"> </span><span class="kw">sapply</span>(s, <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb198-2" data-line-number="2">  yhat &lt;-<span class="st"> </span><span class="kw">knn</span>(xtrain, xtrain, ytrain, i)</a>
+<a class="sourceLine" id="cb198-3" data-line-number="3">  <span class="kw">return</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">mean</span>(<span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(yhat))<span class="op">==</span>ytrain))</a>
+<a class="sourceLine" id="cb198-4" data-line-number="4">})</a>
+<a class="sourceLine" id="cb198-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb198-6" data-line-number="6">test_error &lt;-<span class="st"> </span><span class="kw">sapply</span>(s, <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb198-7" data-line-number="7">  yhat &lt;-<span class="st"> </span><span class="kw">knn</span>(xtrain, xtest, ytrain, i)</a>
+<a class="sourceLine" id="cb198-8" data-line-number="8">  <span class="kw">return</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">mean</span>(<span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(yhat))<span class="op">==</span>ytest))</a>
+<a class="sourceLine" id="cb198-9" data-line-number="9">})</a>
+<a class="sourceLine" id="cb198-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb198-11" data-line-number="11">k &lt;-<span class="st"> </span><span class="kw">rep</span>(s, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb198-12" data-line-number="12">set &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;train&quot;</span>, <span class="kw">length</span>(s)), <span class="kw">rep</span>(<span class="st">&quot;test&quot;</span>, <span class="kw">length</span>(s)))</a>
+<a class="sourceLine" id="cb198-13" data-line-number="13">error &lt;-<span class="st"> </span><span class="kw">c</span>(train_error, test_error)</a>
+<a class="sourceLine" id="cb198-14" data-line-number="14">misclass_errors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(k, set, error)</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1"><span class="kw">ggplot</span>(misclass_errors, <span class="kw">aes</span>(<span class="dt">x=</span>k, <span class="dt">y=</span>error, <span class="dt">group=</span>set)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">colour=</span>set, <span class="dt">linetype=</span>set), <span class="dt">size=</span><span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-4" data-line-number="4"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Misclassification Errors&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-6" data-line-number="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>), <span class="dt">legend.title=</span><span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb199-7" data-line-number="7">        <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>), </a>
+<a class="sourceLine" id="cb199-8" data-line-number="8">        <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&quot;italic&quot;</span>, <span class="dt">size=</span><span class="dv">12</span>))</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/misclassErrorsFunK-1.png" alt="Misclassification errors as a function of neighbourhood size." width="100%" />
 <p class="caption">
@@ -606,43 +635,43 @@ Misclassification errors as a function of neighbourhood size.
 <div id="choosing-k" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Choosing <em>k</em></h3>
 <p>We will use the caret library. Caret provides a unified interface to a huge range of supervised learning packages in R. The design of its tools encourages best practice, especially in relation to cross-validation and testing. Additionally, it has automatic parallel processing built in, which is a significant advantage when dealing with large data sets.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret)</code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">library</span>(caret)</a></code></pre></div>
 <p>To take advantage of Caret’s parallel processing functionality, we simply need to load the <a href="http://cran.r-project.org/web/packages/doMC/index.html">doMC</a> package and register workers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(doMC)</code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">library</span>(doMC)</a></code></pre></div>
 <pre><code>## Loading required package: foreach</code></pre>
 <pre><code>## Loading required package: iterators</code></pre>
 <pre><code>## Loading required package: parallel</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">registerDoMC</span>(<span class="kw">detectCores</span>())</code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">registerDoMC</span>(<span class="kw">detectCores</span>())</a></code></pre></div>
 <p>To find out how many cores we have registered we can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getDoParWorkers</span>()</code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="kw">getDoParWorkers</span>()</a></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>The <a href="http://cran.r-project.org/web/packages/caret/index.html">caret</a> function <strong>train</strong> is used to fit predictive models over different values of <em>k</em>. The function <strong>trainControl</strong> is used to specify a list of computational and resampling options, which will be passed to <strong>train</strong>. We will start by configuring our cross-validation procedure using <strong>trainControl</strong>.</p>
 <p>We would like to make this demonstration reproducible and because we will be running the models in parallel, using the <strong>set.seed</strong> function alone is not sufficient. In addition to using <strong>set.seed</strong> we have to make use of the optional <strong>seeds</strong> argument to <strong>trainControl</strong>. We need to supply <strong>seeds</strong> with a list of integers that will be used to set the seed at each sampling iteration. The list is required to have a length of B+1, where B is the number of resamples. We will be repeating 10-fold cross-validation a total of ten times and so our list must have a length of 101. The first B elements of the list are required to be vectors of integers of length M, where M is the number of models being evaluated (in this case 19). The last element of the list only needs to be a single integer, which will be used for the final model.</p>
 <p>First we generate our list of seeds.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">101</span>)
-for(i in <span class="dv">1</span>:<span class="dv">100</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">19</span>)
-seeds[[<span class="dv">101</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb208-2" data-line-number="2">seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb208-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">19</span>)</a>
+<a class="sourceLine" id="cb208-4" data-line-number="4">seeds[[<span class="dv">101</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</a></code></pre></div>
 <p>We can now use <strong>trainControl</strong> to create a list of computational options for resampling.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tc &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,
-                   <span class="dt">number =</span> <span class="dv">10</span>,
-                   <span class="dt">repeats =</span> <span class="dv">10</span>,
-                   <span class="dt">seeds =</span> seeds)</code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">tc &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb209-2" data-line-number="2">                   <span class="dt">number =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb209-3" data-line-number="3">                   <span class="dt">repeats =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb209-4" data-line-number="4">                   <span class="dt">seeds =</span> seeds)</a></code></pre></div>
 <p>There are two options for choosing the values of <em>k</em> to be evaluated by the <strong>train</strong> function:</p>
 <ol style="list-style-type: decimal">
 <li>Pass a data.frame of values of <em>k</em> to the <strong>tuneGrid</strong> argument of <strong>train</strong>.</li>
 <li>Specify the number of different levels of <em>k</em> using the <strong>tuneLength</strong> function and allow <strong>train</strong> to pick the actual values.</li>
 </ol>
 <p>We will use the first option, so that we can try the values of <em>k</em> we examined earlier. The vector of values of <em>k</em> we created earlier should be converted into a data.frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s &lt;-<span class="st"> </span><span class="kw">data.frame</span>(s)
-<span class="kw">names</span>(s) &lt;-<span class="st"> &quot;k&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1">s &lt;-<span class="st"> </span><span class="kw">data.frame</span>(s)</a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="kw">names</span>(s) &lt;-<span class="st"> &quot;k&quot;</span></a></code></pre></div>
 <p>We are now ready to run the cross-validation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(xtrain, <span class="kw">as.factor</span>(ytrain), 
-                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,
-                <span class="dt">tuneGrid=</span>s,
-                <span class="dt">trControl=</span>tc)
-
-knnFit</code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(xtrain, <span class="kw">as.factor</span>(ytrain), </a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,</a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">                <span class="dt">tuneGrid=</span>s,</a>
+<a class="sourceLine" id="cb211-4" data-line-number="4">                <span class="dt">trControl=</span>tc)</a>
+<a class="sourceLine" id="cb211-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb211-6" data-line-number="6">knnFit</a></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 400 samples
@@ -654,37 +683,37 @@ knnFit</code></pre></div>
 ## Summary of sample sizes: 360, 360, 360, 360, 360, 360, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   k    Accuracy  Kappa 
-##     1  0.63300   0.2660
-##     2  0.63875   0.2775
-##     3  0.67375   0.3475
-##     4  0.67900   0.3580
-##     5  0.69575   0.3915
-##     7  0.71100   0.4220
-##     9  0.71775   0.4355
-##    12  0.71500   0.4300
-##    17  0.72675   0.4535
-##    23  0.73800   0.4760
-##    32  0.73725   0.4745
-##    44  0.73875   0.4775
-##    60  0.74850   0.4970
-##    83  0.75500   0.5100
-##   113  0.73500   0.4700
-##   155  0.72575   0.4515
-##   213  0.70750   0.4150
-##   292  0.68825   0.3765
-##   400  0.51300   0.0260
+##   k    Accuracy  Kappa  
+##     1  0.63575    0.2715
+##     2  0.63700    0.2740
+##     3  0.67250    0.3450
+##     4  0.67700    0.3540
+##     5  0.69425    0.3885
+##     7  0.71250    0.4250
+##     9  0.71525    0.4305
+##    12  0.71275    0.4255
+##    17  0.72500    0.4500
+##    23  0.73175    0.4635
+##    32  0.73675    0.4735
+##    44  0.73900    0.4780
+##    60  0.74925    0.4985
+##    83  0.75325    0.5065
+##   113  0.73275    0.4655
+##   155  0.72700    0.4540
+##   213  0.70950    0.4190
+##   292  0.69275    0.3855
+##   400  0.49900   -0.0020
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 83.</code></pre>
-<strong>Cohen’s Kappa:</strong>
+<p><strong>Cohen’s Kappa:</strong>
 <span class="math display" id="eq:kappa">\[\begin{equation}
   Kappa = \frac{O-E}{1-E}
   \tag{5.1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>where <em>O</em> is the observed accuracy and <em>E</em> is the expected accuracy based on the marginal totals of the confusion matrix. Cohen’s Kappa takes values between -1 and 1; a value of zero indicates no agreement between the observed and predicted classes, while a value of one shows perfect concordance of the model prediction and the observed classes. If the prediction is in the opposite direction of the truth, a negative value will be obtained, but large negative values are rare in practice <span class="citation">(Kuhn and Johnson <a href="#ref-Kuhn2013">2013</a>)</span>.</p>
 <p>We can plot accuracy (determined from repeated cross-validation) as a function of neighbourhood size.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(knnFit)</code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">plot</span>(knnFit)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvAccuracyFunK-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size." width="100%" />
 <p class="caption">
@@ -692,7 +721,7 @@ Accuracy (repeated cross-validation) as a function of neighbourhood size.
 </p>
 </div>
 <p>We can also plot other performance metrics, such as Cohen’s Kappa, using the <strong>metric</strong> argument.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(knnFit, <span class="dt">metric=</span><span class="st">&quot;Kappa&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="kw">plot</span>(knnFit, <span class="dt">metric=</span><span class="st">&quot;Kappa&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvKappaFunK-1.png" alt="Cohen's Kappa (repeated cross-validation) as a function of neighbourhood size." width="100%" />
 <p class="caption">
@@ -700,8 +729,8 @@ Cohen’s Kappa (repeated cross-validation) as a function of neighbourhood size.
 </p>
 </div>
 <p>Let us now evaluate how our classifier performs on the test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, xtest)
-<span class="kw">confusionMatrix</span>(test_pred, <span class="kw">as.factor</span>(ytest))</code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, xtest)</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="kw">confusionMatrix</span>(test_pred, <span class="kw">as.factor</span>(ytest))</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -730,41 +759,41 @@ Cohen’s Kappa (repeated cross-validation) as a function of neighbourhood size.
 ##        &#39;Positive&#39; Class : 0              
 ## </code></pre>
 <p>Scatterplots with decision boundaries can be plotted using the methods described earlier. First create a grid so we can predict across the full range of our variables V1 and V2:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gridSize &lt;-<span class="st"> </span><span class="dv">150</span> 
-v1limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])))
-tmpV1 &lt;-<span class="st"> </span><span class="kw">seq</span>(v1limits[<span class="dv">1</span>],v1limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)
-v2limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])))
-tmpV2 &lt;-<span class="st"> </span><span class="kw">seq</span>(v2limits[<span class="dv">1</span>],v2limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)
-xgrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(tmpV1,tmpV2)
-<span class="kw">names</span>(xgrid) &lt;-<span class="st"> </span><span class="kw">names</span>(xtrain)</code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">gridSize &lt;-<span class="st"> </span><span class="dv">150</span> </a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">v1limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">1</span>],xtest[,<span class="dv">1</span>])))</a>
+<a class="sourceLine" id="cb217-3" data-line-number="3">tmpV1 &lt;-<span class="st"> </span><span class="kw">seq</span>(v1limits[<span class="dv">1</span>],v1limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)</a>
+<a class="sourceLine" id="cb217-4" data-line-number="4">v2limits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])),<span class="kw">max</span>(<span class="kw">c</span>(xtrain[,<span class="dv">2</span>],xtest[,<span class="dv">2</span>])))</a>
+<a class="sourceLine" id="cb217-5" data-line-number="5">tmpV2 &lt;-<span class="st"> </span><span class="kw">seq</span>(v2limits[<span class="dv">1</span>],v2limits[<span class="dv">2</span>],<span class="dt">len=</span>gridSize)</a>
+<a class="sourceLine" id="cb217-6" data-line-number="6">xgrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(tmpV1,tmpV2)</a>
+<a class="sourceLine" id="cb217-7" data-line-number="7"><span class="kw">names</span>(xgrid) &lt;-<span class="st"> </span><span class="kw">names</span>(xtrain)</a></code></pre></div>
 <p>Predict values of all elements of grid.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knn1grid &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, xgrid)
-V3 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(knn1grid))
-xgrid &lt;-<span class="st"> </span><span class="kw">cbind</span>(xgrid, V3)</code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">knn1grid &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, xgrid)</a>
+<a class="sourceLine" id="cb218-2" data-line-number="2">V3 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.vector</span>(knn1grid))</a>
+<a class="sourceLine" id="cb218-3" data-line-number="3">xgrid &lt;-<span class="st"> </span><span class="kw">cbind</span>(xgrid, V3)</a></code></pre></div>
 <p>Plot</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)
-point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)
-point_size =<span class="st"> </span><span class="dv">2</span>
-
-<span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtrain, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytrain<span class="dv">+1</span>],
-             <span class="dt">shape=</span>point_shapes[ytrain<span class="dv">+1</span>], <span class="dt">size=</span>point_size) +
-<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))
-
-<span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) +
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtest, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytest<span class="dv">+1</span>],
-             <span class="dt">shape=</span>point_shapes[ytrain<span class="dv">+1</span>], <span class="dt">size=</span>point_size) +
-<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
-        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">point_shapes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb219-2" data-line-number="2">point_colours &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)</a>
+<a class="sourceLine" id="cb219-3" data-line-number="3">point_size =<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb219-5" data-line-number="5"><span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtrain, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytrain<span class="op">+</span><span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb219-8" data-line-number="8">             <span class="dt">shape=</span>point_shapes[ytrain<span class="op">+</span><span class="dv">1</span>], <span class="dt">size=</span>point_size) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-10" data-line-number="10"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;train&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-11" data-line-number="11"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-12" data-line-number="12"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb219-13" data-line-number="13">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a>
+<a class="sourceLine" id="cb219-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb219-15" data-line-number="15"><span class="kw">ggplot</span>(xgrid, <span class="kw">aes</span>(V1,V2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span>point_colours[knn1grid], <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-17" data-line-number="17"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>xtest, <span class="kw">aes</span>(V1,V2), <span class="dt">col=</span>point_colours[ytest<span class="op">+</span><span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb219-18" data-line-number="18">             <span class="dt">shape=</span>point_shapes[ytrain<span class="op">+</span><span class="dv">1</span>], <span class="dt">size=</span>point_size) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-19" data-line-number="19"><span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>xgrid, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>V2, <span class="dt">z=</span>V3), <span class="dt">breaks=</span><span class="fl">0.5</span>, <span class="dt">col=</span><span class="st">&quot;grey30&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-20" data-line-number="20"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;test&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-21" data-line-number="21"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb219-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>), <span class="dt">axis.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb219-23" data-line-number="23">        <span class="dt">axis.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK83-1.png" alt="Binary classification of the simulated training and test sets with _k_=83." width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK83-2.png" alt="Binary classification of the simulated training and test sets with _k_=83." width="50%" />
 <p class="caption">
@@ -778,7 +807,7 @@ Binary classification of the simulated training and test sets with <em>k</em>=83
 <p>The simulated data in our previous example were randomly sampled from a normal (Gaussian) distribution and so did not require pre-processing. In practice, data collected in real studies often require transformation and/or filtering. Furthermore, the simulated data contained only two predictors; in practice, you are likely to have many variables. For example, in a gene expression study you might have thousands of variables. When using <em>k</em>-nn for classification or regression, removing variables that are not associated with the outcome of interest may improve the predictive power of the model. The process of choosing the best predictors from the available variables is known as <em>feature selection</em>. For honest estimates of model performance, pre-processing and feature selection should be performed within the loops of the cross validation process.</p>
 <div id="cell-segmentation-data-set" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Cell segmentation data set</h3>
-<p>Pre-processing and feature selection will be demonstrated using the cell segmentation data of (<span class="citation">A. A. Hill et al. (<a href="#ref-Hill2007">2007</a>)</span>). High Content Screening (HCS) automates the collection and analysis of biological images of cultured cells. However, image segmentation algorithms are not perfect and sometimes do not reliably quantitate the morphology of cells. Hill et al. sought to differentiate between well- and poorly-segmented cells based on the morphometric data collected in HCS. If poorly-segmented cells can be automatically detected and eliminated, then the accuracy of studies using HCS will be improved. Hill et al. collected morphometric data on 2019 cells and asked human reviewers to classify the cells as well- or poorly-segmented.</p>
+<p>Pre-processing and feature selection will be demonstrated using the cell segmentation data of (<span class="citation">Hill et al. (<a href="#ref-Hill2007">2007</a>)</span>). High Content Screening (HCS) automates the collection and analysis of biological images of cultured cells. However, image segmentation algorithms are not perfect and sometimes do not reliably quantitate the morphology of cells. Hill et al. sought to differentiate between well- and poorly-segmented cells based on the morphometric data collected in HCS. If poorly-segmented cells can be automatically detected and eliminated, then the accuracy of studies using HCS will be improved. Hill et al. collected morphometric data on 2019 cells and asked human reviewers to classify the cells as well- or poorly-segmented.</p>
 <div class="figure" style="text-align: center">
 <img src="images/Hill_2007_cell_segmentation.jpg" alt="Image segmentation in high content screening. Images **b** and **c** are examples of well-segmented cells; **d** and **e** show poor-segmentation. Source: Hill(2007) https://doi.org/10.1186/1471-2105-8-340" width="75%" />
 <p class="caption">
@@ -786,9 +815,9 @@ Image segmentation in high content screening. Images <strong>b</strong> and <str
 </p>
 </div>
 <p>This data set is one of several included in <a href="http://cran.r-project.org/web/packages/caret/index.html">caret</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(segmentationData)
-<span class="kw">str</span>(segmentationData)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    2019 obs. of  61 variables:
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1"><span class="kw">data</span>(segmentationData)</a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="kw">str</span>(segmentationData)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	2019 obs. of  61 variables:
 ##  $ Cell                   : int  207827637 207932307 207932463 207932470 207932455 207827656 207827659 207827661 207932479 207932480 ...
 ##  $ Case                   : Factor w/ 2 levels &quot;Test&quot;,&quot;Train&quot;: 1 2 2 2 1 1 1 1 1 1 ...
 ##  $ Class                  : Factor w/ 2 levels &quot;PS&quot;,&quot;WS&quot;: 1 1 2 1 1 2 2 1 2 2 ...
@@ -852,23 +881,23 @@ Image segmentation in high content screening. Images <strong>b</strong> and <str
 ##  $ YCentroid              : int  14 347 252 295 159 127 138 181 467 468 ...</code></pre>
 <p>The first column of <strong>segmentationData</strong> is a unique identifier for each cell and the second column is a factor indicating how the observations were characterized into training and test sets in the original study; these two variables are irrelevant for the purposes of this demonstration and so can be discarded.</p>
 <p>The third column <em>Class</em> contains the class labels: <em>PS</em> (poorly-segmented) and <em>WS</em> (well-segmented). The last two columns are cell centroids and can be ignored. Columns 4-59 are the 58 morphological measurements available to be used as predictors. Let’s put the class labels in a vector and the predictors in their own data.frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">segClass &lt;-<span class="st"> </span>segmentationData$Class
-segData &lt;-<span class="st"> </span>segmentationData[,<span class="dv">4</span>:<span class="dv">59</span>]</code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">segClass &lt;-<span class="st"> </span>segmentationData<span class="op">$</span>Class</a>
+<a class="sourceLine" id="cb222-2" data-line-number="2">segData &lt;-<span class="st"> </span>segmentationData[,<span class="dv">4</span><span class="op">:</span><span class="dv">59</span>]</a></code></pre></div>
 </div>
 <div id="data-splitting" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Data splitting</h3>
 <p>Before starting analysis we must partition the data into training and test sets, using the <strong>createDataPartition</strong> function in <a href="http://cran.r-project.org/web/packages/caret/index.html">caret</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>segClass, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.5</span>, <span class="dt">list=</span>F)
-segDataTrain &lt;-<span class="st"> </span>segData[trainIndex,]
-segDataTest &lt;-<span class="st"> </span>segData[-trainIndex,]
-segClassTrain &lt;-<span class="st"> </span>segClass[trainIndex]
-segClassTest &lt;-<span class="st"> </span>segClass[-trainIndex]</code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2">trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>segClass, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.5</span>, <span class="dt">list=</span>F)</a>
+<a class="sourceLine" id="cb223-3" data-line-number="3">segDataTrain &lt;-<span class="st"> </span>segData[trainIndex,]</a>
+<a class="sourceLine" id="cb223-4" data-line-number="4">segDataTest &lt;-<span class="st"> </span>segData[<span class="op">-</span>trainIndex,]</a>
+<a class="sourceLine" id="cb223-5" data-line-number="5">segClassTrain &lt;-<span class="st"> </span>segClass[trainIndex]</a>
+<a class="sourceLine" id="cb223-6" data-line-number="6">segClassTest &lt;-<span class="st"> </span>segClass[<span class="op">-</span>trainIndex]</a></code></pre></div>
 <p>This results in balanced class distributions within the splits:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(segClassTrain)</code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">summary</span>(segClassTrain)</a></code></pre></div>
 <pre><code>##  PS  WS 
 ## 650 360</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(segClassTest)</code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">summary</span>(segClassTest)</a></code></pre></div>
 <pre><code>##  PS  WS 
 ## 650 359</code></pre>
 <p><em><strong>N.B. The test set is set aside for now. It will be used only ONCE, to test the final model.</strong></em></p>
@@ -884,61 +913,61 @@ segClassTest &lt;-<span class="st"> </span>segClass[-trainIndex]</code></pre></d
 <li>the ratio of the frequency of the most common value to the frequency of the 2nd most common value is large.</li>
 </ul>
 <p>Such <em>zero and near zero-variance predictors</em> have a deleterious impact on modelling and may lead to unstable fits.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nzv &lt;-<span class="st"> </span><span class="kw">nearZeroVar</span>(segDataTrain, <span class="dt">saveMetrics=</span>T)
-nzv</code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">nzv &lt;-<span class="st"> </span><span class="kw">nearZeroVar</span>(segDataTrain, <span class="dt">saveMetrics=</span>T)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2">nzv</a></code></pre></div>
 <pre><code>##                         freqRatio percentUnique zeroVar   nzv
 ## AngleCh1                 1.000000    100.000000   FALSE FALSE
-## AreaCh1                  1.083333     37.326733   FALSE FALSE
+## AreaCh1                  1.083333     38.217822   FALSE FALSE
 ## AvgIntenCh1              1.000000    100.000000   FALSE FALSE
 ## AvgIntenCh2              3.000000     99.801980   FALSE FALSE
 ## AvgIntenCh3              1.000000    100.000000   FALSE FALSE
-## AvgIntenCh4              2.000000     99.900990   FALSE FALSE
-## ConvexHullAreaRatioCh1   1.000000     98.910891   FALSE FALSE
+## AvgIntenCh4              1.000000    100.000000   FALSE FALSE
+## ConvexHullAreaRatioCh1   1.000000     98.415842   FALSE FALSE
 ## ConvexHullPerimRatioCh1  1.000000    100.000000   FALSE FALSE
 ## DiffIntenDensityCh1      1.000000    100.000000   FALSE FALSE
-## DiffIntenDensityCh3      1.000000    100.000000   FALSE FALSE
+## DiffIntenDensityCh3      2.000000     99.900990   FALSE FALSE
 ## DiffIntenDensityCh4      1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh1          1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh3          1.000000    100.000000   FALSE FALSE
 ## EntropyIntenCh4          1.000000    100.000000   FALSE FALSE
-## EqCircDiamCh1            1.083333     37.326733   FALSE FALSE
+## EqCircDiamCh1            1.083333     38.217822   FALSE FALSE
 ## EqEllipseLWRCh1          1.000000    100.000000   FALSE FALSE
 ## EqEllipseOblateVolCh1    1.000000    100.000000   FALSE FALSE
 ## EqEllipseProlateVolCh1   1.000000    100.000000   FALSE FALSE
-## EqSphereAreaCh1          1.083333     37.326733   FALSE FALSE
-## EqSphereVolCh1           1.083333     37.326733   FALSE FALSE
-## FiberAlign2Ch3           1.304348     94.950495   FALSE FALSE
-## FiberAlign2Ch4           7.285714     94.455446   FALSE FALSE
-## FiberLengthCh1           1.000000     95.841584   FALSE FALSE
-## FiberWidthCh1            1.000000     95.841584   FALSE FALSE
+## EqSphereAreaCh1          1.083333     38.217822   FALSE FALSE
+## EqSphereVolCh1           1.083333     38.217822   FALSE FALSE
+## FiberAlign2Ch3           1.173913     95.247525   FALSE FALSE
+## FiberAlign2Ch4           7.000000     93.861386   FALSE FALSE
+## FiberLengthCh1           1.000000     93.267327   FALSE FALSE
+## FiberWidthCh1            1.000000     93.267327   FALSE FALSE
 ## IntenCoocASMCh3          1.000000    100.000000   FALSE FALSE
 ## IntenCoocASMCh4          1.000000    100.000000   FALSE FALSE
 ## IntenCoocContrastCh3     1.000000    100.000000   FALSE FALSE
 ## IntenCoocContrastCh4     1.000000    100.000000   FALSE FALSE
 ## IntenCoocEntropyCh3      1.000000    100.000000   FALSE FALSE
 ## IntenCoocEntropyCh4      1.000000    100.000000   FALSE FALSE
-## IntenCoocMaxCh3          1.250000     94.158416   FALSE FALSE
-## IntenCoocMaxCh4          1.250000     94.356436   FALSE FALSE
+## IntenCoocMaxCh3          1.333333     93.069307   FALSE FALSE
+## IntenCoocMaxCh4          1.250000     94.851485   FALSE FALSE
 ## KurtIntenCh1             1.000000    100.000000   FALSE FALSE
 ## KurtIntenCh3             1.000000    100.000000   FALSE FALSE
 ## KurtIntenCh4             1.000000    100.000000   FALSE FALSE
 ## LengthCh1                1.000000    100.000000   FALSE FALSE
 ## NeighborAvgDistCh1       1.000000    100.000000   FALSE FALSE
-## NeighborMinDistCh1       1.166667     41.089109   FALSE FALSE
+## NeighborMinDistCh1       1.583333     41.881188   FALSE FALSE
 ## NeighborVarDistCh1       1.000000    100.000000   FALSE FALSE
-## PerimCh1                 1.000000     63.762376   FALSE FALSE
+## PerimCh1                 1.000000     62.970297   FALSE FALSE
 ## ShapeBFRCh1              1.000000    100.000000   FALSE FALSE
 ## ShapeLWRCh1              1.000000    100.000000   FALSE FALSE
-## ShapeP2ACh1              1.000000     99.801980   FALSE FALSE
+## ShapeP2ACh1              1.000000     99.702970   FALSE FALSE
 ## SkewIntenCh1             1.000000    100.000000   FALSE FALSE
 ## SkewIntenCh3             1.000000    100.000000   FALSE FALSE
 ## SkewIntenCh4             1.000000    100.000000   FALSE FALSE
-## SpotFiberCountCh3        1.212000      1.287129   FALSE FALSE
-## SpotFiberCountCh4        1.152778      3.267327   FALSE FALSE
-## TotalIntenCh1            1.000000     98.712871   FALSE FALSE
-## TotalIntenCh2            1.500000     99.009901   FALSE FALSE
-## TotalIntenCh3            1.000000     99.108911   FALSE FALSE
-## TotalIntenCh4            1.000000     99.603960   FALSE FALSE
+## SpotFiberCountCh3        1.260870      1.089109   FALSE FALSE
+## SpotFiberCountCh4        1.092199      2.871287   FALSE FALSE
+## TotalIntenCh1            1.000000     98.613861   FALSE FALSE
+## TotalIntenCh2            1.000000     99.009901   FALSE FALSE
+## TotalIntenCh3            1.000000     99.306931   FALSE FALSE
+## TotalIntenCh4            1.000000     99.207921   FALSE FALSE
 ## VarIntenCh1              1.000000    100.000000   FALSE FALSE
 ## VarIntenCh3              1.000000    100.000000   FALSE FALSE
 ## VarIntenCh4              1.000000    100.000000   FALSE FALSE
@@ -947,20 +976,20 @@ nzv</code></pre></div>
 <div id="scaling" class="section level4">
 <h4><span class="header-section-number">5.3.3.2</span> Scaling</h4>
 <p>The variables in this data set are on different scales, for example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(segDataTrain$IntenCoocASMCh4)</code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">summary</span>(segDataTrain<span class="op">$</span>IntenCoocASMCh4)</a></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.004874 0.017250 0.049460 0.101600 0.121200 0.867800</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(segDataTrain$TotalIntenCh2)</code></pre></div>
+## 0.004514 0.017687 0.049861 0.097286 0.111304 0.867845</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">summary</span>(segDataTrain<span class="op">$</span>TotalIntenCh2)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       1   15850   49650   53140   72300  362500</code></pre>
+##       1   12639   50160   53165   73527  363311</code></pre>
 <p>In this situation it is important to centre and scale each predictor. A predictor variable is centered by subtracting the mean of the predictor from each value. To scale a predictor variable, each value is divided by its standard deviation. After centring and scaling the predictor variable has a mean of 0 and a standard deviation of 1.</p>
 </div>
 <div id="skewness" class="section level4">
 <h4><span class="header-section-number">5.3.3.3</span> Skewness</h4>
 <p>Many of the predictors in the segmentation data set exhibit skewness, <em>i.e.</em> the distribution of their values is asymmetric, for example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(segDataTrain$IntenCoocASMCh3, <span class="dt">binwidth=</span><span class="fl">0.1</span>) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;IntenCoocASMCh3&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">qplot</span>(segDataTrain<span class="op">$</span>IntenCoocASMCh3, <span class="dt">binwidth=</span><span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;IntenCoocASMCh3&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb234-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/segDataSkewness-1.png" alt="Example of a predictor from the segmentation data set showing skewness." width="75%" />
 <p class="caption">
@@ -973,10 +1002,10 @@ Example of a predictor from the segmentation data set showing skewness.
 <h4><span class="header-section-number">5.3.3.4</span> Correlated predictors</h4>
 <p>Many of the variables in the segmentation data set are highly correlated.</p>
 <p>A correlogram provides a helpful visualization of the patterns of pairwise correlation within the data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(corrplot)</code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">library</span>(corrplot)</a></code></pre></div>
 <pre><code>## corrplot 0.84 loaded</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">corMat &lt;-<span class="st"> </span><span class="kw">cor</span>(segDataTrain)
-<span class="kw">corrplot</span>(corMat, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.cex=</span><span class="fl">0.4</span>)</code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">corMat &lt;-<span class="st"> </span><span class="kw">cor</span>(segDataTrain)</a>
+<a class="sourceLine" id="cb237-2" data-line-number="2"><span class="kw">corrplot</span>(corMat, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.cex=</span><span class="fl">0.4</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/segDataCorrelogram-1.png" alt="Correlogram of the segmentation data set." width="75%" />
 <p class="caption">
@@ -993,7 +1022,7 @@ length(highCorr)
 ```
 
 ```
-## [1] 31
+## [1] 33
 ```
 
 ```r
@@ -1011,18 +1040,18 @@ for(i in 1:100) seeds[[i]] <- sample.int(1000, 50)
 seeds[[101]] <- sample.int(1000,1)
 -->
 <p>Generate a list of seeds.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">26</span>)
-for(i in <span class="dv">1</span>:<span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">50</span>)
-seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb238-2" data-line-number="2">seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">26</span>)</a>
+<a class="sourceLine" id="cb238-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb238-4" data-line-number="4">seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</a></code></pre></div>
 <p>Create a list of computational options for resampling. In the interest of speed for this demonstration, we will perform 5-fold cross-validation a total of 5 times. In practice we would use a larger number of folds and repetitions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">train_ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,
-                   <span class="dt">number =</span> <span class="dv">5</span>,
-                   <span class="dt">repeats =</span> <span class="dv">5</span>,
-                   <span class="co">#preProcOptions=list(cutoff=0.75),</span>
-                   <span class="dt">seeds =</span> seeds)</code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">train_ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2">                   <span class="dt">number =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb239-3" data-line-number="3">                   <span class="dt">repeats =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb239-4" data-line-number="4">                   <span class="co">#preProcOptions=list(cutoff=0.75),</span></a>
+<a class="sourceLine" id="cb239-5" data-line-number="5">                   <span class="dt">seeds =</span> seeds)</a></code></pre></div>
 <p>Create a grid of values of <em>k</em> for evaluation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tuneParam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">k=</span><span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">500</span>,<span class="dv">10</span>))</code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">tuneParam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">k=</span><span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">500</span>,<span class="dv">10</span>))</a></code></pre></div>
 <p>To deal with the issues of scaling, skewness and highly correlated predictors identified earlier, we need to pre-process the data. We will use the Yeo-Johnson transformation to reduce skewness, because it can deal with the zero values present in some of the predictors. Ideally the pre-processing procedures would be performed within each cross-validation loop, using the following command:</p>
 <pre><code>knnFit &lt;- train(segDataTrain, segClassTrain, 
                 method=&quot;knn&quot;,
@@ -1030,48 +1059,46 @@ seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="k
                 tuneGrid=tuneParam,
                 trControl=train_ctrl)</code></pre>
 <p>However, this is time-consuming, so for the purposes of this demonstration we will pre-process the entire training data-set before proceeding with training and cross-validation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transformations &lt;-<span class="st"> </span><span class="kw">preProcess</span>(segDataTrain, 
-                              <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;YeoJohnson&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>),
-                              <span class="dt">cutoff=</span><span class="fl">0.75</span>)
-segDataTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, segDataTrain)</code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">transformations &lt;-<span class="st"> </span><span class="kw">preProcess</span>(segDataTrain, </a>
+<a class="sourceLine" id="cb242-2" data-line-number="2">                              <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;YeoJohnson&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>),</a>
+<a class="sourceLine" id="cb242-3" data-line-number="3">                              <span class="dt">cutoff=</span><span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb242-4" data-line-number="4">segDataTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, segDataTrain)</a></code></pre></div>
 <p>The <code>cutoff</code> refers to the correlation coefficient threshold.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(segDataTrain)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    1010 obs. of  25 variables:
-##  $ AngleCh1               : num  1.045 0.873 -0.376 -0.994 1.586 ...
-##  $ ConvexHullPerimRatioCh1: num  0.31 -1.221 -0.363 1.22 1.113 ...
-##  $ EntropyIntenCh1        : num  -2.443 -0.671 -1.688 0.554 0.425 ...
-##  $ EqEllipseOblateVolCh1  : num  -0.414 1.693 0.711 -1.817 -1.667 ...
-##  $ FiberAlign2Ch3         : num  -1.8124 0.0933 -0.9679 -0.6188 -0.8721 ...
-##  $ FiberAlign2Ch4         : num  -1.729 -0.331 1.255 -0.291 0.463 ...
-##  $ FiberWidthCh1          : num  -0.776 0.878 -0.779 0.712 0.758 ...
-##  $ IntenCoocASMCh4        : num  -0.368 -0.64 -0.652 -0.665 -0.671 ...
-##  $ IntenCoocContrastCh3   : num  2.4777 0.0604 -0.0816 0.0634 0.6386 ...
-##  $ IntenCoocContrastCh4   : num  1.101 0.127 1.046 0.602 1.445 ...
-##  $ IntenCoocMaxCh3        : num  -0.815 -0.232 -0.168 -1.366 -1.37 ...
-##  $ KurtIntenCh1           : num  -0.97 -0.26 0.562 -0.187 0.296 ...
-##  $ KurtIntenCh3           : num  -1.506 -1.133 -0.672 -1.908 -1.491 ...
-##  $ KurtIntenCh4           : num  0.68398 -0.00329 -0.09737 -0.1679 -0.79044 ...
-##  $ NeighborAvgDistCh1     : num  2.5376 -1.4791 -0.5357 0.1062 0.0663 ...
-##  $ NeighborMinDistCh1     : num  3.286 0.289 0.557 -1.679 -1.679 ...
-##  $ ShapeBFRCh1            : num  0.6733 -0.5448 -0.0649 0.8849 1.4669 ...
-##  $ ShapeLWRCh1            : num  1.23 -0.351 1.525 -1.832 -1.717 ...
-##  $ SkewIntenCh1           : num  -0.213 -0.297 0.384 -2.41 -2.678 ...
-##  $ SpotFiberCountCh3      : num  -0.366 1.275 1.275 -0.366 -1.573 ...
-##  $ TotalIntenCh2          : num  -1.701 1.682 -0.233 1.107 1.019 ...
-##  $ VarIntenCh1            : num  -2.118 -1.346 -1.917 1.062 0.856 ...
-##  $ VarIntenCh3            : num  -1.9155 -0.1836 -0.8001 0.0478 -0.3658 ...
-##  $ VarIntenCh4            : num  -2.304 0.332 -1.092 0.843 0.387 ...
-##  $ WidthCh1               : num  -1.626 1.845 -0.718 -0.188 -0.333 ...</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="kw">str</span>(segDataTrain)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	1010 obs. of  23 variables:
+##  $ AngleCh1               : num  0.854 0.352 -0.383 -0.99 1.565 ...
+##  $ ConvexHullPerimRatioCh1: num  -1.314 0.494 -0.416 1.241 1.129 ...
+##  $ DiffIntenDensityCh3    : num  -0.3311 -0.5341 -1.0142 0.0933 -0.2125 ...
+##  $ EntropyIntenCh1        : num  -0.65 -0.958 -1.694 0.615 0.481 ...
+##  $ EqSphereVolCh1         : num  1.84 1.07 0.38 -1.18 -1.09 ...
+##  $ FiberAlign2Ch3         : num  0.122 -0.602 -0.907 -0.567 -0.814 ...
+##  $ FiberAlign2Ch4         : num  -0.321 0.389 1.297 -0.281 0.486 ...
+##  $ FiberWidthCh1          : num  0.859 2.033 -0.767 0.696 0.741 ...
+##  $ IntenCoocASMCh3        : num  -0.492 -0.645 -0.471 -0.631 -0.636 ...
+##  $ IntenCoocASMCh4        : num  -0.633 -0.681 -0.644 -0.658 -0.665 ...
+##  $ IntenCoocContrastCh3   : num  0.00893 0.7834 -0.13895 0.01205 0.61482 ...
+##  $ IntenCoocContrastCh4   : num  0.106 1.403 1.057 0.597 1.469 ...
+##  $ KurtIntenCh1           : num  -0.316 -0.383 0.51 -0.243 0.242 ...
+##  $ KurtIntenCh3           : num  -1.0756 -0.0959 -0.6256 -1.8307 -1.4251 ...
+##  $ KurtIntenCh4           : num  0.0297 0.4049 -0.0657 -0.1372 -0.7716 ...
+##  $ NeighborMinDistCh1     : num  0.271 0.685 0.535 -1.732 -1.732 ...
+##  $ NeighborVarDistCh1     : num  -1.169 -0.745 0.538 -0.482 -0.537 ...
+##  $ ShapeBFRCh1            : num  -0.591 1.231 -0.104 0.862 1.453 ...
+##  $ ShapeLWRCh1            : num  -0.328 -0.72 1.488 -1.792 -1.678 ...
+##  $ SpotFiberCountCh3      : num  1.311 0.304 1.311 -0.453 -1.664 ...
+##  $ TotalIntenCh1          : num  0.315 -0.507 -1.423 1.011 0.839 ...
+##  $ TotalIntenCh2          : num  1.63 0.21 -0.2 1.09 1 ...
+##  $ VarIntenCh4            : num  0.295 -0.554 -1.103 0.807 0.35 ...</code></pre>
 <p>Perform cross validation to find best value of <em>k</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(segDataTrain, segClassTrain, 
-                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,
-                <span class="dt">tuneGrid=</span>tuneParam,
-                <span class="dt">trControl=</span>train_ctrl)
-knnFit</code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(segDataTrain, segClassTrain, </a>
+<a class="sourceLine" id="cb245-2" data-line-number="2">                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,</a>
+<a class="sourceLine" id="cb245-3" data-line-number="3">                <span class="dt">tuneGrid=</span>tuneParam,</a>
+<a class="sourceLine" id="cb245-4" data-line-number="4">                <span class="dt">trControl=</span>train_ctrl)</a>
+<a class="sourceLine" id="cb245-5" data-line-number="5">knnFit</a></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 1010 samples
-##   25 predictor
+##   23 predictor
 ##    2 classes: &#39;PS&#39;, &#39;WS&#39; 
 ## 
 ## No pre-processing
@@ -1080,60 +1107,60 @@ knnFit</code></pre></div>
 ## Resampling results across tuning parameters:
 ## 
 ##   k    Accuracy   Kappa    
-##     5  0.7938614  0.5540746
-##    15  0.8053465  0.5829961
-##    25  0.8047525  0.5814369
-##    35  0.8065347  0.5843286
-##    45  0.8037624  0.5786056
-##    55  0.8035644  0.5781528
-##    65  0.8043564  0.5787198
-##    75  0.8037624  0.5777703
-##    85  0.8037624  0.5768178
-##    95  0.8063366  0.5823443
-##   105  0.8057426  0.5797978
-##   115  0.8019802  0.5709231
-##   125  0.7990099  0.5635596
-##   135  0.8001980  0.5653667
-##   145  0.8000000  0.5643285
-##   155  0.8003960  0.5650775
-##   165  0.8007921  0.5653539
-##   175  0.8013861  0.5667665
-##   185  0.8000000  0.5633628
-##   195  0.7996040  0.5623200
-##   205  0.8005941  0.5636922
-##   215  0.8003960  0.5631617
-##   225  0.8023762  0.5676501
-##   235  0.8019802  0.5661531
-##   245  0.8017822  0.5651162
-##   255  0.8011881  0.5631157
-##   265  0.7990099  0.5570764
-##   275  0.7978218  0.5536355
-##   285  0.7992079  0.5554954
-##   295  0.7990099  0.5540500
-##   305  0.7964356  0.5471107
-##   315  0.7940594  0.5401644
-##   325  0.7926733  0.5358168
-##   335  0.7928713  0.5344022
-##   345  0.7900990  0.5260618
-##   355  0.7912871  0.5268895
-##   365  0.7897030  0.5217485
-##   375  0.7877228  0.5153088
-##   385  0.7849505  0.5062599
-##   395  0.7796040  0.4911638
-##   405  0.7716832  0.4675901
-##   415  0.7689109  0.4564594
-##   425  0.7594059  0.4280275
-##   435  0.7504950  0.3989447
-##   445  0.7398020  0.3652969
-##   455  0.7316832  0.3376567
-##   465  0.7247525  0.3112618
-##   475  0.7186139  0.2871843
-##   485  0.7144554  0.2662335
-##   495  0.7059406  0.2341570
+##     5  0.7986139  0.5612788
+##    15  0.8071287  0.5834268
+##    25  0.8063366  0.5809096
+##    35  0.8057426  0.5804170
+##    45  0.8011881  0.5707377
+##    55  0.8025743  0.5740795
+##    65  0.8029703  0.5736852
+##    75  0.8021782  0.5708545
+##    85  0.7994059  0.5653635
+##    95  0.8001980  0.5672397
+##   105  0.7992079  0.5650183
+##   115  0.8000000  0.5662863
+##   125  0.8013861  0.5695369
+##   135  0.8011881  0.5680439
+##   145  0.8015842  0.5681434
+##   155  0.8035644  0.5714389
+##   165  0.8025743  0.5688528
+##   175  0.8019802  0.5675416
+##   185  0.8021782  0.5666971
+##   195  0.7982178  0.5572158
+##   205  0.7976238  0.5553098
+##   215  0.7998020  0.5585649
+##   225  0.7978218  0.5534856
+##   235  0.7956436  0.5474332
+##   245  0.7944554  0.5438308
+##   255  0.7946535  0.5432198
+##   265  0.7954455  0.5450816
+##   275  0.7948515  0.5430274
+##   285  0.7944554  0.5414309
+##   295  0.7944554  0.5404298
+##   305  0.7914851  0.5320417
+##   315  0.7885149  0.5241017
+##   325  0.7891089  0.5249205
+##   335  0.7859406  0.5160910
+##   345  0.7839604  0.5095485
+##   355  0.7831683  0.5061947
+##   365  0.7809901  0.4993268
+##   375  0.7762376  0.4846859
+##   385  0.7716832  0.4701399
+##   395  0.7685149  0.4587635
+##   405  0.7613861  0.4371686
+##   415  0.7564356  0.4216456
+##   425  0.7502970  0.3999603
+##   435  0.7433663  0.3768513
+##   445  0.7340594  0.3465947
+##   455  0.7255446  0.3157445
+##   465  0.7156436  0.2808044
+##   475  0.7061386  0.2477092
+##   485  0.6964356  0.2106821
+##   495  0.6857426  0.1679627
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was k = 35.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(knnFit)</code></pre></div>
+## The final value used for the model was k = 15.</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">plot</span>(knnFit)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvAccuracySegDataHighCorRem-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size for the segmentation training data with highly correlated predictors removed." width="100%" />
 <p class="caption">
@@ -1141,54 +1168,53 @@ Accuracy (repeated cross-validation) as a function of neighbourhood size for the
 </p>
 </div>
 <p>Let’s retrieve some information on the final model. To see the optimum value of <em>k</em> found during the grid search, run either of the following lines:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit$finalModel$k</code></pre></div>
-<pre><code>## [1] 35</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit$finalModel$tuneValue</code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">knnFit<span class="op">$</span>finalModel<span class="op">$</span>k</a></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">knnFit<span class="op">$</span>finalModel<span class="op">$</span>tuneValue</a></code></pre></div>
 <pre><code>##    k
-## 4 35</code></pre>
+## 2 15</code></pre>
 <p>To find out which variables have been used in the final model, run:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit$finalModel$xNames</code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">knnFit<span class="op">$</span>finalModel<span class="op">$</span>xNames</a></code></pre></div>
 <pre><code>##  [1] &quot;AngleCh1&quot;                &quot;ConvexHullPerimRatioCh1&quot;
-##  [3] &quot;EntropyIntenCh1&quot;         &quot;EqEllipseOblateVolCh1&quot;  
-##  [5] &quot;FiberAlign2Ch3&quot;          &quot;FiberAlign2Ch4&quot;         
-##  [7] &quot;FiberWidthCh1&quot;           &quot;IntenCoocASMCh4&quot;        
-##  [9] &quot;IntenCoocContrastCh3&quot;    &quot;IntenCoocContrastCh4&quot;   
-## [11] &quot;IntenCoocMaxCh3&quot;         &quot;KurtIntenCh1&quot;           
-## [13] &quot;KurtIntenCh3&quot;            &quot;KurtIntenCh4&quot;           
-## [15] &quot;NeighborAvgDistCh1&quot;      &quot;NeighborMinDistCh1&quot;     
-## [17] &quot;ShapeBFRCh1&quot;             &quot;ShapeLWRCh1&quot;            
-## [19] &quot;SkewIntenCh1&quot;            &quot;SpotFiberCountCh3&quot;      
-## [21] &quot;TotalIntenCh2&quot;           &quot;VarIntenCh1&quot;            
-## [23] &quot;VarIntenCh3&quot;             &quot;VarIntenCh4&quot;            
-## [25] &quot;WidthCh1&quot;</code></pre>
+##  [3] &quot;DiffIntenDensityCh3&quot;     &quot;EntropyIntenCh1&quot;        
+##  [5] &quot;EqSphereVolCh1&quot;          &quot;FiberAlign2Ch3&quot;         
+##  [7] &quot;FiberAlign2Ch4&quot;          &quot;FiberWidthCh1&quot;          
+##  [9] &quot;IntenCoocASMCh3&quot;         &quot;IntenCoocASMCh4&quot;        
+## [11] &quot;IntenCoocContrastCh3&quot;    &quot;IntenCoocContrastCh4&quot;   
+## [13] &quot;KurtIntenCh1&quot;            &quot;KurtIntenCh3&quot;           
+## [15] &quot;KurtIntenCh4&quot;            &quot;NeighborMinDistCh1&quot;     
+## [17] &quot;NeighborVarDistCh1&quot;      &quot;ShapeBFRCh1&quot;            
+## [19] &quot;ShapeLWRCh1&quot;             &quot;SpotFiberCountCh3&quot;      
+## [21] &quot;TotalIntenCh1&quot;           &quot;TotalIntenCh2&quot;          
+## [23] &quot;VarIntenCh4&quot;</code></pre>
 <p>Let’s predict our test set using our final model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">segDataTest &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, segDataTest)
-test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, segDataTest)
-<span class="kw">confusionMatrix</span>(test_pred, segClassTest)</code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">segDataTest &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, segDataTest)</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, segDataTest)</a>
+<a class="sourceLine" id="cb254-3" data-line-number="3"><span class="kw">confusionMatrix</span>(test_pred, segClassTest)</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
 ## Prediction  PS  WS
-##         PS 540 100
-##         WS 110 259
+##         PS 557  92
+##         WS  93 267
 ##                                           
-##                Accuracy : 0.7919          
-##                  95% CI : (0.7655, 0.8165)
+##                Accuracy : 0.8167          
+##                  95% CI : (0.7914, 0.8401)
 ##     No Information Rate : 0.6442          
 ##     P-Value [Acc &gt; NIR] : &lt;2e-16          
 ##                                           
-##                   Kappa : 0.5488          
+##                   Kappa : 0.6003          
 ##                                           
-##  Mcnemar&#39;s Test P-Value : 0.5346          
+##  Mcnemar&#39;s Test P-Value : 1               
 ##                                           
-##             Sensitivity : 0.8308          
-##             Specificity : 0.7214          
-##          Pos Pred Value : 0.8438          
-##          Neg Pred Value : 0.7019          
+##             Sensitivity : 0.8569          
+##             Specificity : 0.7437          
+##          Pos Pred Value : 0.8582          
+##          Neg Pred Value : 0.7417          
 ##              Prevalence : 0.6442          
-##          Detection Rate : 0.5352          
-##    Detection Prevalence : 0.6343          
-##       Balanced Accuracy : 0.7761          
+##          Detection Rate : 0.5520          
+##    Detection Prevalence : 0.6432          
+##       Balanced Accuracy : 0.8003          
 ##                                           
 ##        &#39;Positive&#39; Class : PS              
 ## </code></pre>
@@ -1202,9 +1228,9 @@ test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, 
 <li><strong>bbbDescr</strong> - a data frame of 134 molecular descriptors of the compounds.</li>
 </ul>
 <p>We’ll start by loading the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(BloodBrain)
-<span class="kw">str</span>(bbbDescr)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    208 obs. of  134 variables:
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">data</span>(BloodBrain)</a>
+<a class="sourceLine" id="cb256-2" data-line-number="2"><span class="kw">str</span>(bbbDescr)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	208 obs. of  134 variables:
 ##  $ tpsa                : num  12 49.3 50.5 37.4 37.4 ...
 ##  $ nbasic              : int  1 0 1 0 1 1 1 1 1 1 ...
 ##  $ negative            : int  0 0 0 0 0 0 0 0 0 0 ...
@@ -1305,24 +1331,24 @@ test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, 
 ##  $ wnsa1               : num  20.4 51.8 145.4 165.3 106 ...
 ##  $ wnsa2               : num  -39.8 -126.6 -580.1 -655.3 -416.3 ...
 ##   [list output truncated]</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(logBBB)</code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">str</span>(logBBB)</a></code></pre></div>
 <pre><code>##  num [1:208] 1.08 -0.4 0.22 0.14 0.69 0.44 -0.43 1.38 0.75 0.88 ...</code></pre>
 <p>Evidently the variables are on different scales which is problematic for <em>k</em>-nn.</p>
 <div id="partition-data" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Partition data</h3>
 <p>Before proceeding the data set must be partitioned into a training and a test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>logBBB, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.8</span>, <span class="dt">list=</span>F)
-descrTrain &lt;-<span class="st"> </span>bbbDescr[trainIndex,]
-concRatioTrain &lt;-<span class="st"> </span>logBBB[trainIndex]
-descrTest &lt;-<span class="st"> </span>bbbDescr[-trainIndex,]
-concRatioTest &lt;-<span class="st"> </span>logBBB[-trainIndex]</code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb260-2" data-line-number="2">trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>logBBB, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.8</span>, <span class="dt">list=</span>F)</a>
+<a class="sourceLine" id="cb260-3" data-line-number="3">descrTrain &lt;-<span class="st"> </span>bbbDescr[trainIndex,]</a>
+<a class="sourceLine" id="cb260-4" data-line-number="4">concRatioTrain &lt;-<span class="st"> </span>logBBB[trainIndex]</a>
+<a class="sourceLine" id="cb260-5" data-line-number="5">descrTest &lt;-<span class="st"> </span>bbbDescr[<span class="op">-</span>trainIndex,]</a>
+<a class="sourceLine" id="cb260-6" data-line-number="6">concRatioTest &lt;-<span class="st"> </span>logBBB[<span class="op">-</span>trainIndex]</a></code></pre></div>
 </div>
 <div id="data-pre-processing" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Data pre-processing</h3>
 <p>Are there any issues with the data that might affect model fitting? Let’s start by considering correlation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cm &lt;-<span class="st"> </span><span class="kw">cor</span>(descrTrain)
-<span class="kw">corrplot</span>(cm, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.pos=</span><span class="st">&quot;n&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">cm &lt;-<span class="st"> </span><span class="kw">cor</span>(descrTrain)</a>
+<a class="sourceLine" id="cb261-2" data-line-number="2"><span class="kw">corrplot</span>(cm, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.pos=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/compoundDescriptorsCorrelogram-1.png" alt="Correlogram of the chemical compound descriptors." width="80%" />
 <p class="caption">
@@ -1330,68 +1356,68 @@ Correlogram of the chemical compound descriptors.
 </p>
 </div>
 <p>The number of variables exhibiting a pair-wise correlation coefficient above 0.75 can be determined:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">highCorr &lt;-<span class="st"> </span><span class="kw">findCorrelation</span>(cm, <span class="dt">cutoff=</span><span class="fl">0.75</span>)
-<span class="kw">length</span>(highCorr)</code></pre></div>
-<pre><code>## [1] 68</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">highCorr &lt;-<span class="st"> </span><span class="kw">findCorrelation</span>(cm, <span class="dt">cutoff=</span><span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb262-2" data-line-number="2"><span class="kw">length</span>(highCorr)</a></code></pre></div>
+<pre><code>## [1] 65</code></pre>
 <p>A check for the presence of missing values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anyNA</span>(descrTrain)</code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1"><span class="kw">anyNA</span>(descrTrain)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Detection of near zero variance predictors:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nearZeroVar</span>(descrTrain)</code></pre></div>
-<pre><code>## [1]  3 16 22 25 50 60</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">nearZeroVar</span>(descrTrain)</a></code></pre></div>
+<pre><code>## [1]  3 16 17 22 25 50 60</code></pre>
 <p>We know there are issues with scaling, and the presence of highly correlated predictors and near zero variance predictors. These problems are resolved by pre-processing. First we define the procesing steps.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transformations &lt;-<span class="st"> </span><span class="kw">preProcess</span>(descrTrain,
-                              <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>, <span class="st">&quot;nzv&quot;</span>),
-                              <span class="dt">cutoff=</span><span class="fl">0.75</span>)</code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">transformations &lt;-<span class="st"> </span><span class="kw">preProcess</span>(descrTrain,</a>
+<a class="sourceLine" id="cb268-2" data-line-number="2">                              <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>, <span class="st">&quot;nzv&quot;</span>),</a>
+<a class="sourceLine" id="cb268-3" data-line-number="3">                              <span class="dt">cutoff=</span><span class="fl">0.75</span>)</a></code></pre></div>
 <p>Then this transformation can be applied to the compound descriptor data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">descrTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, descrTrain)</code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">descrTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, descrTrain)</a></code></pre></div>
 </div>
 <div id="search-for-optimum-k" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Search for optimum <em>k</em></h3>
 <p>The optimum value of <em>k</em> can be found by cross-validation, following similar methodology to that used to find the best <em>k</em> for classification. We’ll start by generating seeds to make this example reproducible.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">26</span>)
-for(i in <span class="dv">1</span>:<span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">10</span>)
-seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb270-2" data-line-number="2">seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">26</span>)</a>
+<a class="sourceLine" id="cb270-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb270-4" data-line-number="4">seeds[[<span class="dv">26</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</a></code></pre></div>
 <p>Ten values of <em>k</em> will be evaluated using 5 repeats of 5-fold cross-validation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnTune &lt;-<span class="st"> </span><span class="kw">train</span>(descrTrain,
-                 concRatioTrain,
-                 <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,
-                 <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">.k=</span><span class="dv">1</span>:<span class="dv">10</span>),
-                 <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,
-                                          <span class="dt">number =</span> <span class="dv">5</span>,
-                                          <span class="dt">repeats =</span> <span class="dv">5</span>,
-                                          <span class="dt">seeds=</span>seeds,
-                                          <span class="dt">preProcOptions=</span><span class="kw">list</span>(<span class="dt">cutoff=</span><span class="fl">0.75</span>))
-                 )
-
-knnTune</code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">knnTune &lt;-<span class="st"> </span><span class="kw">train</span>(descrTrain,</a>
+<a class="sourceLine" id="cb271-2" data-line-number="2">                 concRatioTrain,</a>
+<a class="sourceLine" id="cb271-3" data-line-number="3">                 <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,</a>
+<a class="sourceLine" id="cb271-4" data-line-number="4">                 <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">.k=</span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb271-5" data-line-number="5">                 <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb271-6" data-line-number="6">                                          <span class="dt">number =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb271-7" data-line-number="7">                                          <span class="dt">repeats =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb271-8" data-line-number="8">                                          <span class="dt">seeds=</span>seeds,</a>
+<a class="sourceLine" id="cb271-9" data-line-number="9">                                          <span class="dt">preProcOptions=</span><span class="kw">list</span>(<span class="dt">cutoff=</span><span class="fl">0.75</span>))</a>
+<a class="sourceLine" id="cb271-10" data-line-number="10">                 )</a>
+<a class="sourceLine" id="cb271-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb271-12" data-line-number="12">knnTune</a></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 168 samples
-##  61 predictor
+## 127 predictors
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 135, 134, 136, 134, 133, 135, ... 
+## Summary of sample sizes: 136, 133, 134, 134, 135, 135, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   RMSE       Rsquared   MAE      
-##    1  0.6520387  0.3985028  0.4632774
-##    2  0.6113262  0.4259039  0.4627144
-##    3  0.5862976  0.4444624  0.4402393
-##    4  0.5828015  0.4437783  0.4407852
-##    5  0.5933604  0.4209923  0.4516132
-##    6  0.5982192  0.4100908  0.4550370
-##    7  0.6032227  0.4002708  0.4531828
-##    8  0.6078117  0.3936972  0.4583254
-##    9  0.6106399  0.3858548  0.4596576
-##   10  0.6149638  0.3799661  0.4629568
+##    1  0.6549043  0.4108920  0.4766928
+##    2  0.6032405  0.4528603  0.4576061
+##    3  0.5971264  0.4502719  0.4540638
+##    4  0.5990394  0.4427879  0.4548592
+##    5  0.6133729  0.4188855  0.4696289
+##    6  0.6186412  0.4098024  0.4738693
+##    7  0.6159861  0.4130907  0.4738798
+##    8  0.6159065  0.4137798  0.4716903
+##    9  0.6173266  0.4091199  0.4724567
+##   10  0.6147349  0.4169201  0.4691612
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
-## The final value used for the model was k = 4.</code></pre>
+## The final value used for the model was k = 3.</code></pre>
 <p>The Root Mean Squared Error (RMSE) measures the differences between the values predicted by the model and the values actually observed. More specifically, it represents the sample standard deviation of the difference between the predicted values and observed values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(knnTune)</code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">plot</span>(knnTune)</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/rmseFunK-1.png" alt="Root Mean Squared Error as a function of neighbourhood size." width="100%" />
 <p class="caption">
@@ -1402,14 +1428,14 @@ Root Mean Squared Error as a function of neighbourhood size.
 <div id="use-model-to-make-predictions" class="section level3">
 <h3><span class="header-section-number">5.4.4</span> Use model to make predictions</h3>
 <p>Before attempting to predict the blood/brain concentration ratios of the test samples, the descriptors in the test set must be transformed using the same pre-processing procedure that was applied to the descriptors in the training set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">descrTest &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, descrTest)</code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">descrTest &lt;-<span class="st"> </span><span class="kw">predict</span>(transformations, descrTest)</a></code></pre></div>
 <p>Use model to predict outcomes (concentration ratios) of the test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnTune, descrTest)</code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnTune, descrTest)</a></code></pre></div>
 <p>Prediction performance can be visualized in a scatterplot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(concRatioTest, test_pred) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;observed&quot;</span>) +
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;predicted&quot;</span>) +
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">qplot</span>(concRatioTest, test_pred) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb276-2" data-line-number="2"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;observed&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb276-3" data-line-number="3"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;predicted&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb276-4" data-line-number="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/obsPredConcRatios-1.png" alt="Concordance between observed concentration ratios and those predicted by _k_-nn regression." width="80%" />
 <p class="caption">
@@ -1417,20 +1443,20 @@ Concordance between observed concentration ratios and those predicted by <em>k</
 </p>
 </div>
 <p>We can also measure correlation between observed and predicted values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(concRatioTest, test_pred)</code></pre></div>
-<pre><code>## [1] 0.7278034</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1"><span class="kw">cor</span>(concRatioTest, test_pred)</a></code></pre></div>
+<pre><code>## [1] 0.5719185</code></pre>
 </div>
 </div>
-<div id="exercises-1" class="section level2">
+<div id="exercises" class="section level2">
 <h2><span class="header-section-number">5.5</span> Exercises</h2>
 <div id="knnEx1" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Exercise 1</h3>
-<p>The seeds data set <a href="https://archive.ics.uci.edu/ml/datasets/seeds" class="uri">https://archive.ics.uci.edu/ml/datasets/seeds</a> contains morphological measurements on the kernels of three varieties of wheat: Kama, Rosa and Canadian.</p>
+<p>The seeds data set <a href="https://archive.ics.uci.edu/ml/datasets/seeds">https://archive.ics.uci.edu/ml/datasets/seeds</a> contains morphological measurements on the kernels of three varieties of wheat: Kama, Rosa and Canadian.</p>
 <p>Load the data into your R session using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/wheat_seeds/wheat_seeds.Rda&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;data/wheat_seeds/wheat_seeds.Rda&quot;</span>)</a></code></pre></div>
 <p>The data are split into two objects. <strong>morphometrics</strong> is a data.frame containing the morphological measurements:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(morphometrics)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    210 obs. of  7 variables:
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">str</span>(morphometrics)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	210 obs. of  7 variables:
 ##  $ area        : num  15.3 14.9 14.3 13.8 16.1 ...
 ##  $ perimeter   : num  14.8 14.6 14.1 13.9 15 ...
 ##  $ compactness : num  0.871 0.881 0.905 0.895 0.903 ...
@@ -1439,7 +1465,7 @@ Concordance between observed concentration ratios and those predicted by <em>k</
 ##  $ asymCoef    : num  2.22 1.02 2.7 2.26 1.35 ...
 ##  $ grooveLength: num  5.22 4.96 4.83 4.8 5.17 ...</code></pre>
 <p><strong>variety</strong> is a factor containing the corresponding classes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(variety)</code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">str</span>(variety)</a></code></pre></div>
 <pre><code>##  Factor w/ 3 levels &quot;Canadian&quot;,&quot;Kama&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
 <p>Your task is to build a <em>k</em>-nn classifier which will predict the variety of wheat from a seeds morphological measurements. You do not need to perform feature selection, but you will want to pre-process the data.</p>
 <p>Solutions to exercises can be found in appendix <a href="solutions-nearest-neighbours.html#solutions-nearest-neighbours">D</a>.</p>
@@ -1453,7 +1479,7 @@ Concordance between observed concentration ratios and those predicted by <em>k</
 <p>Box, G. E. P., and D. R. Cox. 1964. “An analysis of transformations (with discussion).” <em>Journal of the Royal Statistical Society B</em> 26: 211–52.</p>
 </div>
 <div id="ref-Hill2007">
-<p>Hill, Andrew A., Peter LaPan, Yizheng Li, and Steve Haney. 2007. “Impact of Image Segmentation on High-Content Screening Data Quality for Sk-Br-3 Cells.” <em>BMC Bioinformatics</em> 8 (1): 340. doi:<a href="https://doi.org/10.1186/1471-2105-8-340">10.1186/1471-2105-8-340</a>.</p>
+<p>Hill, Andrew A., Peter LaPan, Yizheng Li, and Steve Haney. 2007. “Impact of Image Segmentation on High-Content Screening Data Quality for Sk-Br-3 Cells.” <em>BMC Bioinformatics</em> 8 (1): 340. <a href="https://doi.org/10.1186/1471-2105-8-340">https://doi.org/10.1186/1471-2105-8-340</a>.</p>
 </div>
 <div id="ref-Kuhn2013">
 <p>Kuhn, Max, and Kjell Johnson. 2013. <em>Applied Predictive Modeling</em>. New York: Springer.</p>
@@ -1473,11 +1499,13 @@ Concordance between observed concentration ratios and those predicted by <em>k</
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1485,12 +1513,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1502,6 +1529,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1518,7 +1549,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

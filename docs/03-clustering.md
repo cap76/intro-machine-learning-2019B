@@ -19,6 +19,13 @@ Methods of clustering can be broadly divided into two types:
 **Partitioning** algorithms divide objects into non-overlapping subsets (examples include k-means and DBSCAN)
 
 
+
+```
+## Registered S3 method overwritten by 'GGally':
+##   method from   
+##   +.gg   ggplot2
+```
+
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/clusterTypes-1.png" alt="Example clusters. **A**, *blobs*; **B**, *aggregation* [@Gionis2007]; **C**, *noisy moons*; **D**, *different density*; **E**, *anisotropic distributions*; **F**, *no structure*." width="80%" />
 <p class="caption">Example clusters. **A**, *blobs*; **B**, *aggregation* [@Gionis2007]; **C**, *noisy moons*; **D**, *different density*; **E**, *anisotropic distributions*; **F**, *no structure*.</p>
@@ -55,12 +62,12 @@ Various distance metrics can be used with clustering algorithms. We will use Euc
 
 Table: Example distance matrix
 
-     A    B    C    D  
----  ---  ---  ---  ---
-B    2                 
-C    6    5            
-D    10   10   5       
-E    9    8    3    4  
+|   |A  |B  |C  |D  |
+|:--|:--|:--|:--|:--|
+|B  |2  |   |   |   |
+|C  |6  |5  |   |   |
+|D  |10 |10 |5  |   |
+|E  |9  |8  |3  |4  |
 
 
 Single linkage - nearest neighbours linkage
@@ -78,13 +85,13 @@ Explain anatomy of the dendrogram - branches, nodes and leaves.
 
 Table: Merge distances for objects in the example distance matrix using three different linkage methods.
 
-Groups           Single   Complete   Average
---------------  -------  ---------  --------
-A,B,C,D,E             0          0       0.0
-(A,B),C,D,E           2          2       2.0
-(A,B),(C,E),D         3          3       3.0
-(A,B)(C,D,E)          4          5       4.5
-(A,B,C,D,E)           5         10       8.0
+|Groups        | Single| Complete| Average|
+|:-------------|------:|--------:|-------:|
+|A,B,C,D,E     |      0|        0|     0.0|
+|(A,B),C,D,E   |      2|        2|     2.0|
+|(A,B),(C,E),D |      3|        3|     3.0|
+|(A,B)(C,D,E)  |      4|        5|     4.5|
+|(A,B,C,D,E)   |      5|       10|     8.0|
 
 <div class="figure" style="text-align: center">
 <img src="03-clustering_files/figure-html/linkageComparison-1.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" /><img src="03-clustering_files/figure-html/linkageComparison-2.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" /><img src="03-clustering_files/figure-html/linkageComparison-3.png" alt="Dendrograms for the example distance matrix using three different linkage methods. " width="100%" />
@@ -313,7 +320,7 @@ library(dendextend)
 ```
 ## 
 ## ---------------------
-## Welcome to dendextend version 1.12.0
+## Welcome to dendextend version 1.13.4
 ## Type citation('dendextend') for how to cite the package.
 ## 
 ## Type browseVignettes(package = 'dendextend') for the package vignette.
@@ -1322,13 +1329,13 @@ table(tissue, res$cluster)
 ```
 ##              
 ## tissue         1  2  3  4  5  6  7
-##   cerebellum   0  0  0 33  0  0  5
+##   cerebellum  33  5  0  0  0  0  0
 ##   colon        0  0  0  0  0 34  0
-##   endometrium  0  0  0  0 15  0  0
-##   hippocampus  0  0  0  0  0  0 31
-##   kidney       0  0 39  0  0  0  0
-##   liver       26  0  0  0  0  0  0
-##   placenta     0  6  0  0  0  0  0
+##   endometrium  0  0 15  0  0  0  0
+##   hippocampus  0 31  0  0  0  0  0
+##   kidney       0  0  0 39  0  0  0
+##   liver        0  0  0  0 26  0  0
+##   placenta     0  0  0  0  0  0  6
 ```
 -->
 
@@ -1339,13 +1346,13 @@ table(tissue, res_k_15[[7]]$cluster)
 ```
 ##              
 ## tissue         1  2  3  4  5  6  7
-##   cerebellum   0  0  0 33  0  0  5
+##   cerebellum  33  5  0  0  0  0  0
 ##   colon        0  0  0  0  0 34  0
-##   endometrium  0  0  0  0 15  0  0
-##   hippocampus  0  0  0  0  0  0 31
-##   kidney       0  0 39  0  0  0  0
-##   liver       26  0  0  0  0  0  0
-##   placenta     0  6  0  0  0  0  0
+##   endometrium  0  0 15  0  0  0  0
+##   hippocampus  0 31  0  0  0  0  0
+##   kidney       0  0  0 39  0  0  0
+##   liver        0  0  0  0 26  0  0
+##   placenta     0  0  0  0  0  0  6
 ```
 The analysis has found a distinct cluster for each tissue and therefore performed slightly better than the earlier hierarchical clustering analysis, which placed endometrium and kidney observations in the same cluster.
 

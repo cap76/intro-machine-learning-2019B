@@ -205,15 +205,15 @@ svmTune
 ## Resampling results across tuning parameters:
 ## 
 ##   cost   ROC        Sens       Spec     
-##    0.25  0.8822479  0.8744615  0.6788889
-##    0.50  0.8889402  0.8704615  0.7111111
-##    1.00  0.8920256  0.8729231  0.7283333
-##    2.00  0.8908291  0.8630769  0.7494444
-##    4.00  0.8856239  0.8566154  0.7494444
-##    8.00  0.8761282  0.8443077  0.7422222
-##   16.00  0.8627265  0.8372308  0.7200000
-##   32.00  0.8530769  0.8415385  0.6988889
-##   64.00  0.8493846  0.8406154  0.6916667
+##    0.25  0.8769145  0.8772308  0.6605556
+##    0.50  0.8814957  0.8827692  0.6961111
+##    1.00  0.8818205  0.8735385  0.7266667
+##    2.00  0.8796581  0.8655385  0.7350000
+##    4.00  0.8706410  0.8569231  0.7272222
+##    8.00  0.8564786  0.8483077  0.7055556
+##   16.00  0.8457009  0.8455385  0.7061111
+##   32.00  0.8333077  0.8323077  0.6961111
+##   64.00  0.8246923  0.8243077  0.6844444
 ## 
 ## ROC was used to select the optimal model using the largest value.
 ## The final value used for the model was cost = 1.
@@ -236,7 +236,7 @@ svmTune$finalModel
 ##  SVM-Kernel:  radial 
 ##        cost:  1 
 ## 
-## Number of Support Vectors:  531
+## Number of Support Vectors:  540
 ```
 
 SVM accuracy profile
@@ -263,26 +263,26 @@ confusionMatrix(svmPred, segClassTest)
 ## 
 ##           Reference
 ## Prediction  PS  WS
-##         PS 571 103
-##         WS  79 256
+##         PS 569 101
+##         WS  81 258
 ##                                           
 ##                Accuracy : 0.8196          
 ##                  95% CI : (0.7945, 0.8429)
 ##     No Information Rate : 0.6442          
-##     P-Value [Acc > NIR] : < 2e-16         
+##     P-Value [Acc > NIR] : <2e-16          
 ##                                           
-##                   Kappa : 0.6005          
+##                   Kappa : 0.6015          
 ##                                           
-##  Mcnemar's Test P-Value : 0.08822         
+##  Mcnemar's Test P-Value : 0.159           
 ##                                           
-##             Sensitivity : 0.8785          
-##             Specificity : 0.7131          
-##          Pos Pred Value : 0.8472          
-##          Neg Pred Value : 0.7642          
+##             Sensitivity : 0.8754          
+##             Specificity : 0.7187          
+##          Pos Pred Value : 0.8493          
+##          Neg Pred Value : 0.7611          
 ##              Prevalence : 0.6442          
-##          Detection Rate : 0.5659          
-##    Detection Prevalence : 0.6680          
-##       Balanced Accuracy : 0.7958          
+##          Detection Rate : 0.5639          
+##    Detection Prevalence : 0.6640          
+##       Balanced Accuracy : 0.7970          
 ##                                           
 ##        'Positive' Class : PS              
 ## 
@@ -297,12 +297,12 @@ head(svmProbs)
 
 ```
 ##           PS         WS
-## 3  0.2304335 0.76956646
-## 5  0.9334686 0.06653138
-## 9  0.7495523 0.25044774
-## 10 0.8312666 0.16873341
-## 13 0.9445697 0.05543032
-## 14 0.7674554 0.23254457
+## 1  0.8919246 0.10807539
+## 5  0.9110754 0.08892455
+## 8  0.9678410 0.03215904
+## 9  0.5512136 0.44878636
+## 10 0.8198217 0.18017825
+## 12 0.7684369 0.23156308
 ```
 
 Build a ROC curve
@@ -324,7 +324,7 @@ auc(svmROC)
 ```
 
 ```
-## Area under the curve: 0.8864
+## Area under the curve: 0.8908
 ```
 
 Plot ROC curve.
@@ -345,7 +345,7 @@ auc(svmROC)
 ```
 
 ```
-## Area under the curve: 0.8864
+## Area under the curve: 0.8908
 ```
 
 

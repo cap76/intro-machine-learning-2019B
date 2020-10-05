@@ -73,8 +73,8 @@ Next we can construct a vector of length $5257$ containing the classification fo
 
 
 ```r
-#library(reticulate)
-#reticulate::use_python('/usr/local/bin/python3.5')
+library(reticulate)
+reticulate::use_python('/usr/bin/python3')
 library(kerasR)
 ```
 
@@ -90,8 +90,7 @@ library(kerasR)
 ```
 ## The following objects are masked from 'package:keras':
 ## 
-##     normalize, pad_sequences, text_to_word_sequence,
-##     to_categorical
+##     normalize, pad_sequences, text_to_word_sequence, to_categorical
 ```
 
 ```r
@@ -119,6 +118,8 @@ trainY <- allY[trainInd, 1]
 valX <- allX[valInd, , , ]
 valY <- allY[valInd, 1]
 ```
+
+Before we move on, take a moment to think about the form of our data, in particular the output data Y. What exactly is the format we've settled on? This will be important later on in specifying our loss function. Think about cases where using similar datasets, we might want the data in a slightly different format.
 
 We are almost ready to begin building our neural networks. First can try a few things to make sure out data has been processed correctly. For example, try manually plotting several of the images and seeing if the labels are correct. Manually print out the image matrix (not a visualisation of it): think about the range of the data, and whether it will need normalising. Finally we can check to see how many of each class is in the training and validation datasets. In this case there are $1706$ images of *Rick* and $2294$ images of *not Rick* in the training dataset. Again, whilst there is some slight class inbalance it is not terrible, so we don't need to perform data augmentation or assign weights to the different classes during training. 
 
@@ -221,23 +222,51 @@ We can visualise this model using the {plot_model} function (Figure \@ref(fig:ex
 plot_model(mod,'images/DNN1.png')
 ```
 
+```
+## <IPython.core.display.Image object>
+```
+
 <div class="figure" style="text-align: center">
 <img src="images/DNN1.png" alt="Example of a multilayer convolutional neural network" width="50%" />
 <p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
-We can also print a summary of the network, for example to see how many parameters it has, using the {summary} function:
+We can also print a summary of the network, for example to see how many parameters it has:
 
 
 ```r
-#summary(mod)
+mod
 ```
 
-In this case we see a total of $4,320,201$ parameters. That's a lot of parameters to tune, and not much data! 
+```
+## Model
+## Model: "sequential_1"
+## ________________________________________________________________________________
+## Layer (type)                        Output Shape                    Param #     
+## ================================================================================
+## flatten_1 (Flatten)                 (None, 43200)                   0           
+## ________________________________________________________________________________
+## activation_1 (Activation)           (None, 43200)                   0           
+## ________________________________________________________________________________
+## dense_1 (Dense)                     (None, 100)                     4320100     
+## ________________________________________________________________________________
+## activation_2 (Activation)           (None, 100)                     0           
+## ________________________________________________________________________________
+## dense_2 (Dense)                     (None, 1)                       101         
+## ________________________________________________________________________________
+## activation_3 (Activation)           (None, 1)                       0           
+## ================================================================================
+## Total params: 4,320,201
+## Trainable params: 4,320,201
+## Non-trainable params: 0
+## ________________________________________________________________________________
+```
+
+In this case we see a total of $4,320,201$ parameters. Yikes, that's a lot of parameters to tune, and not much data! 
 
 Next we need to compile and run the model. In this case we need to specify three things:
 
-* A [loss](https://keras.io/losses/) function, which specifies the objective function that the model will try to minimise. A number of existing loss functions are built into keras, including the mean squared error (mean_squared_error), which is used for regression, and categorical cross entropy (categorical_crossentropy), which is used for cateogrical classification. Since we are dealing with binary classification, we will use binary cross entropy (binary_crossentropy).
+* A [loss](https://keras.io/losses/) function, which specifies the objective function that the model will try to minimise. A number of existing loss functions are built into keras, including the mean squared error (mean_squared_error) for regression, and categorical cross entropy (categorical_crossentropy), which is used for cateogrical classification. Since we are dealing with binary classification, we will use binary cross entropy (binary_crossentropy).
 
 * An [optimiser](https://keras.io/optimizers/), which determines how the loss function is optimised. Possible examples include stochastic gradient descent ({SGD()}) and Root Mean Square Propagation ({RMSprop()}).
 
@@ -250,7 +279,7 @@ We can compile our model using {keras_compile}:
 keras_compile(mod,  loss = 'binary_crossentropy', metrics = c('binary_accuracy'), optimizer = RMSprop())
 ```
 
-Finally the model can be fitted to the data. When doing so we additionally need to specify the validation set (if we have one), the batch size and the number of epochs, where an epoch is one forward pass and one backward pass of all the training examples and the batch size is the number of training examples in one forward/backward pass. You may want to go and get a tea whilst this is running!
+Finally the model can be fitted to the data. When doing so we additionally need to specify the validation set (if we have one), the batch size and the number of epochs, where an epoch is one forward pass and one backward pass of all the training examples, and the batch size is the number of training examples in one forward/backward pass. You may want to go and get a tea whilst this is running!
 
 
 ```r
@@ -258,9 +287,9 @@ set.seed(12345)
 keras_fit(mod, trainX, trainY, validation_data = list(valX, valY), batch_size = 100, epochs = 25, verbose = 1)
 ```
 
-For this model we achieved an accuracy of above $0.63$ on the validation dataset at epoch (which had a corresponding accuracy $>0.63$ on the training set). Not great is an understatement. In fact, if we consider the slight inbalance in the number of classes, a niave algorithm that always asigns the data to *not Rick* would achieve an accuracy of $0.57$ and $0.60$ in the training and validation sets respectively. Another striking observation is that the accuracy itself doesn't appear to be changing during training: a possible sign that something is amiss.
+For this model we achieved an accuracy of above $0.63$ on the validation dataset at epoch (which had a corresponding accuracy $>0.59$ on the training set). Not great is an understatement. In fact, if we consider the slight inbalance in the number of classes, a niave algorithm that always assigns the data to *not Rick* would achieve an accuracy of $0.57$ and $0.60$ in the training and validation sets respectively. Another striking observation is that the accuracy itself doesn't appear to be changing much during training: a possible sign that something is amiss.
 
-Let's try adding in another layer to the network. Before we do so, another important point to note is that the model we have at the end of training is the one one we generated during the latest epoch, and not the model that gives the best validation accuracy. Since our aim is to have the best predictive model we will also have to introduce a *callback*.
+Let's try adding in another layer to the network. Before we do so, another important point to note is that the model we have at the end of training is the one one we generated for the latest epoch, which is not necessarily the model that gives us the best validation accuracy. Since our aim is to have the best predictive model we will also have to introduce a *callback*.
 
 In the snippet of code, below, we contruct a new network, with an additional layer containing $70$ neurons, and introduce a *callback* that returns the best model at the end of our training:
 
@@ -276,7 +305,7 @@ mod$add(Activation("relu"))
 mod$add(Dense(1))
 mod$add(Activation("sigmoid"))
 
-callbacks <- list(ModelCheckpoint('data/RickandMorty/data/models/model.h5', monitor = "val_binary_accuracy", verbose = 0, save_best_only = TRUE, save_weights_only = FALSE, mode = "auto",period = 1))
+callbacks <- list(ModelCheckpoint('data/RickandMorty/data/models/model.h5', monitor = "val_binary_accuracy", verbose = 0, save_best_only = TRUE, save_weights_only = FALSE, mode = "auto", period = 1))
 
 keras_compile(mod,  loss = 'binary_crossentropy', metrics = c('binary_accuracy'), optimizer = RMSprop())
 
@@ -291,13 +320,16 @@ We can again visualise the model:
 plot_model(mod,'images/DNN2.png')
 ```
 
+```
+## <IPython.core.display.Image object>
+```
+
 <div class="figure" style="text-align: center">
 <img src="images/DNN2.png" alt="Example of a multilayer convolutional neural network" width="50%" />
 <p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
-We get now get a validation accuracy of $0.57$ with corresponding training accuracy of $0.58$. We could try adding in extra layers, but it seems like we're getting nowhere fast, and will need to change tactic. 
-
+We now get now get a validation accuracy of around $0.57$ with corresponding training accuracy of $0.58$. The model actually appears to be worse! Why not just add extra layers in. Okay boomer! Let's just waste all of our (computational resources) with millions of extra layers and billions of parameters. It seems like we're getting nowhere fast, and need to change tactic. 
 We need to think a little more about what the data actually *is*. In this case we're looking at a set of images. As Rick Sanchez can appear almost anywhere in the image, there's no reason to think that a given input node should correspond in two different images, so it's not surprising that the network did so badly. We need something that can extract out features from the image irregardless of where Rick is. There are approaches build precicesly for image analysis that do just this: convolutional neural networks. 
 
 ## Convolutional neural networks
@@ -342,6 +374,10 @@ Again we can visualise this network:
 
 ```r
 plot_model(mod,'images/DNN3.png')
+```
+
+```
+## <IPython.core.display.Image object>
 ```
 
 <div class="figure" style="text-align: center">
@@ -484,7 +520,6 @@ grid.raster(valX[FP[4],1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5,
 <img src="12-deep-learning_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
 It's not entirely clear why exactly the network is failing in some of these cases. An alternative what exactly is going on is to take a look at which pixels are contributing the most to the classifier, as we have done during the lecture. 
-
 ### Data augmentation
 
 Although we saw some imporovements in the previous section using convolutional neural networks, the end results were not particularly convincing. After all, previous applications in the recognition of handwritten digits (0-9) showed above human accuracy, see e.g., [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap3.html). Our accuracy of approximately $90$ percent is nowhere near human levels of accuracy. So where are we gong wrong? 
@@ -493,13 +528,89 @@ We should, of course, start by considering the number of parameters versus the s
 
 ### Asking more precise questions
 
-Another way we could improve our accuracy is to ask more precise questions. In our application we have focused on what makes a *Rick*, and what makes a *not Rick*. Whilst there may be definable features for *Rick*, such as his hair and his white coat, the class *not Rick* is an amalgamation of all other characters and scenes in the series. A better approach would be to develop algorithms that classify *Rick* versus *Morty*. In this case we would need to tweak our training and validation datasets.
+Another way we could improve our accuracy is to ask more precise questions. In our application we have focused on what makes a *Rick*, and what makes a *not Rick*. Whilst there may be definable features for *Rick*, such as his hair and his white coat, the class *not Rick* is an amalgamation of all other characters and scenes in the series. A better approach would be to develop algorithms that classify *Rick* versus *Morty*. In this case additionally learning the features of a *Morty* might make it easier to make a binary choice. Of course, we might want to allow more complex situations, such as case where you have a Rick and a Morty. Think about how you would encode this specific example. What would you need to change in the code?
 
 ### More complex networks
 
-More complex learning algorithms can easily be built using Keras via the model class API rather than the sequential API. This allows, for example, learning from multiple inputs and/or outputs, with more interconnection between the different layers. We might, for example, want to include additional contextual information about the image that could serve to augment the predictions.
+More complex learning algorithms can easily be built using Keras via the model class API rather than the sequential API. This allows, for example, learning from multiple inputs and/or predicting multiple outputs, with more interconnection between the different layers. We might, for example, want to include additional contextual information about the image that could serve to augment the predictions.
 
 Another approach is to use transfer learning. This is where we make use of existing neural networks to make predictions on our specific datasets, usually fixing the top layers in place and fine tuning the lower layers to our dataset. For example, for image recognition we could make use of top perfoming neural networks on the [ImageNet](http://www.image-net.org) database. Whilst none of these networks would have been designed to identify *Rick* they would have been trained on millions of images, and the top levels would have been able to extract useful general features of an image. 
+
+###Autoencoders
+
+In previous sections we have used CNNs to build a *Rick*/*not Rick* classifier. In doing so we are halfway towards other interesting neural network architectures, including, for example autoencoders. 
+
+One type of autoencoder consists of a stack of convolution/max pooling layers which served to condense the original image down into a reduced dimensional (encoded) representation, with a stack of *upsampled* layers used to decode the encoded layer (Figure \@ref(fig:AE)). Within such a network the input and output layers are an identical image and we are therfore training a network that can both compresses the original high resoltion data and subsequently intepret that compressed representation to recreate the origianl as closely as possible. 
+
+A slight deviation of this principle would be to use a high resolution version of an images as the output, with noisy or lower resolution versions of the image as input. In these cases the autoencoder becomes a denoiser (Figure \@ref(fig:AE2)) or an algorithm capable of making higher resolution versions of an image respectively.
+
+<div class="figure" style="text-align: center">
+<img src="images/AE.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
+<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="images/AE2.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
+<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+</div>
+
+In the example below we implement a simple Autoencoder:
+
+
+```r
+mod <- Sequential()
+mod$add(Conv2D(filters = 20, kernel_size = c(5, 5),input_shape = c(90, 160, 3)))
+mod$add(Activation("relu"))
+mod$add(Conv2D(filters = 20, kernel_size = c(5, 5)))
+mod$add(Activation("relu"))
+mod$add(Conv2D(filters = 64, kernel_size = c(5, 5)))
+mod$add(Activation("relu"))
+mod$add(Conv2DTranspose(filters = 64, kernel_size = c(5, 5)))
+mod$add(Activation("relu"))
+mod$add(Conv2DTranspose(filters = 20, kernel_size = c(5, 5)))
+mod$add(Activation("relu"))
+mod$add(Conv2DTranspose(filters = 20, kernel_size = c(5, 5)))
+mod$add(Activation("relu"))
+mod$add(Conv2D(filters = 3, kernel_size = c(5, 5), padding='same'))
+mod$add(Activation("sigmoid"))
+
+callbacks <- list(ModelCheckpoint('data/RickandMorty/data/models/AEmodel.h5', monitor = "val_binary_crossentropy", verbose = 0, save_best_only = TRUE, save_weights_only = FALSE, mode = "auto", period = 1))
+
+keras_compile(mod,  loss = 'binary_crossentropy', metrics = c('binary_accuracy'), optimizer = RMSprop())
+set.seed(12345)
+keras_fit(mod, trainX, trainX, validation_data = list(valX, valX), batch_size = 100, epochs = 3, callbacks = callbacks, verbose = 1)
+```
+
+For simplicity we have discarded the MaxPool layers. This condenses the images from $90 \times 160$ pixel images down to $78 \times 148$ (not a huge compression but enough to make our point). Let's plot a few of the examples to see how well we have done at condensing then reconstructing images on some of the test data:
+
+
+```r
+predictAEX <- keras_predict(mod, predictX)
+
+grid::grid.newpage()
+grid.raster(predictX[1,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(predictAEX[1,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+```
+
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+
+
+```r
+grid::grid.newpage()
+grid.raster(predictX[2,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(predictAEX[2,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+```
+
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+
+
+```r
+grid::grid.newpage()
+grid.raster(predictX[3,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.2)
+grid.raster(predictAEX[3,1:90,1:160,1:3], interpolate=FALSE, width = 0.3, x = 0.5, y=0.5)
+```
+
+<img src="12-deep-learning_files/figure-html/unnamed-chunk-38-1.png" width="672" />
 
 ## Further reading
 
