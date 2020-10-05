@@ -52,7 +52,7 @@ y2_5 <- tsne_model_1$Y[which(D[1,]==0 & D[3,]==5),1:2]
 y2_6 <- tsne_model_1$Y[which(D[1,]==0 & D[3,]==6),1:2]
 
 plot(y2_0,type="p",col="tomato",xlim=c(-10, 10),ylim=c(-10, 10))
-points(y2_2,type="p",col="tomato")
+points(y2_1,type="p",col="tomato")
 points(y2_2,type="p",col="tomato1")
 points(y2_3,type="p",col="tomato1")
 points(y2_4,type="p",col="tomato2")
