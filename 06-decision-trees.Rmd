@@ -172,7 +172,7 @@ Data slicing is a step to split data into train and test set. Training data set 
 
 ```{r}
 set.seed(3033)
-intrain <- createDataPartition(y = car_df$V1, p= 0.7, list = FALSE)
+intrain <- createDataPartition(y = car_df$V7, p= 0.7, list = FALSE)
 training <- car_df[intrain,]
 testing <- car_df[-intrain,]
 ```
@@ -230,7 +230,7 @@ For our 1st record of testing data classifier is predicting class variable as â€
 
 ```{r}
 test_pred <- predict(dtree_fit, newdata = testing)
-confusionMatrix(test_pred, testing$V7 )  #check accuracy
+confusionMatrix(test_pred, as.factor(testing$V7) )  #check accuracy
 ```
 
 The above results show that the classifier with the criterion as information gain is giving 83.72% of accuracy for the test set.
@@ -263,7 +263,7 @@ Our model is trained with cp = 0.01123596. Now, itâ€™s time to predict target va
 
 ```{r}
 test_pred_gini <- predict(dtree_fit_gini, newdata = testing)
-confusionMatrix(test_pred_gini, testing$V7 )  #check accuracy
+confusionMatrix(test_pred_gini, as.factor(testing$V7) )  #check accuracy
 ```
 
 The above results show that the classifier with the criterion as gini index is giving 86.05% of accuracy for the test set. In this case, our classifier with criterion gini index is giving better results.
@@ -314,6 +314,7 @@ library(randomForest)
 ```{r}
 ## Read data
 Example<-read.csv(file="data/Decision_tree_and_RF/bank.csv",header = T)
+Example$y = as.factor(Example$y)
 ```
 
 Input dataset has 20 independent variables and a target variable. The target variable y is binary.
