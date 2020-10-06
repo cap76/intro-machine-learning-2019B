@@ -6,6 +6,7 @@ editor_options:
 # Nearest neighbours {#nearest-neighbours}
 
 <!-- Matt -->
+<!-- edited by Irina Mohorianu iim22@cam.ac.uk-->
 
 ## Introduction
 _k_-NN is by far the simplest method of supervised learning we will cover in this course. It is a non-parametric method that can be used for both classification (predicting class membership) and regression (estimating continuous variables). _k_-NN is categorized as instance based (memory based) learning, because all computation is deferred until classification. The most computationally demanding aspects of _k_-NN are finding neighbours and storing the entire learning set.
@@ -17,27 +18,43 @@ A simple _k_-NN classification rule (figure \@ref(fig:knnClassification)) would 
 
 <div class="figure" style="text-align: center">
 <img src="images/knn_classification.svg" alt="Illustration of _k_-nn classification. In this example we have two classes: blue squares and red triangles. The green circle represents a test object. If k=3 (solid line circle) the test object is assigned to the red triangle class. If k=5 the test object is assigned to the blue square class.  By Antti Ajanki AnAj - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=2170282" width="75%" />
-<p class="caption">Illustration of _k_-nn classification. In this example we have two classes: blue squares and red triangles. The green circle represents a test object. If k=3 (solid line circle) the test object is assigned to the red triangle class. If k=5 the test object is assigned to the blue square class.  By Antti Ajanki AnAj - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=2170282</p>
+<p class="caption">(\#fig:knnClassification)Illustration of _k_-nn classification. In this example we have two classes: blue squares and red triangles. The green circle represents a test object. If k=3 (solid line circle) the test object is assigned to the red triangle class. If k=5 the test object is assigned to the blue square class.  By Antti Ajanki AnAj - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=2170282</p>
 </div>
 
-A basic implementation of _k_-NN regression would calculate the average of the numerical outcome of the _k_ nearest neighbours. 
+A basic implementation of _k_-NN regression would calculate a summary (e.g. a distance, a voting summary) of the numerical outcome of the _k_ nearest neighbours. 
 
-The number of neighbours _k_ can have a considerable impact on the predictive performance of _k_-NN in both classification and regression. The optimal value of _k_ should be chosen using cross-validation.
+The number of neighbours _k_ has an impact on the predictive performance of _k_-NN in both classification and regression. The optimal value of _k_ (_k_ is considered a hyperparameter) should be chosen using cross-validation.
 
-Euclidean distance is the most widely used distance metric in _k_-nn, and will be used in the examples and exercises in this chapter. However, other distance metrics can be used.
+**How do we define and determine the similarity between observations?**
+We use distance (or dissimilarity) metrics to compute the pairwise differences between observations. The most common distances are the Euclidean and Manhattan metrics; 
+
+Euclidean distance measures the straight-line distance between two samples (i.e., how the crow flies); it is the most widely used distance metric in _k_-nn, and will be used in the examples and exercises in this chapter. Manhattan measures the point-to-point travel time (i.e., city block) and is commonly used for binary predictors (e.g., one-hot encoded 0/1 indicator variables). 
 
 **Euclidean distance:**
 \begin{equation}
   distance\left(p,q\right)=\sqrt{\sum_{i=1}^{n} (p_i-q_i)^2}
-  (\#eq:euclidean)
 \end{equation}
-
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/euclideanDistanceDiagram-1.png" alt="Euclidean distance." width="75%" />
-<p class="caption">Euclidean distance.</p>
+<p class="caption">(\#fig:euclideanDistanceDiagram)Euclidean distance.</p>
 </div>
 
+**Manhattan distance:**
+\begin{equation}
+  distance\left(p,q\right)={\sum_{i=1}^{n} |p_i-q_i|}
+\end{equation}
+
+There are other metrics to measure the distance between observations. For example, the Minkowski distance is a generalization of the Euclidean and Manhattan distances and is defined as
+
+**Minkowski distance:**
+\begin{equation}
+  distance\left(p,q\right)=\sqrt[p]{\sum_{i=1}^{n} (p_i-q_i)^p}
+
+\end{equation}
+
+
+where  p>0 (Han, Pei, and Kamber 2011). When p=2 the Minkowski distance is the Euclidean distance and when  q=1 it is  the Manhattan distance
 
 ## Classification: simulated data
 
@@ -128,7 +145,7 @@ ggplot(xtest, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassTrainTest-1.png" alt="Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn" width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassTrainTest-2.png" alt="Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn" width="50%" />
-<p class="caption">Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn</p>
+<p class="caption">(\#fig:simDataBinClassTrainTest)Scatterplots of the simulated training and test data sets that will be used in the demonstration of binary classification using _k_-nn</p>
 </div>
 
 
@@ -294,7 +311,7 @@ ggplot(xgrid, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK1-1.png" alt="Binary classification of the simulated training and test sets with _k_=1." width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK1-2.png" alt="Binary classification of the simulated training and test sets with _k_=1." width="50%" />
-<p class="caption">Binary classification of the simulated training and test sets with _k_=1.</p>
+<p class="caption">(\#fig:simDataBinClassDecisionBoundaryK1)Binary classification of the simulated training and test sets with _k_=1.</p>
 </div>
 
 ### Bias-variance tradeoff
@@ -354,7 +371,7 @@ ggplot(misclass_errors, aes(x=k, y=error, group=set)) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/misclassErrorsFunK-1.png" alt="Misclassification errors as a function of neighbourhood size." width="100%" />
-<p class="caption">Misclassification errors as a function of neighbourhood size.</p>
+<p class="caption">(\#fig:misclassErrorsFunK)Misclassification errors as a function of neighbourhood size.</p>
 </div>
 We see excessive variance (overfitting) at low values of _k_, and bias (underfitting) at high values of _k_.
 
@@ -497,7 +514,7 @@ plot(knnFit)
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvAccuracyFunK-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size." width="100%" />
-<p class="caption">Accuracy (repeated cross-validation) as a function of neighbourhood size.</p>
+<p class="caption">(\#fig:cvAccuracyFunK)Accuracy (repeated cross-validation) as a function of neighbourhood size.</p>
 </div>
 
 We can also plot other performance metrics, such as Cohen's Kappa, using the **metric** argument.
@@ -508,7 +525,7 @@ plot(knnFit, metric="Kappa")
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvKappaFunK-1.png" alt="Cohen's Kappa (repeated cross-validation) as a function of neighbourhood size." width="100%" />
-<p class="caption">Cohen's Kappa (repeated cross-validation) as a function of neighbourhood size.</p>
+<p class="caption">(\#fig:cvKappaFunK)Cohen's Kappa (repeated cross-validation) as a function of neighbourhood size.</p>
 </div>
 
 Let us now evaluate how our classifier performs on the test set.
@@ -598,8 +615,198 @@ ggplot(xgrid, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK83-1.png" alt="Binary classification of the simulated training and test sets with _k_=83." width="50%" /><img src="04-nearest-neighbours_files/figure-html/simDataBinClassDecisionBoundaryK83-2.png" alt="Binary classification of the simulated training and test sets with _k_=83." width="50%" />
-<p class="caption">Binary classification of the simulated training and test sets with _k_=83.</p>
+<p class="caption">(\#fig:simDataBinClassDecisionBoundaryK83)Binary classification of the simulated training and test sets with _k_=83.</p>
 </div>
+
+## Example on the Iris dataset
+From the iris manual page:
+
+The famous (Fisher’s or Anderson’s) Iris data set, first presented by Fisher in 1936 (http://archive.ics.uci.edu/ml/datasets/Iris), gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica. One class is linearly separable from the other two; the latter are not linearly separable from each other.
+The data base contains the following attributes:
+1). sepal length in cm
+2). sepal width in cm
+3). petal length in cm
+4). petal width in cm
+5). classes:
+- Iris Setosa
+- Iris Versicolour
+- Iris Virginica
+
+
+```r
+library(datasets)
+library(gridExtra)
+library(GGally)
+data(iris)      ##loads the dataset, which can be accessed under the variable name iris
+summary(iris)   ##presents the 5 figure summary of the dataset
+```
+
+```
+##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## 
+```
+
+```r
+str(iris)       ##presents the structure of the iris dataframe
+```
+
+```
+## 'data.frame':	150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+```
+
+Explore the data: visualize the numerical values using the violin plots. 
+They are similar to the Box Plots but they allow the illustration of the number of points at a particular value by the width of the shapes. We can also include the marker for the median and a box for the interquartile range.
+
+
+```r
+VpSl <-  ggplot(iris, aes(Species, Sepal.Length, fill=Species)) + 
+        geom_violin(aes(color = Species), trim = T)+
+        scale_y_continuous("Sepal Length", breaks= seq(0,30, by=.5))+
+        geom_boxplot(width=0.1)+
+        theme(legend.position="none")
+VpSw <-  ggplot(iris, aes(Species, Sepal.Width, fill=Species)) + 
+        geom_violin(aes(color = Species), trim = T)+
+        scale_y_continuous("Sepal Width", breaks= seq(0,30, by=.5))+
+        geom_boxplot(width=0.1)+
+        theme(legend.position="none")
+VpPl <-  ggplot(iris, aes(Species, Petal.Length, fill=Species)) + 
+        geom_violin(aes(color = Species), trim = T)+
+        scale_y_continuous("Petal Length", breaks= seq(0,30, by=.5))+
+        geom_boxplot(width=0.1)+
+        theme(legend.position="none")
+VpPw <-  ggplot(iris, aes(Species, Petal.Width, fill=Species)) + 
+        geom_violin(aes(color = Species), trim = T)+
+        scale_y_continuous("Petal Width", breaks= seq(0,30, by=.5))+
+        geom_boxplot(width=0.1)+
+        labs(title = "Iris Box Plot", x = "Species")
+# Plot all visualizations
+grid.arrange(VpSl  + ggtitle(""),
+             VpSw  + ggtitle(""),
+             VpPl + ggtitle(""),
+             VpPw + ggtitle(""),
+             nrow = 2)
+```
+
+<img src="04-nearest-neighbours_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+
+```r
+ggpairs(iris, ggplot2::aes(colour = Species, alpha = 0.4))             
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<img src="04-nearest-neighbours_files/figure-html/unnamed-chunk-21-2.png" width="672" />
+
+Divide the Iris dataset into training and test dataset to apply KNN classification. 80% of the data is used for training while the KNN classification is tested on the remaining 20% of the data.
+
+```r
+iris[,1:4] <- scale(iris[,1:4])
+setosa<- rbind(iris[iris$Species=="setosa",])
+versicolor<- rbind(iris[iris$Species=="versicolor",])
+virginica<- rbind(iris[iris$Species=="virginica",])
+
+ind <- sample(1:nrow(setosa), nrow(setosa)*0.8)
+iris.train<- rbind(setosa[ind,], versicolor[ind,], virginica[ind,])
+iris.test<- rbind(setosa[-ind,], versicolor[-ind,], virginica[-ind,])
+iris[,1:4] <- scale(iris[,1:4])
+```
+
+Then train and evaluate
+
+```r
+library(class)
+library(gmodels)
+error <- c()
+for (i in 1:15)
+{
+  knn.fit <- knn(train = iris.train[,1:4], test = iris.test[,1:4], cl = iris.train$Species, k = i)
+  error[i] = 1- mean(knn.fit == iris.test$Species)
+}
+
+ggplot(data = data.frame(error), aes(x = 1:15, y = error)) +
+  geom_line(color = "Blue")
+```
+
+<img src="04-nearest-neighbours_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+
+```r
+iris_test_pred1 <- knn(train = iris.train[,1:4], test = iris.test[,1:4], cl = iris.train$Species,k = 7,prob=TRUE) 
+table(iris.test$Species,iris_test_pred1)
+```
+
+```
+##             iris_test_pred1
+##              setosa versicolor virginica
+##   setosa         10          0         0
+##   versicolor      0          9         1
+##   virginica       0          1         9
+```
+
+```r
+CrossTable(x = iris.test$Species, y = iris_test_pred1,prop.chisq=FALSE) 
+```
+
+```
+## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |           N / Row Total |
+## |           N / Col Total |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  30 
+## 
+##  
+##                   | iris_test_pred1 
+## iris.test$Species |     setosa | versicolor |  virginica |  Row Total | 
+## ------------------|------------|------------|------------|------------|
+##            setosa |         10 |          0 |          0 |         10 | 
+##                   |      1.000 |      0.000 |      0.000 |      0.333 | 
+##                   |      1.000 |      0.000 |      0.000 |            | 
+##                   |      0.333 |      0.000 |      0.000 |            | 
+## ------------------|------------|------------|------------|------------|
+##        versicolor |          0 |          9 |          1 |         10 | 
+##                   |      0.000 |      0.900 |      0.100 |      0.333 | 
+##                   |      0.000 |      0.900 |      0.100 |            | 
+##                   |      0.000 |      0.300 |      0.033 |            | 
+## ------------------|------------|------------|------------|------------|
+##         virginica |          0 |          1 |          9 |         10 | 
+##                   |      0.000 |      0.100 |      0.900 |      0.333 | 
+##                   |      0.000 |      0.100 |      0.900 |            | 
+##                   |      0.000 |      0.033 |      0.300 |            | 
+## ------------------|------------|------------|------------|------------|
+##      Column Total |         10 |         10 |         10 |         30 | 
+##                   |      0.333 |      0.333 |      0.333 |            | 
+## ------------------|------------|------------|------------|------------|
+## 
+## 
+```
 
 ## Classification: cell segmentation {#knn-cell-segmentation}
 
@@ -610,7 +817,7 @@ Pre-processing and feature selection will be demonstrated using the cell segment
 
 <div class="figure" style="text-align: center">
 <img src="images/Hill_2007_cell_segmentation.jpg" alt="Image segmentation in high content screening. Images **b** and **c** are examples of well-segmented cells; **d** and **e** show poor-segmentation. Source: Hill(2007) https://doi.org/10.1186/1471-2105-8-340" width="75%" />
-<p class="caption">Image segmentation in high content screening. Images **b** and **c** are examples of well-segmented cells; **d** and **e** show poor-segmentation. Source: Hill(2007) https://doi.org/10.1186/1471-2105-8-340</p>
+<p class="caption">(\#fig:imageSegmentationHCS)Image segmentation in high content screening. Images **b** and **c** are examples of well-segmented cells; **d** and **e** show poor-segmentation. Source: Hill(2007) https://doi.org/10.1186/1471-2105-8-340</p>
 </div>
 
 This data set is one of several included in [caret](http://cran.r-project.org/web/packages/caret/index.html).
@@ -840,7 +1047,7 @@ qplot(segDataTrain$IntenCoocASMCh3, binwidth=0.1) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/segDataSkewness-1.png" alt="Example of a predictor from the segmentation data set showing skewness." width="75%" />
-<p class="caption">Example of a predictor from the segmentation data set showing skewness.</p>
+<p class="caption">(\#fig:segDataSkewness)Example of a predictor from the segmentation data set showing skewness.</p>
 </div>
 
 [caret](http://cran.r-project.org/web/packages/caret/index.html) provides various methods for transforming skewed variables to normality, including the Box-Cox [@BoxCox] and Yeo-Johnson [@YeoJohnson] transformations.
@@ -867,7 +1074,7 @@ corrplot(corMat, order="hclust", tl.cex=0.4)
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/segDataCorrelogram-1.png" alt="Correlogram of the segmentation data set." width="75%" />
-<p class="caption">Correlogram of the segmentation data set.</p>
+<p class="caption">(\#fig:segDataCorrelogram)Correlogram of the segmentation data set.</p>
 </div>
 
 The **preProcess** function in [caret](http://cran.r-project.org/web/packages/caret/index.html) has an option, **corr** to remove highly correlated variables. It considers the absolute values of pair-wise correlations. If two variables are highly correlated, **preProcess** looks at the mean absolute correlation of each variable and removes the variable with the largest mean absolute correlation. 
@@ -1061,7 +1268,7 @@ plot(knnFit)
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/cvAccuracySegDataHighCorRem-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size for the segmentation training data with highly correlated predictors removed." width="100%" />
-<p class="caption">Accuracy (repeated cross-validation) as a function of neighbourhood size for the segmentation training data with highly correlated predictors removed.</p>
+<p class="caption">(\#fig:cvAccuracySegDataHighCorRem)Accuracy (repeated cross-validation) as a function of neighbourhood size for the segmentation training data with highly correlated predictors removed.</p>
 </div>
 
 Let's retrieve some information on the final model. To see the optimum value of _k_ found during the grid search, run either of the following lines:
@@ -1296,7 +1503,7 @@ corrplot(cm, order="hclust", tl.pos="n")
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/compoundDescriptorsCorrelogram-1.png" alt="Correlogram of the chemical compound descriptors." width="80%" />
-<p class="caption">Correlogram of the chemical compound descriptors.</p>
+<p class="caption">(\#fig:compoundDescriptorsCorrelogram)Correlogram of the chemical compound descriptors.</p>
 </div>
 
 The number of variables exhibiting a pair-wise correlation coefficient above 0.75 can be determined:
@@ -1405,7 +1612,7 @@ plot(knnTune)
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/rmseFunK-1.png" alt="Root Mean Squared Error as a function of neighbourhood size." width="100%" />
-<p class="caption">Root Mean Squared Error as a function of neighbourhood size.</p>
+<p class="caption">(\#fig:rmseFunK)Root Mean Squared Error as a function of neighbourhood size.</p>
 </div>
 
 ### Use model to make predictions
@@ -1433,7 +1640,7 @@ qplot(concRatioTest, test_pred) +
 
 <div class="figure" style="text-align: center">
 <img src="04-nearest-neighbours_files/figure-html/obsPredConcRatios-1.png" alt="Concordance between observed concentration ratios and those predicted by _k_-nn regression." width="80%" />
-<p class="caption">Concordance between observed concentration ratios and those predicted by _k_-nn regression.</p>
+<p class="caption">(\#fig:obsPredConcRatios)Concordance between observed concentration ratios and those predicted by _k_-nn regression.</p>
 </div>
 
 We can also measure correlation between observed and predicted values.

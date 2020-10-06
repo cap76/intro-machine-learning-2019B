@@ -29,7 +29,7 @@ knitr::kable(
 
 
 
-Table: A table of height and weight correlation.
+Table: (\#tab:unnamed-chunk-2)A table of height and weight correlation.
 
 | V1| V2|  V3|
 |--:|--:|---:|

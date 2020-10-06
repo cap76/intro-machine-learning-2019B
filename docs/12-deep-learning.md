@@ -228,7 +228,7 @@ plot_model(mod,'images/DNN1.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN1.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">Example of a multilayer convolutional neural network</p>
+<p class="caption">(\#fig:examplenet)Example of a multilayer convolutional neural network</p>
 </div>
 
 We can also print a summary of the network, for example to see how many parameters it has:
@@ -326,7 +326,7 @@ plot_model(mod,'images/DNN2.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN2.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">Example of a multilayer convolutional neural network</p>
+<p class="caption">(\#fig:examplenet2)Example of a multilayer convolutional neural network</p>
 </div>
 
 We now get now get a validation accuracy of around $0.57$ with corresponding training accuracy of $0.58$. The model actually appears to be worse! Why not just add extra layers in. Okay boomer! Let's just waste all of our (computational resources) with millions of extra layers and billions of parameters. It seems like we're getting nowhere fast, and need to change tactic. 
@@ -338,7 +338,7 @@ Convolutional neural networks essentially scan through an image and extract out 
 
 <div class="figure" style="text-align: center">
 <img src="images/Screen-Shot-2015-11-07-at-7.26.20-AM.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">Example of a multilayer convolutional neural network</p>
+<p class="caption">(\#fig:covnet)Example of a multilayer convolutional neural network</p>
 </div>
 
 In kerasR we can add a convolutional layer using {Conv2D}. A multilayer convolutional neural network might look something like:
@@ -382,7 +382,7 @@ plot_model(mod,'images/DNN3.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN3.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">Example of a multilayer convolutional neural network</p>
+<p class="caption">(\#fig:examplenet3)Example of a multilayer convolutional neural network</p>
 </div>
 
 Okay, so now we have achieved a better accuracy: we have an accuracy of $0.89$ on the validation dataset at epoch $24$, with a training accuracy of $0.96$. Whilst this is still not great, it's accurate enough to begin useuflly making predictions and visualising the results. We have a trained model for classification of Rick, we can use it to make predictions for images not present in either the training or validation datasets. First load in the new set of images, which can be found in the {predictions} subfolder:
@@ -546,12 +546,12 @@ A slight deviation of this principle would be to use a high resolution version o
 
 <div class="figure" style="text-align: center">
 <img src="images/AE.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
-<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+<p class="caption">(\#fig:AE)Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="images/AE2.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
-<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+<p class="caption">(\#fig:AE2)Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
 </div>
 
 In the example below we implement a simple Autoencoder:

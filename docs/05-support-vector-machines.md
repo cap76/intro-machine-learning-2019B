@@ -8,7 +8,7 @@ Let's start by definining a hyperplane. In _p_-dimensional space a hyperplane is
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.2.png" alt="Left: two classes of observations (blue, purple) and three separating hyperplanes. Right: separating hyperplane shown as black line and grid indicates decision rule. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
-<p class="caption">Left: two classes of observations (blue, purple) and three separating hyperplanes. Right: separating hyperplane shown as black line and grid indicates decision rule. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmSeparatingHyperplanes2)Left: two classes of observations (blue, purple) and three separating hyperplanes. Right: separating hyperplane shown as black line and grid indicates decision rule. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 If the classes of observations can be separated by a hyperplane, then there will in fact be an infinite number of hyperplanes. So which of the possible hyperplanes do we choose to be our decision boundary? 
@@ -17,7 +17,7 @@ The **maximal margin hyperplane** is the separating hyperplane that is farthest 
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.3.png" alt="Maximal margin hyperplane shown as solid line. Margin is the distance from the solid line to either of the dashed lines. The support vectors are the points on the dashed line. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
-<p class="caption">Maximal margin hyperplane shown as solid line. Margin is the distance from the solid line to either of the dashed lines. The support vectors are the points on the dashed line. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmMaximalMarginHyperplane)Maximal margin hyperplane shown as solid line. Margin is the distance from the solid line to either of the dashed lines. The support vectors are the points on the dashed line. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 Figure \@ref(fig:svmMaximalMarginHyperplane) shows three training observations that are equidistant from the maximal margin hyperplane and lie on the dashed lines indicating the margin. These are the **support vectors**. If these points were moved slightly, the maximal margin hyperplane would also move, hence the term *support*. The maximal margin hyperplane is set by the **support vectors** alone; it is not influenced by any other observations.
@@ -25,7 +25,7 @@ Figure \@ref(fig:svmMaximalMarginHyperplane) shows three training observations t
 The maximal margin hyperplane is a natural decision boundary, but only if a separating hyperplane exists. In practice there may be non separable cases which prevent the use of the maximal margin classifier.
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.4.png" alt="The two classes cannot be separated by a hyperplane and so the maximal margin classifier cannot be used. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
-<p class="caption">The two classes cannot be separated by a hyperplane and so the maximal margin classifier cannot be used. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmNonSeparableCase)The two classes cannot be separated by a hyperplane and so the maximal margin classifier cannot be used. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 ## Support vector classifier
@@ -33,7 +33,7 @@ Even if a separating hyperplane exists, it may not be the best decision boundary
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.5.png" alt="Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
-<p class="caption">Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmHyperplaneShift)Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 
@@ -46,7 +46,7 @@ In other words, we might tolerate some misclassifications if the prediction of t
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.6.png" alt="Left: observations on the wrong side of the margin. Right: observations on the wrong side of the margin and observations on the wrong side of the hyperplane. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
-<p class="caption">Left: observations on the wrong side of the margin. Right: observations on the wrong side of the margin and observations on the wrong side of the hyperplane. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmObsOnWrongSideHyperplane)Left: observations on the wrong side of the margin. Right: observations on the wrong side of the margin and observations on the wrong side of the hyperplane. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 The support vector classifier has a tuning parameter, _C_, that determines the number and severity of the violations to the margin. If _C_ = 0, then no violations to the margin will be tolerated, which is equivalent to the maximal margin classifier. As _C_ increases, the classifier becomes more tolerant of violations to the margin, and so the margin widens.
@@ -62,7 +62,7 @@ The **support vectors** are the observations that lie directly on the margin, or
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.7.png" alt="Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
-<p class="caption">Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmMarginC)Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 ## Support Vector Machine
@@ -70,20 +70,20 @@ The support vector classifier performs well if we have linearly separable classe
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.8.png" alt="Two classes of observations with a non-linear boundary between them." width="90%" />
-<p class="caption">Two classes of observations with a non-linear boundary between them.</p>
+<p class="caption">(\#fig:svmNonLinearBoundary)Two classes of observations with a non-linear boundary between them.</p>
 </div>
 
 The SVM uses the **kernel trick** to operate in a higher dimensional space, without ever computing the coordinates of the data in that space.
 
 <div class="figure" style="text-align: center">
 <img src="images/svm_kernel_machine.png" alt="Kernel machine. By Alisneaky - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=14941564" width="80%" />
-<p class="caption">Kernel machine. By Alisneaky - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=14941564</p>
+<p class="caption">(\#fig:svmKernelMachine)Kernel machine. By Alisneaky - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=14941564</p>
 </div>
 
 
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.9.png" alt="Left: SVM with polynomial kernel of degree 3. Right: SVM with radial kernel. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
-<p class="caption">Left: SVM with polynomial kernel of degree 3. Right: SVM with radial kernel. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
+<p class="caption">(\#fig:svmPolyAndRadialKernelSVM)Left: SVM with polynomial kernel of degree 3. Right: SVM with radial kernel. Source: http://www-bcf.usc.edu/~gareth/ISL/</p>
 </div>
 
 
@@ -220,7 +220,7 @@ ggplot(moonsTrain, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/svmMoonsTrainSet-1.png" alt="Scatterplot of the training data" width="50%" />
-<p class="caption">Scatterplot of the training data</p>
+<p class="caption">(\#fig:svmMoonsTrainSet)Scatterplot of the training data</p>
 </div>
 
 
@@ -386,7 +386,7 @@ plot(svmTune, metric = "ROC", scales = list(x = list(log =2)))
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/svmAccuracyProfileMoons-1.png" alt="SVM accuracy profile for moons data set." width="80%" />
-<p class="caption">SVM accuracy profile for moons data set.</p>
+<p class="caption">(\#fig:svmAccuracyProfileMoons)SVM accuracy profile for moons data set.</p>
 </div>
 
 Predictions on test set.
@@ -473,7 +473,7 @@ plot(svmROC, type = "S")
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/svmROCcurveMoons-1.png" alt="SVM accuracy profile." width="80%" />
-<p class="caption">SVM accuracy profile.</p>
+<p class="caption">(\#fig:svmROCcurveMoons)SVM accuracy profile.</p>
 </div>
 **Sensitivity (true positive rate)**
 
@@ -546,9 +546,86 @@ ggplot(xgrid, aes(V1,V2)) +
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/simDataBinClassDecisionBoundarySVM-1.png" alt="Decision boundary created by radial kernel SVM." width="50%" /><img src="05-support-vector-machines_files/figure-html/simDataBinClassDecisionBoundarySVM-2.png" alt="Decision boundary created by radial kernel SVM." width="50%" />
-<p class="caption">Decision boundary created by radial kernel SVM.</p>
+<p class="caption">(\#fig:simDataBinClassDecisionBoundarySVM)Decision boundary created by radial kernel SVM.</p>
 </div>
 
+**Iris example**
+
+splitting the data into training set and test set
+
+```r
+library(e1071)
+library(caTools)
+my.split = sample.split(iris$Species, SplitRatio = .8)
+training_set = subset(iris, my.split == TRUE)
+test_set = subset(iris, my.split == FALSE)
+nrow(training_set)
+```
+
+```
+## [1] 120
+```
+
+
+```r
+training_set[,1:4] = scale(training_set[,1:4])
+test_set[,1:4] = scale(test_set[,1:4])
+classifier1 = svm(formula = Species~., data = training_set, type = 'C-classification', kernel = 'radial')
+classifier2 = svm(formula = Species~ Petal.Width + Petal.Length, data = training_set, type = 'C-classification', kernel = 'radial')
+```
+
+
+
+```r
+test_pred1 = predict(classifier1, type = 'response', newdata = test_set[-5])
+test_pred2 = predict(classifier2, type = 'response', newdata = test_set[-5])
+# Making Confusion Matrix
+cm1 = table(test_set[,5], test_pred1)
+cm2 = table(test_set[,5], test_pred2)
+cm1 # Confusion Matrix for all parameters
+```
+
+```
+##             test_pred1
+##              setosa versicolor virginica
+##   setosa         10          0         0
+##   versicolor      0         10         0
+##   virginica       0          1         9
+```
+
+```r
+cm2 # Confusion Matrix for parameters being Petal Length and Petal Width
+```
+
+```
+##             test_pred2
+##              setosa versicolor virginica
+##   setosa         10          0         0
+##   versicolor      0          9         1
+##   virginica       0          1         9
+```
+
+The accuracy for both model looks solid. Also notice that as we had deduced, only Petal Length and Width is important to make this model accurate and our second classifier proves it!
+
+
+```r
+m2 <- svm(Species~., data = iris)
+plot(m2, iris, Petal.Width ~ Petal.Length,
+      slice = list(Sepal.Width = 3, Sepal.Length = 4))
+```
+
+<img src="05-support-vector-machines_files/figure-html/svm.plots-1.png" width="672" />
+
+
+```r
+iris.part = subset(iris, Species != 'setosa')
+iris.part$Species = factor(iris.part$Species)
+#iris.part = iris.part[, c(1,2,5)]
+svm.fit = svm(formula=Species~., data=iris.part, type='C-classification', kernel='linear')
+plot(svm.fit, iris.part, Petal.Width ~ Petal.Length, slice = list(Sepal.Width = 3, Sepal.Length = 4))
+```
+
+<img src="05-support-vector-machines_files/figure-html/svm.subsets-1.png" width="672" />
 
 ## Example - regression
 This example serves to demonstrate the use of SVMs in regression, but perhaps more importantly, it highlights the power and flexibility of the [caret](http://cran.r-project.org/web/packages/caret/index.html) package. Earlier we used _k_-NN for a regression analysis of the **BloodBrain** dataset (see section \@ref(knn-regression)). We will repeat the regression analysis, but this time we will fit a radial kernel SVM. Remarkably, a re-run of this analysis using a completely different type of model, requires changes to only two lines of code.
@@ -627,7 +704,7 @@ plot(svmTune2)
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/rmseCorSVM-1.png" alt="Root Mean Squared Error as a function of cost." width="100%" />
-<p class="caption">Root Mean Squared Error as a function of cost.</p>
+<p class="caption">(\#fig:rmseCorSVM)Root Mean Squared Error as a function of cost.</p>
 </div>
 
 Use model to predict outcomes, after first pre-processing the test set.
@@ -648,7 +725,7 @@ qplot(concRatioTest, test_pred) +
 
 <div class="figure" style="text-align: center">
 <img src="05-support-vector-machines_files/figure-html/obsPredConcRatiosSVM-1.png" alt="Concordance between observed concentration ratios and those predicted by radial kernel SVM." width="80%" />
-<p class="caption">Concordance between observed concentration ratios and those predicted by radial kernel SVM.</p>
+<p class="caption">(\#fig:obsPredConcRatiosSVM)Concordance between observed concentration ratios and those predicted by radial kernel SVM.</p>
 </div>
 
 We can also measure correlation between observed and predicted values.

@@ -247,7 +247,7 @@ plot(svmTune, metric = "ROC", scales = list(x = list(log =2)))
 
 <div class="figure" style="text-align: center">
 <img src="18-solutions-support-vector-machines_files/figure-html/svmAccuracyProfileCellSegment-1.png" alt="SVM accuracy profile." width="80%" />
-<p class="caption">SVM accuracy profile.</p>
+<p class="caption">(\#fig:svmAccuracyProfileCellSegment)SVM accuracy profile.</p>
 </div>
 
 Test set results
@@ -335,7 +335,7 @@ plot(svmROC, type = "S")
 
 <div class="figure" style="text-align: center">
 <img src="18-solutions-support-vector-machines_files/figure-html/svmROCcurveCellSegment-1.png" alt="SVM ROC curve for cell segmentation data set." width="80%" />
-<p class="caption">SVM ROC curve for cell segmentation data set.</p>
+<p class="caption">(\#fig:svmROCcurveCellSegment)SVM ROC curve for cell segmentation data set.</p>
 </div>
 
 Calculate area under ROC curve

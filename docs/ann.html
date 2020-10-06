@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-10-05" />
+<meta name="date" content="2020-10-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -197,20 +172,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#bias-variance-tradeoff"><i class="fa fa-check"></i><b>5.2.3</b> Bias-variance tradeoff</a></li>
 <li class="chapter" data-level="5.2.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#choosing-k"><i class="fa fa-check"></i><b>5.2.4</b> Choosing <em>k</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-cell-segmentation"><i class="fa fa-check"></i><b>5.3</b> Classification: cell segmentation</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#cell-segmentation-data-set"><i class="fa fa-check"></i><b>5.3.1</b> Cell segmentation data set</a></li>
-<li class="chapter" data-level="5.3.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>5.3.2</b> Data splitting</a></li>
-<li class="chapter" data-level="5.3.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#identification-of-data-quality-issues"><i class="fa fa-check"></i><b>5.3.3</b> Identification of data quality issues</a></li>
-<li class="chapter" data-level="5.3.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#fit-model"><i class="fa fa-check"></i><b>5.3.4</b> Fit model</a></li>
+<li class="chapter" data-level="5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#example-on-the-iris-dataset"><i class="fa fa-check"></i><b>5.3</b> Example on the Iris dataset</a></li>
+<li class="chapter" data-level="5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-cell-segmentation"><i class="fa fa-check"></i><b>5.4</b> Classification: cell segmentation</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#cell-segmentation-data-set"><i class="fa fa-check"></i><b>5.4.1</b> Cell segmentation data set</a></li>
+<li class="chapter" data-level="5.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>5.4.2</b> Data splitting</a></li>
+<li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#identification-of-data-quality-issues"><i class="fa fa-check"></i><b>5.4.3</b> Identification of data quality issues</a></li>
+<li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#fit-model"><i class="fa fa-check"></i><b>5.4.4</b> Fit model</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-regression"><i class="fa fa-check"></i><b>5.4</b> Regression</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>5.4.1</b> Partition data</a></li>
-<li class="chapter" data-level="5.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-pre-processing"><i class="fa fa-check"></i><b>5.4.2</b> Data pre-processing</a></li>
-<li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.4.3</b> Search for optimum <em>k</em></a></li>
-<li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.4.4</b> Use model to make predictions</a></li>
+<li class="chapter" data-level="5.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-regression"><i class="fa fa-check"></i><b>5.5</b> Regression</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>5.5.1</b> Partition data</a></li>
+<li class="chapter" data-level="5.5.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-pre-processing"><i class="fa fa-check"></i><b>5.5.2</b> Data pre-processing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.5.3</b> Search for optimum <em>k</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.5.4</b> Use model to make predictions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="5.6" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.6</b> Exercises</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.6.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="svm.html"><a href="svm.html"><i class="fa fa-check"></i><b>6</b> Support vector machines</a><ul>
@@ -235,8 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.1</b> Random Forest</a></li>
-<li class="chapter" data-level="7.2" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.2</b> Exercises</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
+<li class="chapter" data-level="7.3" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="use-case-1.html"><a href="use-case-1.html"><i class="fa fa-check"></i><b>8</b> Use case 1</a><ul>
 <li class="chapter" data-level="8.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
@@ -249,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
@@ -279,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
 <li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
+<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#autoencoders"><i class="fa fa-check"></i><b>13.2.4</b> Autoencoders</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
@@ -290,20 +268,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.2.2" data-path="resources.html"><a href="resources.html#uci-machine-learning-repository"><i class="fa fa-check"></i><b>A.2.2</b> UCI Machine Learning Repository</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
+<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
 <li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
+<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
+<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
 <li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
+<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
 <li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
+<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
 <li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
@@ -312,6 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
 <li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
+<li class="chapter" data-level="G.1.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
 <li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
@@ -339,12 +318,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
+<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
 <li class="chapter" data-level="H.1" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2"><i class="fa fa-check"></i><b>H.1</b> Example 2</a></li>
 <li class="chapter" data-level="H.2" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2-1"><i class="fa fa-check"></i><b>H.2</b> Example 2</a></li>
 </ul></li>
-<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
-<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
+<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
+<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
 <li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
@@ -371,34 +350,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="neural-networks" class="section level2">
 <h2><span class="header-section-number">11.1</span> Neural Networks</h2>
 <p><strong>What are artificial neural networks (ANNs)?</strong></p>
-<p><em>ANN</em> is actually an old idea but it came back into vogue recently and it is the state of the art technique for machine learning. The goal of ANN algorithms is to mimmick the functions of a neuron (Figure <a href="#fig:neuronalComputation"><strong>??</strong></a>) and neuronal networks.</p>
-<div class="figure" style="text-align: center">
+<p><em>ANN</em> is actually an old idea but it came back into vogue recently and it is the state of the art technique for machine learning. The goal of ANN algorithms is to mimmick the functions of a neuron (Figure <a href="ann.html#fig:neuronalComputation">11.1</a>) and neuronal networks.</p>
+<div class="figure" style="text-align: center"><span id="fig:neuronalComputation"></span>
 <img src="images/neuronal_computation.png" alt="Neuronal computation" width="65%" />
 <p class="caption">
-Neuronal computation
+Figure 11.1: Neuronal computation
 </p>
 </div>
-<p>Computational representation of a neuron (Figure <a href="#fig:perceptron"><strong>??</strong></a>) aims to mimmick the biological input-and-activation architecture of a neuron (Figure <a href="#fig:neuronalComputation"><strong>??</strong></a>). A single unit of a computational neuron is also called a <strong>perceptron or ptrons</strong>. Ptrons have a nonlinear activation function (e.g a logistic function) which determines their output value based upon the values of their inputs.</p>
-<div class="figure" style="text-align: center">
+<p>Computational representation of a neuron (Figure <a href="ann.html#fig:perceptron">11.2</a>) aims to mimmick the biological input-and-activation architecture of a neuron (Figure <a href="ann.html#fig:neuronalComputation">11.1</a>). A single unit of a computational neuron is also called a <strong>perceptron or ptrons</strong>. Ptrons have a nonlinear activation function (e.g a logistic function) which determines their output value based upon the values of their inputs.</p>
+<div class="figure" style="text-align: center"><span id="fig:perceptron"></span>
 <img src="images/Perceptron.png" alt="Perceptron" width="65%" />
 <p class="caption">
-Perceptron
+Figure 11.2: Perceptron
 </p>
 </div>
 <p><strong>Architecture of ANNs</strong></p>
 <p>ANNs are built from ptrons. Ptrons have one or more inputs, an activation function and an output (Figure Perceptron). An ANN model is built up by combining ptrons in structured layers. Ptrons in a given layer are independent of each other, but each of them connect to all the ptrons in the next layer (Figure Neural Network Modeling).</p>
 <p>The input layer contains a ptron for each input variable. One or more hidden layers contain a user defined number of ptrons. Each ptron in the first hidden layer receives an input from the each ptron in the input layer. If there is a second hidden layer, each ptron in this layer receives an input from each ptron in the first hidden layer, and so on with additional layers. The output layer contains a ptron for each response variable (usually one, sometimes more in multivariate response situations). Each output ptron receives one input from each ptron in the final hidden layer</p>
 <p><em>Important</em>: The connections between ptrons are weighted. The magnitude of the weight controls the strength of the influence of that input on the receiving ptron. The sign of the weight controls whether the influence is stimulating or inhibiting the signal to the next layer.</p>
-<p>The weights are somewhat analogous to the parameters of a linear model. There is also a bias adjustment that represents the base value of a ptron and is analogous to the intercept in a linear model. If the inputs are near zero, the bias ensures that the output is near average.
-Due to the network-like nature of the ANN a complex, non-linear relationship exist between the predictors and response.</p>
+<p>The weights are somewhat analogous to the parameters of a linear model. There is also a bias adjustment that represents the base value of a ptron and is analogous to the intercept in a linear model. If the inputs are near zero, the bias ensures that the output is near average. Due to the network-like nature of the ANN a complex, non-linear relationship exist between the predictors and response.</p>
 <p><em>Acknowledgement: aspects of the above discussion are from</em>: <a href="https://rpubs.com/julianhatwell/annr" class="uri">https://rpubs.com/julianhatwell/annr</a></p>
 <p><strong>Forward propagation</strong></p>
-<p>Figure <a href="#fig:neuralNetworkModeling"><strong>??</strong></a> represents a simple ANN, where we have an input later (layer 1) with three ptrons and a base unit, one hidden layer (layer 2) again with three prtons and a base unit, and an output layer (layer 3) where the <span class="math inline">\(h_{\theta}\)</span>(x) is computed.</p>
+<p>Figure <a href="ann.html#fig:neuralNetworkModeling">11.3</a> represents a simple ANN, where we have an input later (layer 1) with three ptrons and a base unit, one hidden layer (layer 2) again with three prtons and a base unit, and an output layer (layer 3) where the <span class="math inline">\(h_{\theta}\)</span>(x) is computed.</p>
 <p>This method of computing <span class="math inline">\(h_{\theta}\)</span>(x) is called <em>Forward Propagation</em>.</p>
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center"><span id="fig:neuralNetworkModeling"></span>
 <img src="images/NN3.png" alt="Neural Network Modeling" width="85%" />
 <p class="caption">
-Neural Network Modeling
+Figure 11.3: Neural Network Modeling
 </p>
 </div>
 <p><em>where</em></p>
@@ -432,25 +410,25 @@ z^{(3)} &amp;= \Theta^{(2)} a^{(2)}\\
 h_\Theta(x) &amp;= a^{(3)} = g(z^{(3)})
 \end{align}\]</span></p>
 <p><strong>Why ANN?</strong></p>
-Consider the supervised learning problems below (Figure <a href="#fig:supervisedLearningProbs"><strong>??</strong></a>). The first two are straight forward cases.
-<div class="figure" style="text-align: center">
+Consider the supervised learning problems below (Figure <a href="ann.html#fig:supervisedLearningProbs">11.4</a>). The first two are straight forward cases.
+<div class="figure" style="text-align: center"><span id="fig:supervisedLearningProbs"></span>
 <img src="images/NN4.PNG" alt="Why ANN" width="85%" />
 <p class="caption">
-Why ANN
+Figure 11.4: Why ANN
 </p>
 </div>
 <p>Whereas for the third we could probably apply a logistic regression with a lot of nonlinear features like this</p>
 <p><span class="math display">\[ Y_i = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2+ \theta_3 x_1x_2+ \theta_4 x_i^2x_2 + \theta_5 x_i^3x_2+ \theta_6 x_i^3x_2^2 \dots)\]</span></p>
-<p>i.e. if we include enough polynomials we could arrive at an hypothesis that will separate the two classes.</p>
+<p>i.e. if we include enough polynomials we could arrive at an hypothesis that will separate the two classes.</p>
 <p>This could perfectly work well if we just have two features, such as x<sub>1</sub> and x<sub>2</sub> but for almost all machine learning problems we usually have more than two features. Importantly if the number of features increase the number of quadratic terms increase as a function of <span class="math inline">\(n^2/2\)</span>; where n is the number of features.</p>
 <p>This would result in overfitting if the number of features increase.</p>
 <p>Because ANN has felixibility to derive complex features from each layer of ptrons, it can be applied to any complex functional relationship and more importantly unlike generalized linear models (GLMs) it is not necessary to prespecify the type of relationship between covariates and response variables as for instance as linear combination. This makes ANN a valuable statistical tool.</p>
 <p>Observed data are used to train the neural network and the neural network learns an approximation of the relationship by iteratively adapting its parameters.</p>
-<p>Figure <a href="#fig:simpleLogicalANDANN"><strong>??</strong></a> shows an example of a simple logical AND ptron architecture.</p>
-<div class="figure" style="text-align: center">
+<p>Figure <a href="ann.html#fig:simpleLogicalANDANN">11.5</a> shows an example of a simple logical AND ptron architecture.</p>
+<div class="figure" style="text-align: center"><span id="fig:simpleLogicalANDANN"></span>
 <img src="images/NN5.png" alt="Simple Logical AND ANN" width="85%" />
 <p class="caption">
-Simple Logical AND ANN
+Figure 11.5: Simple Logical AND ANN
 </p>
 </div>
 <p><strong>Cost function and back propagation</strong></p>
@@ -459,40 +437,36 @@ Simple Logical AND ANN
 \begin{equation*} 
  CF(\theta_{0},\theta_{1}) = 1/2n\sum_{i=1}^{n} (h_{\theta}(x^i) - y^i)^2
 \end{equation*} 
-\]</span>
-Matrix solution to minimise the cost function in linear models</p>
+\]</span> Matrix solution to minimise the cost function in linear models</p>
 <p><span class="math display">\[ \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{Y} \]</span></p>
 <p>Cost funciton in ANN (it is a pretty scarry equation)</p>
 <p><span class="math display">\[
 \begin{equation*} 
  CF(\Theta) = -1/m \Bigg[\sum_{i=1}^{m}\sum_{k=1}^{K} y_k^{(i)}log(h_\Theta(x^{(i)}))_k+(1-y_k^{(i)})log(1-(h_\Theta(x^{(i)}))_k)\Bigg]
 \end{equation*} 
-\]</span>
-<span class="math display">\[
+\]</span> <span class="math display">\[
 \begin{equation*} 
   +\lambda/2m\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{S_{l+1}}(\Theta_{ji}^{(l)})^2
 \end{equation*} 
-\]</span>
-We have to minimise this ANN cost function and it is done by back propogation.
-It is termed back propogation because of the fact that we compute the error from the outer most layer and go backwards.</p>
-<p><em>Acknowledgement: The above example and discussion is from Prof. Andrew Ng’s coursera session on ANN</em></p>
+\]</span> We have to minimise this ANN cost function and it is done by back propogation. It is termed back propogation because of the fact that we compute the error from the outer most layer and go backwards.</p>
+<p><em>Acknowledgement: The above example and discussion is from Prof. Andrew Ng's coursera session on ANN</em></p>
 <p><em>Example model</em></p>
 <p>This example uses the Boston data from the MASS package which contains a number of predictors of median property values in suburbs of Boston, MA, USA. The code used is based on Alice, (2015)</p>
 <p>The Boston dataset is a collection of data about housing values in the suburbs of Boston. Our goal is to predict the median value of owner-occupied homes (medv) using all the other continuous variables available.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" data-line-number="1"><span class="kw">library</span>(neuralnet)</a>
-<a class="sourceLine" id="cb558-2" data-line-number="2"><span class="kw">library</span>(nnet)</a>
-<a class="sourceLine" id="cb558-3" data-line-number="3"><span class="kw">library</span>(NeuralNetTools)</a>
-<a class="sourceLine" id="cb558-4" data-line-number="4"><span class="kw">library</span>(MASS)</a>
-<a class="sourceLine" id="cb558-5" data-line-number="5"><span class="kw">library</span>(ISLR)</a>
-<a class="sourceLine" id="cb558-6" data-line-number="6"><span class="kw">library</span>(caTools) <span class="co"># sample.split</span></a>
-<a class="sourceLine" id="cb558-7" data-line-number="7"><span class="kw">library</span>(boot) <span class="co"># cv.glm</span></a>
-<a class="sourceLine" id="cb558-8" data-line-number="8"><span class="kw">library</span>(faraway) <span class="co"># compact lm summary &quot;sumary&quot; function</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(neuralnet)
+<span class="kw">library</span>(nnet)
+<span class="kw">library</span>(NeuralNetTools)
+<span class="kw">library</span>(MASS)
+<span class="kw">library</span>(ISLR)
+<span class="kw">library</span>(caTools) <span class="co"># sample.split</span>
+<span class="kw">library</span>(boot) <span class="co"># cv.glm</span>
+<span class="kw">library</span>(faraway) <span class="co"># compact lm summary &quot;sumary&quot; function</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;faraway&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:boot&#39;:
 ## 
 ##     logit, melanoma</code></pre>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" data-line-number="1"><span class="kw">library</span>(caret) <span class="co"># useful tools for machine learning</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret) <span class="co"># useful tools for machine learning</span></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;lattice&#39;</code></pre>
@@ -503,23 +477,23 @@ It is termed back propogation because of the fact that we compute the error from
 ## 
 ##     melanoma</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" data-line-number="1"><span class="kw">library</span>(corrplot)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(corrplot)</code></pre></div>
 <pre><code>## corrplot 0.84 loaded</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb569-2" data-line-number="2"><span class="kw">library</span>(MASS)</a>
-<a class="sourceLine" id="cb569-3" data-line-number="3">data &lt;-<span class="st"> </span>Boston</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">500</span>)
+<span class="kw">library</span>(MASS)
+data &lt;-<span class="st"> </span>Boston</code></pre></div>
 <p>Checking whether there are any missing data.</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" data-line-number="1"><span class="kw">apply</span>(data,<span class="dv">2</span>,<span class="cf">function</span>(x) <span class="kw">sum</span>(<span class="kw">is.na</span>(x)))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(data,<span class="dv">2</span>,<span class="cf">function</span>(x) <span class="kw">sum</span>(<span class="kw">is.na</span>(x)))</code></pre></div>
 <pre><code>##    crim      zn   indus    chas     nox      rm     age     dis     rad     tax 
 ##       0       0       0       0       0       0       0       0       0       0 
 ## ptratio   black   lstat    medv 
 ##       0       0       0       0</code></pre>
 <p>We randomly splitt the data into a train and a test set and then we fit a linear regression model and test it on the test set.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" data-line-number="1">index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(data),<span class="kw">round</span>(<span class="fl">0.75</span><span class="op">*</span><span class="kw">nrow</span>(data)))</a>
-<a class="sourceLine" id="cb572-2" data-line-number="2">train &lt;-<span class="st"> </span>data[index,]</a>
-<a class="sourceLine" id="cb572-3" data-line-number="3">test &lt;-<span class="st"> </span>data[<span class="op">-</span>index,]</a>
-<a class="sourceLine" id="cb572-4" data-line-number="4">lm.fit &lt;-<span class="st"> </span><span class="kw">glm</span>(medv<span class="op">~</span>., <span class="dt">data=</span>train)</a>
-<a class="sourceLine" id="cb572-5" data-line-number="5"><span class="kw">summary</span>(lm.fit)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(data),<span class="kw">round</span>(<span class="fl">0.75</span><span class="op">*</span><span class="kw">nrow</span>(data)))
+train &lt;-<span class="st"> </span>data[index,]
+test &lt;-<span class="st"> </span>data[<span class="op">-</span>index,]
+lm.fit &lt;-<span class="st"> </span><span class="kw">glm</span>(medv<span class="op">~</span>., <span class="dt">data=</span>train)
+<span class="kw">summary</span>(lm.fit)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = medv ~ ., data = train)
@@ -554,61 +528,59 @@ It is termed back propogation because of the fact that we compute the error from
 ## AIC: 2237
 ## 
 ## Number of Fisher Scoring iterations: 2</code></pre>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1">pr.lm &lt;-<span class="st"> </span><span class="kw">predict</span>(lm.fit,test)</a>
-<a class="sourceLine" id="cb574-2" data-line-number="2">MSE.lm &lt;-<span class="st"> </span><span class="kw">sum</span>((pr.lm <span class="op">-</span><span class="st"> </span>test<span class="op">$</span>medv)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pr.lm &lt;-<span class="st"> </span><span class="kw">predict</span>(lm.fit,test)
+MSE.lm &lt;-<span class="st"> </span><span class="kw">sum</span>((pr.lm <span class="op">-</span><span class="st"> </span>test<span class="op">$</span>medv)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test)</code></pre></div>
 <p>The sample(x,size) function simply outputs a vector of the specified size of randomly selected samples from the vector x. By default the sampling is without replacement: index is essentially a random vector of indeces.</p>
 <p>Since we are dealing with a regression problem, we are going to use the mean squared error (MSE) as a measure of how much our predictions are far away from the real data.</p>
 <p>Before fitting a neural network, we need to be prepare them to train and tune.</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1">maxs &lt;-<span class="st"> </span><span class="kw">apply</span>(data, <span class="dv">2</span>, max) </a>
-<a class="sourceLine" id="cb575-2" data-line-number="2">mins &lt;-<span class="st"> </span><span class="kw">apply</span>(data, <span class="dv">2</span>, min)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maxs &lt;-<span class="st"> </span><span class="kw">apply</span>(data, <span class="dv">2</span>, max) 
+mins &lt;-<span class="st"> </span><span class="kw">apply</span>(data, <span class="dv">2</span>, min)</code></pre></div>
 <p>It is important to normalize the data before training a neural network. Avoiding normalization may lead to useless results or to a very difficult training process (most of the times the algorithm will not converge before the number of maximum iterations are allowed). There are different methods to choose to scale the data (z-normalization, min-max scale, etc…).</p>
-<p>Here we have chosen to use the min-max method and scale the data in the interval [0,1]. Usually scaling in the intervals [0,1] or [-1,1] tends to give better results.
-We therefore scale and split the data before moving on:</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" data-line-number="1">scaled &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">scale</span>(data, <span class="dt">center =</span> mins, <span class="dt">scale =</span> maxs <span class="op">-</span><span class="st"> </span>mins))</a>
-<a class="sourceLine" id="cb576-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb576-3" data-line-number="3">train_ &lt;-<span class="st"> </span>scaled[index,]</a>
-<a class="sourceLine" id="cb576-4" data-line-number="4">test_ &lt;-<span class="st"> </span>scaled[<span class="op">-</span>index,]</a></code></pre></div>
+<p>Here we have chosen to use the min-max method and scale the data in the interval [0,1]. Usually scaling in the intervals [0,1] or [-1,1] tends to give better results. We therefore scale and split the data before moving on:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">scaled &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">scale</span>(data, <span class="dt">center =</span> mins, <span class="dt">scale =</span> maxs <span class="op">-</span><span class="st"> </span>mins))
+
+train_ &lt;-<span class="st"> </span>scaled[index,]
+test_ &lt;-<span class="st"> </span>scaled[<span class="op">-</span>index,]</code></pre></div>
 <p>Scale returns a matrix that needs to be coerced into a data.frame.</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" data-line-number="1"><span class="kw">library</span>(neuralnet)</a>
-<a class="sourceLine" id="cb577-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="kw">names</span>(train_)</a>
-<a class="sourceLine" id="cb577-3" data-line-number="3">f &lt;-<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;medv ~&quot;</span>, <span class="kw">paste</span>(n[<span class="op">!</span>n <span class="op">%in%</span><span class="st"> &quot;medv&quot;</span>], <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>)))</a>
-<a class="sourceLine" id="cb577-4" data-line-number="4">nn &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(f,<span class="dt">data=</span>train_,<span class="dt">hidden=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>),<span class="dt">linear.output=</span>T)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(neuralnet)
+n &lt;-<span class="st"> </span><span class="kw">names</span>(train_)
+f &lt;-<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;medv ~&quot;</span>, <span class="kw">paste</span>(n[<span class="op">!</span>n <span class="op">%in%</span><span class="st"> &quot;medv&quot;</span>], <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>)))
+nn &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(f,<span class="dt">data=</span>train_,<span class="dt">hidden=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>),<span class="dt">linear.output=</span>T)</code></pre></div>
 <p>There are no fixed rules as to how many layers and neurons to use although there are several more or less accepted rules of thumb. Usually, one hidden layer is enough for a vast numbers of applications. As far as the number of neurons is concerned, it should be between the input layer size and the output layer size, usually 2/3 of the input size.</p>
 <p>Since this is a toy example, we are going to use 2 hidden layers with this configuration: 13:5:3:1. The input layer has 13 inputs, the two hidden layers have 5 and 3 neurons and the output layer has a single output since we are doing regression.</p>
-<p>The formula y~. is not accepted in the neuralnet() function. You need to first write the formula and then pass it as an argument in the fitting function.
-The hidden argument accepts a vector with the number of neurons for each hidden layer, while the argument linear.output is used to specify whether we want to do regression linear.output=TRUE or classification linear.output=FALSE</p>
+<p>The formula y~. is not accepted in the neuralnet() function. You need to first write the formula and then pass it as an argument in the fitting function. The hidden argument accepts a vector with the number of neurons for each hidden layer, while the argument linear.output is used to specify whether we want to do regression linear.output=TRUE or classification linear.output=FALSE</p>
 <p>This is the graphical representation of the model with the weights on each connection:</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" data-line-number="1"><span class="kw">plot</span>(nn)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(nn)</code></pre></div>
 <p>The black lines show the connections between each layer and the weights on each connection while the blue lines show the bias term added in each step. The bias can be thought as the intercept of a linear model.</p>
 <p>The net is essentially a black box so we cannot say that much about the fitting, the weights and the model. Suffice to say that the training algorithm has converged and therefore the model is ready to be used.</p>
 <p>Now we can try to predict the values for the test set and calculate the MSE. Remember that the net will output a normalized prediction, so we need to scale it back in order to make a meaningful comparison (or just a simple prediction).</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" data-line-number="1">pr.nn &lt;-<span class="st"> </span><span class="kw">compute</span>(nn,test_[,<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>])</a>
-<a class="sourceLine" id="cb579-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb579-3" data-line-number="3">pr.nn_ &lt;-<span class="st"> </span>pr.nn<span class="op">$</span>net.result<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)</a>
-<a class="sourceLine" id="cb579-4" data-line-number="4">test.r &lt;-<span class="st"> </span>(test_<span class="op">$</span>medv)<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)</a>
-<a class="sourceLine" id="cb579-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb579-6" data-line-number="6">MSE.nn &lt;-<span class="st"> </span><span class="kw">sum</span>((test.r <span class="op">-</span><span class="st"> </span>pr.nn_)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test_)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pr.nn &lt;-<span class="st"> </span><span class="kw">compute</span>(nn,test_[,<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>])
+
+pr.nn_ &lt;-<span class="st"> </span>pr.nn<span class="op">$</span>net.result<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)
+test.r &lt;-<span class="st"> </span>(test_<span class="op">$</span>medv)<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)
+
+MSE.nn &lt;-<span class="st"> </span><span class="kw">sum</span>((test.r <span class="op">-</span><span class="st"> </span>pr.nn_)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test_)</code></pre></div>
 <p>we then compare the two MSEs</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">paste</span>(MSE.lm,MSE.nn))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">paste</span>(MSE.lm,MSE.nn))</code></pre></div>
 <pre><code>## [1] &quot;31.2630222372615 16.4595537665717&quot;</code></pre>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb582-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb582-3" data-line-number="3"><span class="kw">plot</span>(test<span class="op">$</span>medv,pr.nn_,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)</a>
-<a class="sourceLine" id="cb582-4" data-line-number="4"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb582-5" data-line-number="5"><span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="st">&#39;NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">bty=</span><span class="st">&#39;n&#39;</span>)</a>
-<a class="sourceLine" id="cb582-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb582-7" data-line-number="7"><span class="kw">plot</span>(test<span class="op">$</span>medv,pr.lm,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted lm&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>, <span class="dt">cex=</span><span class="fl">0.7</span>)</a>
-<a class="sourceLine" id="cb582-8" data-line-number="8"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb582-9" data-line-number="9"><span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="st">&#39;LM&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">bty=</span><span class="st">&#39;n&#39;</span>, <span class="dt">cex=</span>.<span class="dv">95</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+
+<span class="kw">plot</span>(test<span class="op">$</span>medv,pr.nn_,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="st">&#39;NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">bty=</span><span class="st">&#39;n&#39;</span>)
+
+<span class="kw">plot</span>(test<span class="op">$</span>medv,pr.lm,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted lm&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>, <span class="dt">cex=</span><span class="fl">0.7</span>)
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="st">&#39;LM&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">bty=</span><span class="st">&#39;n&#39;</span>, <span class="dt">cex=</span>.<span class="dv">95</span>)</code></pre></div>
 <p><img src="10-ann_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>The net is doing a better work than the linear model at predicting medv. Once again, be cautious because this result depends on the train-test split performed above. Below, after the visual plot, we are going to perform a fast cross validation in order to be more confident about the results.</p>
 <p>A first visual approach to the performance of the network and the linear model on the test set is plotted.</p>
 <p>By visually inspecting the plot we can see that the predictions made by the neural network are (in general) more concetrated around the line (a perfect alignment with the line would indicate a MSE of 0 and thus an ideal perfect prediction) than those made by the linear model.</p>
 <p>A perhaps more useful visual comparison is plotted.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" data-line-number="1"><span class="kw">plot</span>(test<span class="op">$</span>medv,pr.nn_,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)</a>
-<a class="sourceLine" id="cb583-2" data-line-number="2"><span class="kw">points</span>(test<span class="op">$</span>medv,pr.lm,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)</a>
-<a class="sourceLine" id="cb583-3" data-line-number="3"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb583-4" data-line-number="4"><span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&#39;NN&#39;</span>,<span class="st">&#39;LM&#39;</span>),<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(test<span class="op">$</span>medv,pr.nn_,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>,<span class="dt">main=</span><span class="st">&#39;Real vs predicted NN&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)
+<span class="kw">points</span>(test<span class="op">$</span>medv,pr.lm,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">cex=</span><span class="fl">0.7</span>)
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&#39;bottomright&#39;</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&#39;NN&#39;</span>,<span class="st">&#39;LM&#39;</span>),<span class="dt">pch=</span><span class="dv">18</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>))</code></pre></div>
 <p><img src="10-ann_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p><em>Cross validation</em> is another very important step of building predictive models. While there are different kind of cross validation methods, the basic idea is repeating the following process a number of time:</p>
 <p><em>Train-test split</em></p>
@@ -626,42 +598,42 @@ Then by calculating the average error we can get a grasp of how the model is doi
 </ol>
 <p>We are going to implement a fast cross validation using a for loop for the neural network and the cv.glm() function in the boot package for the linear model.</p>
 <p>Here is the 10 fold cross validated MSE for the linear model</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1"><span class="kw">library</span>(boot)</a>
-<a class="sourceLine" id="cb584-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb584-3" data-line-number="3">lm.fit &lt;-<span class="st"> </span><span class="kw">glm</span>(medv<span class="op">~</span>.,<span class="dt">data=</span>data)</a>
-<a class="sourceLine" id="cb584-4" data-line-number="4"><span class="kw">cv.glm</span>(data,lm.fit,<span class="dt">K=</span><span class="dv">10</span>)<span class="op">$</span>delta[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(boot)
+<span class="kw">set.seed</span>(<span class="dv">200</span>)
+lm.fit &lt;-<span class="st"> </span><span class="kw">glm</span>(medv<span class="op">~</span>.,<span class="dt">data=</span>data)
+<span class="kw">cv.glm</span>(data,lm.fit,<span class="dt">K=</span><span class="dv">10</span>)<span class="op">$</span>delta[<span class="dv">1</span>]</code></pre></div>
 <pre><code>## [1] 23.17094</code></pre>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb586-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">450</span>)</a>
-<a class="sourceLine" id="cb586-2" data-line-number="2">cv.error &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb586-3" data-line-number="3">k &lt;-<span class="st"> </span><span class="dv">10</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">450</span>)
+cv.error &lt;-<span class="st"> </span><span class="ot">NULL</span>
+k &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 <p>Note that we are splitting the data in this way: 90% train set and 10% test set in a random way for 10 times. We are also initializing a progress bar using the plyr library.</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" data-line-number="1"><span class="kw">library</span>(plyr) </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr) </code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;plyr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:faraway&#39;:
 ## 
 ##     ozone</code></pre>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" data-line-number="1">pbar &lt;-<span class="st"> </span><span class="kw">create_progress_bar</span>(<span class="st">&#39;text&#39;</span>)</a>
-<a class="sourceLine" id="cb590-2" data-line-number="2">pbar<span class="op">$</span><span class="kw">init</span>(k)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pbar &lt;-<span class="st"> </span><span class="kw">create_progress_bar</span>(<span class="st">&#39;text&#39;</span>)
+pbar<span class="op">$</span><span class="kw">init</span>(k)</code></pre></div>
 <pre><code>## 
   |                                                                            
   |                                                                      |   0%</code></pre>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k){</a>
-<a class="sourceLine" id="cb592-2" data-line-number="2">    index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(data),<span class="kw">round</span>(<span class="fl">0.9</span><span class="op">*</span><span class="kw">nrow</span>(data)))</a>
-<a class="sourceLine" id="cb592-3" data-line-number="3">    train.cv &lt;-<span class="st"> </span>scaled[index,]</a>
-<a class="sourceLine" id="cb592-4" data-line-number="4">    test.cv &lt;-<span class="st"> </span>scaled[<span class="op">-</span>index,]</a>
-<a class="sourceLine" id="cb592-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb592-6" data-line-number="6">    nn &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(f,<span class="dt">data=</span>train.cv,<span class="dt">hidden=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>),<span class="dt">linear.output=</span>T)</a>
-<a class="sourceLine" id="cb592-7" data-line-number="7">    </a>
-<a class="sourceLine" id="cb592-8" data-line-number="8">    pr.nn &lt;-<span class="st"> </span><span class="kw">compute</span>(nn,test.cv[,<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>])</a>
-<a class="sourceLine" id="cb592-9" data-line-number="9">    pr.nn &lt;-<span class="st"> </span>pr.nn<span class="op">$</span>net.result<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)</a>
-<a class="sourceLine" id="cb592-10" data-line-number="10">    </a>
-<a class="sourceLine" id="cb592-11" data-line-number="11">    test.cv.r &lt;-<span class="st"> </span>(test.cv<span class="op">$</span>medv)<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)</a>
-<a class="sourceLine" id="cb592-12" data-line-number="12">    </a>
-<a class="sourceLine" id="cb592-13" data-line-number="13">    cv.error[i] &lt;-<span class="st"> </span><span class="kw">sum</span>((test.cv.r <span class="op">-</span><span class="st"> </span>pr.nn)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test.cv)</a>
-<a class="sourceLine" id="cb592-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb592-15" data-line-number="15">    pbar<span class="op">$</span><span class="kw">step</span>()</a>
-<a class="sourceLine" id="cb592-16" data-line-number="16">}</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k){
+    index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(data),<span class="kw">round</span>(<span class="fl">0.9</span><span class="op">*</span><span class="kw">nrow</span>(data)))
+    train.cv &lt;-<span class="st"> </span>scaled[index,]
+    test.cv &lt;-<span class="st"> </span>scaled[<span class="op">-</span>index,]
+    
+    nn &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(f,<span class="dt">data=</span>train.cv,<span class="dt">hidden=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>),<span class="dt">linear.output=</span>T)
+    
+    pr.nn &lt;-<span class="st"> </span><span class="kw">compute</span>(nn,test.cv[,<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>])
+    pr.nn &lt;-<span class="st"> </span>pr.nn<span class="op">$</span>net.result<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)
+    
+    test.cv.r &lt;-<span class="st"> </span>(test.cv<span class="op">$</span>medv)<span class="op">*</span>(<span class="kw">max</span>(data<span class="op">$</span>medv)<span class="op">-</span><span class="kw">min</span>(data<span class="op">$</span>medv))<span class="op">+</span><span class="kw">min</span>(data<span class="op">$</span>medv)
+    
+    cv.error[i] &lt;-<span class="st"> </span><span class="kw">sum</span>((test.cv.r <span class="op">-</span><span class="st"> </span>pr.nn)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">nrow</span>(test.cv)
+    
+    pbar<span class="op">$</span><span class="kw">step</span>()
+}</code></pre></div>
 <pre><code>## 
   |                                                                            
   |=======                                                               |  10%
@@ -684,15 +656,14 @@ Then by calculating the average error we can get a grasp of how the model is doi
   |                                                                            
   |======================================================================| 100%</code></pre>
 <p>We calculate the average MSE and plot the results as a boxplot.</p>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb594-1" data-line-number="1"><span class="kw">mean</span>(cv.error)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(cv.error)</code></pre></div>
 <pre><code>## [1] 7.641292</code></pre>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb596-1" data-line-number="1"><span class="kw">boxplot</span>(cv.error,<span class="dt">xlab=</span><span class="st">&#39;MSE CV&#39;</span>,<span class="dt">col=</span><span class="st">&#39;cyan&#39;</span>,</a>
-<a class="sourceLine" id="cb596-2" data-line-number="2">        <span class="dt">border=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">names=</span><span class="st">&#39;CV error (MSE)&#39;</span>,</a>
-<a class="sourceLine" id="cb596-3" data-line-number="3">        <span class="dt">main=</span><span class="st">&#39;CV error (MSE) for NN&#39;</span>,<span class="dt">horizontal=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(cv.error,<span class="dt">xlab=</span><span class="st">&#39;MSE CV&#39;</span>,<span class="dt">col=</span><span class="st">&#39;cyan&#39;</span>,
+        <span class="dt">border=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">names=</span><span class="st">&#39;CV error (MSE)&#39;</span>,
+        <span class="dt">main=</span><span class="st">&#39;CV error (MSE) for NN&#39;</span>,<span class="dt">horizontal=</span><span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="10-ann_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>The average MSE for the neural network (10.33) is lower than the one of the linear model although there seems to be a certain degree of variation in the MSEs of the cross validation. This may depend on the splitting of the data or the random initialization of the weights in the net. By running the simulation different times with different seeds you can get a more precise point estimate for the average MSE.</p>
-<p><em>Acknowledgement: the above example is from</em> <a href="https://www.r-bloggers.com/fitting-a-neural-network-in-r-neuralnet-package/" class="uri">https://www.r-bloggers.com/fitting-a-neural-network-in-r-neuralnet-package/</a>
-## Exercises</p>
+<p><em>Acknowledgement: the above example is from</em> <a href="https://www.r-bloggers.com/fitting-a-neural-network-in-r-neuralnet-package/" class="uri">https://www.r-bloggers.com/fitting-a-neural-network-in-r-neuralnet-package/</a> ## Exercises</p>
 <p>Using a ANN, take a number and calculate its square root.</p>
 <p>Solutions to exercises can be found in appendix <a href="solutions-ann.html#solutions-ann">J</a>.</p>
 
@@ -759,7 +730,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

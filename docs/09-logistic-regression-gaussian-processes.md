@@ -224,7 +224,7 @@ library("arm")
 ```
 
 ```
-## Working directory is /home/ubuntu/Course_Materials/intro-machine-learning
+## Working directory is /home/brewmaster/intro-machine-learning
 ```
 
 ```r
@@ -748,7 +748,7 @@ Differential expression analysis is concerned with identifying *if* two sets of 
 
 <div class="figure" style="text-align: center">
 <img src="images/TimeSeries.jpg" alt="Differential expression analysis for time series. Here we have two time series with very different behaviour (right). However, as a whole the mean and variance of the time series is identical (left) and the datasets are not differentially expressed using a t-test (p&lt;0.9901)" width="55%" />
-<p class="caption">Differential expression analysis for time series. Here we have two time series with very different behaviour (right). However, as a whole the mean and variance of the time series is identical (left) and the datasets are not differentially expressed using a t-test (p<0.9901)</p>
+<p class="caption">(\#fig:timeser)Differential expression analysis for time series. Here we have two time series with very different behaviour (right). However, as a whole the mean and variance of the time series is identical (left) and the datasets are not differentially expressed using a t-test (p<0.9901)</p>
 </div>
 
 Gaussian processes regression represents a useful way of modelling time series, and can therefore be used as a basis for detecting differential expression in time series. To do so we write down two competing modes: (i) the two time series are differentially expressed, and are therefore best described by two independent GPs; (ii) the two time series are noisy observations from an identical underlying process, and are therefore best described by a single joint GP applied to the union of the data. 

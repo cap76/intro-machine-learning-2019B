@@ -15,12 +15,12 @@ Park HS, Rinehart MT, Walzer KA, Chi J-TA, Wax A (2016) Automated Detection of P
 
 <div class="figure" style="text-align: center">
 <img src="images/malaria_OPL_images.png" alt="Bright-field microscopy images: (A) uninfected RBC (B-D) RBCs with malaria parasite in early trophozoite, late trophozoite, and schizont stages respectively (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045" width="75%" />
-<p class="caption">Bright-field microscopy images: (A) uninfected RBC (B-D) RBCs with malaria parasite in early trophozoite, late trophozoite, and schizont stages respectively (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045</p>
+<p class="caption">(\#fig:malariaOPL)Bright-field microscopy images: (A) uninfected RBC (B-D) RBCs with malaria parasite in early trophozoite, late trophozoite, and schizont stages respectively (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="images/malaria_brightfield.png" alt="Uninfected RBC and RBCs infected by P. falciparum in early trophozoite, late trophozoite, and schizont stages represented respectively as: (A-D) OPL maps, (E-F) OPL maps from different viewpoint (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045" width="75%" />
-<p class="caption">Uninfected RBC and RBCs infected by P. falciparum in early trophozoite, late trophozoite, and schizont stages represented respectively as: (A-D) OPL maps, (E-F) OPL maps from different viewpoint (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045</p>
+<p class="caption">(\#fig:malariaBrightfield)Uninfected RBC and RBCs infected by P. falciparum in early trophozoite, late trophozoite, and schizont stages represented respectively as: (A-D) OPL maps, (E-F) OPL maps from different viewpoint (scale bars = 5μm). Source: Park et al (2016) https://doi.org/10.1371/journal.pone.0163045</p>
 </div>
 
 N.B. These are images of typical specimens. There is actually considerable variation in the appearance of each stage. See the supplementary material for the paper:

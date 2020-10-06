@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-10-05" />
+<meta name="date" content="2020-10-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,66 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -197,20 +172,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#bias-variance-tradeoff"><i class="fa fa-check"></i><b>5.2.3</b> Bias-variance tradeoff</a></li>
 <li class="chapter" data-level="5.2.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#choosing-k"><i class="fa fa-check"></i><b>5.2.4</b> Choosing <em>k</em></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-cell-segmentation"><i class="fa fa-check"></i><b>5.3</b> Classification: cell segmentation</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#cell-segmentation-data-set"><i class="fa fa-check"></i><b>5.3.1</b> Cell segmentation data set</a></li>
-<li class="chapter" data-level="5.3.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>5.3.2</b> Data splitting</a></li>
-<li class="chapter" data-level="5.3.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#identification-of-data-quality-issues"><i class="fa fa-check"></i><b>5.3.3</b> Identification of data quality issues</a></li>
-<li class="chapter" data-level="5.3.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#fit-model"><i class="fa fa-check"></i><b>5.3.4</b> Fit model</a></li>
+<li class="chapter" data-level="5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#example-on-the-iris-dataset"><i class="fa fa-check"></i><b>5.3</b> Example on the Iris dataset</a></li>
+<li class="chapter" data-level="5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-cell-segmentation"><i class="fa fa-check"></i><b>5.4</b> Classification: cell segmentation</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#cell-segmentation-data-set"><i class="fa fa-check"></i><b>5.4.1</b> Cell segmentation data set</a></li>
+<li class="chapter" data-level="5.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>5.4.2</b> Data splitting</a></li>
+<li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#identification-of-data-quality-issues"><i class="fa fa-check"></i><b>5.4.3</b> Identification of data quality issues</a></li>
+<li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#fit-model"><i class="fa fa-check"></i><b>5.4.4</b> Fit model</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-regression"><i class="fa fa-check"></i><b>5.4</b> Regression</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>5.4.1</b> Partition data</a></li>
-<li class="chapter" data-level="5.4.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-pre-processing"><i class="fa fa-check"></i><b>5.4.2</b> Data pre-processing</a></li>
-<li class="chapter" data-level="5.4.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.4.3</b> Search for optimum <em>k</em></a></li>
-<li class="chapter" data-level="5.4.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.4.4</b> Use model to make predictions</a></li>
+<li class="chapter" data-level="5.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knn-regression"><i class="fa fa-check"></i><b>5.5</b> Regression</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#partition-data"><i class="fa fa-check"></i><b>5.5.1</b> Partition data</a></li>
+<li class="chapter" data-level="5.5.2" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-pre-processing"><i class="fa fa-check"></i><b>5.5.2</b> Data pre-processing</a></li>
+<li class="chapter" data-level="5.5.3" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#search-for-optimum-k"><i class="fa fa-check"></i><b>5.5.3</b> Search for optimum <em>k</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#use-model-to-make-predictions"><i class="fa fa-check"></i><b>5.5.4</b> Use model to make predictions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.5</b> Exercises</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="5.6" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>5.6</b> Exercises</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#knnEx1"><i class="fa fa-check"></i><b>5.6.1</b> Exercise 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="svm.html"><a href="svm.html"><i class="fa fa-check"></i><b>6</b> Support vector machines</a><ul>
@@ -235,8 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.1</b> Random Forest</a></li>
-<li class="chapter" data-level="7.2" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.2</b> Exercises</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
+<li class="chapter" data-level="7.3" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="use-case-1.html"><a href="use-case-1.html"><i class="fa fa-check"></i><b>8</b> Use case 1</a><ul>
 <li class="chapter" data-level="8.1" data-path="clustering.html"><a href="clustering.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
@@ -249,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
@@ -279,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
 <li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
+<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#autoencoders"><i class="fa fa-check"></i><b>13.2.4</b> Autoencoders</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
@@ -290,20 +268,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.2.2" data-path="resources.html"><a href="resources.html#uci-machine-learning-repository"><i class="fa fa-check"></i><b>A.2.2</b> UCI Machine Learning Repository</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
+<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
 <li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
+<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
+<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
 <li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
+<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
 <li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
+<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
 <li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
@@ -312,6 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
 <li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
+<li class="chapter" data-level="G.1.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
 <li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
@@ -339,12 +318,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
+<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
 <li class="chapter" data-level="H.1" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2"><i class="fa fa-check"></i><b>H.1</b> Example 2</a></li>
 <li class="chapter" data-level="H.2" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2-1"><i class="fa fa-check"></i><b>H.2</b> Example 2</a></li>
 </ul></li>
-<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
-<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
+<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
+<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
 <li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
@@ -368,21 +347,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="linear-models" class="section level1">
 <h1><span class="header-section-number">9</span> Linear models and matrix algebra</h1>
 <!-- Sudhakaran -->
-<div id="linear-models-1" class="section level2">
+<div id="linear-models" class="section level2">
 <h2><span class="header-section-number">9.1</span> Linear models</h2>
 <p>We will start with simple linear functions.</p>
-<p><strong>First Example</strong>
-Height and Weight correlation</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1">people &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Linear_models/people.csv&quot;</span>, <span class="dt">header=</span>F)</a>
-<a class="sourceLine" id="cb415-2" data-line-number="2">caption =<span class="st"> &#39;Height and weight correlation of people in USA.&#39;</span></a>
-<a class="sourceLine" id="cb415-3" data-line-number="3"><span class="kw">plot</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3, <span class="dt">ylab=</span><span class="st">&quot;weight&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;height&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</a></code></pre></div>
+<p><strong>First Example</strong> Height and Weight correlation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">people &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Linear_models/people.csv&quot;</span>, <span class="dt">header=</span>F)
+caption =<span class="st"> &#39;Height and weight correlation of people in USA.&#39;</span>
+<span class="kw">plot</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3, <span class="dt">ylab=</span><span class="st">&quot;weight&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;height&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</code></pre></div>
 <p><img src="08-linear-models_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb416-2" data-line-number="2">  <span class="kw">head</span>(people[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">15</span>), <span class="dt">booktabs =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb416-3" data-line-number="3">  <span class="dt">caption =</span> <span class="st">&#39;A table of height and weight correlation.&#39;</span></a>
-<a class="sourceLine" id="cb416-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
+  <span class="kw">head</span>(people[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">15</span>), <span class="dt">booktabs =</span> <span class="ot">TRUE</span>,
+  <span class="dt">caption =</span> <span class="st">&#39;A table of height and weight correlation.&#39;</span>
+)</code></pre></div>
 <table>
-<caption>A table of height and weight correlation.</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 9.1: </span>A table of height and weight correlation.</caption>
 <thead>
 <tr class="header">
 <th align="right">V1</th>
@@ -472,9 +450,7 @@ Height and Weight correlation</p>
 <p><span class="math display">\[
 h_{\theta}(x) = \theta_{(0)} + \theta_{(1)}x
 \]</span></p>
-<p>How do we evaluate?
-<span class="math display">\[\theta_{(i&#39;s)}\]</span>
-Let us assume <span class="math inline">\(\theta_{(0)}\)</span> = 25 and <span class="math inline">\(\theta_{(1)}\)</span> = 0</p>
+<p>How do we evaluate? <span class="math display">\[\theta_{(i&#39;s)}\]</span> Let us assume <span class="math inline">\(\theta_{(0)}\)</span> = 25 and <span class="math inline">\(\theta_{(1)}\)</span> = 0</p>
 <p>or</p>
 <p>Let us assume <span class="math inline">\(\theta_{(0)}\)</span> = 0 and <span class="math inline">\(\theta_{(1)}\)</span> = -100</p>
 <p>Our hope is that the hypothesis <span class="math inline">\(h(x)\)</span> accounts for all of the data with minimal error.</p>
@@ -483,34 +459,29 @@ Let us assume <span class="math inline">\(\theta_{(0)}\)</span> = 25 and <span c
 <p>or <strong>minimisation</strong> of</p>
 <p><span class="math display">\[
 (h_{\theta}(x) - y)^2
-\]</span>
-When done for all elements in the matrix it is called the <strong>Cost Function</strong>.</p>
+\]</span> When done for all elements in the matrix it is called the <strong>Cost Function</strong>.</p>
 <p><span class="math display">\[
 \begin{equation*} 
  1/2n\sum_{i=1}^{n} (h_{\theta}(x^i) - y^i)^2
 \end{equation*} 
-\]</span>
-where <span class="math inline">\(h_{\theta}(x^i)\)</span> = <span class="math inline">\(\theta_{0} + \theta_{1x^i}\)</span></p>
-<p>The <strong>Cost Function</strong>
-<span class="math display">\[
+\]</span> where <span class="math inline">\(h_{\theta}(x^i)\)</span> = <span class="math inline">\(\theta_{0} + \theta_{1x^i}\)</span></p>
+<p>The <strong>Cost Function</strong> <span class="math display">\[
 \begin{equation*} 
  CF(\theta_{0},\theta_{1}) = 1/2n\sum_{i=1}^{n} (h_{\theta}(x^i) - y^i)^2
 \end{equation*} 
-\]</span>
-<strong>Cost Function</strong> is also called the <strong>Squard Error Function</strong></p>
+\]</span> <strong>Cost Function</strong> is also called the <strong>Squard Error Function</strong></p>
 <p>Our training data set is a scatter plot in the x-y plane and the straight line or hypothesis defined by <span class="math inline">\(hθ(x)\)</span> has to pass through most of these points and the best possible line will have the least average squared vertical distances from the line.</p>
 <p>When that happens the value of <span class="math inline">\(CF(\theta_{0},\theta_{1})\)</span> will be 0.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">people &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Linear_models/people.csv&quot;</span>, <span class="dt">header=</span>F)</a>
-<a class="sourceLine" id="cb417-2" data-line-number="2">caption =<span class="st"> &#39;Height and weight correlation of people in USA.&#39;</span></a>
-<a class="sourceLine" id="cb417-3" data-line-number="3"><span class="kw">plot</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3, <span class="dt">ylab=</span><span class="st">&quot;weight&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;height&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb417-4" data-line-number="4">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3)</a>
-<a class="sourceLine" id="cb417-5" data-line-number="5"><span class="kw">abline</span>(fit<span class="op">$</span>coef,<span class="dt">lwd=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb417-6" data-line-number="6">b &lt;-<span class="st"> </span><span class="kw">round</span>(fit<span class="op">$</span>coef,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb417-7" data-line-number="7"><span class="kw">text</span>(<span class="dv">10</span>, <span class="dv">80</span>, <span class="kw">paste</span>(<span class="st">&quot;y =&quot;</span>, b[<span class="dv">1</span>], <span class="st">&quot;+&quot;</span>, b[<span class="dv">2</span>], <span class="st">&quot;x&quot;</span>), <span class="dt">adj=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">people &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Linear_models/people.csv&quot;</span>, <span class="dt">header=</span>F)
+caption =<span class="st"> &#39;Height and weight correlation of people in USA.&#39;</span>
+<span class="kw">plot</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3, <span class="dt">ylab=</span><span class="st">&quot;weight&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;height&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))
+fit &lt;-<span class="st"> </span><span class="kw">lm</span>(people<span class="op">$</span>V2 <span class="op">~</span><span class="st"> </span>people<span class="op">$</span>V3)
+<span class="kw">abline</span>(fit<span class="op">$</span>coef,<span class="dt">lwd=</span><span class="dv">2</span>)
+b &lt;-<span class="st"> </span><span class="kw">round</span>(fit<span class="op">$</span>coef,<span class="dv">4</span>)
+<span class="kw">text</span>(<span class="dv">10</span>, <span class="dv">80</span>, <span class="kw">paste</span>(<span class="st">&quot;y =&quot;</span>, b[<span class="dv">1</span>], <span class="st">&quot;+&quot;</span>, b[<span class="dv">2</span>], <span class="st">&quot;x&quot;</span>), <span class="dt">adj=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>))</code></pre></div>
 <p><img src="08-linear-models_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p><strong>Second Example</strong>
-Falling of an object</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1"><span class="kw">library</span>(UsingR)</a></code></pre></div>
+<p><strong>Second Example</strong> Falling of an object</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(UsingR)</code></pre></div>
 <pre><code>## Loading required package: MASS</code></pre>
 <pre><code>## Loading required package: HistData</code></pre>
 <pre><code>## Loading required package: Hmisc</code></pre>
@@ -528,42 +499,36 @@ Falling of an object</p>
 <pre><code>## The following object is masked from &#39;package:survival&#39;:
 ## 
 ##     cancer</code></pre>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="kw">library</span>(rafalib)</a>
-<a class="sourceLine" id="cb430-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb430-3" data-line-number="3">g &lt;-<span class="st"> </span><span class="fl">9.8</span> <span class="co">##meters per second</span></a>
-<a class="sourceLine" id="cb430-4" data-line-number="4">n &lt;-<span class="st"> </span><span class="dv">25</span></a>
-<a class="sourceLine" id="cb430-5" data-line-number="5">tt &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="fl">3.4</span>,<span class="dt">len=</span>n) <span class="co">##time in secs, note: we use tt because t is a base function</span></a>
-<a class="sourceLine" id="cb430-6" data-line-number="6">d &lt;-<span class="st"> </span><span class="fl">56.67</span>  <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span><span class="op">*</span>g<span class="op">*</span>tt<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n,<span class="dt">sd=</span><span class="dv">1</span>) <span class="co">##meters</span></a></code></pre></div>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">library</span>(rafalib)</a>
-<a class="sourceLine" id="cb431-2" data-line-number="2"><span class="kw">mypar</span>()</a>
-<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="kw">plot</span>(tt,d,<span class="dt">ylab=</span><span class="st">&quot;Distance in meters&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Time in seconds&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rafalib)
+<span class="kw">set.seed</span>(<span class="dv">1</span>)
+g &lt;-<span class="st"> </span><span class="fl">9.8</span> ##meters per second
+n &lt;-<span class="st"> </span><span class="dv">25</span>
+tt &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="fl">3.4</span>,<span class="dt">len=</span>n) ##time in secs, note: we use tt because t is a base function
+d &lt;-<span class="st"> </span><span class="fl">56.67</span>  <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span><span class="op">*</span>g<span class="op">*</span>tt<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n,<span class="dt">sd=</span><span class="dv">1</span>) ##meters</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rafalib)
+<span class="kw">mypar</span>()
+<span class="kw">plot</span>(tt,d,<span class="dt">ylab=</span><span class="st">&quot;Distance in meters&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Time in seconds&quot;</span>)</code></pre></div>
 <p><img src="08-linear-models_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>This data looks like it might follow the equation</p>
-<p><span class="math display">\[ Y_i = \theta_0 + \theta_1 x_i + \theta_2 x_i^2 + \varepsilon_i, i=1,\dots,n \]</span>
-With <span class="math inline">\(Y_i\)</span> representing location, <span class="math inline">\(x_i\)</span> representing the time, and <span class="math inline">\(\varepsilon_i\)</span> accounting for measurement error. This is still a linear model because it is a linear combination of known quantities (the <span class="math inline">\(x\)</span>’s) referred to as predictors or covariates and unknown parameters (the <span class="math inline">\(\theta\)</span>’s).</p>
-<p><strong>Third Example</strong>
-Father and son height correlation</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1"><span class="kw">data</span>(father.son,<span class="dt">package=</span><span class="st">&quot;UsingR&quot;</span>)</a>
-<a class="sourceLine" id="cb432-2" data-line-number="2">x=father.son<span class="op">$</span>fheight</a>
-<a class="sourceLine" id="cb432-3" data-line-number="3">y=father.son<span class="op">$</span>sheight</a>
-<a class="sourceLine" id="cb432-4" data-line-number="4"><span class="kw">plot</span>(x,y,<span class="dt">xlab=</span><span class="st">&quot;Father&#39;s height&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Son&#39;s height&quot;</span>)</a></code></pre></div>
-<p><img src="08-linear-models_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-<span class="math display">\[ Y_i = \theta_0 + \theta_1 x_i + \varepsilon_i, i=1,\dots,N \]</span>
-This is also a linear model with <span class="math inline">\(x_i\)</span> and <span class="math inline">\(Y_i\)</span>, the father and son heights respectively, for the <span class="math inline">\(i\)</span>-th pair and <span class="math inline">\(\varepsilon_i\)</span> a term to account for the extra variability. Here we think of the fathers’ heights as the predictor and being fixed (not random) so we use lower case. Measurement error alone can’t explain all the variability seen in <span class="math inline">\(\varepsilon_i\)</span>. This makes sense as there are other variables not in the model, for example, mothers’ heights, genetic randomness, and environmental factors</p>
-<p><strong>Fourth Example</strong>
-Mouse diet data</p>
+<p><span class="math display">\[ Y_i = \theta_0 + \theta_1 x_i + \theta_2 x_i^2 + \varepsilon_i, i=1,\dots,n \]</span> With <span class="math inline">\(Y_i\)</span> representing location, <span class="math inline">\(x_i\)</span> representing the time, and <span class="math inline">\(\varepsilon_i\)</span> accounting for measurement error. This is still a linear model because it is a linear combination of known quantities (the <span class="math inline">\(x\)</span>'s) referred to as predictors or covariates and unknown parameters (the <span class="math inline">\(\theta\)</span>'s).</p>
+<p><strong>Third Example</strong> Father and son height correlation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(father.son,<span class="dt">package=</span><span class="st">&quot;UsingR&quot;</span>)
+x=father.son<span class="op">$</span>fheight
+y=father.son<span class="op">$</span>sheight
+<span class="kw">plot</span>(x,y,<span class="dt">xlab=</span><span class="st">&quot;Father&#39;s height&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Son&#39;s height&quot;</span>)</code></pre></div>
+<p><img src="08-linear-models_files/figure-html/unnamed-chunk-6-1.png" width="672" /> <span class="math display">\[ Y_i = \theta_0 + \theta_1 x_i + \varepsilon_i, i=1,\dots,N \]</span> This is also a linear model with <span class="math inline">\(x_i\)</span> and <span class="math inline">\(Y_i\)</span>, the father and son heights respectively, for the <span class="math inline">\(i\)</span>-th pair and <span class="math inline">\(\varepsilon_i\)</span> a term to account for the extra variability. Here we think of the fathers' heights as the predictor and being fixed (not random) so we use lower case. Measurement error alone can't explain all the variability seen in <span class="math inline">\(\varepsilon_i\)</span>. This makes sense as there are other variables not in the model, for example, mothers' heights, genetic randomness, and environmental factors</p>
+<p><strong>Fourth Example</strong> Mouse diet data</p>
 <p>Here we read-in mouse body weight data from mice that were fed two different diets: high fat and control (chow). We have a random sample of 12 mice for each. We are interested in determining if the diet has an effect on weight.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1"><span class="kw">library</span>(downloader)</a>
-<a class="sourceLine" id="cb433-2" data-line-number="2">url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleMiceWeights.csv&quot;</span></a>
-<a class="sourceLine" id="cb433-3" data-line-number="3">filename &lt;-<span class="st"> &quot;femaleMiceWeights.csv&quot;</span></a>
-<a class="sourceLine" id="cb433-4" data-line-number="4"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(filename)) <span class="kw">download</span>(url,<span class="dt">destfile=</span>filename)</a></code></pre></div>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;femaleMiceWeights.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb434-2" data-line-number="2"><span class="kw">mypar</span>(<span class="dv">1</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb434-3" data-line-number="3"><span class="kw">stripchart</span>(Bodyweight<span class="op">~</span>Diet,<span class="dt">data=</span>dat,<span class="dt">vertical=</span><span class="ot">TRUE</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,<span class="dt">pch=</span><span class="dv">1</span>,<span class="dt">main=</span><span class="st">&quot;Mice weights&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(downloader)
+url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleMiceWeights.csv&quot;</span>
+filename &lt;-<span class="st"> &quot;femaleMiceWeights.csv&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(filename)) <span class="kw">download</span>(url,<span class="dt">destfile=</span>filename)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;femaleMiceWeights.csv&quot;</span>)
+<span class="kw">mypar</span>(<span class="dv">1</span>,<span class="dv">1</span>)
+<span class="kw">stripchart</span>(Bodyweight<span class="op">~</span>Diet,<span class="dt">data=</span>dat,<span class="dt">vertical=</span><span class="ot">TRUE</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,<span class="dt">pch=</span><span class="dv">1</span>,<span class="dt">main=</span><span class="st">&quot;Mice weights&quot;</span>)</code></pre></div>
 <p><img src="08-linear-models_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>We can estimate the difference in average weight between populations using a linear model of the form.</p>
-<p><span class="math display">\[ Y_i = \theta_0 + \theta_1 x_{i} + \varepsilon_i\]</span>
-with <span class="math inline">\(\theta_0\)</span> the chow diet average weight, <span class="math inline">\(\theta_i\)</span> the difference between averages, <span class="math inline">\(x_i = 1\)</span> when mouse <span class="math inline">\(i\)</span> gets the high fat (hf) diet, <span class="math inline">\(x_i = 0\)</span> when it gets the chow diet, and <span class="math inline">\(\varepsilon_i\)</span> explains the differences between mice of the same population.</p>
+<p><span class="math display">\[ Y_i = \theta_0 + \theta_1 x_{i} + \varepsilon_i\]</span> with <span class="math inline">\(\theta_0\)</span> the chow diet average weight, <span class="math inline">\(\theta_i\)</span> the difference between averages, <span class="math inline">\(x_i = 1\)</span> when mouse <span class="math inline">\(i\)</span> gets the high fat (hf) diet, <span class="math inline">\(x_i = 0\)</span> when it gets the chow diet, and <span class="math inline">\(\varepsilon_i\)</span> explains the differences between mice of the same population.</p>
 <p><strong>Linear models in general</strong></p>
 <p>We have seen four very different examples in which linear models can be used. A general model that encompasses all of the above examples is the following:</p>
 <p><span class="math display">\[ h_{\theta}(x) = \theta_0 + \theta_1 x_{i,1} + \theta_2 x_{i,2} + \dots + \theta_2 x_{i,p} + \varepsilon_i, i=1,\dots,n \]</span></p>
@@ -573,41 +538,40 @@ with <span class="math inline">\(\theta_0\)</span> the chow diet average weight,
 </div>
 <div id="matrix-algebra" class="section level2">
 <h2><span class="header-section-number">9.2</span> Matrix algebra</h2>
-<p>The function matrix creates matrices
-<strong>matrix (data, nrow, ncol, byrow)</strong></p>
+<p>The function matrix creates matrices <strong>matrix (data, nrow, ncol, byrow)</strong></p>
 <p>Matrix fills values by columns</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">seq1 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb435-2" data-line-number="2">m1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(seq1, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb435-3" data-line-number="3">m1</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">seq1 &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)
+m1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(seq1, <span class="dv">2</span>)
+m1</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>You can also fill it by rows</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">m2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(seq1, <span class="dv">2</span>, <span class="dt">byrow =</span> T)</a>
-<a class="sourceLine" id="cb437-2" data-line-number="2">m2</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(seq1, <span class="dv">2</span>, <span class="dt">byrow =</span> T)
+m2</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3
 ## [2,]    4    5    6</code></pre>
 <p>Creating a matrix of 20 numbers from a standard normal distribution</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1">m3 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>), <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb439-2" data-line-number="2">m3</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>), <span class="dv">4</span>)
+m3</code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]
 ## [1,] -0.0593134 -0.2533617 -0.7074952  0.8811077 -1.1293631
 ## [2,]  1.1000254  0.6969634  0.3645820  0.3981059  1.4330237
 ## [3,]  0.7631757  0.5566632  0.7685329 -0.6120264  1.9803999
 ## [4,] -0.1645236 -0.6887557 -0.1123462  0.3411197 -0.3672215</code></pre>
 <p>appending a vector to a matrix</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb441-2" data-line-number="2">m4 &lt;-<span class="st"> </span><span class="kw">cbind</span>(m3, v1)</a>
-<a class="sourceLine" id="cb441-3" data-line-number="3">m4</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>)
+m4 &lt;-<span class="st"> </span><span class="kw">cbind</span>(m3, v1)
+m4</code></pre></div>
 <pre><code>##                                                             v1
 ## [1,] -0.0593134 -0.2533617 -0.7074952  0.8811077 -1.1293631  1
 ## [2,]  1.1000254  0.6969634  0.3645820  0.3981059  1.4330237  5
 ## [3,]  0.7631757  0.5566632  0.7685329 -0.6120264  1.9803999  7
 ## [4,] -0.1645236 -0.6887557 -0.1123462  0.3411197 -0.3672215  8</code></pre>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb443-2" data-line-number="2">m5 &lt;-<span class="st"> </span><span class="kw">rbind</span>(m4, v2)</a>
-<a class="sourceLine" id="cb443-3" data-line-number="3">m5</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)
+m5 &lt;-<span class="st"> </span><span class="kw">rbind</span>(m4, v2)
+m5</code></pre></div>
 <pre><code>##                                                           v1
 ##    -0.0593134 -0.2533617 -0.7074952  0.8811077 -1.1293631  1
 ##     1.1000254  0.6969634  0.3645820  0.3981059  1.4330237  5
@@ -615,25 +579,25 @@ with <span class="math inline">\(\theta_0\)</span> the chow diet average weight,
 ##    -0.1645236 -0.6887557 -0.1123462  0.3411197 -0.3672215  8
 ## v2  1.0000000  2.0000000  3.0000000  4.0000000  5.0000000  6</code></pre>
 <p>Determining the dimension of a matrix</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1"><span class="kw">dim</span>(m5)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(m5)</code></pre></div>
 <pre><code>## [1] 5 6</code></pre>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1">m6 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb447-2" data-line-number="2">m6</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m6 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">2</span>)
+m6</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">m7 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">3</span>)), <span class="dv">2</span>, <span class="dt">byrow =</span> T)</a>
-<a class="sourceLine" id="cb449-2" data-line-number="2">m7</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m7 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">3</span>)), <span class="dv">2</span>, <span class="dt">byrow =</span> T)
+m7</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    1    1
 ## [2,]    2    2    2</code></pre>
 <p>Matrix addition</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">m6<span class="op">+</span>m7</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m6<span class="op">+</span>m7</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    4    6
 ## [2,]    4    6    8</code></pre>
 <p>Matrix subtraction</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">m6<span class="op">-</span>m7</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m6<span class="op">-</span>m7</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    2    4
 ## [2,]    0    2    4</code></pre>
@@ -648,18 +612,17 @@ X^{-1} &amp;= \dfrac{1}{(ad-bc)}\begin{bmatrix} d&amp; -b\\
 \end{bmatrix}
 \end{align}
 \]</span></p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">m8 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb455-2" data-line-number="2">m8</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m8 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>)
+m8</code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
 <p>R function for inv matrix</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1"><span class="kw">solve</span>(m8)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">solve</span>(m8)</code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   -2  1.5
 ## [2,]    1 -0.5</code></pre>
-<p>Matrix transpose
-<span class="math display">\[
+<p>Matrix transpose <span class="math display">\[
 \begin{align}
 X &amp;= \begin{bmatrix}a&amp; b \\
 c &amp; d\\
@@ -668,55 +631,49 @@ X^{T} &amp;= \begin{bmatrix} a&amp; c\\
 b &amp; d\\
 \end{bmatrix}
 \end{align}
-\]</span>
-R function for matrix transpose</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1"><span class="kw">t</span>(m7)</a></code></pre></div>
+\]</span> R function for matrix transpose</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t</span>(m7)</code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    1    2
 ## [3,]    1    2</code></pre>
 <p>Matrix multiplication</p>
 <p>Element-wise multiplication</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">m6 <span class="op">*</span><span class="st"> </span>m7</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m6 <span class="op">*</span><span class="st"> </span>m7</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    4    8   12</code></pre>
 <p>Cross product</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">m6 <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(m7)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m6 <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(m7)</code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    9   18
 ## [2,]   12   24</code></pre>
-<p>Matrices are not commutative: A∗B≠B∗A
-Matrices are associative: (A∗B)∗C=A∗(B∗C)</p>
+<p>Matrices are not commutative: A∗B≠B∗A Matrices are associative: (A∗B)∗C=A∗(B∗C)</p>
 <p>Identity matrix (I)</p>
-<p>The identity matrix, when multiplied by any matrix of the same dimensions, results in the original matrix. It’s just like multiplying numbers by 1. The identity matrix simply has 1’s on the diagonal (upper left to lower right diagonal) and 0’s elsewhere.</p>
+<p>The identity matrix, when multiplied by any matrix of the same dimensions, results in the original matrix. It's just like multiplying numbers by 1. The identity matrix simply has 1's on the diagonal (upper left to lower right diagonal) and 0's elsewhere.</p>
 <p><span class="math display">\[
 \begin{bmatrix}1&amp; 0&amp; 0 \\
 0&amp; 1&amp; 0 \\
 0&amp; 0&amp; 1
 \end{bmatrix}\\\\
-\]</span>
-<span class="math inline">\(AA^{-1} = I\)</span></p>
+\]</span> <span class="math inline">\(AA^{-1} = I\)</span></p>
 <p><strong>Estimating parameters</strong> <span class="math inline">\(\theta\)</span></p>
-<p>For the models above to be useful we have to estimate the unknown <span class="math inline">\(\theta\)</span>s. In the second example, we want to describe a physical process for which we can’t have unknown parameters. In the third example, we better understand inheritance by estimating how much, on average, the father’s height affects the son’s height. In the fourth example, we want to determine if there is in fact a difference: if <span class="math inline">\(\theta_1 \neq 0\)</span>.</p>
+<p>For the models above to be useful we have to estimate the unknown <span class="math inline">\(\theta\)</span>s. In the second example, we want to describe a physical process for which we can't have unknown parameters. In the third example, we better understand inheritance by estimating how much, on average, the father's height affects the son's height. In the fourth example, we want to determine if there is in fact a difference: if <span class="math inline">\(\theta_1 \neq 0\)</span>.</p>
 <p>As explained above, we have to find the values that minimize the distance of the fitted model to the data. We come back to <strong>Cost Function</strong>.</p>
 <p><span class="math display">\[ \sum_{i=1}^n \left( Y_i - \left(\theta_0 + \sum_{j=1}^p \theta_j x_{i,j}\right)\right)^2 \]</span></p>
 <p>Once we find the minimum, we will call the values the least squares estimates (LSE) and denote them with <span class="math inline">\(\hat{\theta}\)</span>. The quantity obtained when evaluating the least squares equation at the estimates is called the residual sum of squares (RSS). Since all these quantities depend on <span class="math inline">\(Y\)</span>, they are random variables. The <span class="math inline">\(\hat{\theta}\)</span> s are random variables and we will eventually perform inference on them.</p>
-<p>What actually happens when we invoke lm?
-Inside of lm, we will form a design matrix <span class="math inline">\(\mathbf{X}\)</span> and calculate the Cost function: <span class="math inline">\(\boldsymbol{\beta}\)</span>, which minimizes the sum of squares. The formula for this solution is:</p>
-<p><span class="math display">\[ \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{Y} \]</span>
-We can calculate this in R using matrix multiplication operator %*%, the inverse function solve, and the transpose function t.</p>
+<p>What actually happens when we invoke lm? Inside of lm, we will form a design matrix <span class="math inline">\(\mathbf{X}\)</span> and calculate the Cost function: <span class="math inline">\(\boldsymbol{\beta}\)</span>, which minimizes the sum of squares. The formula for this solution is:</p>
+<p><span class="math display">\[ \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{Y} \]</span> We can calculate this in R using matrix multiplication operator %*%, the inverse function solve, and the transpose function t.</p>
 <p>Getting back to the mice example</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>) <span class="co">#same jitter in stripchart</span></a></code></pre></div>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;femaleMiceWeights.csv&quot;</span>) <span class="co">##previously downloaded</span></a>
-<a class="sourceLine" id="cb466-2" data-line-number="2"><span class="kw">stripchart</span>(dat<span class="op">$</span>Bodyweight <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>Diet, <span class="dt">vertical=</span><span class="ot">TRUE</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,</a>
-<a class="sourceLine" id="cb466-3" data-line-number="3">           <span class="dt">main=</span><span class="st">&quot;Bodyweight over Diet&quot;</span>)</a></code></pre></div>
-<p><img src="08-linear-models_files/figure-html/unnamed-chunk-24-1.png" width="672" />
-We can see that the high fat diet group appears to have higher weights on average, although there is overlap between the two samples.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1"><span class="kw">levels</span>(dat<span class="op">$</span>Diet)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>) <span class="co">#same jitter in stripchart</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;femaleMiceWeights.csv&quot;</span>) ##previously downloaded
+<span class="kw">stripchart</span>(dat<span class="op">$</span>Bodyweight <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>Diet, <span class="dt">vertical=</span><span class="ot">TRUE</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,
+           <span class="dt">main=</span><span class="st">&quot;Bodyweight over Diet&quot;</span>)</code></pre></div>
+<p><img src="08-linear-models_files/figure-html/unnamed-chunk-24-1.png" width="672" /> We can see that the high fat diet group appears to have higher weights on average, although there is overlap between the two samples.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(dat<span class="op">$</span>Diet)</code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" data-line-number="1">X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)</a>
-<a class="sourceLine" id="cb469-2" data-line-number="2"><span class="kw">head</span>(X)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)
+<span class="kw">head</span>(X)</code></pre></div>
 <pre><code>##   (Intercept) Diethf
 ## 1           1      0
 ## 2           1      0
@@ -724,21 +681,21 @@ We can see that the high fat diet group appears to have higher weights on averag
 ## 4           1      0
 ## 5           1      0
 ## 6           1      0</code></pre>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1">Y &lt;-<span class="st"> </span>dat<span class="op">$</span>Bodyweight</a>
-<a class="sourceLine" id="cb471-2" data-line-number="2">X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)</a>
-<a class="sourceLine" id="cb471-3" data-line-number="3"><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>Y</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y &lt;-<span class="st"> </span>dat<span class="op">$</span>Bodyweight
+X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)
+<span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>Y</code></pre></div>
 <pre><code>##                  [,1]
 ## (Intercept) 23.813333
 ## Diethf       3.020833</code></pre>
 <p>These coefficients are the average of the control group and the difference of the averages:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1">s &lt;-<span class="st"> </span><span class="kw">split</span>(dat<span class="op">$</span>Bodyweight, dat<span class="op">$</span>Diet)</a>
-<a class="sourceLine" id="cb473-2" data-line-number="2"><span class="kw">mean</span>(s[[<span class="st">&quot;chow&quot;</span>]])</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s &lt;-<span class="st"> </span><span class="kw">split</span>(dat<span class="op">$</span>Bodyweight, dat<span class="op">$</span>Diet)
+<span class="kw">mean</span>(s[[<span class="st">&quot;chow&quot;</span>]])</code></pre></div>
 <pre><code>## [1] 23.81333</code></pre>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1"><span class="kw">mean</span>(s[[<span class="st">&quot;hf&quot;</span>]]) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(s[[<span class="st">&quot;chow&quot;</span>]])</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(s[[<span class="st">&quot;hf&quot;</span>]]) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(s[[<span class="st">&quot;chow&quot;</span>]])</code></pre></div>
 <pre><code>## [1] 3.020833</code></pre>
 <p>Finally, we use lm to run the linear model:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(Bodyweight <span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)</a>
-<a class="sourceLine" id="cb477-2" data-line-number="2"><span class="kw">summary</span>(fit)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(Bodyweight <span class="op">~</span><span class="st"> </span>Diet, <span class="dt">data=</span>dat)
+<span class="kw">summary</span>(fit)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Bodyweight ~ Diet, data = dat)
@@ -755,27 +712,26 @@ We can see that the high fat diet group appears to have higher weights on averag
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 3.6 on 22 degrees of freedom
-## Multiple R-squared:  0.1611,	Adjusted R-squared:  0.1229 
+## Multiple R-squared:  0.1611, Adjusted R-squared:  0.1229 
 ## F-statistic: 4.224 on 1 and 22 DF,  p-value: 0.05192</code></pre>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">(coefs &lt;-<span class="st"> </span><span class="kw">coef</span>(fit))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(coefs &lt;-<span class="st"> </span><span class="kw">coef</span>(fit))</code></pre></div>
 <pre><code>## (Intercept)      Diethf 
 ##   23.813333    3.020833</code></pre>
 <p>The following plot provides a visualization of the meaning of the coefficients with colored arrows.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" data-line-number="1"><span class="kw">stripchart</span>(dat<span class="op">$</span>Bodyweight <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>Diet, <span class="dt">vertical=</span><span class="ot">TRUE</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,</a>
-<a class="sourceLine" id="cb481-2" data-line-number="2">           <span class="dt">main=</span><span class="st">&quot;Bodyweight over Diet&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb481-3" data-line-number="3">a &lt;-<span class="st"> </span><span class="fl">-0.25</span></a>
-<a class="sourceLine" id="cb481-4" data-line-number="4">lgth &lt;-<span class="st"> </span><span class="fl">.1</span></a>
-<a class="sourceLine" id="cb481-5" data-line-number="5"><span class="kw">library</span>(RColorBrewer)</a>
-<a class="sourceLine" id="cb481-6" data-line-number="6">cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)</a>
-<a class="sourceLine" id="cb481-7" data-line-number="7"><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb481-8" data-line-number="8"><span class="kw">arrows</span>(<span class="dv">1</span><span class="op">+</span>a,<span class="dv">0</span>,<span class="dv">1</span><span class="op">+</span>a,coefs[<span class="dv">1</span>],<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span>cols[<span class="dv">1</span>],<span class="dt">length=</span>lgth)</a>
-<a class="sourceLine" id="cb481-9" data-line-number="9"><span class="kw">abline</span>(<span class="dt">h=</span>coefs[<span class="dv">1</span>],<span class="dt">col=</span>cols[<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb481-10" data-line-number="10"><span class="kw">arrows</span>(<span class="dv">2</span><span class="op">+</span>a,coefs[<span class="dv">1</span>],<span class="dv">2</span><span class="op">+</span>a,coefs[<span class="dv">1</span>]<span class="op">+</span>coefs[<span class="dv">2</span>],<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span>cols[<span class="dv">2</span>],<span class="dt">length=</span>lgth)</a>
-<a class="sourceLine" id="cb481-11" data-line-number="11"><span class="kw">abline</span>(<span class="dt">h=</span>coefs[<span class="dv">1</span>]<span class="op">+</span>coefs[<span class="dv">2</span>],<span class="dt">col=</span>cols[<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb481-12" data-line-number="12"><span class="kw">legend</span>(<span class="st">&quot;right&quot;</span>,<span class="kw">names</span>(coefs),<span class="dt">fill=</span>cols,<span class="dt">cex=</span>.<span class="dv">75</span>,<span class="dt">bg=</span><span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stripchart</span>(dat<span class="op">$</span>Bodyweight <span class="op">~</span><span class="st"> </span>dat<span class="op">$</span>Diet, <span class="dt">vertical=</span><span class="ot">TRUE</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,
+           <span class="dt">main=</span><span class="st">&quot;Bodyweight over Diet&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))
+a &lt;-<span class="st"> </span><span class="fl">-0.25</span>
+lgth &lt;-<span class="st"> </span><span class="fl">.1</span>
+<span class="kw">library</span>(RColorBrewer)
+cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>,<span class="st">&quot;Dark2&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)
+<span class="kw">arrows</span>(<span class="dv">1</span><span class="op">+</span>a,<span class="dv">0</span>,<span class="dv">1</span><span class="op">+</span>a,coefs[<span class="dv">1</span>],<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span>cols[<span class="dv">1</span>],<span class="dt">length=</span>lgth)
+<span class="kw">abline</span>(<span class="dt">h=</span>coefs[<span class="dv">1</span>],<span class="dt">col=</span>cols[<span class="dv">1</span>])
+<span class="kw">arrows</span>(<span class="dv">2</span><span class="op">+</span>a,coefs[<span class="dv">1</span>],<span class="dv">2</span><span class="op">+</span>a,coefs[<span class="dv">1</span>]<span class="op">+</span>coefs[<span class="dv">2</span>],<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span>cols[<span class="dv">2</span>],<span class="dt">length=</span>lgth)
+<span class="kw">abline</span>(<span class="dt">h=</span>coefs[<span class="dv">1</span>]<span class="op">+</span>coefs[<span class="dv">2</span>],<span class="dt">col=</span>cols[<span class="dv">2</span>])
+<span class="kw">legend</span>(<span class="st">&quot;right&quot;</span>,<span class="kw">names</span>(coefs),<span class="dt">fill=</span>cols,<span class="dt">cex=</span>.<span class="dv">75</span>,<span class="dt">bg=</span><span class="st">&quot;white&quot;</span>)</code></pre></div>
 <p><img src="08-linear-models_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<p>Data source: Some of this data and code were obtained from
-<a href="https://github.com/genomicsclass/labs/blob/master/matrixalg/matrix_algebra_examples.Rmd" class="uri">https://github.com/genomicsclass/labs/blob/master/matrixalg/matrix_algebra_examples.Rmd</a></p>
+<p>Data source: Some of this data and code were obtained from <a href="https://github.com/genomicsclass/labs/blob/master/matrixalg/matrix_algebra_examples.Rmd" class="uri">https://github.com/genomicsclass/labs/blob/master/matrixalg/matrix_algebra_examples.Rmd</a></p>
 <p><strong>Excersises</strong></p>
 <p>Fit linear models for example 2 and example 3 using lm function.</p>
 <p>Solutions to exercises can be found in appendix <a href="solutions-linear-models.html#solutions-linear-models">H</a></p>
@@ -843,7 +799,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

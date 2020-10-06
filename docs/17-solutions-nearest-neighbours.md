@@ -136,7 +136,7 @@ featurePlot(x = morphTrain,
 
 <div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatBoxplots-1.png" alt="Boxplots of the 7 geometric parameters in the wheat data set" width="75%" />
-<p class="caption">Boxplots of the 7 geometric parameters in the wheat data set</p>
+<p class="caption">(\#fig:wheatBoxplots)Boxplots of the 7 geometric parameters in the wheat data set</p>
 </div>
 
 Data check: pairwise correlations between predictors
@@ -148,7 +148,7 @@ corrplot(corMat, order="hclust", tl.cex=1)
 
 <div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatCorrelogram-1.png" alt="Correlogram of the wheat seed data set." width="75%" />
-<p class="caption">Correlogram of the wheat seed data set.</p>
+<p class="caption">(\#fig:wheatCorrelogram)Correlogram of the wheat seed data set.</p>
 </div>
 
 
@@ -187,7 +187,7 @@ featurePlot(x = morphTrain,
 
 <div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatDensityPlots-1.png" alt="Density plots of the 7 geometric parameters in the wheat data set" width="75%" />
-<p class="caption">Density plots of the 7 geometric parameters in the wheat data set</p>
+<p class="caption">(\#fig:wheatDensityPlots)Density plots of the 7 geometric parameters in the wheat data set</p>
 </div>
             
 Create a 'grid' of values of _k_ for evaluation:
@@ -288,7 +288,7 @@ plot(knnFit)
 
 <div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/cvAccuracyMorphTrain-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set." width="100%" />
-<p class="caption">Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set.</p>
+<p class="caption">(\#fig:cvAccuracyMorphTrain)Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set.</p>
 </div>
 
 Predict the class (wheat variety) of the observations in the test set.

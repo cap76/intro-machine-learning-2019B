@@ -1,7 +1,7 @@
 # Decision trees and random forests {#decision-trees}
 
 <!-- Sudhakaran -->
-##Decision Trees
+## Decision Trees
 
 **What is a Decision Tree?**
 
@@ -15,7 +15,7 @@ It is one of the most widely used tool in ML for predictive analytics. Examples 
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree.png" alt="Decision Tree" width="55%" />
-<p class="caption">Decision Tree</p>
+<p class="caption">(\#fig:unnamed-chunk-1)Decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com*
 
@@ -25,7 +25,7 @@ A model is first created with training data and then a set of validation data is
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree_2.png" alt="Example of a decision Tree" width="90%" />
-<p class="caption">Example of a decision Tree</p>
+<p class="caption">(\#fig:unnamed-chunk-2)Example of a decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com* 
 
@@ -496,6 +496,199 @@ The above results show that the classifier with the criterion as gini index is g
 
 *Boosting* refers to a family of algorithms which converts weak learner to strong learner by combing the prediction of each weak learner using methods like average/ weighted average or by considering a prediction that has a higher vote. Gradient boosting and XGboost are examples of boosting algorithms. 
 
+**Iris example for Decision Trees**
+
+Even if we already know the classes for the 150 instances of irises, it could be interesting to create a model that predicts the species from the petal and sepal width and length. One model that is easy to create and understand is a decision tree, which can be created with the C5.0 package.
+
+
+```r
+if(!require(C50)){install.packages("C50")}
+```
+
+```
+## Loading required package: C50
+```
+
+```r
+library(C50)
+input <- iris[,1:4]
+output <- iris[,5]
+model1 <- C5.0(input, output, control = C5.0Control(noGlobalPruning = TRUE,minCases=1))
+summary(model1)
+```
+
+```
+## 
+## Call:
+## C5.0.default(x = input, y = output, control = C5.0Control(noGlobalPruning
+##  = TRUE, minCases = 1))
+## 
+## 
+## C5.0 [Release 2.07 GPL Edition]  	Tue Oct  6 15:19:27 2020
+## -------------------------------
+## 
+## Class specified by attribute `outcome'
+## 
+## Read 150 cases (5 attributes) from undefined.data
+## 
+## Decision tree:
+## 
+## Petal.Length <= 1.9: setosa (50)
+## Petal.Length > 1.9:
+## :...Petal.Width > 1.7: virginica (46/1)
+##     Petal.Width <= 1.7:
+##     :...Petal.Length <= 4.9: versicolor (48/1)
+##         Petal.Length > 4.9:
+##         :...Petal.Width <= 1.5: virginica (3)
+##             Petal.Width > 1.5:
+##             :...Petal.Length <= 5.4: versicolor (2)
+##                 Petal.Length > 5.4: virginica (1)
+## 
+## 
+## Evaluation on training data (150 cases):
+## 
+## 	    Decision Tree   
+## 	  ----------------  
+## 	  Size      Errors  
+## 
+## 	     6    2( 1.3%)   <<
+## 
+## 
+## 	   (a)   (b)   (c)    <-classified as
+## 	  ----  ----  ----
+## 	    50                (a): class setosa
+## 	          49     1    (b): class versicolor
+## 	           1    49    (c): class virginica
+## 
+## 
+## 	Attribute usage:
+## 
+## 	100.00%	Petal.Length
+## 	 66.67%	Petal.Width
+## 
+## 
+## Time: 0.0 secs
+```
+
+```r
+plot(model1, main="C5.0 Decision Tree - Unpruned, min=1")
+```
+
+<img src="06-decision-trees_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+
+We can play with the parameters of the classifier to see better/simpler/more complete/more complex trees. Here's a simpler one:
+
+
+```r
+model2 <- C5.0(input, output, control = C5.0Control(noGlobalPruning = FALSE))
+plot(model2, main="C5.0 Decision Tree - Pruned")
+```
+
+<img src="06-decision-trees_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+```r
+plot(model2, type='simple')
+```
+
+<img src="06-decision-trees_files/figure-html/unnamed-chunk-19-2.png" width="672" />
+
+```r
+summary(model2)
+```
+
+```
+## 
+## Call:
+## C5.0.default(x = input, y = output, control = C5.0Control(noGlobalPruning
+##  = FALSE))
+## 
+## 
+## C5.0 [Release 2.07 GPL Edition]  	Tue Oct  6 15:19:27 2020
+## -------------------------------
+## 
+## Class specified by attribute `outcome'
+## 
+## Read 150 cases (5 attributes) from undefined.data
+## 
+## Decision tree:
+## 
+## Petal.Length <= 1.9: setosa (50)
+## Petal.Length > 1.9:
+## :...Petal.Width > 1.7: virginica (46/1)
+##     Petal.Width <= 1.7:
+##     :...Petal.Length <= 4.9: versicolor (48/1)
+##         Petal.Length > 4.9: virginica (6/2)
+## 
+## 
+## Evaluation on training data (150 cases):
+## 
+## 	    Decision Tree   
+## 	  ----------------  
+## 	  Size      Errors  
+## 
+## 	     4    4( 2.7%)   <<
+## 
+## 
+## 	   (a)   (b)   (c)    <-classified as
+## 	  ----  ----  ----
+## 	    50                (a): class setosa
+## 	          47     3    (b): class versicolor
+## 	           1    49    (c): class virginica
+## 
+## 
+## 	Attribute usage:
+## 
+## 	100.00%	Petal.Length
+## 	 66.67%	Petal.Width
+## 
+## 
+## Time: 0.0 secs
+```
+
+```r
+#We can "zoom into" the usage of features for creation of the model:
+C5imp(model2,metric='usage')
+```
+
+```
+##              Overall
+## Petal.Length  100.00
+## Petal.Width    66.67
+## Sepal.Length    0.00
+## Sepal.Width     0.00
+```
+
+Now I have a model. Can we predict the class from the numerical attributes?
+
+```r
+newcases <- iris[c(1:3,51:53,101:103),]
+newcases
+```
+
+```
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 1            5.1         3.5          1.4         0.2     setosa
+## 2            4.9         3.0          1.4         0.2     setosa
+## 3            4.7         3.2          1.3         0.2     setosa
+## 51           7.0         3.2          4.7         1.4 versicolor
+## 52           6.4         3.2          4.5         1.5 versicolor
+## 53           6.9         3.1          4.9         1.5 versicolor
+## 101          6.3         3.3          6.0         2.5  virginica
+## 102          5.8         2.7          5.1         1.9  virginica
+## 103          7.1         3.0          5.9         2.1  virginica
+```
+
+```r
+predicted <- predict(model2, newcases, type="class")
+predicted
+```
+
+```
+## [1] setosa     setosa     setosa     versicolor versicolor versicolor virginica 
+## [8] virginica  virginica 
+## Levels: setosa versicolor virginica
+```
+
 ## Random Forest
 
 **What is a Random Forest?**
@@ -602,7 +795,7 @@ table(Example.dev$y)/nrow(Example.dev)
 ```
 ## 
 ##        no       yes 
-## 0.8929134 0.1070866
+## 0.8897638 0.1102362
 ```
 Both development and validation samples have similar target variable distribution. This is just a sample validation.
 
@@ -648,7 +841,7 @@ Example.rf <- randomForest(rf.form,
 plot(Example.rf)
 ```
 
-<img src="06-decision-trees_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="06-decision-trees_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 500 decision trees or a forest has been built using the Random Forest algorithm based learning. We can plot the error rate across decision trees. The plot seems to indicate that after 100 decision trees, there is not a significant reduction in error rate.
 
@@ -662,7 +855,7 @@ varImpPlot(Example.rf,
            n.var=5)
 ```
 
-<img src="06-decision-trees_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="06-decision-trees_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 
 Variable importance plot is also a useful tool and can be plotted using varImpPlot function. Top 5 variables are selected and plotted based on Model Accuracy and Gini value. We can also get a table with decreasing order of importance based on a measure (1 for model accuracy and 2 node impurity)
@@ -680,26 +873,26 @@ var.imp[order(var.imp$MeanDecreaseGini,decreasing = T),]
 
 ```
 ##                MeanDecreaseGini      Variables
-## duration             128.944248       duration
-## euribor3m             57.880937      euribor3m
-## nr.employed           38.475449    nr.employed
-## age                   36.300313            age
-## job                   22.087064            job
-## cons.conf.idx         18.214100  cons.conf.idx
-## education             18.042480      education
-## day_of_week           17.868838    day_of_week
-## campaign              17.053144       campaign
-## pdays                 16.965288          pdays
-## cons.price.idx        16.190895 cons.price.idx
-## poutcome              14.162950       poutcome
-## emp.var.rate          14.052605   emp.var.rate
-## month                 13.711592          month
-## marital               10.478339        marital
-## previous               8.415952       previous
-## housing                7.780663        housing
-## loan                   6.322726           loan
-## contact                4.903397        contact
-## default                4.207478        default
+## duration             143.966515       duration
+## euribor3m             57.510569      euribor3m
+## nr.employed           38.438332    nr.employed
+## age                   37.305513            age
+## job                   22.169214            job
+## pdays                 18.926765          pdays
+## cons.conf.idx         18.455165  cons.conf.idx
+## education             17.801930      education
+## day_of_week           17.381769    day_of_week
+## campaign              16.475563       campaign
+## cons.price.idx        15.922234 cons.price.idx
+## poutcome              14.271728       poutcome
+## emp.var.rate          14.150449   emp.var.rate
+## month                 12.866756          month
+## marital                9.775724        marital
+## previous               8.943332       previous
+## housing                8.624434        housing
+## loan                   5.669661           loan
+## contact                5.430161        contact
+## default                3.978805        default
 ```
 
 Based on Random Forest variable importance, the variables could be selected for any other predictive modelling techniques or machine learning.
@@ -737,25 +930,25 @@ confusionMatrix(data=Example.dev$predicted.response,
 ## 
 ##           Reference
 ## Prediction   no  yes
-##        no  2268    1
-##        yes    0  271
+##        no  2260    1
+##        yes    0  279
 ##                                      
 ##                Accuracy : 0.9996     
 ##                  95% CI : (0.9978, 1)
-##     No Information Rate : 0.8929     
+##     No Information Rate : 0.8898     
 ##     P-Value [Acc > NIR] : <2e-16     
 ##                                      
-##                   Kappa : 0.9979     
+##                   Kappa : 0.998      
 ##                                      
 ##  Mcnemar's Test P-Value : 1          
 ##                                      
-##             Sensitivity : 0.9963     
+##             Sensitivity : 0.9964     
 ##             Specificity : 1.0000     
 ##          Pos Pred Value : 1.0000     
 ##          Neg Pred Value : 0.9996     
-##              Prevalence : 0.1071     
-##          Detection Rate : 0.1067     
-##    Detection Prevalence : 0.1067     
+##              Prevalence : 0.1102     
+##          Detection Rate : 0.1098     
+##    Detection Prevalence : 0.1098     
 ##       Balanced Accuracy : 0.9982     
 ##                                      
 ##        'Positive' Class : yes        
@@ -780,31 +973,105 @@ confusionMatrix(data=Example.val$predicted.response,
 ## 
 ##           Reference
 ## Prediction   no  yes
-##        no  1363   97
-##        yes   37   82
+##        no  1356   97
+##        yes   52   74
 ##                                           
-##                Accuracy : 0.9151          
-##                  95% CI : (0.9003, 0.9284)
-##     No Information Rate : 0.8866          
-##     P-Value [Acc > NIR] : 0.0001236       
+##                Accuracy : 0.9056          
+##                  95% CI : (0.8901, 0.9196)
+##     No Information Rate : 0.8917          
+##     P-Value [Acc > NIR] : 0.0388508       
 ##                                           
-##                   Kappa : 0.5056          
+##                   Kappa : 0.4476          
 ##                                           
-##  Mcnemar's Test P-Value : 3.454e-07       
+##  Mcnemar's Test P-Value : 0.0003126       
 ##                                           
-##             Sensitivity : 0.45810         
-##             Specificity : 0.97357         
-##          Pos Pred Value : 0.68908         
-##          Neg Pred Value : 0.93356         
-##              Prevalence : 0.11336         
-##          Detection Rate : 0.05193         
-##    Detection Prevalence : 0.07536         
-##       Balanced Accuracy : 0.71584         
+##             Sensitivity : 0.43275         
+##             Specificity : 0.96307         
+##          Pos Pred Value : 0.58730         
+##          Neg Pred Value : 0.93324         
+##              Prevalence : 0.10830         
+##          Detection Rate : 0.04687         
+##    Detection Prevalence : 0.07980         
+##       Balanced Accuracy : 0.69791         
 ##                                           
 ##        'Positive' Class : yes             
 ## 
 ```
 Accuracy level has dropped to 91.8% but still significantly higher. 
+
+**Iris data example**
+
+
+```r
+library(randomForest)
+ind <- sample(2,nrow(iris),replace=TRUE,prob=c(0.7,0.3))
+trainData <- iris[ind==1,]
+testData <- iris[ind==2,]
+iris.rf <- randomForest(Species~.,data=trainData,ntree=100,proximity=TRUE)
+table(predict(iris.rf),trainData$Species)
+```
+
+```
+##             
+##              setosa versicolor virginica
+##   setosa         31          0         0
+##   versicolor      0         31         3
+##   virginica       0          1        34
+```
+
+```r
+print(iris.rf)
+```
+
+```
+## 
+## Call:
+##  randomForest(formula = Species ~ ., data = trainData, ntree = 100,      proximity = TRUE) 
+##                Type of random forest: classification
+##                      Number of trees: 100
+## No. of variables tried at each split: 2
+## 
+##         OOB estimate of  error rate: 4%
+## Confusion matrix:
+##            setosa versicolor virginica class.error
+## setosa         31          0         0  0.00000000
+## versicolor      0         31         1  0.03125000
+## virginica       0          3        34  0.08108108
+```
+
+```r
+#plot(iris.rf)
+importance(iris.rf)
+```
+
+```
+##              MeanDecreaseGini
+## Sepal.Length         5.596558
+## Sepal.Width          1.005828
+## Petal.Length        31.407250
+## Petal.Width         27.870964
+```
+
+```r
+varImpPlot(iris.rf)
+```
+
+<img src="06-decision-trees_files/figure-html/rf1-1.png" width="672" />
+
+```r
+iris.pred<-predict(iris.rf,newdata=testData)
+table(iris.pred, testData$Species)
+```
+
+```
+##             
+## iris.pred    setosa versicolor virginica
+##   setosa         19          0         0
+##   versicolor      0         15         0
+##   virginica       0          3        13
+```
+
+As observed for the previous examples, the discriminative features are the petal length and the petal width.
 
 
 *Acknowledgement: the above data is from a machine-learning database and the code is discusses*: http://dni-institute.in/blogs/random-forest-using-r-step-by-step-tutorial/*
