@@ -15,7 +15,7 @@ It is one of the most widely used tool in ML for predictive analytics. Examples 
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree.png" alt="Decision Tree" width="55%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Decision Tree</p>
+<p class="caption">Decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com*
 
@@ -25,7 +25,7 @@ A model is first created with training data and then a set of validation data is
 
 <div class="figure" style="text-align: center">
 <img src="images/decision_tree_2.png" alt="Example of a decision Tree" width="90%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Example of a decision Tree</p>
+<p class="caption">Example of a decision Tree</p>
 </div>
 *Image source: analyticsvidhya.com* 
 
@@ -524,7 +524,7 @@ summary(model1)
 ##  = TRUE, minCases = 1))
 ## 
 ## 
-## C5.0 [Release 2.07 GPL Edition]  	Tue Oct  6 15:19:27 2020
+## C5.0 [Release 2.07 GPL Edition]  	Wed Oct  7 18:40:21 2020
 ## -------------------------------
 ## 
 ## Class specified by attribute `outcome'
@@ -603,7 +603,7 @@ summary(model2)
 ##  = FALSE))
 ## 
 ## 
-## C5.0 [Release 2.07 GPL Edition]  	Tue Oct  6 15:19:27 2020
+## C5.0 [Release 2.07 GPL Edition]  	Wed Oct  7 18:40:21 2020
 ## -------------------------------
 ## 
 ## Class specified by attribute `outcome'

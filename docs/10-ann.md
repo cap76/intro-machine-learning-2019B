@@ -10,14 +10,14 @@
 
 <div class="figure" style="text-align: center">
 <img src="images/neuronal_computation.png" alt="Neuronal computation" width="65%" />
-<p class="caption">(\#fig:neuronalComputation)Neuronal computation</p>
+<p class="caption">Neuronal computation</p>
 </div>
 Computational representation of a neuron (Figure \@ref(fig:perceptron)) aims to mimmick the biological input-and-activation architecture of a neuron (Figure \@ref(fig:neuronalComputation)). A single unit of a computational neuron is also called a **perceptron  or ptrons**. Ptrons have a nonlinear activation function (e.g a logistic function) which determines their output value based upon the values of their inputs.
 
 
 <div class="figure" style="text-align: center">
 <img src="images/Perceptron.png" alt="Perceptron" width="65%" />
-<p class="caption">(\#fig:perceptron)Perceptron</p>
+<p class="caption">Perceptron</p>
 </div>
 
 **Architecture of ANNs**
@@ -41,7 +41,7 @@ This method of computing $h_{\theta}$(x) is called *Forward Propagation*.
 
 <div class="figure" style="text-align: center">
 <img src="images/NN3.png" alt="Neural Network Modeling" width="85%" />
-<p class="caption">(\#fig:neuralNetworkModeling)Neural Network Modeling</p>
+<p class="caption">Neural Network Modeling</p>
 </div>
 
 *where*
@@ -90,7 +90,7 @@ h_\Theta(x) &= a^{(3)} = g(z^{(3)})
 Consider the supervised learning problems below (Figure \@ref(fig:supervisedLearningProbs)). The first two are straight forward cases. 
 <div class="figure" style="text-align: center">
 <img src="images/NN4.PNG" alt="Why ANN" width="85%" />
-<p class="caption">(\#fig:supervisedLearningProbs)Why ANN</p>
+<p class="caption">Why ANN</p>
 </div>
 
 
@@ -112,7 +112,7 @@ Figure \@ref(fig:simpleLogicalANDANN) shows an example of a simple logical AND p
 
 <div class="figure" style="text-align: center">
 <img src="images/NN5.png" alt="Simple Logical AND ANN" width="85%" />
-<p class="caption">(\#fig:simpleLogicalANDANN)Simple Logical AND ANN</p>
+<p class="caption">Simple Logical AND ANN</p>
 </div>
 
 **Cost function and back propagation**

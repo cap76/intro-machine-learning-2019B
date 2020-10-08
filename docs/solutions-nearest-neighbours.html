@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning</title>
+  <title>D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning</title>
   <meta name="description" content="Course materials for An Introduction to Machine Learning" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning" />
+  <meta property="og:title" content="D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/cover_image.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="bioinformatics-training/intro-machine-learning-2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning" />
+  <meta name="twitter:title" content="D Solutions ch. 7 - Nearest neighbours | An Introduction to Machine Learning" />
   
   <meta name="twitter:description" content="Course materials for An Introduction to Machine Learning" />
   <meta name="twitter:image" content="figures/cover_image.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-10-06" />
+<meta name="date" content="2020-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -211,7 +236,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees-1"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
 <li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
 <li class="chapter" data-level="7.3" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
@@ -226,10 +251,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
+<li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Linear regression and logistic regression</a><ul>
 <li class="chapter" data-level="10.1" data-path="logistic-regression.html"><a href="logistic-regression.html#regression"><i class="fa fa-check"></i><b>10.1</b> Regression</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="logistic-regression.html"><a href="logistic-regression.html#linear-regression"><i class="fa fa-check"></i><b>10.1.1</b> Linear regression</a></li>
 <li class="chapter" data-level="10.1.2" data-path="logistic-regression.html"><a href="logistic-regression.html#polynomial-regression"><i class="fa fa-check"></i><b>10.1.2</b> Polynomial regression</a></li>
@@ -238,9 +263,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.2" data-path="logistic-regression.html"><a href="logistic-regression.html#classification"><i class="fa fa-check"></i><b>10.2</b> Classification</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression"><i class="fa fa-check"></i><b>10.2.1</b> Logistic regression</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.3</b> Gaussian process regression</a></li>
-<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.4</b> GP classification</a></li>
-<li class="chapter" data-level="10.5" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.5</b> Resources</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.3</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="ann.html"><a href="ann.html"><i class="fa fa-check"></i><b>11</b> Artificial neural networks</a><ul>
 <li class="chapter" data-level="11.1" data-path="ann.html"><a href="ann.html#neural-networks"><i class="fa fa-check"></i><b>11.1</b> Neural Networks</a></li>
@@ -256,7 +279,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
 <li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
-<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#autoencoders"><i class="fa fa-check"></i><b>13.2.4</b> Autoencoders</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
@@ -268,20 +290,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.2.2" data-path="resources.html"><a href="resources.html#uci-machine-learning-repository"><i class="fa fa-check"></i><b>A.2.2</b> UCI Machine Learning Repository</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
+<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
 <li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
+<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
+<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
 <li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
+<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
 <li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
+<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
 <li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
@@ -290,7 +312,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
 <li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
-<li class="chapter" data-level="G.1.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
 <li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
@@ -318,12 +339,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
+<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
 <li class="chapter" data-level="H.1" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2"><i class="fa fa-check"></i><b>H.1</b> Example 2</a></li>
 <li class="chapter" data-level="H.2" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2-1"><i class="fa fa-check"></i><b>H.2</b> Example 2</a></li>
 </ul></li>
-<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
-<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
+<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
+<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
 <li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
@@ -345,42 +366,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="solutions-nearest-neighbours" class="section level1">
-<h1><span class="header-section-number">D</span> Solutions ch. 7 - Nearest neighbours</h1>
+<h1><span class="header-section-number">D</span> Solutions ch. 7 - Nearest neighbours</h1>
 <p>Solutions to exercises of chapter <a href="nearest-neighbours.html#nearest-neighbours">5</a>.</p>
 <div id="exercise-1" class="section level2">
 <h2><span class="header-section-number">D.1</span> Exercise 1</h2>
 <p>Load libraries</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret)</code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" data-line-number="1"><span class="kw">library</span>(caret)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
-<span class="kw">library</span>(doMC)</code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb674-1" data-line-number="1"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb674-2" data-line-number="2"><span class="kw">library</span>(doMC)</a></code></pre></div>
 <pre><code>## Loading required package: foreach</code></pre>
 <pre><code>## Loading required package: iterators</code></pre>
 <pre><code>## Loading required package: parallel</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(corrplot)</code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb678-1" data-line-number="1"><span class="kw">library</span>(corrplot)</a></code></pre></div>
 <pre><code>## corrplot 0.84 loaded</code></pre>
 <p>Prepare for parallel processing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">registerDoMC</span>(<span class="kw">detectCores</span>())</code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb680-1" data-line-number="1"><span class="kw">registerDoMC</span>(<span class="kw">detectCores</span>())</a></code></pre></div>
 <p>Load data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/wheat_seeds/wheat_seeds.Rda&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb681-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&quot;data/wheat_seeds/wheat_seeds.Rda&quot;</span>)</a></code></pre></div>
 <p>Partition data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>variety, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.7</span>, <span class="dt">list=</span>F)
-varietyTrain &lt;-<span class="st"> </span>variety[trainIndex]
-morphTrain &lt;-<span class="st"> </span>morphometrics[trainIndex,]
-varietyTest &lt;-<span class="st"> </span>variety[<span class="op">-</span>trainIndex]
-morphTest &lt;-<span class="st"> </span>morphometrics[<span class="op">-</span>trainIndex,]
-
-<span class="kw">summary</span>(varietyTrain)</code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb682-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb682-2" data-line-number="2">trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y=</span>variety, <span class="dt">times=</span><span class="dv">1</span>, <span class="dt">p=</span><span class="fl">0.7</span>, <span class="dt">list=</span>F)</a>
+<a class="sourceLine" id="cb682-3" data-line-number="3">varietyTrain &lt;-<span class="st"> </span>variety[trainIndex]</a>
+<a class="sourceLine" id="cb682-4" data-line-number="4">morphTrain &lt;-<span class="st"> </span>morphometrics[trainIndex,]</a>
+<a class="sourceLine" id="cb682-5" data-line-number="5">varietyTest &lt;-<span class="st"> </span>variety[<span class="op">-</span>trainIndex]</a>
+<a class="sourceLine" id="cb682-6" data-line-number="6">morphTest &lt;-<span class="st"> </span>morphometrics[<span class="op">-</span>trainIndex,]</a>
+<a class="sourceLine" id="cb682-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb682-8" data-line-number="8"><span class="kw">summary</span>(varietyTrain)</a></code></pre></div>
 <pre><code>## Canadian     Kama     Rosa 
 ##       49       49       49</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(varietyTest)</code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb684-1" data-line-number="1"><span class="kw">summary</span>(varietyTest)</a></code></pre></div>
 <pre><code>## Canadian     Kama     Rosa 
 ##       21       21       21</code></pre>
 <p>Data check: zero and near-zero predictors</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nzv &lt;-<span class="st"> </span><span class="kw">nearZeroVar</span>(morphTrain, <span class="dt">saveMetrics=</span>T)
-nzv</code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb686-1" data-line-number="1">nzv &lt;-<span class="st"> </span><span class="kw">nearZeroVar</span>(morphTrain, <span class="dt">saveMetrics=</span>T)</a>
+<a class="sourceLine" id="cb686-2" data-line-number="2">nzv</a></code></pre></div>
 <pre><code>##              freqRatio percentUnique zeroVar   nzv
 ## area          1.500000      95.91837   FALSE FALSE
 ## perimeter     1.333333      86.39456   FALSE FALSE
@@ -390,7 +411,7 @@ nzv</code></pre></div>
 ## asymCoef      2.000000      99.31973   FALSE FALSE
 ## grooveLength  1.333333      76.19048   FALSE FALSE</code></pre>
 <p>Data check: are all predictors on same scale?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(morphTrain)</code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb688-1" data-line-number="1"><span class="kw">summary</span>(morphTrain)</a></code></pre></div>
 <pre><code>##       area         perimeter      compactness       kernLength   
 ##  Min.   :10.59   Min.   :12.41   Min.   :0.8081   Min.   :4.899  
 ##  1st Qu.:12.34   1st Qu.:13.46   1st Qu.:0.8577   1st Qu.:5.264  
@@ -405,58 +426,58 @@ nzv</code></pre></div>
 ##  Mean   :3.267   Mean   :3.659   Mean   :5.406  
 ##  3rd Qu.:3.557   3rd Qu.:4.799   3rd Qu.:5.862  
 ##  Max.   :4.032   Max.   :8.456   Max.   :6.550</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">featurePlot</span>(<span class="dt">x =</span> morphTrain, 
-            <span class="dt">y =</span> varietyTrain, 
-            <span class="dt">plot =</span> <span class="st">&quot;box&quot;</span>, 
-            ## Pass in options to bwplot() 
-            <span class="dt">scales =</span> <span class="kw">list</span>(<span class="dt">y =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>),
-                          <span class="dt">x =</span> <span class="kw">list</span>(<span class="dt">rot =</span> <span class="dv">90</span>)),  
-            <span class="dt">layout =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:wheatBoxplots"></span>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" data-line-number="1"><span class="kw">featurePlot</span>(<span class="dt">x =</span> morphTrain, </a>
+<a class="sourceLine" id="cb690-2" data-line-number="2">            <span class="dt">y =</span> varietyTrain, </a>
+<a class="sourceLine" id="cb690-3" data-line-number="3">            <span class="dt">plot =</span> <span class="st">&quot;box&quot;</span>, </a>
+<a class="sourceLine" id="cb690-4" data-line-number="4">            <span class="co">## Pass in options to bwplot() </span></a>
+<a class="sourceLine" id="cb690-5" data-line-number="5">            <span class="dt">scales =</span> <span class="kw">list</span>(<span class="dt">y =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>),</a>
+<a class="sourceLine" id="cb690-6" data-line-number="6">                          <span class="dt">x =</span> <span class="kw">list</span>(<span class="dt">rot =</span> <span class="dv">90</span>)),  </a>
+<a class="sourceLine" id="cb690-7" data-line-number="7">            <span class="dt">layout =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</a></code></pre></div>
+<div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatBoxplots-1.png" alt="Boxplots of the 7 geometric parameters in the wheat data set" width="75%" />
 <p class="caption">
-Figure D.1: Boxplots of the 7 geometric parameters in the wheat data set
+Boxplots of the 7 geometric parameters in the wheat data set
 </p>
 </div>
 <p>Data check: pairwise correlations between predictors</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">corMat &lt;-<span class="st"> </span><span class="kw">cor</span>(morphTrain)
-<span class="kw">corrplot</span>(corMat, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.cex=</span><span class="dv">1</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:wheatCorrelogram"></span>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" data-line-number="1">corMat &lt;-<span class="st"> </span><span class="kw">cor</span>(morphTrain)</a>
+<a class="sourceLine" id="cb691-2" data-line-number="2"><span class="kw">corrplot</span>(corMat, <span class="dt">order=</span><span class="st">&quot;hclust&quot;</span>, <span class="dt">tl.cex=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatCorrelogram-1.png" alt="Correlogram of the wheat seed data set." width="75%" />
 <p class="caption">
-Figure D.2: Correlogram of the wheat seed data set.
+Correlogram of the wheat seed data set.
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">highCorr &lt;-<span class="st"> </span><span class="kw">findCorrelation</span>(corMat, <span class="dt">cutoff=</span><span class="fl">0.75</span>)
-<span class="kw">length</span>(highCorr)</code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb692-1" data-line-number="1">highCorr &lt;-<span class="st"> </span><span class="kw">findCorrelation</span>(corMat, <span class="dt">cutoff=</span><span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb692-2" data-line-number="2"><span class="kw">length</span>(highCorr)</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(morphTrain)[highCorr]</code></pre></div>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb694-1" data-line-number="1"><span class="kw">names</span>(morphTrain)[highCorr]</a></code></pre></div>
 <pre><code>## [1] &quot;area&quot;       &quot;perimeter&quot;  &quot;kernWidth&quot;  &quot;kernLength&quot;</code></pre>
 <p>Data check: skewness</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">featurePlot</span>(<span class="dt">x =</span> morphTrain, 
-            <span class="dt">y =</span> varietyTrain,
-            <span class="dt">plot =</span> <span class="st">&quot;density&quot;</span>, 
-            ## Pass in options to xyplot() to 
-            ## make it prettier
-            <span class="dt">scales =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>), 
-                          <span class="dt">y =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>)), 
-            <span class="dt">adjust =</span> <span class="fl">1.5</span>, 
-            <span class="dt">pch =</span> <span class="st">&quot;|&quot;</span>, 
-            <span class="dt">layout =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), 
-            <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">columns =</span> <span class="dv">3</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:wheatDensityPlots"></span>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb696-1" data-line-number="1"><span class="kw">featurePlot</span>(<span class="dt">x =</span> morphTrain, </a>
+<a class="sourceLine" id="cb696-2" data-line-number="2">            <span class="dt">y =</span> varietyTrain,</a>
+<a class="sourceLine" id="cb696-3" data-line-number="3">            <span class="dt">plot =</span> <span class="st">&quot;density&quot;</span>, </a>
+<a class="sourceLine" id="cb696-4" data-line-number="4">            <span class="co">## Pass in options to xyplot() to </span></a>
+<a class="sourceLine" id="cb696-5" data-line-number="5">            <span class="co">## make it prettier</span></a>
+<a class="sourceLine" id="cb696-6" data-line-number="6">            <span class="dt">scales =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>), </a>
+<a class="sourceLine" id="cb696-7" data-line-number="7">                          <span class="dt">y =</span> <span class="kw">list</span>(<span class="dt">relation=</span><span class="st">&quot;free&quot;</span>)), </a>
+<a class="sourceLine" id="cb696-8" data-line-number="8">            <span class="dt">adjust =</span> <span class="fl">1.5</span>, </a>
+<a class="sourceLine" id="cb696-9" data-line-number="9">            <span class="dt">pch =</span> <span class="st">&quot;|&quot;</span>, </a>
+<a class="sourceLine" id="cb696-10" data-line-number="10">            <span class="dt">layout =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb696-11" data-line-number="11">            <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">columns =</span> <span class="dv">3</span>))</a></code></pre></div>
+<div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/wheatDensityPlots-1.png" alt="Density plots of the 7 geometric parameters in the wheat data set" width="75%" />
 <p class="caption">
-Figure D.3: Density plots of the 7 geometric parameters in the wheat data set
+Density plots of the 7 geometric parameters in the wheat data set
 </p>
 </div>
-<p>Create a 'grid' of values of <em>k</em> for evaluation:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tuneParam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">k=</span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">50</span>,<span class="dv">2</span>))</code></pre></div>
+<p>Create a ‘grid’ of values of <em>k</em> for evaluation:</p>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb697-1" data-line-number="1">tuneParam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">k=</span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">50</span>,<span class="dv">2</span>))</a></code></pre></div>
 <p>Generate a list of seeds for reproducibility (optional) based on grid size</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
-seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">101</span>)
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="kw">length</span>(tuneParam<span class="op">$</span>k))
-seeds[[<span class="dv">101</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb698-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb698-2" data-line-number="2">seeds &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb698-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) seeds[[i]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>, <span class="kw">length</span>(tuneParam<span class="op">$</span>k))</a>
+<a class="sourceLine" id="cb698-4" data-line-number="4">seeds[[<span class="dv">101</span>]] &lt;-<span class="st"> </span><span class="kw">sample.int</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</a></code></pre></div>
 <!--
 Define a pre-processor (named transformations) and transform morphTrain
 
@@ -468,18 +489,18 @@ morphTrainT <- predict(transformations, morphTrain)
 ```
 -->
 <p>Set training parameters. In the example in chapter <a href="nearest-neighbours.html#nearest-neighbours">5</a> pre-processing was performed outside the cross-validation process to save time for the purposes of the demonstration. Here we have a relatively small data set, so we can do pre-processing within each iteration of the cross-validation process. We specify the option <code>preProcOptions=list(cutoff=0.75)</code> to set a value for the pairwise correlation coefficient cutoff.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">train_ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,
-                   <span class="dt">number =</span> <span class="dv">10</span>,
-                   <span class="dt">repeats =</span> <span class="dv">10</span>,
-                   <span class="dt">preProcOptions=</span><span class="kw">list</span>(<span class="dt">cutoff=</span><span class="fl">0.75</span>),
-                   <span class="dt">seeds =</span> seeds)</code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb699-1" data-line-number="1">train_ctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb699-2" data-line-number="2">                   <span class="dt">number =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb699-3" data-line-number="3">                   <span class="dt">repeats =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb699-4" data-line-number="4">                   <span class="dt">preProcOptions=</span><span class="kw">list</span>(<span class="dt">cutoff=</span><span class="fl">0.75</span>),</a>
+<a class="sourceLine" id="cb699-5" data-line-number="5">                   <span class="dt">seeds =</span> seeds)</a></code></pre></div>
 <p>Run training</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(morphTrain, varietyTrain, 
-                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,
-                <span class="dt">preProcess =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>),
-                <span class="dt">tuneGrid=</span>tuneParam,
-                <span class="dt">trControl=</span>train_ctrl)
-knnFit</code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb700-1" data-line-number="1">knnFit &lt;-<span class="st"> </span><span class="kw">train</span>(morphTrain, varietyTrain, </a>
+<a class="sourceLine" id="cb700-2" data-line-number="2">                <span class="dt">method=</span><span class="st">&quot;knn&quot;</span>,</a>
+<a class="sourceLine" id="cb700-3" data-line-number="3">                <span class="dt">preProcess =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;corr&quot;</span>),</a>
+<a class="sourceLine" id="cb700-4" data-line-number="4">                <span class="dt">tuneGrid=</span>tuneParam,</a>
+<a class="sourceLine" id="cb700-5" data-line-number="5">                <span class="dt">trControl=</span>train_ctrl)</a>
+<a class="sourceLine" id="cb700-6" data-line-number="6">knnFit</a></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 147 samples
@@ -521,16 +542,16 @@ knnFit</code></pre></div>
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 1.</code></pre>
 <p>Plot cross validation accuracy as a function of <em>k</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(knnFit)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:cvAccuracyMorphTrain"></span>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb702-1" data-line-number="1"><span class="kw">plot</span>(knnFit)</a></code></pre></div>
+<div class="figure" style="text-align: center">
 <img src="17-solutions-nearest-neighbours_files/figure-html/cvAccuracyMorphTrain-1.png" alt="Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set." width="100%" />
 <p class="caption">
-Figure D.4: Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set.
+Accuracy (repeated cross-validation) as a function of neighbourhood size for the wheat seeds data set.
 </p>
 </div>
 <p>Predict the class (wheat variety) of the observations in the test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, morphTest)
-<span class="kw">confusionMatrix</span>(test_pred, varietyTest)</code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb703-1" data-line-number="1">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(knnFit, morphTest)</a>
+<a class="sourceLine" id="cb703-2" data-line-number="2"><span class="kw">confusionMatrix</span>(test_pred, varietyTest)</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -625,7 +646,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

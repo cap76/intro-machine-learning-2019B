@@ -24,7 +24,7 @@
 <meta name="author" content="Sudhakaran Prabakaran, Matt Wayland and Chris Penfold" />
 
 
-<meta name="date" content="2020-10-06" />
+<meta name="date" content="2020-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -211,7 +236,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>7</b> Decision trees and random forests</a><ul>
-<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
+<li class="chapter" data-level="7.1" data-path="decision-trees.html"><a href="decision-trees.html#decision-trees-1"><i class="fa fa-check"></i><b>7.1</b> Decision Trees</a></li>
 <li class="chapter" data-level="7.2" data-path="decision-trees.html"><a href="decision-trees.html#random-forest"><i class="fa fa-check"></i><b>7.2</b> Random Forest</a></li>
 <li class="chapter" data-level="7.3" data-path="clustering.html"><a href="clustering.html#exercises"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
 </ul></li>
@@ -226,10 +251,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.5" data-path="use-case-1.html"><a href="use-case-1.html#solutions"><i class="fa fa-check"></i><b>8.5</b> Solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>9</b> Linear models and matrix algebra</a><ul>
-<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
+<li class="chapter" data-level="9.1" data-path="linear-models.html"><a href="linear-models.html#linear-models-1"><i class="fa fa-check"></i><b>9.1</b> Linear models</a></li>
 <li class="chapter" data-level="9.2" data-path="linear-models.html"><a href="linear-models.html#matrix-algebra"><i class="fa fa-check"></i><b>9.2</b> Matrix algebra</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Supervised learning</a><ul>
+<li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Linear regression and logistic regression</a><ul>
 <li class="chapter" data-level="10.1" data-path="logistic-regression.html"><a href="logistic-regression.html#regression"><i class="fa fa-check"></i><b>10.1</b> Regression</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="logistic-regression.html"><a href="logistic-regression.html#linear-regression"><i class="fa fa-check"></i><b>10.1.1</b> Linear regression</a></li>
 <li class="chapter" data-level="10.1.2" data-path="logistic-regression.html"><a href="logistic-regression.html#polynomial-regression"><i class="fa fa-check"></i><b>10.1.2</b> Polynomial regression</a></li>
@@ -238,9 +263,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.2" data-path="logistic-regression.html"><a href="logistic-regression.html#classification"><i class="fa fa-check"></i><b>10.2</b> Classification</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression"><i class="fa fa-check"></i><b>10.2.1</b> Logistic regression</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#gaussian-process-regression"><i class="fa fa-check"></i><b>10.3</b> Gaussian process regression</a></li>
-<li class="chapter" data-level="10.4" data-path="logistic-regression.html"><a href="logistic-regression.html#gp-classification"><i class="fa fa-check"></i><b>10.4</b> GP classification</a></li>
-<li class="chapter" data-level="10.5" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.5</b> Resources</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression.html"><a href="logistic-regression.html#resources"><i class="fa fa-check"></i><b>10.3</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="ann.html"><a href="ann.html"><i class="fa fa-check"></i><b>11</b> Artificial neural networks</a><ul>
 <li class="chapter" data-level="11.1" data-path="ann.html"><a href="ann.html#neural-networks"><i class="fa fa-check"></i><b>11.1</b> Neural Networks</a></li>
@@ -256,7 +279,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.2.1" data-path="mlnn.html"><a href="mlnn.html#checking-the-models"><i class="fa fa-check"></i><b>13.2.1</b> Checking the models</a></li>
 <li class="chapter" data-level="13.2.2" data-path="mlnn.html"><a href="mlnn.html#asking-more-precise-questions"><i class="fa fa-check"></i><b>13.2.2</b> Asking more precise questions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="mlnn.html"><a href="mlnn.html#more-complex-networks"><i class="fa fa-check"></i><b>13.2.3</b> More complex networks</a></li>
-<li class="chapter" data-level="13.2.4" data-path="mlnn.html"><a href="mlnn.html#autoencoders"><i class="fa fa-check"></i><b>13.2.4</b> Autoencoders</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="svm.html"><a href="svm.html#further-reading"><i class="fa fa-check"></i><b>13.3</b> Further reading</a></li>
 </ul></li>
@@ -268,20 +290,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.2.2" data-path="resources.html"><a href="resources.html#uci-machine-learning-repository"><i class="fa fa-check"></i><b>A.2.2</b> UCI Machine Learning Repository</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
+<li class="chapter" data-level="B" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html"><i class="fa fa-check"></i><b>B</b> Solutions ch. 2 - Dimensionality reduction</a><ul>
 <li class="chapter" data-level="B.1" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.5."><i class="fa fa-check"></i><b>B.1</b> Exercise 2.5.</a></li>
 <li class="chapter" data-level="B.2" data-path="solutions-dimensionality-reduction.html"><a href="solutions-dimensionality-reduction.html#exercise-2.6."><i class="fa fa-check"></i><b>B.2</b> Exercise 2.6.</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
+<li class="chapter" data-level="C" data-path="solutions-clustering.html"><a href="solutions-clustering.html"><i class="fa fa-check"></i><b>C</b> Solutions ch. 4 - Clustering</a><ul>
 <li class="chapter" data-level="C.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>C.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
+<li class="chapter" data-level="D" data-path="solutions-nearest-neighbours.html"><a href="solutions-nearest-neighbours.html"><i class="fa fa-check"></i><b>D</b> Solutions ch. 7 - Nearest neighbours</a><ul>
 <li class="chapter" data-level="D.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>D.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
+<li class="chapter" data-level="E" data-path="solutions-svm.html"><a href="solutions-svm.html"><i class="fa fa-check"></i><b>E</b> Solutions ch. 6 - Support vector machines</a><ul>
 <li class="chapter" data-level="E.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>E.1</b> Exercise 1</a></li>
 </ul></li>
-<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
+<li class="chapter" data-level="F" data-path="solutions-decision-trees.html"><a href="solutions-decision-trees.html"><i class="fa fa-check"></i><b>F</b> Solutions ch. 9 - Decision trees and random forests</a><ul>
 <li class="chapter" data-level="F.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>F.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="G" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html"><i class="fa fa-check"></i><b>G</b> Solutions chapter 8 - use case 1</a><ul>
@@ -290,7 +312,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.1.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#define-svm-model"><i class="fa fa-check"></i><b>G.1.2</b> Define SVM model</a></li>
 <li class="chapter" data-level="G.1.3" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#setup-parallel-processing"><i class="fa fa-check"></i><b>G.1.3</b> Setup parallel processing</a></li>
 <li class="chapter" data-level="G.1.4" data-path="use-case-1.html"><a href="use-case-1.html#load-data"><i class="fa fa-check"></i><b>G.1.4</b> Load data</a></li>
-<li class="chapter" data-level="G.1.5" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#data-splitting"><i class="fa fa-check"></i><b>G.1.5</b> Data splitting</a></li>
 </ul></li>
 <li class="chapter" data-level="G.2" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#assess-data-quality"><i class="fa fa-check"></i><b>G.2</b> Assess data quality</a><ul>
 <li class="chapter" data-level="G.2.1" data-path="nearest-neighbours.html"><a href="nearest-neighbours.html#zero-and-near-zero-variance-predictors"><i class="fa fa-check"></i><b>G.2.1</b> Zero and near-zero variance predictors</a></li>
@@ -318,12 +339,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="G.4.7" data-path="use-case-1-solutions.html"><a href="use-case-1-solutions.html#predict-test-set-using-our-best-model-1"><i class="fa fa-check"></i><b>G.4.7</b> Predict test set using our best model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
+<li class="chapter" data-level="H" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html"><i class="fa fa-check"></i><b>H</b> Solutions ch. 3 - Linear models and matrix algebra</a><ul>
 <li class="chapter" data-level="H.1" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2"><i class="fa fa-check"></i><b>H.1</b> Example 2</a></li>
 <li class="chapter" data-level="H.2" data-path="solutions-linear-models.html"><a href="solutions-linear-models.html#example-2-1"><i class="fa fa-check"></i><b>H.2</b> Example 2</a></li>
 </ul></li>
-<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
-<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
+<li class="chapter" data-level="I" data-path="solutions-logistic-regression.html"><a href="solutions-logistic-regression.html"><i class="fa fa-check"></i><b>I</b> Solutions ch. 4 - Linear and non-linear (logistic) regression</a></li>
+<li class="chapter" data-level="J" data-path="solutions-ann.html"><a href="solutions-ann.html"><i class="fa fa-check"></i><b>J</b> Solutions ch. 10 - Artificial neural networks</a><ul>
 <li class="chapter" data-level="J.1" data-path="svm.html"><a href="svm.html#exercise-1"><i class="fa fa-check"></i><b>J.1</b> Exercise 1</a></li>
 </ul></li>
 <li class="chapter" data-level="K" data-path="use-case-2-solutions.html"><a href="use-case-2-solutions.html"><i class="fa fa-check"></i><b>K</b> Solutions for use case 2</a></li>
@@ -347,26 +368,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="decision-trees" class="section level1">
 <h1><span class="header-section-number">7</span> Decision trees and random forests</h1>
 <!-- Sudhakaran -->
-<div id="decision-trees" class="section level2">
+<div id="decision-trees-1" class="section level2">
 <h2><span class="header-section-number">7.1</span> Decision Trees</h2>
 <p><strong>What is a Decision Tree?</strong></p>
 <p>Decision tree or recursive partitioning is a supervised graph based algorithm to represent choices and the results of the choices in the form of a tree.</p>
 <p>The nodes in the graph represent an event or choice and it is referred to as a <strong>leaf</strong> and the set of <em>decisions</em> made at the node is reffered to as <strong>branches</strong>.</p>
 <p>Decision trees map non-linear relationships and the hierarchial leaves and branches makes a <strong>Tree</strong>.</p>
 <p>It is one of the most widely used tool in ML for predictive analytics. Examples of use of decision tress are − predicting an email as spam or not spam, predicting whether a tumor is cancerous or not.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure" style="text-align: center">
 <img src="images/decision_tree.png" alt="Decision Tree" width="55%" />
 <p class="caption">
-Figure 7.1: Decision Tree
+Decision Tree
 </p>
 </div>
 <p><em>Image source: analyticsvidhya.com</em></p>
 <p><strong>How does it work?</strong></p>
 <p>A model is first created with training data and then a set of validation data is used to verify and improve the model. R has many packages, such as ctree, rpart, tree, and so on, which are used to create and visualize decision trees.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center">
 <img src="images/decision_tree_2.png" alt="Example of a decision Tree" width="90%" />
 <p class="caption">
-Figure 7.2: Example of a decision Tree
+Example of a decision Tree
 </p>
 </div>
 <p><em>Image source: analyticsvidhya.com</em></p>
@@ -379,10 +400,13 @@ In this problem (Figure 6.2), we need to segregate students who play cricket in 
 <p><strong>A simple R code for decision tree looks like this:</strong></p>
 <p>library(rpart)<br />
 x &lt;- cbind(x_train,y_train)<br />
-# grow tree fit &lt;- rpart(y_train ~ ., data = x,method=&quot;class&quot;)<br />
+# grow tree
+fit &lt;- rpart(y_train ~ ., data = x,method=“class”)<br />
 summary(fit)<br />
-#Predict Output predicted= predict(fit,x_test)<br />
-Where:</p>
+#Predict Output
+predicted= predict(fit,x_test)<br />
+</p>
+<p>Where:</p>
 <p>y_train – represents dependent variable.<br />
 x_train – represents independent variable<br />
 x – represents training data.<br />
@@ -410,14 +434,16 @@ If we select two items from a population at random then they must be of same cla
 </li>
 <li>CART (Classification and Regression Tree) uses Gini method to create binary splits.</li>
 </ol>
-<p>Step 1: Calculate Gini for sub-nodes, using formula sum of square of probability for success and failure  <span class="math display">\[p^2+q^2\]</span>. Step 2: Calculate Gini for split using weighted Gini score of each node of that split.</p>
+<p>Step 1: Calculate Gini for sub-nodes, using formula sum of square of probability for success and failure  <span class="math display">\[p^2+q^2\]</span>.
+Step 2: Calculate Gini for split using weighted Gini score of each node of that split.</p>
 <p><strong>Chi-Square</strong><br />
 It is an algorithm to find out the statistical significance between the differences between sub-nodes and parent node. We measure it by sum of squares of standardized differences between observed and expected frequencies of target variable.</p>
 <ol style="list-style-type: lower-alpha">
 <li>It works with categorical target variable “Success” or “Failure”.</li>
 <li>It can perform two or more splits.</li>
 <li>Higher the value of Chi-Square higher the statistical significance of differences between sub-node and Parent node.</li>
-<li>Chi-Square of each node is calculated using formula, Chi-square = <span class="math display">\[\sum(Actual – Expected)^2 / Expected\]</span></li>
+<li>Chi-Square of each node is calculated using formula,
+Chi-square = <span class="math display">\[\sum(Actual – Expected)^2 / Expected\]</span></li>
 </ol>
 <p>Steps to Calculate Chi-square for a split:</p>
 <ol style="list-style-type: decimal">
@@ -426,7 +452,8 @@ It is an algorithm to find out the statistical significance between the differen
 </ol>
 <p><strong>Information Gain</strong><br />
 The more homogenous something is the less information is needed to describe it and hence it has gained information. Information theory has a measure to define this degree of disorganization in a system and it is known as Entropy. If a sample is completely homogeneous, then the entropy is zero and if it is equally divided (50% – 50%), it has entropy of one.</p>
-<p>Entropy can be calculated using formula <span class="math display">\[Entropy = -plog_2p - qlog_2q\]</span></p>
+<p>Entropy can be calculated using formula
+<span class="math display">\[Entropy = -plog_2p - qlog_2q\]</span></p>
 <p>Where p and q are probablity of success and failure</p>
 <p><strong>Reduction in Variance</strong></p>
 <p>Reduction in variance is an algorithm used for continuous target variables (regression problems). This algorithm uses the standard formula of variance to choose the best split. The split with lower variance is selected as the criteria to split the population:</p>
@@ -438,7 +465,7 @@ The more homogenous something is the less information is needed to describe it a
 </li>
 <li>Useful in data exploration<br />
 </li>
-<li>decision tree is 'non parametric' in nature i.e. does not have any assumptions about the distribution of the variables</li>
+<li>decision tree is ‘non parametric’ in nature i.e. does not have any assumptions about the distribution of the variables</li>
 </ol>
 <p><strong>Disadvantages of decision tree</strong></p>
 <p>1.Overfitting is the common disadvantage of decision trees. It is taken care of partially by constraining the model parameter and by prunning.<br />
@@ -460,16 +487,16 @@ The more homogenous something is the less information is needed to describe it a
 <p>We are going to plot a car evaulation data with 7 attributes, 6 as feature attributes and 1 as the target attribute. This is to evaluate what kinds of cars people purchase. All the attributes are categorical. We will try to build a classifier for predicting the Class attribute. The index of target attribute is 7th.</p>
 <p><em>instaling packages and downloading data</em></p>
 <p>R package <em>caret</em> helps to perform various machine learning tasks including decision tree classification. The <em>rplot.plot</em> package will help to get a visual plot of the decision tree.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret)</code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">library</span>(caret)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rpart.plot)</code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="kw">library</span>(rpart.plot)</a></code></pre></div>
 <pre><code>## Loading required package: rpart</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data_url &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/car/car.data&quot;</span>)
-<span class="kw">download.file</span>(<span class="dt">url =</span> data_url, <span class="dt">destfile =</span> <span class="st">&quot;car.data&quot;</span>)
- car_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;car.data&quot;</span>, <span class="dt">sep =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">str</span>(car_df)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    1728 obs. of  7 variables:
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">data_url &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/car/car.data&quot;</span>)</a>
+<a class="sourceLine" id="cb364-2" data-line-number="2"><span class="kw">download.file</span>(<span class="dt">url =</span> data_url, <span class="dt">destfile =</span> <span class="st">&quot;car.data&quot;</span>)</a>
+<a class="sourceLine" id="cb364-3" data-line-number="3"> car_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;car.data&quot;</span>, <span class="dt">sep =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1"> <span class="kw">str</span>(car_df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	1728 obs. of  7 variables:
 ##  $ V1: chr  &quot;vhigh&quot; &quot;vhigh&quot; &quot;vhigh&quot; &quot;vhigh&quot; ...
 ##  $ V2: chr  &quot;vhigh&quot; &quot;vhigh&quot; &quot;vhigh&quot; &quot;vhigh&quot; ...
 ##  $ V3: chr  &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; ...
@@ -478,7 +505,7 @@ The more homogenous something is the less information is needed to describe it a
 ##  $ V6: chr  &quot;low&quot; &quot;med&quot; &quot;high&quot; &quot;low&quot; ...
 ##  $ V7: chr  &quot;unacc&quot; &quot;unacc&quot; &quot;unacc&quot; &quot;unacc&quot; ...</code></pre>
 <p>The output of this will show us that our dataset consists of 1728 observations each with 7 attributes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(car_df)</code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1"><span class="kw">head</span>(car_df)</a></code></pre></div>
 <pre><code>##      V1    V2 V3 V4    V5   V6    V7
 ## 1 vhigh vhigh  2  2 small  low unacc
 ## 2 vhigh vhigh  2  2 small  med unacc
@@ -489,19 +516,19 @@ The more homogenous something is the less information is needed to describe it a
 <p>All the features are categorical, so normalization of data is not needed.</p>
 <p><em>Data Slicing</em></p>
 <p>Data slicing is a step to split data into train and test set. Training data set can be used specifically for our model building. Test dataset should not be mixed up while building model. Even during standardization, we should not standardize our test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">3033</span>)
-intrain &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> car_df<span class="op">$</span>V7, <span class="dt">p=</span> <span class="fl">0.7</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>)
-training &lt;-<span class="st"> </span>car_df[intrain,]
-testing &lt;-<span class="st"> </span>car_df[<span class="op">-</span>intrain,]</code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">3033</span>)</a>
+<a class="sourceLine" id="cb369-2" data-line-number="2">intrain &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> car_df<span class="op">$</span>V7, <span class="dt">p=</span> <span class="fl">0.7</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb369-3" data-line-number="3">training &lt;-<span class="st"> </span>car_df[intrain,]</a>
+<a class="sourceLine" id="cb369-4" data-line-number="4">testing &lt;-<span class="st"> </span>car_df[<span class="op">-</span>intrain,]</a></code></pre></div>
 <p>The “p” parameter holds a decimal value in the range of 0-1. It’s to show that percentage of the split. We are using p=0.7. It means that data split should be done in 70:30 ratio.</p>
 <p><em>Data Preprocessing</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#check dimensions of train &amp; test set</span>
-<span class="kw">dim</span>(training); <span class="kw">dim</span>(testing);</code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1"><span class="co">#check dimensions of train &amp; test set</span></a>
+<a class="sourceLine" id="cb370-2" data-line-number="2"><span class="kw">dim</span>(training); <span class="kw">dim</span>(testing);</a></code></pre></div>
 <pre><code>## [1] 1211    7</code></pre>
 <pre><code>## [1] 517   7</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anyNA</span>(car_df)</code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1"><span class="kw">anyNA</span>(car_df)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(car_df)</code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1"><span class="kw">summary</span>(car_df)</a></code></pre></div>
 <pre><code>##       V1                 V2                 V3                 V4           
 ##  Length:1728        Length:1728        Length:1728        Length:1728       
 ##  Class :character   Class :character   Class :character   Class :character  
@@ -511,14 +538,14 @@ testing &lt;-<span class="st"> </span>car_df[<span class="op">-</span>intrain,]<
 ##  Class :character   Class :character   Class :character  
 ##  Mode  :character   Mode  :character   Mode  :character</code></pre>
 <p><em>Training the Decision Tree classifier with criterion as INFORMATION GAIN</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>, <span class="dt">repeats =</span> <span class="dv">3</span>)
-<span class="kw">set.seed</span>(<span class="dv">3333</span>)
-dtree_fit &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span class="op">~</span>., <span class="dt">data =</span> training, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,
-                   <span class="dt">parms =</span> <span class="kw">list</span>(<span class="dt">split =</span> <span class="st">&quot;information&quot;</span>),
-                   <span class="dt">trControl=</span>trctrl,
-                   <span class="dt">tuneLength =</span> <span class="dv">10</span>)</code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>, <span class="dt">repeats =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb377-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">3333</span>)</a>
+<a class="sourceLine" id="cb377-3" data-line-number="3">dtree_fit &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span class="op">~</span>., <span class="dt">data =</span> training, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</a>
+<a class="sourceLine" id="cb377-4" data-line-number="4">                   <span class="dt">parms =</span> <span class="kw">list</span>(<span class="dt">split =</span> <span class="st">&quot;information&quot;</span>),</a>
+<a class="sourceLine" id="cb377-5" data-line-number="5">                   <span class="dt">trControl=</span>trctrl,</a>
+<a class="sourceLine" id="cb377-6" data-line-number="6">                   <span class="dt">tuneLength =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><em>Trained Decision Tree classifier results</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dtree_fit </code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1">dtree_fit </a></code></pre></div>
 <pre><code>## CART 
 ## 
 ## 1211 samples
@@ -545,19 +572,19 @@ dtree_fit &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span c
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.005494505.</code></pre>
 <p><em>Plotting the decision tress</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtree_fit<span class="op">$</span>finalModel, <span class="dt">box.palette =</span> <span class="st">&quot;Reds&quot;</span>, <span class="dt">tweak =</span> <span class="fl">1.2</span>)</code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1"><span class="kw">prp</span>(dtree_fit<span class="op">$</span>finalModel, <span class="dt">box.palette =</span> <span class="st">&quot;Reds&quot;</span>, <span class="dt">tweak =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p><em>Prediction</em></p>
 <p>The model is trained with cp = 0.01123596. cp is complexity parameter for our dtree. We are ready to predict classes for our test set. We can use predict() method. Let’s try to predict target variable for test set’s 1st record.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">testing[<span class="dv">1</span>,]</code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1">testing[<span class="dv">1</span>,]</a></code></pre></div>
 <pre><code>##      V1    V2 V3 V4  V5   V6    V7
 ## 6 vhigh vhigh  2  2 med high unacc</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(dtree_fit, <span class="dt">newdata =</span> testing[<span class="dv">1</span>,])</code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" data-line-number="1"><span class="kw">predict</span>(dtree_fit, <span class="dt">newdata =</span> testing[<span class="dv">1</span>,])</a></code></pre></div>
 <pre><code>## [1] unacc
 ## Levels: acc good unacc vgood</code></pre>
 <p>For our 1st record of testing data classifier is predicting class variable as “unacc”. Now, its time to predict target variable for the whole test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(dtree_fit, <span class="dt">newdata =</span> testing)
-<span class="kw">confusionMatrix</span>(test_pred, <span class="kw">as.factor</span>(testing<span class="op">$</span>V7) )  <span class="co">#check accuracy</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" data-line-number="1">test_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(dtree_fit, <span class="dt">newdata =</span> testing)</a>
+<a class="sourceLine" id="cb385-2" data-line-number="2"><span class="kw">confusionMatrix</span>(test_pred, <span class="kw">as.factor</span>(testing<span class="op">$</span>V7) )  <span class="co">#check accuracy</span></a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -592,12 +619,12 @@ dtree_fit &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span c
 <p>The above results show that the classifier with the criterion as information gain is giving 83.72% of accuracy for the test set.</p>
 <p><em>Training the Decision Tree classifier with criterion as GINI INDEX</em></p>
 <p>Let’s try to program a decision tree classifier using splitting criterion as gini index.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">3333</span>)
-dtree_fit_gini &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span class="op">~</span>., <span class="dt">data =</span> training, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,
-                   <span class="dt">parms =</span> <span class="kw">list</span>(<span class="dt">split =</span> <span class="st">&quot;gini&quot;</span>),
-                   <span class="dt">trControl=</span>trctrl,
-                   <span class="dt">tuneLength =</span> <span class="dv">10</span>)
-dtree_fit_gini</code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">3333</span>)</a>
+<a class="sourceLine" id="cb387-2" data-line-number="2">dtree_fit_gini &lt;-<span class="st"> </span><span class="kw">train</span>(V7 <span class="op">~</span>., <span class="dt">data =</span> training, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</a>
+<a class="sourceLine" id="cb387-3" data-line-number="3">                   <span class="dt">parms =</span> <span class="kw">list</span>(<span class="dt">split =</span> <span class="st">&quot;gini&quot;</span>),</a>
+<a class="sourceLine" id="cb387-4" data-line-number="4">                   <span class="dt">trControl=</span>trctrl,</a>
+<a class="sourceLine" id="cb387-5" data-line-number="5">                   <span class="dt">tuneLength =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb387-6" data-line-number="6">dtree_fit_gini</a></code></pre></div>
 <pre><code>## CART 
 ## 
 ## 1211 samples
@@ -625,12 +652,12 @@ dtree_fit_gini</code></pre></div>
 ## The final value used for the model was cp = 0.005494505.</code></pre>
 <p>It is showing us the accuracy metrics for different values of cp.</p>
 <p><em>Plotting decision tree</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prp</span>(dtree_fit_gini<span class="op">$</span>finalModel, <span class="dt">box.palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">tweak =</span> <span class="fl">1.2</span>)</code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" data-line-number="1"><span class="kw">prp</span>(dtree_fit_gini<span class="op">$</span>finalModel, <span class="dt">box.palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">tweak =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p><em>Prediction</em></p>
 <p>Our model is trained with cp = 0.01123596. Now, it’s time to predict target variable for the whole test set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_pred_gini &lt;-<span class="st"> </span><span class="kw">predict</span>(dtree_fit_gini, <span class="dt">newdata =</span> testing)
-<span class="kw">confusionMatrix</span>(test_pred_gini, <span class="kw">as.factor</span>(testing<span class="op">$</span>V7) )  <span class="co">#check accuracy</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1">test_pred_gini &lt;-<span class="st"> </span><span class="kw">predict</span>(dtree_fit_gini, <span class="dt">newdata =</span> testing)</a>
+<a class="sourceLine" id="cb390-2" data-line-number="2"><span class="kw">confusionMatrix</span>(test_pred_gini, <span class="kw">as.factor</span>(testing<span class="op">$</span>V7) )  <span class="co">#check accuracy</span></a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -670,20 +697,20 @@ dtree_fit_gini</code></pre></div>
 <p><em>Boosting</em> refers to a family of algorithms which converts weak learner to strong learner by combing the prediction of each weak learner using methods like average/ weighted average or by considering a prediction that has a higher vote. Gradient boosting and XGboost are examples of boosting algorithms.</p>
 <p><strong>Iris example for Decision Trees</strong></p>
 <p>Even if we already know the classes for the 150 instances of irises, it could be interesting to create a model that predicts the species from the petal and sepal width and length. One model that is easy to create and understand is a decision tree, which can be created with the C5.0 package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(C50)){<span class="kw">install.packages</span>(<span class="st">&quot;C50&quot;</span>)}</code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(C50)){<span class="kw">install.packages</span>(<span class="st">&quot;C50&quot;</span>)}</a></code></pre></div>
 <pre><code>## Loading required package: C50</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(C50)
-input &lt;-<span class="st"> </span>iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
-output &lt;-<span class="st"> </span>iris[,<span class="dv">5</span>]
-model1 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output, <span class="dt">control =</span> <span class="kw">C5.0Control</span>(<span class="dt">noGlobalPruning =</span> <span class="ot">TRUE</span>,<span class="dt">minCases=</span><span class="dv">1</span>))
-<span class="kw">summary</span>(model1)</code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1"><span class="kw">library</span>(C50)</a>
+<a class="sourceLine" id="cb394-2" data-line-number="2">input &lt;-<span class="st"> </span>iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb394-3" data-line-number="3">output &lt;-<span class="st"> </span>iris[,<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb394-4" data-line-number="4">model1 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output, <span class="dt">control =</span> <span class="kw">C5.0Control</span>(<span class="dt">noGlobalPruning =</span> <span class="ot">TRUE</span>,<span class="dt">minCases=</span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb394-5" data-line-number="5"><span class="kw">summary</span>(model1)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## C5.0.default(x = input, y = output, control = C5.0Control(noGlobalPruning
 ##  = TRUE, minCases = 1))
 ## 
 ## 
-## C5.0 [Release 2.07 GPL Edition]      Tue Oct  6 15:19:27 2020
+## C5.0 [Release 2.07 GPL Edition]  	Wed Oct  7 18:40:21 2020
 ## -------------------------------
 ## 
 ## Class specified by attribute `outcome&#39;
@@ -706,43 +733,43 @@ model1 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output,
 ## 
 ## Evaluation on training data (150 cases):
 ## 
-##      Decision Tree   
-##    ----------------  
-##    Size      Errors  
+## 	    Decision Tree   
+## 	  ----------------  
+## 	  Size      Errors  
 ## 
-##       6    2( 1.3%)   &lt;&lt;
-## 
-## 
-##     (a)   (b)   (c)    &lt;-classified as
-##    ----  ----  ----
-##      50                (a): class setosa
-##            49     1    (b): class versicolor
-##             1    49    (c): class virginica
+## 	     6    2( 1.3%)   &lt;&lt;
 ## 
 ## 
-##  Attribute usage:
+## 	   (a)   (b)   (c)    &lt;-classified as
+## 	  ----  ----  ----
+## 	    50                (a): class setosa
+## 	          49     1    (b): class versicolor
+## 	           1    49    (c): class virginica
 ## 
-##  100.00% Petal.Length
-##   66.67% Petal.Width
+## 
+## 	Attribute usage:
+## 
+## 	100.00%	Petal.Length
+## 	 66.67%	Petal.Width
 ## 
 ## 
 ## Time: 0.0 secs</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(model1, <span class="dt">main=</span><span class="st">&quot;C5.0 Decision Tree - Unpruned, min=1&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1"><span class="kw">plot</span>(model1, <span class="dt">main=</span><span class="st">&quot;C5.0 Decision Tree - Unpruned, min=1&quot;</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-<p>We can play with the parameters of the classifier to see better/simpler/more complete/more complex trees. Here's a simpler one:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model2 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output, <span class="dt">control =</span> <span class="kw">C5.0Control</span>(<span class="dt">noGlobalPruning =</span> <span class="ot">FALSE</span>))
-<span class="kw">plot</span>(model2, <span class="dt">main=</span><span class="st">&quot;C5.0 Decision Tree - Pruned&quot;</span>)</code></pre></div>
+<p>We can play with the parameters of the classifier to see better/simpler/more complete/more complex trees. Here’s a simpler one:</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">model2 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output, <span class="dt">control =</span> <span class="kw">C5.0Control</span>(<span class="dt">noGlobalPruning =</span> <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb397-2" data-line-number="2"><span class="kw">plot</span>(model2, <span class="dt">main=</span><span class="st">&quot;C5.0 Decision Tree - Pruned&quot;</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(model2, <span class="dt">type=</span><span class="st">&#39;simple&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="kw">plot</span>(model2, <span class="dt">type=</span><span class="st">&#39;simple&#39;</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(model2)</code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1"><span class="kw">summary</span>(model2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## C5.0.default(x = input, y = output, control = C5.0Control(noGlobalPruning
 ##  = FALSE))
 ## 
 ## 
-## C5.0 [Release 2.07 GPL Edition]      Tue Oct  6 15:19:27 2020
+## C5.0 [Release 2.07 GPL Edition]  	Wed Oct  7 18:40:21 2020
 ## -------------------------------
 ## 
 ## Class specified by attribute `outcome&#39;
@@ -761,37 +788,37 @@ model1 &lt;-<span class="st"> </span><span class="kw">C5.0</span>(input, output,
 ## 
 ## Evaluation on training data (150 cases):
 ## 
-##      Decision Tree   
-##    ----------------  
-##    Size      Errors  
+## 	    Decision Tree   
+## 	  ----------------  
+## 	  Size      Errors  
 ## 
-##       4    4( 2.7%)   &lt;&lt;
-## 
-## 
-##     (a)   (b)   (c)    &lt;-classified as
-##    ----  ----  ----
-##      50                (a): class setosa
-##            47     3    (b): class versicolor
-##             1    49    (c): class virginica
+## 	     4    4( 2.7%)   &lt;&lt;
 ## 
 ## 
-##  Attribute usage:
+## 	   (a)   (b)   (c)    &lt;-classified as
+## 	  ----  ----  ----
+## 	    50                (a): class setosa
+## 	          47     3    (b): class versicolor
+## 	           1    49    (c): class virginica
 ## 
-##  100.00% Petal.Length
-##   66.67% Petal.Width
+## 
+## 	Attribute usage:
+## 
+## 	100.00%	Petal.Length
+## 	 66.67%	Petal.Width
 ## 
 ## 
 ## Time: 0.0 secs</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We can &quot;zoom into&quot; the usage of features for creation of the model:</span>
-<span class="kw">C5imp</span>(model2,<span class="dt">metric=</span><span class="st">&#39;usage&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="co">#We can &quot;zoom into&quot; the usage of features for creation of the model:</span></a>
+<a class="sourceLine" id="cb401-2" data-line-number="2"><span class="kw">C5imp</span>(model2,<span class="dt">metric=</span><span class="st">&#39;usage&#39;</span>)</a></code></pre></div>
 <pre><code>##              Overall
 ## Petal.Length  100.00
 ## Petal.Width    66.67
 ## Sepal.Length    0.00
 ## Sepal.Width     0.00</code></pre>
 <p>Now I have a model. Can we predict the class from the numerical attributes?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newcases &lt;-<span class="st"> </span>iris[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">51</span><span class="op">:</span><span class="dv">53</span>,<span class="dv">101</span><span class="op">:</span><span class="dv">103</span>),]
-newcases</code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">newcases &lt;-<span class="st"> </span>iris[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">51</span><span class="op">:</span><span class="dv">53</span>,<span class="dv">101</span><span class="op">:</span><span class="dv">103</span>),]</a>
+<a class="sourceLine" id="cb403-2" data-line-number="2">newcases</a></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 1            5.1         3.5          1.4         0.2     setosa
 ## 2            4.9         3.0          1.4         0.2     setosa
@@ -802,8 +829,8 @@ newcases</code></pre></div>
 ## 101          6.3         3.3          6.0         2.5  virginica
 ## 102          5.8         2.7          5.1         1.9  virginica
 ## 103          7.1         3.0          5.9         2.1  virginica</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(model2, newcases, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)
-predicted</code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1">predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(model2, newcases, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)</a>
+<a class="sourceLine" id="cb405-2" data-line-number="2">predicted</a></code></pre></div>
 <pre><code>## [1] setosa     setosa     setosa     versicolor versicolor versicolor virginica 
 ## [8] virginica  virginica 
 ## Levels: setosa versicolor virginica</code></pre>
@@ -817,14 +844,14 @@ predicted</code></pre></div>
 <p>To classify a new object based on attributes, each tree gives a classification i.e. “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest) and in case of regression, it takes the average of outputs by different trees.</p>
 <p><strong>Key differences between decision trees and random forest</strong></p>
 <p>Decision trees proceed by searching for a split on every variable in every node random forest searches for a split only on one variable in a node - the variable that has the largest association with the target among all other explanatory variables but only on a subset of randomly selected explanatory variables that is tested for that node. At every node a new list is selected.</p>
-<p>Therefore, eligible variable set will be different from node to node but the important ones will eventually be &quot;voted in&quot; based on their success in predicting the targert variable.</p>
+<p>Therefore, eligible variable set will be different from node to node but the important ones will eventually be “voted in” based on their success in predicting the targert variable.</p>
 <p>This random selection of explanatory variables at each node and which are different at each treee is known as bagging. For each tree the ratio between bagging and out of bagging is 60/40.</p>
 <p>The important thing to note is that the trees are themselves not intpreted but they are used to collectively rank the importance of each variable.</p>
 <p><strong>Example Random Forest code for binary classification</strong></p>
 <p>In this example, a bank wanted to cross-sell term deposit product to its customers and hence it wanted to build a predictive model, which will identify customers who are more likely to respond to term deport cross-sell campaign.</p>
 <p><em>Install and load randomForest library</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load library</span>
-<span class="kw">library</span>(randomForest)</code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="co"># Load library</span></a>
+<a class="sourceLine" id="cb407-2" data-line-number="2"><span class="kw">library</span>(randomForest)</a></code></pre></div>
 <pre><code>## randomForest 4.6-14</code></pre>
 <pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
 <pre><code>## 
@@ -832,71 +859,71 @@ predicted</code></pre></div>
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
 ## 
 ##     margin</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Read data
-Example&lt;-<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/Decision_tree_and_RF/bank.csv&quot;</span>,<span class="dt">header =</span> T)
-Example<span class="op">$</span>y =<span class="st"> </span><span class="kw">as.factor</span>(Example<span class="op">$</span>y)</code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1"><span class="co">## Read data</span></a>
+<a class="sourceLine" id="cb412-2" data-line-number="2">Example&lt;-<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/Decision_tree_and_RF/bank.csv&quot;</span>,<span class="dt">header =</span> T)</a>
+<a class="sourceLine" id="cb412-3" data-line-number="3">Example<span class="op">$</span>y =<span class="st"> </span><span class="kw">as.factor</span>(Example<span class="op">$</span>y)</a></code></pre></div>
 <p>Input dataset has 20 independent variables and a target variable. The target variable y is binary.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(Example)</code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1"><span class="kw">names</span>(Example)</a></code></pre></div>
 <pre><code>##  [1] &quot;age&quot;            &quot;job&quot;            &quot;marital&quot;        &quot;education&quot;     
 ##  [5] &quot;default&quot;        &quot;housing&quot;        &quot;loan&quot;           &quot;contact&quot;       
 ##  [9] &quot;month&quot;          &quot;day_of_week&quot;    &quot;duration&quot;       &quot;campaign&quot;      
 ## [13] &quot;pdays&quot;          &quot;previous&quot;       &quot;poutcome&quot;       &quot;emp.var.rate&quot;  
 ## [17] &quot;cons.price.idx&quot; &quot;cons.conf.idx&quot;  &quot;euribor3m&quot;      &quot;nr.employed&quot;   
 ## [21] &quot;y&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(Example<span class="op">$</span>y)<span class="op">/</span><span class="kw">nrow</span>(Example)</code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1"><span class="kw">table</span>(Example<span class="op">$</span>y)<span class="op">/</span><span class="kw">nrow</span>(Example)</a></code></pre></div>
 <pre><code>## 
 ##        no       yes 
 ## 0.8905074 0.1094926</code></pre>
 <p>11% of the observations has target variable “yes” and remaining 89% observations take value “no”.</p>
 <p>We will split the data sample into development and validation samples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample.ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, 
-                     <span class="kw">nrow</span>(Example),
-                     <span class="dt">replace =</span> T,
-                     <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.4</span>))
-Example.dev &lt;-<span class="st"> </span>Example[sample.ind<span class="op">==</span><span class="dv">1</span>,]
-Example.val &lt;-<span class="st"> </span>Example[sample.ind<span class="op">==</span><span class="dv">2</span>,]
-
-<span class="kw">table</span>(Example.dev<span class="op">$</span>y)<span class="op">/</span><span class="kw">nrow</span>(Example.dev)</code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">sample.ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb417-2" data-line-number="2">                     <span class="kw">nrow</span>(Example),</a>
+<a class="sourceLine" id="cb417-3" data-line-number="3">                     <span class="dt">replace =</span> T,</a>
+<a class="sourceLine" id="cb417-4" data-line-number="4">                     <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.4</span>))</a>
+<a class="sourceLine" id="cb417-5" data-line-number="5">Example.dev &lt;-<span class="st"> </span>Example[sample.ind<span class="op">==</span><span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb417-6" data-line-number="6">Example.val &lt;-<span class="st"> </span>Example[sample.ind<span class="op">==</span><span class="dv">2</span>,]</a>
+<a class="sourceLine" id="cb417-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb417-8" data-line-number="8"><span class="kw">table</span>(Example.dev<span class="op">$</span>y)<span class="op">/</span><span class="kw">nrow</span>(Example.dev)</a></code></pre></div>
 <pre><code>## 
 ##        no       yes 
 ## 0.8897638 0.1102362</code></pre>
 <p>Both development and validation samples have similar target variable distribution. This is just a sample validation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(Example.dev<span class="op">$</span>y)</code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">class</span>(Example.dev<span class="op">$</span>y)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>Class of target or response variable is factor, so a classification Random Forest will be built. The current data frame has a list of independent variables, so we can make it formula and then pass as a parameter value for randomForest.</p>
 <p><em>Make Formula</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">varNames &lt;-<span class="st"> </span><span class="kw">names</span>(Example.dev)
-<span class="co"># Exclude ID or Response variable</span>
-varNames &lt;-<span class="st"> </span>varNames[<span class="op">!</span>varNames <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;y&quot;</span>)]
-
-<span class="co"># add + sign between exploratory variables</span>
-varNames1 &lt;-<span class="st"> </span><span class="kw">paste</span>(varNames, <span class="dt">collapse =</span> <span class="st">&quot;+&quot;</span>)
-
-<span class="co"># Add response variable and convert to a formula object</span>
-rf.form &lt;-<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;y&quot;</span>, varNames1, <span class="dt">sep =</span> <span class="st">&quot; ~ &quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1">varNames &lt;-<span class="st"> </span><span class="kw">names</span>(Example.dev)</a>
+<a class="sourceLine" id="cb421-2" data-line-number="2"><span class="co"># Exclude ID or Response variable</span></a>
+<a class="sourceLine" id="cb421-3" data-line-number="3">varNames &lt;-<span class="st"> </span>varNames[<span class="op">!</span>varNames <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;y&quot;</span>)]</a>
+<a class="sourceLine" id="cb421-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb421-5" data-line-number="5"><span class="co"># add + sign between exploratory variables</span></a>
+<a class="sourceLine" id="cb421-6" data-line-number="6">varNames1 &lt;-<span class="st"> </span><span class="kw">paste</span>(varNames, <span class="dt">collapse =</span> <span class="st">&quot;+&quot;</span>)</a>
+<a class="sourceLine" id="cb421-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb421-8" data-line-number="8"><span class="co"># Add response variable and convert to a formula object</span></a>
+<a class="sourceLine" id="cb421-9" data-line-number="9">rf.form &lt;-<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;y&quot;</span>, varNames1, <span class="dt">sep =</span> <span class="st">&quot; ~ &quot;</span>))</a></code></pre></div>
 <p><em>Building Random Forest model</em></p>
 <p>We will build 500 decision trees using Random Forest.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Example.rf &lt;-<span class="st"> </span><span class="kw">randomForest</span>(rf.form,
-                              Example.dev,
-                              <span class="dt">ntree=</span><span class="dv">500</span>,
-                              <span class="dt">importance=</span>T)
-
-<span class="kw">plot</span>(Example.rf)</code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">Example.rf &lt;-<span class="st"> </span><span class="kw">randomForest</span>(rf.form,</a>
+<a class="sourceLine" id="cb422-2" data-line-number="2">                              Example.dev,</a>
+<a class="sourceLine" id="cb422-3" data-line-number="3">                              <span class="dt">ntree=</span><span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb422-4" data-line-number="4">                              <span class="dt">importance=</span>T)</a>
+<a class="sourceLine" id="cb422-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb422-6" data-line-number="6"><span class="kw">plot</span>(Example.rf)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>500 decision trees or a forest has been built using the Random Forest algorithm based learning. We can plot the error rate across decision trees. The plot seems to indicate that after 100 decision trees, there is not a significant reduction in error rate.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variable Importance Plot</span>
-<span class="kw">varImpPlot</span>(Example.rf,
-           <span class="dt">sort =</span> T,
-           <span class="dt">main=</span><span class="st">&quot;Variable Importance&quot;</span>,
-           <span class="dt">n.var=</span><span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="co"># Variable Importance Plot</span></a>
+<a class="sourceLine" id="cb423-2" data-line-number="2"><span class="kw">varImpPlot</span>(Example.rf,</a>
+<a class="sourceLine" id="cb423-3" data-line-number="3">           <span class="dt">sort =</span> T,</a>
+<a class="sourceLine" id="cb423-4" data-line-number="4">           <span class="dt">main=</span><span class="st">&quot;Variable Importance&quot;</span>,</a>
+<a class="sourceLine" id="cb423-5" data-line-number="5">           <span class="dt">n.var=</span><span class="dv">5</span>)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>Variable importance plot is also a useful tool and can be plotted using varImpPlot function. Top 5 variables are selected and plotted based on Model Accuracy and Gini value. We can also get a table with decreasing order of importance based on a measure (1 for model accuracy and 2 node impurity)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variable Importance Table</span>
-var.imp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">importance</span>(Example.rf,
-           <span class="dt">type=</span><span class="dv">2</span>))
-<span class="co"># make row names as columns</span>
-var.imp<span class="op">$</span>Variables &lt;-<span class="st"> </span><span class="kw">row.names</span>(var.imp)
-var.imp[<span class="kw">order</span>(var.imp<span class="op">$</span>MeanDecreaseGini,<span class="dt">decreasing =</span> T),]</code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1"><span class="co"># Variable Importance Table</span></a>
+<a class="sourceLine" id="cb424-2" data-line-number="2">var.imp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">importance</span>(Example.rf,</a>
+<a class="sourceLine" id="cb424-3" data-line-number="3">           <span class="dt">type=</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb424-4" data-line-number="4"><span class="co"># make row names as columns</span></a>
+<a class="sourceLine" id="cb424-5" data-line-number="5">var.imp<span class="op">$</span>Variables &lt;-<span class="st"> </span><span class="kw">row.names</span>(var.imp)</a>
+<a class="sourceLine" id="cb424-6" data-line-number="6">var.imp[<span class="kw">order</span>(var.imp<span class="op">$</span>MeanDecreaseGini,<span class="dt">decreasing =</span> T),]</a></code></pre></div>
 <pre><code>##                MeanDecreaseGini      Variables
 ## duration             143.966515       duration
 ## euribor3m             57.510569      euribor3m
@@ -921,18 +948,18 @@ var.imp[<span class="kw">order</span>(var.imp<span class="op">$</span>MeanDecrea
 <p>Based on Random Forest variable importance, the variables could be selected for any other predictive modelling techniques or machine learning.</p>
 <p><em>Predict Response Variable Value using Random Forest</em></p>
 <p>Generic predict function can be used for predicting response variable using Random Forest object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Predicting response variable</span>
-Example.dev<span class="op">$</span>predicted.response &lt;-<span class="st"> </span><span class="kw">predict</span>(Example.rf ,Example.dev)</code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="co"># Predicting response variable</span></a>
+<a class="sourceLine" id="cb426-2" data-line-number="2">Example.dev<span class="op">$</span>predicted.response &lt;-<span class="st"> </span><span class="kw">predict</span>(Example.rf ,Example.dev)</a></code></pre></div>
 <p>confusionMatrix function from caret package can be used for creating confusion matrix based on actual response variable and predicted value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load Library or packages</span>
-<span class="kw">library</span>(e1071)
-<span class="kw">library</span>(caret)
-## Loading required package: lattice
-## Loading required package: ggplot2
-<span class="co"># Create Confusion Matrix</span>
-<span class="kw">confusionMatrix</span>(<span class="dt">data=</span>Example.dev<span class="op">$</span>predicted.response,
-                <span class="dt">reference=</span>Example.dev<span class="op">$</span>y,
-                <span class="dt">positive=</span><span class="st">&#39;yes&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1"><span class="co"># Load Library or packages</span></a>
+<a class="sourceLine" id="cb427-2" data-line-number="2"><span class="kw">library</span>(e1071)</a>
+<a class="sourceLine" id="cb427-3" data-line-number="3"><span class="kw">library</span>(caret)</a>
+<a class="sourceLine" id="cb427-4" data-line-number="4"><span class="co">## Loading required package: lattice</span></a>
+<a class="sourceLine" id="cb427-5" data-line-number="5"><span class="co">## Loading required package: ggplot2</span></a>
+<a class="sourceLine" id="cb427-6" data-line-number="6"><span class="co"># Create Confusion Matrix</span></a>
+<a class="sourceLine" id="cb427-7" data-line-number="7"><span class="kw">confusionMatrix</span>(<span class="dt">data=</span>Example.dev<span class="op">$</span>predicted.response,</a>
+<a class="sourceLine" id="cb427-8" data-line-number="8">                <span class="dt">reference=</span>Example.dev<span class="op">$</span>y,</a>
+<a class="sourceLine" id="cb427-9" data-line-number="9">                <span class="dt">positive=</span><span class="st">&#39;yes&#39;</span>)</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -961,13 +988,13 @@ Example.dev<span class="op">$</span>predicted.response &lt;-<span class="st"> </
 ##        &#39;Positive&#39; Class : yes        
 ## </code></pre>
 <p>It has accuracy of 99.81%. Now we can predict response for the validation sample and calculate model accuracy for the sample.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Predicting response variable</span>
-Example.val<span class="op">$</span>predicted.response &lt;-<span class="st"> </span><span class="kw">predict</span>(Example.rf ,Example.val)
-
-<span class="co"># Create Confusion Matrix</span>
-<span class="kw">confusionMatrix</span>(<span class="dt">data=</span>Example.val<span class="op">$</span>predicted.response,
-                <span class="dt">reference=</span>Example.val<span class="op">$</span>y,
-                <span class="dt">positive=</span><span class="st">&#39;yes&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" data-line-number="1"><span class="co"># Predicting response variable</span></a>
+<a class="sourceLine" id="cb429-2" data-line-number="2">Example.val<span class="op">$</span>predicted.response &lt;-<span class="st"> </span><span class="kw">predict</span>(Example.rf ,Example.val)</a>
+<a class="sourceLine" id="cb429-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb429-4" data-line-number="4"><span class="co"># Create Confusion Matrix</span></a>
+<a class="sourceLine" id="cb429-5" data-line-number="5"><span class="kw">confusionMatrix</span>(<span class="dt">data=</span>Example.val<span class="op">$</span>predicted.response,</a>
+<a class="sourceLine" id="cb429-6" data-line-number="6">                <span class="dt">reference=</span>Example.val<span class="op">$</span>y,</a>
+<a class="sourceLine" id="cb429-7" data-line-number="7">                <span class="dt">positive=</span><span class="st">&#39;yes&#39;</span>)</a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -997,18 +1024,18 @@ Example.val<span class="op">$</span>predicted.response &lt;-<span class="st"> </
 ## </code></pre>
 <p>Accuracy level has dropped to 91.8% but still significantly higher.</p>
 <p><strong>Iris data example</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(randomForest)
-ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>,<span class="kw">nrow</span>(iris),<span class="dt">replace=</span><span class="ot">TRUE</span>,<span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.7</span>,<span class="fl">0.3</span>))
-trainData &lt;-<span class="st"> </span>iris[ind<span class="op">==</span><span class="dv">1</span>,]
-testData &lt;-<span class="st"> </span>iris[ind<span class="op">==</span><span class="dv">2</span>,]
-iris.rf &lt;-<span class="st"> </span><span class="kw">randomForest</span>(Species<span class="op">~</span>.,<span class="dt">data=</span>trainData,<span class="dt">ntree=</span><span class="dv">100</span>,<span class="dt">proximity=</span><span class="ot">TRUE</span>)
-<span class="kw">table</span>(<span class="kw">predict</span>(iris.rf),trainData<span class="op">$</span>Species)</code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a>
+<a class="sourceLine" id="cb431-2" data-line-number="2">ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>,<span class="kw">nrow</span>(iris),<span class="dt">replace=</span><span class="ot">TRUE</span>,<span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.7</span>,<span class="fl">0.3</span>))</a>
+<a class="sourceLine" id="cb431-3" data-line-number="3">trainData &lt;-<span class="st"> </span>iris[ind<span class="op">==</span><span class="dv">1</span>,]</a>
+<a class="sourceLine" id="cb431-4" data-line-number="4">testData &lt;-<span class="st"> </span>iris[ind<span class="op">==</span><span class="dv">2</span>,]</a>
+<a class="sourceLine" id="cb431-5" data-line-number="5">iris.rf &lt;-<span class="st"> </span><span class="kw">randomForest</span>(Species<span class="op">~</span>.,<span class="dt">data=</span>trainData,<span class="dt">ntree=</span><span class="dv">100</span>,<span class="dt">proximity=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb431-6" data-line-number="6"><span class="kw">table</span>(<span class="kw">predict</span>(iris.rf),trainData<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>##             
 ##              setosa versicolor virginica
 ##   setosa         31          0         0
 ##   versicolor      0         31         3
 ##   virginica       0          1        34</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris.rf)</code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1"><span class="kw">print</span>(iris.rf)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ##  randomForest(formula = Species ~ ., data = trainData, ntree = 100,      proximity = TRUE) 
@@ -1022,28 +1049,29 @@ iris.rf &lt;-<span class="st"> </span><span class="kw">randomForest</span>(Speci
 ## setosa         31          0         0  0.00000000
 ## versicolor      0         31         1  0.03125000
 ## virginica       0          3        34  0.08108108</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(iris.rf)</span>
-<span class="kw">importance</span>(iris.rf)</code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1"><span class="co">#plot(iris.rf)</span></a>
+<a class="sourceLine" id="cb435-2" data-line-number="2"><span class="kw">importance</span>(iris.rf)</a></code></pre></div>
 <pre><code>##              MeanDecreaseGini
 ## Sepal.Length         5.596558
 ## Sepal.Width          1.005828
 ## Petal.Length        31.407250
 ## Petal.Width         27.870964</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">varImpPlot</span>(iris.rf)</code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1"><span class="kw">varImpPlot</span>(iris.rf)</a></code></pre></div>
 <p><img src="06-decision-trees_files/figure-html/rf1-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris.pred&lt;-<span class="kw">predict</span>(iris.rf,<span class="dt">newdata=</span>testData)
-<span class="kw">table</span>(iris.pred, testData<span class="op">$</span>Species)</code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1">iris.pred&lt;-<span class="kw">predict</span>(iris.rf,<span class="dt">newdata=</span>testData)</a>
+<a class="sourceLine" id="cb438-2" data-line-number="2"><span class="kw">table</span>(iris.pred, testData<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>##             
 ## iris.pred    setosa versicolor virginica
 ##   setosa         19          0         0
 ##   versicolor      0         15         0
 ##   virginica       0          3        13</code></pre>
 <p>As observed for the previous examples, the discriminative features are the petal length and the petal width.</p>
-<p><em>Acknowledgement: the above data is from a machine-learning database and the code is discusses</em>: <a href="http://dni-institute.in/blogs/random-forest-using-r-step-by-step-tutorial/*" class="uri">http://dni-institute.in/blogs/random-forest-using-r-step-by-step-tutorial/*</a></p>
+<p><em>Acknowledgement: the above data is from a machine-learning database and the code is discusses</em>: <a href="http://dni-institute.in/blogs/random-forest-using-r-step-by-step-tutorial/" class="uri">http://dni-institute.in/blogs/random-forest-using-r-step-by-step-tutorial/</a>*</p>
 </div>
 <div id="exercises" class="section level2">
 <h2><span class="header-section-number">7.3</span> Exercises</h2>
-<p><strong>Titanic Data</strong>  One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.</p>
+<p><strong>Titanic Data</strong> 
+One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.</p>
 <p>In this excerise, try to complete the analysis of what sorts of people were likely to survive. The data can be downloaded from <a href="https://goo.gl/At238b" class="uri">https://goo.gl/At238b</a>. Hint: Use decision tree.</p>
 <p>Solutions to exercises can be found in appendix <a href="solutions-decision-trees.html#solutions-decision-trees">F</a>.</p>
 
@@ -1110,7 +1138,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

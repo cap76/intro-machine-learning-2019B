@@ -10,6 +10,12 @@ In this final section we will explore the basics of *deep learning* for image cl
 
 Our motivating goal in this section is to develop an image classification algorithm capable of telling us whether any given image contains Rick or not: a binary classification task with two classes, *Rick* or *not Rick*. For training purposes we have downloaded several thousand random images of Rick and several thousand images without Rick from the website [Master of All Science](https://masterofallscience.com).
 
+The main ideas to take home from this sectionn are:
+
+1. Yes, look at the data.
+2. There are a limitless vareity of architecutres one can build into a neural network, picking one is often arbitrary or *at best* empircally-motivated by previous works
+3. Some approaches are better designed for some datasets
+
 ### Reading in images
 
 As with any machine learning application, it's important to both have some question in mind (in this case "can we identify images that contain Rick Sanchez"), and understand the dataset(s) we're using.
@@ -138,7 +144,7 @@ mod <- Sequential()
 
 This tells keras that we're using the Sequential API i.e., a network with the first layer connected to the second, the second to the third and so forth, which distinguishes it from more complex networks possible using the Model API. Once we've specified a sequential model, we have to stard adding layers to the neural network. 
 
-A standard layer of neurons can be specified using the {Dense} command; the first layer of our network must also include the dimension of the input. So, for example, if our input data was a vector of dimension $1 \times 40$, we could add an input layer via:
+A standard layer of neurons, like the networks we build in the previous chapter, can be specified using the {Dense} command; the first layer of our network must also include the dimension of the input. So, for example, if our input data was a vector of dimension $1 \times 40$, we could add an input layer via:
 
 
 ```r
@@ -161,7 +167,9 @@ mod$add(Dense(120))
 mod$add(Activation("relu"))
 ```
 
-Finally, we should add the output neurons. The number of output neurons will differ, but will by and large match the size of the output we're aiming to predict. In this case we have two outputs, so will have a {Dense(2)} output. The final activation function also depends on our data. If, for example, we're doing regression, we don't need a final activaition (or can explicitly speify a linear activation). For a categorical outpur for one-hot data we could specify a {softmax} activation. Here we will specify a {sigmoid} activation function. Our final model would look like:
+Finally, we should add the output neurons. The number of output neurons will differ, but will by and large match the size of the output we're aiming to predict. If it helps, it may be worth thinking about how the networks in the previous section can be implemented using Keras. 
+
+In this section we have two outputs, so will have a {Dense(2)} output. The final activation function also depends on our data. If, for example, we're doing regression, we don't need a final activaition (or can explicitly speify a linear activation). For a categorical outpur for one-hot encoded data we could specify a {softmax} activation. Here we will specify a {sigmoid} activation function. Our final model would look like:
 
 
 ```r
@@ -228,7 +236,7 @@ plot_model(mod,'images/DNN1.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN1.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 We can also print a summary of the network, for example to see how many parameters it has:
@@ -326,7 +334,7 @@ plot_model(mod,'images/DNN2.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN2.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet2)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 We now get now get a validation accuracy of around $0.57$ with corresponding training accuracy of $0.58$. The model actually appears to be worse! Why not just add extra layers in. Okay boomer! Let's just waste all of our (computational resources) with millions of extra layers and billions of parameters. It seems like we're getting nowhere fast, and need to change tactic. 
@@ -338,7 +346,7 @@ Convolutional neural networks essentially scan through an image and extract out 
 
 <div class="figure" style="text-align: center">
 <img src="images/Screen-Shot-2015-11-07-at-7.26.20-AM.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:covnet)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 In kerasR we can add a convolutional layer using {Conv2D}. A multilayer convolutional neural network might look something like:
@@ -382,7 +390,7 @@ plot_model(mod,'images/DNN3.png')
 
 <div class="figure" style="text-align: center">
 <img src="images/DNN3.png" alt="Example of a multilayer convolutional neural network" width="50%" />
-<p class="caption">(\#fig:examplenet3)Example of a multilayer convolutional neural network</p>
+<p class="caption">Example of a multilayer convolutional neural network</p>
 </div>
 
 Okay, so now we have achieved a better accuracy: we have an accuracy of $0.89$ on the validation dataset at epoch $24$, with a training accuracy of $0.96$. Whilst this is still not great, it's accurate enough to begin useuflly making predictions and visualising the results. We have a trained model for classification of Rick, we can use it to make predictions for images not present in either the training or validation datasets. First load in the new set of images, which can be found in the {predictions} subfolder:
@@ -546,12 +554,12 @@ A slight deviation of this principle would be to use a high resolution version o
 
 <div class="figure" style="text-align: center">
 <img src="images/AE.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
-<p class="caption">(\#fig:AE)Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="images/AE2.png" alt="Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)" width="50%" />
-<p class="caption">(\#fig:AE2)Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
+<p class="caption">Example of an autoencoder (https://towardsdatascience.com/generating-images-with-autoencoders-77fd3a8dd368)</p>
 </div>
 
 In the example below we implement a simple Autoencoder:
